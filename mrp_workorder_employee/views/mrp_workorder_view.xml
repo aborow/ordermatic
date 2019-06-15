@@ -1,0 +1,112 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+
+        <record id="mrp_production_workorder_form_view_inherit" model="ir.ui.view">
+            <field name="name">Employee responsible for the workorder</field>
+            <field name="model">mrp.workorder</field>
+            <field name="inherit_id" ref="mrp.mrp_production_workorder_form_view_inherit"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='product_id']" position="after">
+                    <field name="employee_id"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="mrp_production_workorder_tree_view_inherit" model="ir.ui.view">
+            <field name="name">Employee responsible for the workorder</field>
+            <field name="model">mrp.workorder</field>
+            <field name="inherit_id" ref="mrp.mrp_production_workorder_tree_view_inherit"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='workcenter_id']" position="after">
+                    <field name="employee_id"/>
+                </xpath>
+            </field>
+        </record>
+
+
+
+
+
+        <record model="ir.actions.act_window" id="mrp.mrp_workorder_todo">
+            <field name="name">Work Orders</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">mrp.workorder</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">kanban,tree,form,calendar,pivot,graph</field>
+            <field name="search_view_id" ref="mrp.view_mrp_production_workorder_form_view_filter"/>
+            <field name="context">{'search_default_ready': True, 'search_default_progress': True, 'search_default_employee': True}</field>
+            <field name="help" type="html">
+              <p class="o_view_nocontent_smiling_face">
+                Start a new work order
+              </p><p>
+                Work Orders are operations to be processed at a Work Center to realize a
+                Manufacturing Order. Work Orders are trigerred by Manufacturing Orders,
+                they are based on the Routing defined on these ones
+                </p>
+            </field>
+        </record>
+
+        <record id="view_mrp_production_workorder_form_view_filter" model="ir.ui.view">
+            <field name="name">Employee responsible for the workorder</field>
+            <field name="model">mrp.workorder</field>
+            <field name="inherit_id" ref="mrp.view_mrp_production_workorder_form_view_filter"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='state']" position="after">
+                    <field name="employee_id"/>
+                </xpath>
+                <xpath expr="//filter[@name='work_center']" position="after">
+                    <filter string="Employee"
+                        name="employee" domain="[]"
+                        context="{'group_by':'employee_id'}"/>
+                </xpath>
+            </field>
+        </record>
+
+
+
+        <record id="workcenter_line_gantt_employee" model="ir.ui.view">
+            <field name="name">mrp.production.work.order.gantt.employee</field>
+            <field name="model">mrp.workorder</field>
+            <field name="arch" type="xml">
+                <gantt date_stop="date_planned_finished"
+                        date_start="date_planned_start"
+                        string="Operations"
+                        default_group_by="employee_id">
+                </gantt>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_mrp_workorder_employee">
+            <field name="name">Work Orders Planning</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">mrp.workorder</field>
+            <field name="view_type">form</field>
+            <field name="domain">[('production_state','not in',('done','cancel'))]</field>
+            <field name="view_mode">gantt,tree,form,calendar,pivot,graph</field>
+            <field name="search_view_id" ref="mrp.view_mrp_production_workorder_form_view_filter"/>
+            <field name="view_id" ref="workcenter_line_gantt_employee"/>
+            <field name="context">{'search_default_employee': True}</field>
+            <field name="help" type="html">
+              <p class="o_view_nocontent_smiling_face">
+                Start a new work order
+              </p><p>
+                To manufacture or assemble products, and use raw materials and
+                finished products you must also handle manufacturing operations.
+                Manufacturing operations are often called Work Orders. The various
+                operations will have different impacts on the costs of
+                manufacturing and planning depending on the available workload.
+              </p>
+            </field>
+        </record>
+
+        <menuitem id="menu_mrp_workorder_employee"
+            name="Planning by Employee"
+            sequence="3"
+            action="action_mrp_workorder_employee"
+            parent="mrp_workorder.mrp_workorder_menu_planning"/>
+
+
+
+    </data>
+</odoo>
