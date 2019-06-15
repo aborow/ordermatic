@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+
+        <record id="view_mrp_product_produce_wizard" model="ir.ui.view">
+            <field name="name">MRP produce: limitations on serial number </field>
+            <field name="model">mrp.product.produce</field>
+            <field name="inherit_id" ref="mrp.view_mrp_product_produce_wizard"/>
+            <field name="arch" type="xml">
+                <!-- order of XML is important!!! -->
+
+                <xpath expr="//field[@name='lot_id']" position="replace">
+                    <field name="force_serial"
+                        groups="mrp.group_mrp_manager"
+                        attrs="{'invisible': [('product_tracking', 'in', ['none','serialX'])]}"/>
+
+                    <field name="lot_id"
+                            attrs="{'invisible': [('product_tracking', 'in', ['none','serial'])], 'required': [('product_tracking', '=', 'lot')]}"
+                            domain="[('product_id', '=', product_id)]"
+                            context="{'default_product_id': product_id}"/>
+                </xpath>
+
+                <xpath expr="//field[@name='lot_id']" position="attributes">
+                    <attribute name="options">{'no_create': True, 'no_create_edit':True}</attribute>
+                </xpath>
+                <xpath expr="//field[@name='produce_line_ids']/tree/field[@name='lot_id']"
+                        position="attributes">
+                    <attribute name="options">{'no_create': True, 'no_create_edit':True}</attribute>
+                </xpath>
+
+            </field>
+        </record>
+
+    </data>
+</odoo>
