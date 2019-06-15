@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+
+        <record id="mrp_bom_form_view" model="ir.ui.view">
+            <field name="name">Show archive in BoM lines</field>
+            <field name="model">mrp.bom</field>
+            <field name="inherit_id" ref="mrp.mrp_bom_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='bom_line_ids']/tree/field[@name='product_id']" position="after">
+                    <field name="product_active"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="mrp_production_form_view" model="ir.ui.view">
+            <field name="name">Show archive in manufacturing order lines</field>
+            <field name="model">mrp.production</field>
+            <field name="inherit_id" ref="mrp.mrp_production_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='move_raw_ids']/tree/field[@name='product_id']" position="after">
+                    <field name="product_active"/>
+                </xpath>
+                <xpath expr="//field[@name='finished_move_line_ids']/tree/field[@name='product_id']" position="after">
+                    <field name="product_active"/>
+                </xpath>
+            </field>
+        </record>
+
+
+
+    </data>
+</odoo>
