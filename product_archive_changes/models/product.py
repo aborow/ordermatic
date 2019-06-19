@@ -1,32 +1,24 @@
 #! -*- encoding: utf-8 -*-
 import logging
-
 from odoo import models, fields, api, _
-
 _logger = logging.getLogger(__name__)
 
-"""
-class MrpProductProduce(models.TransientModel):
-    _inherit = 'mrp.product.produce'
 
-
-    @api.multi
-    def do_produce(self):
-        if self.product_tracking == 'serial':
-            self.create_serial_number()
-        return super(MrpProductProduce, self).do_produce()
-
+class ProductProduct(models.Model):
+    _inherit = 'product.product'
 
     @api.multi
-    def create_serial_number(self):
-        self.ensure_one()
-        ProductionLot = self.env['stock.production.lot']
-        serial = self.env['ir.sequence']\
-                        .next_by_code('stock.lot.serial')
-        serial_id = ProductionLot.create({
-                                        'name': serial,
-                                        'product_id': self.product_id.id
-                                        })
-        if serial_id:
-            self.lot_id = serial_id.id
-"""
+    def write(self, vals):
+        res = super(ProductProduct, self.sudo()).write(vals)
+        if vals.get('active'):
+            for s in self:
+                _logger.info("UNARCHIVING PRODUCT %s" % s)
+                # If the product is to be created out of a BoM, then, all the
+                # products in it should be brought back to life
+                for bom in s.sudo().bom_ids:
+                    _logger.info("CHECKING BoM %s" % bom)
+                    if bom.active:
+                        for line in bom.sudo().bom_line_ids:
+                            _logger.info("UNARCHIVING PRODUCT %s" % line.product_id)
+                            line.product_id.active = True
+        return res

@@ -13,10 +13,12 @@ class MrpBom(models.Model):
         res = super(MrpBom, self.sudo()).write(vals)
         if vals.get('active'):
             for s in self:
+                _logger.info("UNARCHIVING BoM %s" % s)
                 # Unarchiving a BoM should mean unarchiving all its components
                 # Archiving a BoM SHOULD NOT mean archiving its components
                 for l in s.sudo().bom_line_ids:
                     if not l.product_id.active:
+                        _logger.info("UNARCHIVING PRODUCT %s" % l.product_id)
                         l.product_id.active = True
         return res
 
