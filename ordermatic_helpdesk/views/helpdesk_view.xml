@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+
+        <record id="helpdesk_ticket_view_form" model="ir.ui.view">
+            <field name="name">New fields</field>
+            <field name="model">helpdesk.ticket</field>
+            <field name="inherit_id" ref="helpdesk.helpdesk_ticket_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='tag_ids']" position="after">
+                    <field name="vendor_id"/>
+                    <field name="estimated_costs"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="helpdesk_tickets_view_tree" model="ir.ui.view">
+            <field name="name">New fields</field>
+            <field name="model">helpdesk.ticket</field>
+            <field name="inherit_id" ref="helpdesk.helpdesk_tickets_view_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='partner_id']" position="after">
+                    <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
+                    <field name="estimated_costs"/>
+                </xpath>
+            </field>
+        </record>
+
+
+    </data>
+</odoo>
