@@ -8,8 +8,16 @@
             <field name="inherit_id" ref="helpdesk.helpdesk_ticket_view_form"/>
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='tag_ids']" position="after">
-                    <field name="vendor_id"/>
-                    <field name="estimated_costs"/>
+                    <!--
+                    using 'not ilike' in domain would not work, so, I used
+                    some auxiliary fields
+                    -->
+                    <field name="is_maintenance_team" invisible="1"/>
+                    <field name="is_product_change_team" invisible="1"/>
+
+                    <field name="vendor_id" attrs="{'invisible':[('is_maintenance_team','=',False)]}"/>
+                    <field name="estimated_costs"  attrs="{'invisible':[('is_maintenance_team','=',False)]}"/>
+                    <field name="product_id"  attrs="{'invisible':[('is_product_change_team','=',False)]}"/>
                 </xpath>
             </field>
         </record>
