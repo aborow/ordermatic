@@ -26,5 +26,3 @@ class HelpdeskTicket(models.Model):
 
     is_maintenance_team = fields.Boolean('Is maintenance team', compute='_get_team')
     is_product_change_team = fields.Boolean('Is product change team', compute='_get_team')
-
-#OMC-68 - 07:30 >
