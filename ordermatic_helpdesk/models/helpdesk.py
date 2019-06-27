@@ -12,6 +12,7 @@ class HelpdeskTicket(models.Model):
     estimated_costs = fields.Float('Estimated costs')
 
     @api.multi
+    @api.onchange('team_id')
     def _get_team(self):
         for s in self:
             is_maintenance_team = False
