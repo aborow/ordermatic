@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!-- Inherited View record for sale order quotation -->
+    	<record id="view_sale_order_with_carrier" model="ir.ui.view">
+            <field name="name">sale.order.form</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="delivery.view_order_form_with_carrier"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@name='carrier_selection']" position="after">
+                    <field name="expected_install_date"/>
+                    <field name="actual_install_date"/>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>
