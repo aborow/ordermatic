@@ -10,6 +10,7 @@ class MrpBom(models.Model):
 
     @api.multi
     def write(self, vals):
+        _logger.info('mrp.py')
         res = super(MrpBom, self.sudo()).write(vals)
         if vals.get('active'):
             for s in self:
