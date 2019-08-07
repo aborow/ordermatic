@@ -17,6 +17,7 @@
                 'contacts',
                 'sale',
                 'crm',
+                'helpdesk',
                 ],
     'data': [
             'security/security.xml',
