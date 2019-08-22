@@ -36,6 +36,6 @@ class MrpProduction(models.Model):
 
             return_values = {'domain': {'product_uom_id': [('category_id', '=', self.product_id.uom_id.category_id.id)]}}
             # Load default production location from the product
-            if self.product_id and self.product_id.location_dest_id:
-                return_values['value'] = {'location_dest_id': self.product_id.location_dest_id.id}
+            if self.product_id and self.product_id.product_tmpl_id.location_dest_id:
+                return_values['value'] = {'location_dest_id': self.product_id.product_tmpl_id.location_dest_id}
             return return_values

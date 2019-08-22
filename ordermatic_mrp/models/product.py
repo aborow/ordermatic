@@ -1,8 +1,8 @@
 #! -*- encoding: utf-8 -*-
 from odoo import models, fields, api, _
 
-class Product(models.Model):
-    _inherit = 'product.product'
+class ProductTemplate(models.Model):
+    _inherit = 'product.template'
 
     location_dest_id = fields.Many2one(
                                         'stock.location',
