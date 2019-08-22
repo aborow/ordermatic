@@ -1,6 +1,6 @@
 #! -*- encoding: utf-8 -*-
 {
-    'name': 'Ordermatic - changes to helpdek',
+    'name': 'Ordermatic - changes to helpdesk',
     'version': '1.0',
     'license': 'OPL-1',
     'category': 'Extra Tools',

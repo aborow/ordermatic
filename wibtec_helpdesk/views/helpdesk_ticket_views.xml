@@ -1,0 +1,27 @@
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="wibtec_helpdesk_form">
+            <field name="name">Helpdesk Ticket Form</field>
+            <field name="model">helpdesk.ticket</field>
+            <field name="inherit_id" ref="helpdesk.helpdesk_ticket_view_form"/>
+            <field name="arch" type="xml">
+                <field name="priority" position="after">
+                    <field name="due_date"/>
+                </field>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="wibtec_helpdesk_list">
+            <field name="name">Helpdesk Ticket List</field>
+            <field name="model">helpdesk.ticket</field>
+            <field name="inherit_id" ref="helpdesk.helpdesk_tickets_view_tree"/>
+            <field name="arch" type="xml">
+                <field name="partner_id" position="after">
+                    <field name="due_date"/>
+                </field>
+            </field>
+        </record>
+
+    </data>
+</odoo>
