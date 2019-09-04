@@ -17,7 +17,7 @@
                     <field name="vendor_id"
                             attrs="{'invisible':[('is_maintenance_team','=',False)]}"
                             context="{'default_supplier':True,'default_customer':False}"/>
-                    <field name="estimated_costs"  attrs="{'invisible':[('is_maintenance_team','=',False)]}"/>
+                    <field name="estimated_costs"/>
                     <field name="product_id"  attrs="{'invisible':[('is_product_change_team','=',False)]}"/>
                 </xpath>
             </field>
