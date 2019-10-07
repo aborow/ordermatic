@@ -17,3 +17,8 @@ Version - 12.0.1.0.1
 Version - 12.0.1.0.2
 ======================
 -Change field name as per requirement.
+
+Version - 12.0.1.0.3
+=======================
+-Added "Order Contract" field into sale order.
+-Added "Order Contract" field into report of sale order.

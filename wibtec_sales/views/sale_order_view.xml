@@ -10,6 +10,7 @@
                 <xpath expr="//div[@name='carrier_selection']" position="after">
                     <field name="expected_install_date"/>
                     <field name="actual_install_date"/>
+                    <field name="order_contact"/>
                 </xpath>
             </field>
         </record>

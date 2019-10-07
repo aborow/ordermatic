@@ -9,3 +9,4 @@ class SaleOrder(models.Model):
 
 	expected_install_date = fields.Date('Expected Install Date')
 	actual_install_date = fields.Date('Actual Install Date')
+	order_contact = fields.Char('Order Contact')
