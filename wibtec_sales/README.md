@@ -22,3 +22,7 @@ Version - 12.0.1.0.3
 =======================
 -Added "Order Contract" field into sale order.
 -Added "Order Contract" field into report of sale order.
+
+Version - 12.0.1.0.4
+=====================
+-If sales order is in state "Sales Order" then "Order Contract" will be required.
