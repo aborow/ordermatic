@@ -5,16 +5,17 @@
     'name': "Wibtec Sales",
 
     'summary': """
-        	This Module is used to add dates in sale order from.  """,
+        	This Module is used to add dates in sale order from. """,
 
     'description': """
-        OMC-33 = New fields for Sales Order Form
-        OMC-126 = Add new field "Order Contact"
+        OMC-33 = "New fields for Sales Order Form"
+        OMC-126 = "Add new field "Order Contact"
+        OMC-135 = "Remove Create / Edit product from Sales Order line popup."
     """,
     'author': "WIB Technologies, Inc",
     'website': "http://www.wibtec.com",
     'category': 'Sales',
-    'version': '12.0.1.0.4',
+    'version': '12.0.1.0.5',
     # any module necessary for this one to work correctly
     'depends': ['sale','delivery'],
     # always loaded

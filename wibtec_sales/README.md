@@ -26,3 +26,7 @@ Version - 12.0.1.0.3
 Version - 12.0.1.0.4
 =====================
 -If sales order is in state "Sales Order" then "Order Contract" will be required.
+
+Version - 12.0.1.0.5
+===========================
+-Removed "Create/Edit" option from product_id in order lines.
