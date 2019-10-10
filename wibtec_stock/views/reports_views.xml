@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Delivery Slip Template -->
+        <report 
+            id="report_delivery_slip"
+            string="Ordermatic Delivery Slip"
+            model="stock.picking"
+            report_type="qweb-pdf"
+            file="wibtec_stock.report_delivery_slip_template" 
+            name="wibtec_stock.report_delivery_slip_template"
+            />
+
+        <report
+            string="Delivery Slip"
+            id="stock.action_report_delivery"
+            model="stock.picking"
+            report_type="qweb-pdf"
+            name="stock.report_deliveryslip"
+            file="stock.report_deliveryslip"
+            print_report_name="'Delivery Slip - %s - %s' % (object.partner_id.name or '', object.name)"
+            menu="False"
+        />
+
+        <report 
+            id="report_packing_slip"
+            string="Ordermatic Picking Slip"
+            model="stock.picking"
+            report_type="qweb-pdf"
+            file="wibtec_stock.report_packing_slip_template" 
+            name="wibtec_stock.report_packing_slip_template"
+        />
+
+        <report
+            string="Picking Operations"
+            id="stock.action_report_picking"
+            model="stock.picking"
+            report_type="qweb-pdf"
+            name="stock.report_picking"
+            file="stock.report_picking_operations"
+            print_report_name="'Picking Operations - %s - %s' % (object.partner_id.name or '', object.name)"
+            menu="False"
+        />
+
+    </data>
+</odoo>
