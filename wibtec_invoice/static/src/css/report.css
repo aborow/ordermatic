@@ -1,0 +1,74 @@
+.table_header{
+	border-bottom: 1px solid lightgrey;
+	width:100%;
+	border-width:100%;
+}
+
+.thead{
+	padding:0px 20px 20px 20px; 
+	margin:0; 
+	font-family: Arial,Helvetica, sans-serif; 
+	background:#fff; 
+	text-transform:uppercase; 
+	line-height:20px;
+}
+.header_image{
+	text-align:left, 
+	color:#4D4D4F; 
+	padding:60 0px; 
+	margin:0;
+	width:25%;
+	height:25%;
+}
+.image_style{
+	max-height:80px;
+	align-self: center;
+}
+.h5_uppercase{
+	text-transform:uppercase;
+	text-align:center;
+}
+.address_heading{
+	color:grey;
+	text-align:left;
+}
+.address{
+	color: black;
+	font-size:12px;
+	/*padding:20px 20px 20px 20px;*/
+	padding-top:0px;
+	padding-bottom:20px;
+	text-align: left;
+	font-family: times new roman;
+}
+.invoice_number{
+	background-color: lightgrey; 
+	color: black;
+	text-align:center;
+	font-weight:bold; 
+	text-transform:uppercase;
+	width:150px;
+	height:120px;
+	font-size:14px;
+	padding-bottom: 20px;
+	padding-top: 40px;
+}
+.border {
+  	border-bottom :1px solid lightgrey;
+}
+.h5{
+	text-transform:capitalize; 
+	font-size :12px; 
+	padding:0px; 
+	margin:0;
+	color :black;
+}
+
+.tr_main{
+	color: black;
+	background-color: lightgrey;
+}
+.td-main{
+	padding:9px 15px; 
+	font-weight:bold;
+}

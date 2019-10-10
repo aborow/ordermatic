@@ -2,26 +2,25 @@
 # Part of AktivSoftware See LICENSE file for full
 # copyright and licensing details.
 {
-    'name': "Wibtec Sales",
+    'name': "Wibtec Invoice",
 
     'summary': """
-        	This Module is used to add dates in sale order from.  """,
+        	This Module is used to add format of invoice into qweb report of invoice.""",
 
     'description': """
-        OMC-33 = New fields for Sales Order Form
-        OMC-126 = Add new field "Order Contact"
+        OMC-114 = Update Invoice look and feel
+        OMC-133 = Default Sales Tax Payable
     """,
     'author': "WIB Technologies, Inc",
     'website': "http://www.wibtec.com",
-    'category': 'Sales',
-    'version': '12.0.1.0.4',
+    'category': 'Invoice',
+    'version': '12.0.1.0.3',
     # any module necessary for this one to work correctly
-    'depends': ['sale','delivery'],
+    'depends': ['account'],
     # always loaded
     'data': [
-        'views/sale_order_view.xml',
-        'views/report_sale_order.xml',
-        'views/product_template_view.xml'
+        'views/report_account_invoice_template.xml',
+        'views/reports_views.xml'
     ],
     'auto_install': False,
     'installable': True,

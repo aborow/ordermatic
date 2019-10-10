@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
+    	<!-- inherited report sale -->
 		<template id="report_sale_order_inherited" inherit_id="sale.report_saleorder_document">
 			<xpath expr="//div[hasclass('row','mt32','mb32')]" position="inside">
 				<div t-if="doc.order_contact" class="col-auto mw-100 mb-2">
