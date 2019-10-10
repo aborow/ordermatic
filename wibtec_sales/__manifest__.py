@@ -10,7 +10,7 @@
     'description': """
         OMC-33 = "New fields for Sales Order Form"
         OMC-126 = "Add new field "Order Contact"
-        OMC-135 = "Remove Create / Edit product from Sales Order line popup."
+        OMC-135 = "Remove Create / Edit product from Sales Order line popup. "
     """,
     'author': "WIB Technologies, Inc",
     'website': "http://www.wibtec.com",
