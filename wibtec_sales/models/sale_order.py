@@ -7,6 +7,7 @@ class SaleOrder(models.Model):
 
 	_inherit = "sale.order"
 
-	expected_install_date = fields.Date('Expected Install Date')
-	actual_install_date = fields.Date('Actual Install Date')
+	requested_delivery_date = fields.Date('Requested Delivery Date')
+	expected_delivery_date = fields.Date('Expected Delivery Date')
+	actual_delivery_date = fields.Date('Actual Delivery Date')
 	order_contact = fields.Char('Order Contact')

@@ -8,8 +8,9 @@
             <field name="inherit_id" ref="delivery.view_order_form_with_carrier"/>
             <field name="arch" type="xml">
                 <xpath expr="//div[@name='carrier_selection']" position="after">
-                    <field name="expected_install_date"/>
-                    <field name="actual_install_date"/>
+                    <field name="requested_delivery_date"/>
+                    <field name="expected_delivery_date"/>
+                    <field name="actual_delivery_date"/>
                     <field name="order_contact" attrs="{'required': [('state','=','sale')]}"/>
                 </xpath>
             </field>
@@ -20,8 +21,17 @@
             <field name="model">sale.order</field>
             <field name="inherit_id" ref="sale.view_order_form"/>
             <field name="arch" type="xml">
+                <field name="partner_id" position="attributes">
+                    <attribute name="options">{'no_create_edit': True,'no_create': True}</attribute>
+                </field>
+                <field name="partner_invoice_id" position="attributes">
+                    <attribute name="options">{'no_create_edit': True,'no_create': True}</attribute>
+                </field>
+                <field name="partner_shipping_id" position="attributes">
+                    <attribute name="options">{'no_create_edit': True,'no_create': True}</attribute>
+                </field>
                 <xpath expr="//notebook/page/field[@name='order_line']/form/group/group/field[@name='product_id']" position="attributes">
-                    <attribute name="options">{'no_create_edit': True}</attribute>
+                    <attribute name="options">{'no_create_edit': True,'no_create': True}</attribute>
                 </xpath>
             </field>
         </record>

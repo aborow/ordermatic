@@ -30,3 +30,8 @@ Version - 12.0.1.0.4
 Version - 12.0.1.0.5
 ===========================
 -Removed "Create/Edit" option from product_id in order lines.
+
+Version - 12.0.1.0.6
+=========================
+-Removed "Create/Edit" from customer,invoice address and delivery address.
+-Changed the string of some fields added some new fields.
