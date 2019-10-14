@@ -35,3 +35,7 @@ Version - 12.0.1.0.6
 =========================
 -Removed "Create/Edit" from customer,invoice address and delivery address.
 -Changed the string of some fields added some new fields.
+
+Version - 12.0.1.0.7
+====================
+-Added functionality which checks that 'order contact' field has value or not if not then raise warning.

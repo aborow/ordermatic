@@ -11,7 +11,7 @@
                     <field name="requested_delivery_date"/>
                     <field name="expected_delivery_date"/>
                     <field name="actual_delivery_date"/>
-                    <field name="order_contact" attrs="{'required': [('state','=','sale')]}"/>
+                    <field name="order_contact"/>
                 </xpath>
             </field>
         </record>
