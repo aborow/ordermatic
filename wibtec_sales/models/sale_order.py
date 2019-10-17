@@ -9,9 +9,9 @@ class SaleOrder(models.Model):
 
 	_inherit = "sale.order"
 
-	requested_delivery_date = fields.Date('Requested Delivery Date')
-	expected_delivery_date = fields.Date('Expected Delivery Date')
-	actual_delivery_date = fields.Date('Actual Delivery Date')
+	customer_requested_delivery_date = fields.Date('Customer Requested Delivery Date')
+	omc_projected_shipping_date = fields.Date('OMC Projected Shipping Date')
+	omc_actual_delivery_date = fields.Date('OMC Actual Delivery Date')
 	order_contact = fields.Char('Order Contact')
 
 	@api.multi

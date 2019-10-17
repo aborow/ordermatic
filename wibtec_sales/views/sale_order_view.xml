@@ -8,9 +8,9 @@
             <field name="inherit_id" ref="delivery.view_order_form_with_carrier"/>
             <field name="arch" type="xml">
                 <xpath expr="//div[@name='carrier_selection']" position="after">
-                    <field name="requested_delivery_date"/>
-                    <field name="expected_delivery_date"/>
-                    <field name="actual_delivery_date"/>
+                    <field name="customer_requested_delivery_date"/>
+                    <field name="omc_projected_shipping_date"/>
+                    <field name="omc_actual_delivery_date"/>
                     <field name="order_contact"/>
                 </xpath>
             </field>

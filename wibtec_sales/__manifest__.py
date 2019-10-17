@@ -5,7 +5,7 @@
     'name': "Wibtec Sales",
 
     'summary': """
-        	This Module is used to add dates in sale order from.""",
+        	This Module is used to add dates in sale order from. """,
 
     'description': """
         OMC-33 = "New fields for Sales Order Form"
