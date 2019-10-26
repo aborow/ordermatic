@@ -15,7 +15,10 @@
     'category': 'Manufacturing',
     'version': '12.0.1.0.3',
     # any module necessary for this one to work correctly
-    'depends': ['mrp','mrp_workorder'],
+    'depends': [
+                'mrp',
+                #'mrp_workorder'
+                ],
     # always loaded
     'data': [
         'views/mrp_workorder_view.xml',
