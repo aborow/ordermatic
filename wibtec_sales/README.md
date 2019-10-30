@@ -39,3 +39,7 @@ Version - 12.0.1.0.6
 Version - 12.0.1.0.7
 ====================
 -Added functionality which checks that 'order contact' field has value or not if not then raise warning.
+
+Version - 12.0.1.0.8
+======================
+-Added functionality which adds fields on the "Sales Analysis" pivot view and displays accordingly.
