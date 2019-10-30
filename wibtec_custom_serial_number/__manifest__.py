@@ -13,9 +13,9 @@
     'author': "WIB Technologies, Inc",
     'website': "http://www.wibtec.com",
     'category': 'product',
-    'version': '12.0.1.0.1',
+    'version': '12.0.1.0.2',
     # any module necessary for this one to work correctly
-    'depends': ['product','sale','stock'],
+    'depends': ['product','sale','stock','contacts'],
     # always loaded
     'data': [
         'security/ir.model.access.csv',
