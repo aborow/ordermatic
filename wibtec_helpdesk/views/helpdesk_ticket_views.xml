@@ -9,6 +9,24 @@
                 <field name="priority" position="after">
                     <field name="due_date"/>
                 </field>
+                <field name="team_id" position="attributes">
+                    <attribute name="options">{'no_create_edit': True,'no_create': True}</attribute>
+                </field>
+                <field name="user_id" position="attributes">
+                    <attribute name="options">{'no_create_edit': True,'no_create': True}</attribute>
+                </field>
+                <field name="partner_id" position="attributes">
+                    <attribute name="options">{'no_create_edit': True,'no_create': True}</attribute>
+                </field>
+                <field name="ticket_type_id" position="attributes">
+                    <attribute name="options">{'no_create_edit': True,'no_create': True}</attribute>
+                </field>
+                <field name="tag_ids" position="attributes">
+                    <attribute name="options">{'no_create_edit': True,'no_create': True}</attribute>
+                </field>
+                <field name="vendor_id" position="attributes">
+                    <attribute name="options">{'no_create_edit': True,'no_create': True}</attribute>
+                </field>
             </field>
         </record>
 
