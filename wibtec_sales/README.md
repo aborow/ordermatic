@@ -43,3 +43,7 @@ Version - 12.0.1.0.7
 Version - 12.0.1.0.8
 ======================
 -Added functionality which adds fields on the "Sales Analysis" pivot view and displays accordingly.
+
+Version - 12.0.1.0.9
+======================
+-Added functionality in which OMC Actual Delivery date will be automatically added when the transfer gets done.
