@@ -15,13 +15,15 @@
         OMC-151 = "Add OMC Project Delivery Date and OMC Actual Delivery Date to Sales Analysis Report"
         OMC-152 = "Move Fields on Quote / Sales Order Form"
         OMC-144 = "Sales & MFG: Update OMC Actual Delivery Date with Delivery Order DONE date"
+
+        OMC-161 = Delivery scheduled date comes from SO 'OMC Projected Delivery Date' (once the SO is confirmed)
     """,
     'author': "WIB Technologies, Inc",
     'website': "http://www.wibtec.com",
     'category': 'Sales',
     'version': '12.0.1.0.9',
     # any module necessary for this one to work correctly
-    'depends': ['sale','delivery','sale_enterprise'],
+    'depends': ['sale','delivery','sale_enterprise','sale_stock'],
     # always loaded
     'data': [
         'views/sale_order_view.xml',
