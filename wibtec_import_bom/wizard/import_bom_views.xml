@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+		<!-- Record for form view of Import BOM -->
+		<record id="import_attendances_wizard" model="ir.ui.view">
+			<field name="name">Import BOM</field>
+			<field name="model">import.bom</field>
+			<field name="arch" type="xml">
+				<form string="Import BOM">
+					<div class="card bg-light">
+						<div class="card-body"><i class="fa fa-fw fa-file"/> Please upload CSV formated file.</div> 
+					</div>
+					<group>
+						<group>
+							<field name="file" filename="name"/>
+						</group>
+					</group>
+					<footer>
+						<button name="import_bom" string="Import" type="object" class="oe_highlight"/>
+						<button name="Cancel" string="Cancel" special="cancel"/>
+					</footer>
+				</form>
+			</field>
+		</record>
+
+		<!-- Action for import bom -->
+		<record id="hr_action_import_bom" model="ir.actions.act_window">
+			<field name="name">Import BOM</field>
+			<field name="res_model">import.bom</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">form</field>
+			<field name="target">new</field>
+		</record>
+
+		<!-- Menuitem for Import BOM -->
+		<menuitem id="menu_mrp_bom_import" name="Import BOM"
+        action="hr_action_import_bom" parent="mrp.menu_mrp_bom" sequence="100"/>
+
+	</data>
+</odoo>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!-- Inherited View record for res.partner -->
+    	<record id="view_partner_form" model="ir.ui.view">
+            <field name="name">res.partner.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group[1]"  position="inside">
+                    <group>
+                        <field name="comment" placeholder="internal note..."/>
+                    </group>
+                </xpath>
+                <xpath expr="//notebook/page[@name='internal_notes']/field[@name='comment']"  position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_partner_search" model="ir.ui.view">
+            <field name="name">res.partner.search</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_res_partner_filter"/>
+            <field name="arch" type="xml">
+                <xpath expr="//search/field[@name='name']"  position="after">
+                    <field name="street" filter_domain="['|',('street','ilike',self),('street2','=',self)]"/>
+                    <field name="city" filter_domain="[('city','ilike',self)]"/>
+                    <field name="zip" filter_domain="[('zip','ilike',self)]"/>
+                </xpath>
+                <xpath expr="//search/field[@name='name']"  position="replace">
+                    <field name="name"
+                       filter_domain="['|','|',('display_name','ilike',self),('ref','ilike',self),('email','ilike',self)]"/>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

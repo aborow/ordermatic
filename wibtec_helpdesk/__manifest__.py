@@ -7,12 +7,13 @@
 
     'description': """
         OMC-92 = Add Due Date to Helpdesk tickets
+        OMC-150 = Remove all "CREATE and EDIT" fields in Helpdesk forms
     """,
 
     'author': "WIB Technologies, Inc",
     'website': "http://www.wibtec.com",
     'category': 'Sales',
-    'version': '12.0.1.0.0',
+    'version': '12.0.1.0.1',
     # any module necessary for this one to work correctly
     'depends': ['helpdesk'],
     # always loaded

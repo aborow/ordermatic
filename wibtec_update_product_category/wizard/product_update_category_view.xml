@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!-- View record for product archive -->
+    	<record id="view_product_update_category" model="ir.ui.view">
+            <field name="name">product.update.category.form.wizard</field>
+            <field name="model">product.update.category</field>
+            <field name="arch" type="xml">
+                <form string="Update Product">
+                    <div class="card bg-light">
+                        <div class="card-body"><i class="fa fa-fw fa-file"/> Please upload CSV formated file.</div> 
+                    </div>
+                    <group>
+                        <group>
+                            <field name="options" widget="radio"/>
+                            <field name="update_options" attrs="{'invisible': [('options', '=', 'remove')]}" widget="radio"/>
+                        </group>
+                        <group>
+                            <group>
+                                <field name="file" filename="name"
+                                    attrs="{'invisible': ['|','|','|','|',('update_options','=','long_desc'),('update_options','=','tax'),('update_options', '=', 'route'),('update_options', '=', 'uom'),('options', '=', 'remove')]}"/>
+                                <field name="file_uom" filename="name"
+                                attrs="{'invisible': ['|','|','|','|',('update_options','=','long_desc'),('update_options','=','tax'),('update_options', '=', 'route'),('update_options', '=', 'category'),('options', '=', 'remove')]}"/>
+                                <field name="file_route" filename="name"
+                                attrs="{'invisible': ['|','|','|','|',('update_options','=','long_desc'),('update_options','=','tax'),('update_options', '=', 'uom'),('update_options', '=', 'category'),('options', '=', 'remove')]}"/>
+                                <field name="file_long_desc" filename="name"
+                                attrs="{'invisible': ['|','|','|','|',('update_options','=','tax'),('update_options', '=', 'uom'),('update_options', '=', 'category'),('options', '=', 'remove'),('update_options', '=', 'route')]}"/>
+                            </group>
+                       </group>
+                    </group>
+                    <footer>
+                        <button name="update_product" attrs="{'invisible': ['|','|','|','|',('update_options','=','long_desc'),('update_options','=','tax'),('update_options', '=', 'route'), ('update_options', '=', 'uom'),('options', '=', 'remove')]}" string="Update" type="object" class="oe_highlight"/>
+                        <button name="update_product_uom" attrs="{'invisible': ['|','|','|','|',('update_options','=','long_desc'),('update_options','=','tax'),('update_options', '=', 'route'), ('update_options', '=', 'category'),('options', '=', 'remove')]}" string="Update" type="object" class="oe_highlight"/>
+                        <!-- <button name="update_route" attrs="{'invisible': ['|','|',('update_options', '=', 'uom'), ('update_options', '=', 'category'),('options', '=', 'remove')]}" string="Update" type="object" class="oe_highlight"/> -->
+                        <button name="update_bom_product_route" attrs="{'invisible': ['|','|','|','|',('update_options','=','long_desc'),('update_options','=','tax'),('update_options', '=', 'uom'), ('update_options', '=', 'category'),('options', '=', 'remove')]}" string="Update" type="object" class="oe_highlight"/>
+                        <button name="update_tax_vlaues" attrs="{'invisible': ['|','|','|','|',('update_options','=','long_desc'),('update_options', '=', 'route'),('update_options', '=', 'uom'), ('update_options', '=', 'category'),('options', '=', 'remove')]}" string="Update" type="object" class="oe_highlight"/>
+                        <button name="update_long_desc" attrs="{'invisible': ['|','|','|','|',('update_options','=','tax'),('update_options', '=', 'route'),('update_options', '=', 'uom'), ('update_options', '=', 'category'),('options', '=', 'remove')]}" string="Update" type="object" class="oe_highlight"/>
+                        <button name="remove_value" string="Remove"  attrs="{'invisible': [('options', '=', 'update')]}" type="object" class="oe_highlight"/>
+                        <button name="Cancel" string="Cancel" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+    	<!-- Start Add Action for Menu "product Archive" -->
+        <record id="action_product_update_category" model="ir.actions.act_window">
+            <field name="name">Update Product Category</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">product.update.category</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <!-- Menuitem for product archive -->
+        <menuitem id="menu_product_update_category" 
+            parent="sale.product_menu_catalog" 
+            action="action_product_update_category" 
+            string="Update Product Category"
+            sequence="3"/>
+
+    </data>
+</odoo>

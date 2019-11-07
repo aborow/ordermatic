@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!-- View record for Warranty Information -->
+        <record id="view_warranty_information_form" model="ir.ui.view">
+            <field name="name">warranty.information.form</field>
+            <field name="model">warranty.information</field>
+            <field name="arch" type="xml">
+                <form string="Customer Purchase History">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="partner_id"/>
+                                <field name="customer_ID"/>
+                                <label for="street" string="Address"/>
+                                <div class="o_address_format">
+                                    <field name="street" placeholder="Street..." class="o_address_street"/>
+                                    <field name="street2" placeholder="Street 2..." class="o_address_street"/>
+                                    <field name="city" placeholder="City" class="o_address_city"/>
+                                    <field name="state_id" class="o_address_state" placeholder="State" options='{"no_open": True}'/>
+                                    <field name="zip" placeholder="ZIP" class="o_address_zip"/>
+                                    <field name="country_id" placeholder="Country" class="o_address_country" options='{"no_open": True, "no_create": True}'/>
+                                </div>
+                            </group>
+                            <group>
+                                <field name="product_id"/>
+                                <field name="description"/>
+                                <field name="sale_date"/>
+                                <field name="delivery_date"/>
+                                <field name="serial_number"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Sales Notes">
+                                <field name="sales_notes"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Tree view for Warranty Information -->
+        <record id="view_warranty_information_tree" model="ir.ui.view">
+            <field name="name">warranty.information.tree</field>
+            <field name="model">warranty.information</field>
+            <field name="arch" type="xml">
+                <tree string="Warranty Information">
+                    <field name="partner_id"/>
+                    <field name="customer_ID"/>
+                    <field name="product_id"/>
+                    <field name="description"/>
+                    <field name="sale_date"/>
+                    <field name="delivery_date"/>
+                    <field name="serial_number"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Search view for warranty information -->
+        <record id="view_warranty_information_filter" model="ir.ui.view">
+            <field name="name">warranty.information.search</field>
+            <field name="model">warranty.information</field>
+            <field name="arch" type="xml">
+                <search string="Search Warranty Information">
+                    <field name="serial_number" filter_domain="[('serial_number','ilike',self)]"/>
+                    <field name="partner_id" filter_domain="[('partner_id','ilike',self)]"/>
+                    <field name="product_id" filter_domain="[('product_id','ilike',self)]"/>
+                    <field name="description" filter_domain="[('description','ilike',self)]"/>
+                    <field name="sale_date" filter_domain="[('sale_date','ilike',self)]"/>
+                    <field name="delivery_date" filter_domain="[('delivery_date','ilike',self)]"/>
+                    <field name="sales_notes" filter_domain="[('sales_notes','ilike',self)]"/>
+                    <field name="customer_ID" filter_domain="[('customer_ID','ilike',self)]"/>
+                    <field name="street" filter_domain="[('street','ilike',self)]"/>
+                    <field name="street2" filter_domain="[('street2','ilike',self)]"/>
+                    <field name="zip" filter_domain="[('zip','ilike',self)]"/>
+                    <field name="city" filter_domain="[('city','ilike',self)]"/>
+                    <field name="state_id" filter_domain="[('state_id','ilike',self)]"/>
+                    <field name="country_id" filter_domain="[('country_id','ilike',self)]"/>
+                    <group expand="0" name="group_by" string="Group By">
+                       <filter name="customer" string="Customer" context="{'group_by' : 'partner_id'}" />
+                       <filter name="product" string="Product" context="{'group_by': 'product_id'}"/>
+                       <filter name="group_country" string="Country" context="{'group_by': 'country_id'}"/>
+                       <filter name="group_state" string="State" context="{'group_by': 'state_id'}"/>
+                    </group>
+               </search>
+            </field>
+        </record>
+
+        <!-- Action for Menu "Warranty Information" -->
+        <record id="action_warranty_information" model="ir.actions.act_window">
+            <field name="name">Warranty Information</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">warranty.information</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,search</field>
+            <field name="target">current</field>
+        </record>
+
+        <!-- Menuitem for Warranty Information -->
+        <menuitem id="menu_warranty_information_main" 
+            parent="contacts.menu_contacts" 
+            groups="base.group_system,sales_team.group_sale_salesman,sales_team.group_sale_salesman_all_leads,sales_team.group_sale_manager"
+            string="Warranty"
+            name = "Warranty"
+            sequence="3"/>
+        <menuitem id="menu_warranty_information" 
+            parent="wibtec_custom_serial_number.menu_warranty_information_main" 
+            action="action_warranty_information" 
+            groups="base.group_system,sales_team.group_sale_salesman,sales_team.group_sale_salesman_all_leads,sales_team.group_sale_manager"
+            string="Warranty Information"
+            sequence="4"/>
+
+    </data>
+</odoo>

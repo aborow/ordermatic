@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+		<!-- Record for form view of Warranty Information -->
+		<record id="import_warranty_information_wizard" model="ir.ui.view">
+			<field name="name">Import Warranty Information</field>
+			<field name="model">import.warranty.information</field>
+			<field name="arch" type="xml">
+				<form string="Import Warranty Information">
+					<div class="card bg-light">
+						<div class="card-body"><i class="fa fa-fw fa-file"/> Please upload CSV formated file.</div> 
+					</div>
+					<group>
+						<group>
+							<field name="file" filename="name"/>
+						</group>
+					</group>
+					<footer>
+						<button name="import_warranty_information" string="Import" type="object" class="oe_highlight"/>
+						<button name="Cancel" string="Cancel" special="cancel"/>
+					</footer>
+				</form>
+			</field>
+		</record>
+
+		<!-- Action for Warranty Information -->
+		<record id="action_import_warranty_information" model="ir.actions.act_window">
+			<field name="name">Import Warranty Information</field>
+			<field name="res_model">import.warranty.information</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">form</field>
+			<field name="target">new</field>
+		</record>
+
+		<!-- Menuitem for Warranty Information-->
+		<menuitem id="menu_warranty_import_information" 
+            parent="wibtec_custom_serial_number.menu_warranty_information_main" 
+            action="action_import_warranty_information" 
+            groups="base.group_system"
+            string="Import Warranty Information"
+            sequence="5"/>
+
+	</data>
+</odoo>

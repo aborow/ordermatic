@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record model="ir.ui.view" id="mrp_production_form_view">
+        <field name="name">mrp.production.form</field>
+        <field name="model">mrp.production</field>
+        <field name="inherit_id" ref="mrp.mrp_production_form_view"/>
+        <field name="arch" type="xml">
+            <field name="bom_id" position="after">
+                <field name="final_product_id" attrs="{'invisible': ['|','|',('origin', '=', False),('origin','like','SO'),('origin','like','OP')]}"/>
+                <field name="parent_product_id" attrs="{'invisible': ['|','|',('origin', '=', False),('origin','like','SO'),('origin','like','OP')]}"/>
+                <field name='parent_mrp_id' attrs="{'invisible': ['|','|',('origin', '=', False),('origin','like','SO'),('origin','like','OP')]}"/>
+                <field name="sequence" invisible="1"/>
+            </field>
+            <field name="origin" position="after">
+                <field name="manufacturing_seq" attrs="{'invisible': ['|','|',('origin', '=', False),('origin','like','SO'),('origin','like','OP')]}"/>
+                <field name="parent_mrp_id" attrs="{'invisible': ['|','|',('origin', '=', False),('origin','like','SO'),('origin','like','OP')]}"/>
+            </field>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="mrp_production_tree_view">
+        <field name="name">mrp.production.tree</field>
+        <field name="model">mrp.production</field>
+        <field name="inherit_id" ref="mrp.mrp_production_tree_view"/>
+        <field name="arch" type="xml">
+            <field name="origin" position="after">
+                <field name="manufacturing_seq"/>
+                <field name="parent_product_id"/>
+                <field name="final_product_id"/>
+                <field name="parent_mrp_id" invisible="1"/>
+                <field name="sequence" invisible="1"/>
+            </field>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="mrp_production_search_view">
+        <field name="name">mrp.production.search</field>
+        <field name="model">mrp.production</field>
+        <field name="inherit_id" ref="mrp.view_mrp_production_filter"/>
+        <field name="arch" type="xml">
+            <xpath expr="//search" position="inside">
+                <field name="parent_product_id" string="Reference Part" filter_domain="[('parent_product_id', 'ilike', self)]"/>
+                <field name="manufacturing_seq" string="MO Sequence" 
+                filter_domain="[('manufacturing_seq', 'ilike', self)]"/>
+                <field name="final_product_id" string="Final Product" 
+                filter_domain="[('final_product_id', 'ilike', self)]"/>
+                <field name="parent_mrp_id" string="Final Manufacturing Order" 
+                filter_domain="[('parent_mrp_id', 'ilike', self)]"/>
+                <filter string="Reference Part" name="Reference Part" domain="[]" context="{'group_by':'parent_product_id'}"/>
+                <filter string="Final Product" name="Final Product" domain="[]" context="{'group_by':'final_product_id'}"/>
+                <filter string="Final MO" name="Final MO" domain="[]" context="{'group_by':'parent_mrp_id'}"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

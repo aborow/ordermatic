@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Invoice Template -->
+        <report 
+            id="report_invoice_template_wibtec"
+            string="Ordermatic Invoice"
+            model="account.invoice"
+            report_type="qweb-pdf"
+            file="wibtec_invoice.report_invoice" 
+            name="wibtec_invoice.report_invoice"
+            />
+
+        <!-- Removed menu of report invoice without payment -->
+        <report
+            id="account.account_invoices_without_payment"
+            model="account.invoice"
+            string="Invoices without Payment"
+            report_type="qweb-pdf"
+            name="account.report_invoice"
+            file="account.report_invoice"
+            attachment="(object.state in ('open','in_payment','paid')) and ('INV'+(object.number or '').replace('/','')+'.pdf')"
+            print_report_name="(object._get_report_base_filename())"
+            menu="False"
+        />
+
+        <!-- Removed menu of report invoice with payment -->
+        <report
+            id="account.account_invoices"
+            model="account.invoice"
+            string="Invoices"
+            report_type="qweb-pdf"
+            name="account.report_invoice_with_payments"
+            file="account.report_invoice_with_payments"
+            attachment="(object.state in ('open','in_payment','paid')) and ('INV'+(object.number or '').replace('/','')+'.pdf')"
+            print_report_name="(object._get_report_base_filename())"
+            groups="account.group_account_invoice"
+            menu="False"
+        />
+            
+    </data>
+</odoo>

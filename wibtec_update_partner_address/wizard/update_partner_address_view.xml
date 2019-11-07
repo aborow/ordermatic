@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!-- View record for update partner address -->
+    	<record id="view_update_partner_address" model="ir.ui.view">
+            <field name="name">update.partner.address.form.wizard</field>
+            <field name="model">update.partner.address</field>
+            <field name="arch" type="xml">
+                <form string="Update Partner Address">
+                    <p>
+                    Are you sure you want to Update Address?
+                    </p>
+                    <footer>
+                        <button name="update_partner_address" string="Yes" type="object" class="oe_highlight"/>
+                        <button name="Cancel" string="Cancel" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+    	<!-- Start Add Action for Menu "update partner address" -->
+        <record id="action_update_partner_address" model="ir.actions.act_window">
+            <field name="name">Update Partner Address</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">update.partner.address</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <!-- Menuitem for update partner address -->
+        <menuitem id="menu_update_partner_address" 
+            parent="contacts.menu_contacts" 
+            action="action_update_partner_address" 
+            string="Update Partner Address"
+            sequence="3"/>
+
+    </data>
+</odoo>

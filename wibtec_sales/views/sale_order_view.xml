@@ -8,9 +8,49 @@
             <field name="inherit_id" ref="delivery.view_order_form_with_carrier"/>
             <field name="arch" type="xml">
                 <xpath expr="//div[@name='carrier_selection']" position="after">
-                    <field name="expected_install_date"/>
-                    <field name="actual_install_date"/>
+                    <field name="customer_requested_delivery_date"/>
+                    <field name="omc_projected_shipping_date"/>
+                    <field name="omc_actual_delivery_date"/>
                 </xpath>
+                <xpath expr="//field[@name='partner_shipping_id']" position="after">
+                    <field name="order_contact"/>
+                    <field name="client_order_ref"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_sale_order_form_inherited" model="ir.ui.view">
+            <field name="name">sale.order.form.inherited</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <field name="partner_id" position="attributes">
+                    <attribute name="options">{'no_create_edit': True,'no_create': True}</attribute>
+                </field>
+                <field name="partner_invoice_id" position="attributes">
+                    <attribute name="options">{'no_create_edit': True,'no_create': True}</attribute>
+                </field>
+                <field name="partner_shipping_id" position="attributes">
+                    <attribute name="options">{'no_create_edit': True,'no_create': True}</attribute>
+                </field>
+                <xpath expr="//notebook/page/field[@name='order_line']/form/group/group/field[@name='product_id']" position="attributes">
+                    <attribute name="options">{'no_create_edit': True,'no_create': True}</attribute>
+                </xpath>
+                <xpath expr="//notebook/page[@name='other_information']/group/group[@name='sales_person']/field[@name='client_order_ref']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="sale_report_view_pivot_inherited" model="ir.ui.view">
+            <field name="name">sale.report.pivot</field>
+            <field name="model">sale.report</field>
+            <field name="inherit_id" ref="sale.view_order_product_pivot"/>
+            <field name="arch" type="xml">
+                <field name="confirmation_date" position="after">
+                    <field name="omc_projected_shipping_date" interval="month" type="row"/>
+                    <field name="omc_actual_delivery_date" interval="month" type="row"/>
+                </field>
             </field>
         </record>
 

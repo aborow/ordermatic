@@ -1,0 +1,429 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- CSS Called -->
+        <template id="assets_backend" name="report_stock assets" inherit_id="web.minimal_layout">
+            <xpath expr="." position="inside">
+                <link rel="stylesheet" href="/wibtec_invoice/static/src/css/report.css"/>
+            </xpath>
+        </template>
+
+        <template id="professional_external_layout">
+            <!-- Multicompany -->
+            <t t-if="o and 'company_id' in o">
+                <t t-set="company" t-value="o.company_id"/>
+            </t>
+            <t t-if="not o or not 'company_id' in o">
+                <t t-set="company" t-value="res_company"/>
+            </t>
+            <t t-call="wibtec_invoice.professional_header"/>
+            <t t-raw="0"/>
+            <t t-call="wibtec_invoice.professional_footer"/>
+        </template>
+        <template id="professional_header">
+            <div class="header">
+                <table class="table_header">
+                    <thead class="thead">
+                        <h5 class="h5_uppercase"><span t-field="o.company_id.name"/></h5>
+                    </thead>
+                    <tr>
+                        <td>
+                            <img class="image_style" t-if="company.logo" t-att-src="image_data_uri(company.logo)" alt="Logo"/>
+                        </td>
+                        <td>
+                            <div class="col-xs-7 text-left" name="company_address">
+                                <b>Mailing Address:</b>
+                                <address t-field="o.company_id.partner_id" t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": True}' />
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col-xs-10 text-left">
+                                <b>Email:</b> <span t-field="o.company_id.partner_id.email"/><br/><b>TaxID:</b><span t-field="o.company_id.vat"/>
+                            </div>
+                        </td>
+                        <td>
+                            <h5 class="invoice_number">
+                                <span t-if="o.type == 'out_invoice' and (o.state == 'open' or o.state == 'paid')">Invoice</span>
+                                <span t-if="o.type == 'out_invoice' and o.state == 'proforma2'">PRO-FORMA</span>
+                                <span t-if="o.type == 'out_invoice' and o.state == 'draft'">Draft Invoice</span>
+                                <span t-if="o.type == 'out_invoice' and o.state == 'cancel'">Cancelled Invoice</span>
+                                <span t-if="o.type == 'out_refund'">Refund</span>
+                                <span t-if="o.type == 'in_refund'">Vendor Refund</span>
+                                <span t-if="o.type == 'in_invoice'">Vendor Bill</span>
+                                <br/>
+                                <span t-field="o.number"/>
+                            </h5>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </template>
+        <template id="professional_footer">
+            <div class="footer o_standard_footer">
+                <div class="text-center" style="border-top: 1px solid black;">
+                    <ul class="list-inline mb4">
+                        <li t-if="company.phone" class="list-inline-item">Phone: <span t-field="company.phone"/></li>
+                        <li t-if="company.email" class="list-inline-item">Email: <span t-field="company.email"/></li>
+                        <li t-if="company.website" class="list-inline-item">Website: <span t-field="company.website"/></li>
+                        <!-- <li t-if="company.vat" class="list-inline-item"><t t-esc="company.country_id.vat_label or 'Tax ID'"/>: <span t-field="company.vat"/></li> -->
+                    </ul>
+                    <div name="financial_infos">
+                        <span t-field="company.report_footer"/>
+                    </div>
+
+                    <div t-if="report_type == 'pdf'" class="text-muted">
+                        Page: <span class="page"/> / <span class="topage"/>
+                    </div>
+                </div>
+            </div>
+        </template>
+        <template id="report_invoice_professional_main">
+            <t t-call="wibtec_invoice.professional_external_layout">
+                <t t-set="o" t-value="o.with_context({'lang':o.partner_id.lang})"/>
+                <div class="page">
+                    <div class="oe_structure"/>
+                    <br/><br/><br/>
+                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <center>
+                                        <table border="0" cellpadding="0" cellspacing="0" style="font-size:12px;padding:0px 20px 20px 20px; margin:0;background:#fff; line-height:20px;" width="100%">
+                                            <tr>
+                                                <t t-if="o.partner_shipping_id == o.partner_id or not o.partner_shipping_id">
+                                                    <td>
+                                                        <div class="col-xs-7 text-left">
+                                                            <b style="font-size:16px;">Invoicing and shipping address:</b>
+                                                            <p style="font-size:14px;font-family: Times New Roman;">
+                                                                <t t-if="o.partner_id.street">
+                                                                   <span t-field="o.partner_id.street"/>
+                                                                </t>
+                                                                <t t-if="o.partner_id.street2">
+                                                                    <br/><span t-field="o.partner_id.street2"/>
+                                                                </t>
+                                                                <br/><span t-field="o.partner_id.city"/>,<span t-field="o.partner_id.state_id"/>,<span t-field="o.partner_id.zip"/>
+                                                                <t t-if="o.partner_id.country_id">
+                                                                    <br/><span t-field="o.partner_id.country_id"/>
+                                                                </t>
+                                                                <t t-if="o._get_order_contact(o.origin)">
+                                                                    <br/><b>Order Contact:</b><span t-esc="o._get_order_contact(o.origin)"/>
+                                                                </t>
+                                                            </p>
+                                                        </div>
+                                                    </td>
+                                                </t>
+                                                <t t-if="not o.partner_shipping_id == o.partner_id and o.partner_shipping_id">
+                                                    <td>
+                                                        <div class="col-xs-7 text-left" name="company_address">
+                                                            <b style="font-size:16px;">Shipping address:</b>
+                                                            <p style="font-size:14px;font-family: 'Times New Roman', Times, serif;">
+                                                                <t t-if="o.partner_shipping_id.street">
+                                                                    <span t-field="o.partner_shipping_id.street"/>
+                                                                </t>
+                                                                <t t-if="o.partner_shipping_id.street2">
+                                                                   <br/><span t-field="o.partner_shipping_id.street2"/>
+                                                                </t>
+                                                               <br/><span t-field="o.partner_shipping_id.city"/>,<span t-field="o.partner_shipping_id.state_id"/>,<span t-field="o.partner_shipping_id.zip"/>
+                                                                <t t-if="o.partner_shipping_id.country_id">
+                                                                    <br/><span t-field="o.partner_shipping_id.country_id"/>
+                                                                </t>
+                                                                <t t-if="o._get_order_contact(o.origin)">
+                                                                    <br/><b>Order Contact:</b><span t-esc="o._get_order_contact(o.origin)"/>
+                                                                </t>
+                                                            </p>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="col-xs-7 text-left" name="company_address">
+                                                            <b style="font-size:16px;">Invoicing address:</b>
+                                                            <p style="font-size:14px;font-family: 'Times New Roman', Times, serif;">
+                                                               <t t-if="o.partner_id.street">
+                                                                   <span t-field="o.partner_id.street"/>
+                                                                </t>
+                                                                <t t-if="o.partner_id.street2">
+                                                                    <br/><span t-field="o.partner_id.street2"/>
+                                                                </t>
+                                                                <br/><span t-field="o.partner_id.city"/>,<span t-field="o.partner_id.state_id"/>,<span t-field="o.partner_id.zip"/>
+                                                                <t t-if="o.partner_id.country_id">
+                                                                    <br/><span t-field="o.partner_id.country_id"/>
+                                                                </t>
+                                                            </p>
+                                                        </div>
+                                                    </td>
+                                                </t>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2" t-attf-style="border-top:1px solid lightgrey; padding:10px;"/>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="4">
+                                                    <table border="0" cellpadding="0" cellspacing="0" t-attf-style="color:#fff; text-transform:capitalize; font-size:14px; border: 1px solid lightgrey;" width="100%">
+                                                        <tr style="color: black; background-color:lightgrey;">
+                                                            <td style="padding:9px 15px; font-weight:bold;">
+                                                                <span t-if="o.type == 'out_invoice' and (o.state == 'open' or o.state == 'paid')">Invoice No:</span>
+                                                                <span t-if="o.type == 'out_invoice' and o.state == 'proforma2'">PRO-FORMA No:</span>
+                                                                <span t-if="o.type == 'out_invoice' and o.state == 'draft'">Draft Invoice</span>
+                                                                <span t-if="o.type == 'out_invoice' and o.state == 'cancel'">Cancelled Invoice No:</span>
+                                                                <span t-if="o.type == 'out_refund'">Refund No:</span>
+                                                                <span t-if="o.type == 'in_refund'">Vendor Refund No:</span>
+                                                                <span t-if="o.type == 'in_invoice'">Vendor Bill No:</span>
+                                                                <br/>
+                                                                <span t-field="o.number"/>
+                                                            </td>
+                                                            <td style="padding:5px 15px;">
+                                                                <b>Invoice Date:</b>
+                                                                <br/>
+                                                                <span t-esc="o.date_invoice"/>
+                                                            </td>
+                                                            <td style="padding:5px 15px;">
+                                                                <b>
+                                                                    <span t-if="o.type in ('out_invoice','out_refund')">SO:</span>
+                                                                    <span t-if="o.type in ('in_invoice', 'in_refund')">PO:</span>
+                                                                </b>
+                                                                <br/>
+                                                                <span t-field="o.origin"/>
+                                                            </td>
+                                                            <td style="padding:5px 15px;">
+                                                                <b>Order Date:</b>
+                                                                <br/>
+                                                                <span t-esc="o._get_origin_date(o.origin)"/>
+                                                            </td>
+                                                            <td style="padding:5px 15px;">
+                                                                <b>Due Date:</b>
+                                                                <br/>
+                                                                <span t-esc="o.date_due"/>
+                                                            </td>
+                                                            <td style="padding:5px 15px;">
+                                                                <b>Shipping Date:</b>
+                                                                <br/>
+                                                                <span t-esc="o._get_shipping_date(o.origin)"/>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                    <br/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2" t-attf-style="border-bottom:1px solid lightgrey; padding:0px;"/>
+                                            </tr>
+                                            <tr>
+                                                <td align="left" colspan="2" style=" font-size:12px; padding:20px 0px 0 0; text-transform:uppercase; font-weight:bold; " valign="top">
+                                                    <table BORDERCOLOR="black;" border="1" cellpadding="0" cellspacing="0" class="table table-bordered" style="border:0.5px solid #ccc;  border-collapse: collapse; text-transform:capitalize; padding:15px;border-bottom:1px solid #ccc;" width="100%">
+                                                        <tr t-attf-style="padding:5px 10px; border:0.5px solid lightgrey; font-weight:bold; background-color: lightgrey; color: black;">
+                                                            <td align="left" t-attf-style="padding:5px 10px; color: black; border:1px solid lightgrey !important; border-right:0px solid lightgrey !important; font-weight:bold;" width="8%">Ln.</td>
+                                                            <td align="left" t-attf-style="padding:5px 10px; color: black; border:1px solid lightgrey !important; border-right:0px solid lightgrey !important; font-weight:bold;" width="50%">Description</td>
+                                                            <td align="left" t-attf-style="padding:5px 10px; color: black; border:1px solid lightgrey !important; border-right:0px solid lightgrey !important; font-weight:bold;" width="10%">Quantity</td>
+                                                            <td align="left" t-attf-style="padding:5px 10px; color: black; border:1px solid lightgrey !important; border-right:0px solid lightgrey !important; font-weight:bold;" width="18%">Unit Price</td>
+                                                            <td align="left" t-attf-style="padding:5px 10px; color: black; border:1px solid lightgrey !important; border-right:0px solid lightgrey !important; font-weight:bold;" width="18%">Disc(%)</td>
+                                                            <td align="left" t-attf-style="padding:5px 10px; color: black; border:1px solid lightgrey !important; border-right:0px solid lightgrey !important; font-weight:bold;" width="12%">Taxes</td>
+                                                            <td align="left" t-attf-style="padding:5px 10px; color: black; border:1px solid lightgrey !important; border-right:0px solid lightgrey !important; font-weight:bold;" width="25%">Price</td>
+                                                        </tr>
+                                                        <t t-if="o.state == 'draft'">
+                                                            <div class="watermark text-center" style="position:absolute;opacity:0.25;font-size:12em;z-index:1000;transform:rotate(300deg);margin-left:350px;margin-right:200px;-webkit-transform:rotate(300deg);">
+                                                                <p style="font-size:50px;">DRAFT</p>
+                                                            </div>
+                                                        </t>
+                                                        <t t-as="l" t-foreach="o.invoice_line_ids">
+                                                            <t t-if="l_odd">
+                                                                <tr style="background-color:white;">
+                                                                    <td class="text-center" style="padding:5px 10px; border:0.5px solid #ccc !important; border-right:0px solid #ccc !important; color:black;">
+                                                                        <span t-esc="l_index+1"/>
+                                                                    </td>
+                                                                    <td class="text-left" style="padding:5px 10px; border:0.5px solid #ccc !important; border-right:0px solid #ccc !important; color: black;">
+                                                                        <span t-field="l.name"/>
+                                                                    </td>
+                                                                    <td class="text-right" style="padding:5px 10px; border:0.5px solid #ccc !important; border-right:0px solid #ccc !important; color: black;">
+                                                                        <span t-field="l.quantity"/>
+                                                                    </td>
+                                                                    <td class="text-right" style="padding:5px 10px; border:0.5px solid #ccc !important; border-right:0px solid #ccc !important; color: black;">
+                                                                        <span t-field="l.price_unit"/>
+                                                                    </td>
+                                                                    <td class="text-center" groups="sale.group_discount_per_so_line" style="padding:5px 10px; border:0.5px solid #ccc !important; border-right:0px solid #ccc !important; color: black;">
+                                                                        <span t-field="l.discount"/>
+                                                                    </td>
+                                                                    <td class="text-center" style="padding:5px 10px; border:0.5px solid #ccc !important; border-right:0px solid #ccc !important; color: black;">
+                                                                        <span t-field="l.price_tax" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/>
+                                                                    </td>
+                                                                    <td class="text-right" style="padding:5px 10px; border:0.5px solid #ccc !important; border-right:0px solid #ccc !important; color: black;">
+                                                                        <span t-field="l.price_subtotal" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/>
+                                                                    </td>
+                                                                </tr>
+                                                            </t>
+                                                            <t t-if="l_even">
+                                                                <tr style="background-color: #EBF5FB;">
+                                                                    <td class="text-center" style="padding:5px 10px; border:0.5px solid #ccc !important; border-right:0px solid #ccc !important; color: black;">
+                                                                        <span t-esc="l_index+1"/>
+                                                                    </td>
+                                                                    <td class="text-left" style="padding:5px 10px; border:0.5px solid #ccc !important; border-right:0px solid #ccc !important; color: black;">
+                                                                        <span t-field="l.product_id.name"/>
+                                                                    </td>
+                                                                    <td class="text-right" style="padding:5px 10px; border:0.5px solid #ccc !important; border-right:0px solid #ccc !important; color: black;">
+                                                                        <span t-field="l.quantity"/>
+                                                                    </td>
+                                                                    <td class="text-right" style="padding:5px 10px; border:0.5px solid #ccc !important; border-right:0px solid #ccc !important; color: black;">
+                                                                        <span t-field="l.price_unit"/>
+                                                                    </td>
+                                                                    <td class="text-center" groups="sale.group_discount_per_so_line" style="padding:5px 10px; border:0.5px solid #ccc !important; border-right:0px solid #ccc !important; color: black;">
+                                                                        <span t-field="l.discount"/>
+                                                                    </td>
+                                                                    <td class="text-center" style="padding:5px 10px; border:0.5px solid #ccc !important; border-right:0px solid #ccc !important; color: black;">
+                                                                        <span t-field="l.price_tax" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/>
+                                                                       <!--  <span t-esc="', '.join(map(lambda x: (x.description or x.name), l.invoice_line_tax_ids))"/> -->
+                                                                        <!-- <span t-esc="o._get_tax_amount(amount,p)"/> -->
+                                                                    </td>
+                                                                    <td class="text-right" style="padding:5px 10px; border:0.5px solid #ccc !important; border-right:0px solid #ccc !important; color: black;">
+                                                                        <span t-field="l.price_subtotal" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/>
+                                                                    </td>
+                                                                </tr>
+                                                            </t>
+                                                        </t>
+                                                    </table>
+                                                    <table class="pull-right" style="font-size:14px; font-weight:bold;width:40%; text-transform:capitalize;color: black;" align="right">
+                                                        <tr class="pull-right">
+                                                            <td class="pull-right" colspan="2" style="padding:9px 10px 7px 0px; color:black; ">SubTotal</td>
+                                                            <td align="right" style="padding:9px 0px 7px 10px;">
+                                                                <span style="color: black;" t-field="o.amount_untaxed" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/>
+                                                            </td>
+                                                        </tr>
+                                                        <tr class="pull-right">
+                                                            <td colspan="3" style="border-bottom:1px solid #959595"/>
+                                                        </tr>
+                                                       <tr style="padding:9px 10px 7px 0px; color:black; " class="pull-right">
+                                                            <td class="pull-right" colspan="2" style="padding:9px 10px 7px 0px; color:black; ">Taxes</td>
+                                                            <td align="right" style="padding:9px 0px 7px 10px;">
+                                                                <span style="color: black;" t-field="o.amount_tax" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="pull-right" colspan="2" style="padding:9px 10px 7px 0px; font-size:15px; text-transform:uppercase; color: black;">total</td>
+                                                            <td align="right" style="padding:9px 0px 7px 10px;font-size:15px; text-transform:uppercase; ">
+                                                                <span style="color:black;" t-field="o.amount_total" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                                <tr>
+                                                    <td colspan="3" t-attf-style="border-bottom:1px solid #{'#959595'}; padding:0px"/>
+                                                </tr>
+                                            </tr>
+                                            <tr t-if="o.payment_move_line_ids">
+                                                <td>
+                                                    <h2 style="font-size:16px; font-weight:bold; color:#000; margin-bottom:0; text-transform:capitalize; margin-top:20px; color: black;">Payment History</h2>
+                                                </td>
+                                                <tr>
+                                                    <td colspan="2" style="color:#4D4D4F; font-size:12px; padding:12px 0px 0 0; text-transform:uppercase;" valign="top">
+                                                        <table BORDERCOLOR="lightgrey;" border="1" cellpadding="0" cellspacing="0" class="table table-bordered" style="border:0.5px solid #ccc;  border-collapse: collapse; text-transform:capitalize;border-bottom:1px solid #ccc;" width="100%">
+                                                            <tr bgcolor="lightgrey" style="padding:5px 10px; border:0.5px solid lightgrey; font-weight:bold; background-color: lightgrey; color: black;">
+                                                                <td align="center" t-attf-style="padding:5px 10px; font-weight:bold; font-size:16px; border:1px solid lightgrey !important; border-right:0px solid lightgrey !important;" width="6%">Sr.</td>
+                                                                <td align="center" t-attf-style="padding:5px 10px; font-weight:bold; font-size:16px; border:1px solid lightgrey !important; border-right:0px solid lightgrey !important;" width="19%">Date</td>
+                                                                <td align="center" t-attf-style="padding:5px 10px; font-weight:bold; font-size:16px; border:1px solid lightgrey !important; border-right:0px solid lightgrey !important;" width="39%">Method</td>
+                                                                <td align="center" t-attf-style="padding:5px 10px; font-weight:bold; font-size:16px; border:1px solid lightgrey !important; border-right:0px solid lightgrey !important;" width="23%">Ref.</td>
+                                                                <td align="right" t-attf-style="padding:5px 10px; font-weight:bold; font-size:16px; border:1px solid lightgrey !important; border-right:0px solid lightgrey !important;" width="13%">Amount</td>
+                                                            </tr>
+                                                            <tr style="font-size:12px; color:black;">
+                                                                <t t-as="p" t-foreach="o.payment_move_line_ids">
+                                                                    <t t-if="p_odd">
+                                                                        <tr style="background-color:white;" t-if="p.id">
+                                                                            <td class="text-center" style="padding:5px 10px; border:0.5px solid #ccc !important; border-right:0px solid #ccc !important; color: black;" width="65px">
+                                                                                <span t-esc="p_index+1"/>
+                                                                            </td>
+                                                                            <td class="text-center" style="padding:5px 10px; border:0.5px solid #ccc !important; border-right:0px solid #ccc !important; color: black;">
+                                                                                <span t-field="p.date"/>
+                                                                            </td>
+                                                                            <td class="text-center" style="padding:5px 10px; border:0.5px solid #ccc !important; border-right:0px solid #ccc !important; color: black;">
+                                                                                <span t-field="p.journal_id.name"/>
+                                                                            </td>
+                                                                            <td class="text-center" style="padding:5px 10px; border:0.5px solid #ccc !important; border-right:0px solid #ccc !important; color: black;">
+                                                                                <span t-field="p.move_id.name"/>
+                                                                            </td>
+                                                                            <td class="text-right" style="padding:5px 10px; border:0.5px solid #ccc !important; border-right:0px solid #ccc !important; color: black;">
+                                                                                <t t-if="o.type in ('out_invoice', 'in_refund')">
+                                                                                    <t t-set="amount" t-value="sum([l.amount or 0.0 for l in p.matched_debit_ids if l.debit_move_id in o.move_id.line_ids])"/>
+                                                                                </t>
+                                                                                <t t-if="o.type in ('in_invoice', 'out_refund')">
+                                                                                    <t t-set="amount" t-value="sum([l.amount or 0.0 for l in p.matched_credit_ids if l.credit_move_id in o.move_id.line_ids])"/>
+                                                                                </t>
+                                                                                <span t-esc="o._get_tax_amount(amount,p)"/>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </t>
+                                                                    <t t-if="p_even">
+                                                                        <tr style="background-color:#EBF5FB;" t-if="p.id">
+                                                                            <td class="text-center" style="padding:5px 10px; border:0.5px solid #ccc !important; border-right:0px solid #ccc !important; color: black;" width="65px">
+                                                                                <span t-esc="p_index+1"/>
+                                                                            </td>
+                                                                            <td class="text-center" style="padding:5px 10px; border:0.5px solid #ccc !important; border-right:0px solid #ccc !important; color: black;">
+                                                                                <span t-field="p.date"/>
+                                                                            </td>
+                                                                            <td class="text-center" style="padding:5px 10px; border:0.5px solid #ccc !important; border-right:0px solid #ccc !important; color: black;">
+                                                                                <span t-field="p.journal_id.name"/>
+                                                                            </td>
+                                                                            <td class="text-center" style="padding:5px 10px; border:0.5px solid #ccc !important; border-right:0px solid #ccc !important; color: black;">
+                                                                                <span t-field="p.move_id.name"/>
+                                                                            </td>
+                                                                            <td class="text-right" style="padding:5px 10px; border:0.5px solid #ccc !important; border-right:0px solid #ccc !important; color: black;">
+                                                                                <t t-if="o.type in ('out_invoice', 'in_refund')">
+                                                                                    <t t-set="amount" t-value="sum([l.amount or 0.0 for l in p.matched_debit_ids if l.debit_move_id in o.move_id.line_ids])"/>
+                                                                                </t>
+                                                                                <t t-if="o.type in ('in_invoice', 'out_refund')">
+                                                                                    <t t-set="amount" t-value="sum([l.amount or 0.0 for l in p.matched_credit_ids if l.credit_move_id in o.move_id.line_ids])"/>
+                                                                                </t>
+                                                                                <span t-esc="o._get_tax_amount(amount,p)"/>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </t>
+                                                                </t>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </tr>
+                                            <tr t-if="not o.payment_move_line_ids">
+                                                <td>
+                                                    <h2 style="font-size:14px; font-weight:bold; color:#000; margin-bottom:0; text-transform:capitalize; margin-top:8px; color: black;">Payments is Pending</h2>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="pull-left" colspan="2" style="font-size:13px; color:black; padding-top:100px; ">
+                                                    <ul style="padding-left:15px; margin:0">
+                                                        <t t-if="o.payment_term_id.name">
+                                                            <li style="color:black;">
+                                                                <b>Payment Term: </b>
+                                                                <span t-field="o.payment_term_id.name"/>
+                                                            </li>
+                                                        </t>
+                                                        <t t-if="o.comment">
+                                                            <li style="color:black;">
+                                                                <b>Comment: </b>
+                                                                <span t-field="o.comment"/>
+                                                            </li>
+                                                        </t>
+                                                        <!-- <t t-if="o.fiscal_position_id.name">
+                                                            <li style="color: black;">
+                                                                <b>Fiscal Position Remark: </b>
+                                                                <span t-field="o.fiscal_position_id.name"/>
+                                                            </li>
+                                                        </t> -->
+                                                    </ul>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </center>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="oe_structure"/>
+                </div>
+                
+            </t>
+        </template>
+        <template id="report_invoice">
+            <t t-call="web.html_container">
+                <t t-as="o" t-foreach="docs">
+                    <t t-call="wibtec_invoice.report_invoice_professional_main" t-lang="o.partner_id.lang"/>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record model="ir.ui.view" id="workcenter_line_kanban_inherited">
+        <field name="name">mrp.production.work.order.kanban</field>
+        <field name="model">mrp.workorder</field>
+        <field name="inherit_id" ref="mrp.workcenter_line_kanban"/>
+        <field name="arch" type="xml">
+            <field name="product_uom_id" position="after">
+                <field name="color"/>
+            </field>
+            <xpath expr="//templates/t/div" position="attributes">
+                <attribute name="style">width:260px</attribute>
+                <attribute name="t-attf-class">oe_kanban_card oe_kanban_global_click #{kanban_color(record.color.raw_value)}</attribute>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

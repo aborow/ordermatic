@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!-- View record for Res Partner -->
+        <record id="view_partner_form" model="ir.ui.view">
+            <field name="name">res.partner.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr='//notebook/page[4]' position="after">
+                    <page string="Warranty Information">
+                        <field name="warranty_information">
+                            <tree>
+                                <field name="product_id"/>
+                                <field name="sale_date"/>
+                                <field name="serial_number"/>
+                                <field name="partner_id"/>
+                                <field name="company_id"/>
+                            </tree>
+                        </field>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+        
+    </data>
+</odoo>
