@@ -18,9 +18,6 @@ class SaleOrder(models.Model):
 		res = super(SaleOrder, self).action_confirm()
 		if not self.order_contact:
 			raise ValidationError(_('Please enter value for "Order Contact" to confirm the quotation.'))
-<<<<<<< HEAD
-		return res
-=======
 
 
 		# The creation of a delivery order when a SO is confirmed is not such a
@@ -55,4 +52,3 @@ class SaleOrder(models.Model):
 												)
 		if pick:
 			pick.scheduled_date = date
->>>>>>> fdf4abbe422768f00683639b78680c02b8dd441a

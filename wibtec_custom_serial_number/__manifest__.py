@@ -13,11 +13,7 @@
     'author': "WIB Technologies, Inc",
     'website': "http://www.wibtec.com",
     'category': 'product',
-<<<<<<< HEAD
-    'version': '12.0.1.0.1',
-=======
     'version': '12.0.1.0.2',
->>>>>>> fdf4abbe422768f00683639b78680c02b8dd441a
     # any module necessary for this one to work correctly
     'depends': ['product','sale','stock','contacts'],
     # always loaded
