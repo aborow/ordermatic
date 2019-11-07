@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
-
+import datetime
 from odoo import api, fields, models, _
 from odoo.exceptions import ValidationError
 
@@ -18,4 +18,41 @@ class SaleOrder(models.Model):
 		res = super(SaleOrder, self).action_confirm()
 		if not self.order_contact:
 			raise ValidationError(_('Please enter value for "Order Contact" to confirm the quotation.'))
+<<<<<<< HEAD
 		return res
+=======
+
+
+		# The creation of a delivery order when a SO is confirmed is not such a
+		# straightforward thing as there are two steps involved. So, in order not
+		# to fall into any sort of caveat, the update of the delivery scheduled date
+		# is delayed a bit. We do this with a scheduled task
+		if self.omc_projected_shipping_date:
+			res_model_id = self.env['ir.model'].search([('model','=','sale.order')]).id
+			cron_id = self.env['ir.cron'].sudo().create({
+	                                            'name': 'Update delivery date',
+	                                            'model_id': res_model_id,
+	                                            'state': 'code',
+	                                            'code': "model.update_delivery_date(%s,'%s')" % (
+																								self.id,
+																								self.omc_projected_shipping_date
+																								),
+	                                            'interval_number': 1,
+	                                            'interval_type': 'minutes',
+	                                            'nextcall': datetime.datetime.now() \
+	                                                            + datetime.timedelta(minutes = 1),
+	                                            'numbercall': 1,
+	                                            'doall': True
+	                                            })
+		return res
+
+
+	def update_delivery_date(self, sale_id, date):
+		pick = self.env['stock.picking'].search(
+												[('sale_id','=',sale_id)],
+												order='id ASC',
+												limit=1
+												)
+		if pick:
+			pick.scheduled_date = date
+>>>>>>> fdf4abbe422768f00683639b78680c02b8dd441a

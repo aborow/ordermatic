@@ -15,5 +15,29 @@
             </field>
         </record>
 
+
+        <record id="view_mrp_production_filter" model="ir.ui.view">
+            <field name="name">Changes to search</field>
+            <field name="model">mrp.production</field>
+            <field name="inherit_id" ref="mrp.view_mrp_production_filter"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group/filter[last()]" position="after">
+                    <filter string="Product category" name="product_categ_id_groupby"
+                        domain="[]" context="{'group_by': 'product_categ_id'}"/>
+                </xpath>
+            </field>
+        </record>
+        <record id="mrp_production_tree_view" model="ir.ui.view">
+            <field name="name">Show product category</field>
+            <field name="model">mrp.production</field>
+            <field name="inherit_id" ref="mrp.mrp_production_tree_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[last()]" position="after">
+                    <field name="product_categ_id"/>
+                </xpath>
+            </field>
+        </record>
+
+
     </data>
 </odoo>
