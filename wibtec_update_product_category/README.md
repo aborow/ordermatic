@@ -61,3 +61,11 @@ OMC-120 = add Long Description Field to Products
 Version = 12.0.1.9.0
 =========================
 OMC-121 Make VENDOR Tax default to Tax Exempt
+
+Version = 12.0.1.10.0
+==========================
+OMC-173 = Update COST price from SYSPRO's inventory valuation report
+
+Version = 12.0.1.11.0
+=====================
+OMC-175 = Duplicate products in parallel1 DB

@@ -14,28 +14,36 @@
                         <group>
                             <field name="options" widget="radio"/>
                             <field name="update_options" attrs="{'invisible': [('options', '=', 'remove')]}" widget="radio"/>
+                            <field name="remove_options" attrs="{'invisible': [('options', '=', 'update')]}" widget="radio"/>
                         </group>
                         <group>
                             <group>
                                 <field name="file" filename="name"
-                                    attrs="{'invisible': ['|','|','|','|',('update_options','=','long_desc'),('update_options','=','tax'),('update_options', '=', 'route'),('update_options', '=', 'uom'),('options', '=', 'remove')]}"/>
+                                    attrs="{'invisible': ['|','|','|','|','|',('update_options','=','long_desc'),('update_options','=','tax'),('update_options', '=', 'route'),('update_options', '=', 'uom'),('options', '=', 'remove'),('update_options', '=', 'cost')]}"/>
                                 <field name="file_uom" filename="name"
-                                attrs="{'invisible': ['|','|','|','|',('update_options','=','long_desc'),('update_options','=','tax'),('update_options', '=', 'route'),('update_options', '=', 'category'),('options', '=', 'remove')]}"/>
+                                    attrs="{'invisible': ['|','|','|','|','|',('update_options','=','long_desc'),('update_options','=','tax'),('update_options', '=', 'route'),('update_options', '=', 'category'),('options', '=', 'remove'),('update_options', '=', 'cost')]}"/>
                                 <field name="file_route" filename="name"
-                                attrs="{'invisible': ['|','|','|','|',('update_options','=','long_desc'),('update_options','=','tax'),('update_options', '=', 'uom'),('update_options', '=', 'category'),('options', '=', 'remove')]}"/>
+                                    attrs="{'invisible': ['|','|','|','|','|',('update_options','=','long_desc'),('update_options','=','tax'),('update_options', '=', 'uom'),('update_options', '=', 'category'),('options', '=', 'remove'),('update_options', '=', 'cost')]}"/>
                                 <field name="file_long_desc" filename="name"
-                                attrs="{'invisible': ['|','|','|','|',('update_options','=','tax'),('update_options', '=', 'uom'),('update_options', '=', 'category'),('options', '=', 'remove'),('update_options', '=', 'route')]}"/>
+                                    attrs="{'invisible': ['|','|','|','|','|',('update_options','=','tax'),('update_options', '=', 'uom'),('update_options', '=', 'category'),('options', '=', 'remove'),('update_options', '=', 'route'),('update_options', '=', 'cost')]}"/>
+                                <!-- <field name="file_long_desc" filename="name"
+                                    attrs="{'invisible': ['|','|','|','|','|',('update_options','=','tax'),('update_options', '=', 'uom'),('update_options', '=', 'category'),('options', '=', 'remove'),('update_options', '=', 'route'),('update_options', '=', 'cost')]}"/> -->
+                                <field name="file_cost" filename="name"
+                                    attrs="{'invisible': ['|','|','|','|','|',('update_options','=','long_desc'),('update_options','=','tax'),('update_options', '=', 'uom'),('update_options', '=', 'category'),('options', '=', 'remove'),('update_options', '=', 'route')]}"/>
+                                <field name="file_remove_duplicate" filename="name" attrs="{'invisible': ['|',('options', '=', 'update'),('remove_options','=','tax')]}"/>
                             </group>
                        </group>
                     </group>
                     <footer>
-                        <button name="update_product" attrs="{'invisible': ['|','|','|','|',('update_options','=','long_desc'),('update_options','=','tax'),('update_options', '=', 'route'), ('update_options', '=', 'uom'),('options', '=', 'remove')]}" string="Update" type="object" class="oe_highlight"/>
-                        <button name="update_product_uom" attrs="{'invisible': ['|','|','|','|',('update_options','=','long_desc'),('update_options','=','tax'),('update_options', '=', 'route'), ('update_options', '=', 'category'),('options', '=', 'remove')]}" string="Update" type="object" class="oe_highlight"/>
+                        <button name="update_product" attrs="{'invisible': ['|','|','|','|','|',('update_options','=','long_desc'),('update_options','=','tax'),('update_options', '=', 'route'), ('update_options', '=', 'uom'),('options', '=', 'remove'),('update_options', '=', 'cost')]}" string="Update" type="object" class="oe_highlight"/>
+                        <button name="update_product_uom" attrs="{'invisible': ['|','|','|','|','|',('update_options','=','long_desc'),('update_options','=','tax'),('update_options', '=', 'route'), ('update_options', '=', 'category'),('options', '=', 'remove'),('update_options', '=', 'cost')]}" string="Update" type="object" class="oe_highlight"/>
                         <!-- <button name="update_route" attrs="{'invisible': ['|','|',('update_options', '=', 'uom'), ('update_options', '=', 'category'),('options', '=', 'remove')]}" string="Update" type="object" class="oe_highlight"/> -->
-                        <button name="update_bom_product_route" attrs="{'invisible': ['|','|','|','|',('update_options','=','long_desc'),('update_options','=','tax'),('update_options', '=', 'uom'), ('update_options', '=', 'category'),('options', '=', 'remove')]}" string="Update" type="object" class="oe_highlight"/>
-                        <button name="update_tax_vlaues" attrs="{'invisible': ['|','|','|','|',('update_options','=','long_desc'),('update_options', '=', 'route'),('update_options', '=', 'uom'), ('update_options', '=', 'category'),('options', '=', 'remove')]}" string="Update" type="object" class="oe_highlight"/>
-                        <button name="update_long_desc" attrs="{'invisible': ['|','|','|','|',('update_options','=','tax'),('update_options', '=', 'route'),('update_options', '=', 'uom'), ('update_options', '=', 'category'),('options', '=', 'remove')]}" string="Update" type="object" class="oe_highlight"/>
-                        <button name="remove_value" string="Remove"  attrs="{'invisible': [('options', '=', 'update')]}" type="object" class="oe_highlight"/>
+                        <button name="update_bom_product_route" attrs="{'invisible': ['|','|','|','|','|',('update_options','=','long_desc'),('update_options','=','tax'),('update_options', '=', 'uom'), ('update_options', '=', 'category'),('options', '=', 'remove'),('update_options', '=', 'cost')]}" string="Update" type="object" class="oe_highlight"/>
+                        <button name="update_tax_vlaues" attrs="{'invisible': ['|','|','|','|','|',('update_options','=','long_desc'),('update_options', '=', 'route'),('update_options', '=', 'uom'), ('update_options', '=', 'category'),('options', '=', 'remove'),('update_options', '=', 'cost')]}" string="Update" type="object" class="oe_highlight"/>
+                        <button name="update_long_desc" attrs="{'invisible': ['|','|','|','|','|',('update_options','=','tax'),('update_options', '=', 'route'),('update_options', '=', 'uom'), ('update_options', '=', 'category'),('options', '=', 'remove'),('update_options', '=', 'cost')]}" string="Update" type="object" class="oe_highlight"/>
+                        <button name="update_product_cost_price" attrs="{'invisible': ['|','|','|','|','|',('update_options','=','long_desc'),('update_options','=','tax'),('update_options', '=', 'route'),('update_options', '=', 'uom'), ('update_options', '=', 'category'),('options', '=', 'remove')]}" string="Update" type="object" class="oe_highlight"/>
+                        <button name="remove_value" string="Remove"  attrs="{'invisible': ['|',('options', '=', 'update'),('remove_options','=','duplicate')]}" type="object" class="oe_highlight"/>
+                        <button name="remove_duplicate_product" string="Remove"  attrs="{'invisible': ['|',('options', '=', 'update'),('remove_options','=','tax')]}" type="object" class="oe_highlight"/>
                         <button name="Cancel" string="Cancel" special="cancel"/>
                     </footer>
                 </form>

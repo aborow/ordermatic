@@ -9,21 +9,23 @@
 
     'description': """
         OMC-80 = Product Update Category
-	OMC-82 = Product UOM Update
-	OMC-84 = Remove Customer Tax from Product
-    OMC-96 = Please updates all products that are Make to Order to also have Manufacture route
-    OMC-88 = Update UOMs
-    OMC-104 = Remove MTO from all products
-    OMC-107 = Buy parts are not reflected in Odoo properly
-    OMC-105 = Set default Tax rates on products
-    OMC-120 = add Long Description Field to Products
-    OMC-121 = Make VENDOR Tax default to Tax Exempt
+    	OMC-82 = Product UOM Update
+    	OMC-84 = Remove Customer Tax from Product
+        OMC-96 = Please updates all products that are Make to Order to also have Manufacture route
+        OMC-88 = Update UOMs
+        OMC-104 = Remove MTO from all products
+        OMC-107 = Buy parts are not reflected in Odoo properly
+        OMC-105 = Set default Tax rates on products
+        OMC-120 = add Long Description Field to Products
+        OMC-121 = Make VENDOR Tax default to Tax Exempt
+        OMC-173 = Update COST price from SYSPRO's inventory valuation report
+        OMC-175 = Duplicate products in parallel1 DB
     """,
 
     'author': "WIB Technologies, Inc",
     'website': "http://www.wibtec.com",
     'category': 'product',
-    'version': '12.0.1.7.0',
+    'version': '12.0.1.11.0',
 
     # any module necessary for this one to work correctly
     'depends': ['product','sale'],

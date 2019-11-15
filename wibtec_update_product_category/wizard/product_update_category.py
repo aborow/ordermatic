@@ -28,8 +28,98 @@ class ProductUpdateCategory(models.TransientModel):
 	file_long_desc = fields.Binary('Upload Long Description File')
 	file_uom = fields.Binary('Upload UOM File')
 	file_route = fields.Binary('Upload Route File')
+	file_cost = fields.Binary('Upload Cost File')
+	file_remove_duplicate = fields.Binary('Upload Remove Duplicate')
 	options = fields.Selection([('remove','Remove'),('update','Update')],string="Options",default='remove',required=True)
-	update_options = fields.Selection([('category','Product Category'),('uom','UOM'),('route','Route'),('tax','Tax'),('long_desc','Long Description')],string="Update Options",required=True,default='category')
+	update_options = fields.Selection([('category','Product Category'),('uom','UOM'),('route','Route'),('tax','Tax'),('long_desc','Long Description'),('cost','Cost')],string="Update Options",required=True,default='category')
+	remove_options = fields.Selection([('tax','Tax'),('duplicate','Duplicate Products')],string="Remove Options",default='tax')
+
+	@api.multi
+	def remove_duplicate_product(self):
+		# Method is used to fetch all data from selected csv file
+		if not self.file_remove_duplicate:
+			raise Warning(_('Please Select CSV File.'))
+		else:
+			keys = ['Internal Reference','Name']
+			try:
+				data = base64.b64decode(self.file_remove_duplicate)
+				file_input = io.StringIO(data.decode("utf-8"))
+				file_input.seek(0)
+				reader = csv.reader(file_input, delimiter=',')
+			except ValueError:  
+				raise ValidationError(_('Not a Valid File!'))
+			reader_info = []
+			reader_info.extend(reader)
+			values = {}
+			for i in range(len(reader_info)):
+				field = map(str, reader_info[i])
+				values = dict(zip(keys, field))
+				if values:
+					if values['Internal Reference'] == 'Internal Reference':
+						continue
+					res=self.remove_duplicate(values)
+			return res
+
+	@api.multi
+	def remove_duplicate(self,values):
+		product_tmpl_id = self.find_product_tmpl_with_both(values.get('Internal Reference'),values.get('Internal Reference'))
+		product_id = self.find_product_with_both(values.get('Internal Reference'),values.get('Internal Reference'))
+		product_tmpl_id.write({'is_duplicate':True})
+		product_id.write({'is_duplicate':True})
+		self.check_bom_change_product_ref(product_tmpl_id)
+		self.check_bom_line_change_product_ref(product_id)
+
+	@api.multi
+	def find_product_with_both(self,reference,name):
+		# Method is will return Product if condition will fulfill else return warning.
+		product_id=self.env['product.product'].search(['|',
+			('active','=',False),
+			('active','=',True),
+			('default_code','=',reference),
+			('name','=',name)],limit=1)
+		if product_id:
+			return product_id
+		else:
+			raise Warning(_('Product "%s" is not Available in System.') % reference)
+
+	@api.multi
+	def find_product_tmpl_with_both(self,reference,name):
+		# Method is will return Product if condition will fulfill else return warning.
+		product_template_obj=self.env['product.template'].search(['|',
+			('active','=',False),
+			('active','=',True),
+			('default_code','=',reference),
+			('name','=',name)],limit=1)
+		if product_template_obj:
+			return product_template_obj
+		else:
+			raise Warning(_('Product "%s" is not Available in System.') % reference)
+
+	@api.multi
+	def check_bom_change_product_ref(self,product_id):
+		bom_id = self.env['mrp.bom'].search([('product_tmpl_id','=',product_id.id)])
+		if bom_id:
+			original_product_id = self.env['product.template'].search(['|',
+			('active','=',False),
+			('active','=',True),
+			('default_code','=',product_id.default_code),
+			('name','!=',product_id.name)],limit=1)
+			if original_product_id:
+				bom_id.write({'product_tmpl_id':original_product_id.id,'product_uom_id':original_product_id.uom_id.id})
+		return True
+
+	@api.multi
+	def check_bom_line_change_product_ref(self,product_id):
+		bom_lines = self.env['mrp.bom.line'].search([('product_tmpl_id','=',product_id.id)])
+		if bom_lines:
+			original_product_id = self.env['product.product'].search(['|',
+			('active','=',False),
+			('active','=',True),
+			('default_code','=',product_id.default_code),
+			('name','!=',product_id.name)],limit=1)
+			if original_product_id:
+				[bom_line.write({'product_id':original_product_id.id,'product_uom_id':original_product_id.uom_id.id}) for bom_line in bom_lines]
+		return True
 
 	@api.multi
 	def update_tax_vlaues(self):
@@ -119,7 +209,7 @@ class ProductUpdateCategory(models.TransientModel):
 
 
 	@api.multi
-	@api.constrains('file')
+	@api.constrains('file','file_uom','file_route','file_long_desc','file_cost','file_remove_duplicate')
 	def _check_file(self):
 		# Constrains for file if file is not uploaded
 		if self.options == 'update':
@@ -134,6 +224,13 @@ class ProductUpdateCategory(models.TransientModel):
 					raise ValidationError(_('Please upload CSV formatted file to update.'))
 			elif self.update_options == 'long_desc':
 				if not self.file_long_desc:
+					raise ValidationError(_('Please upload CSV formatted file to update.'))
+			elif self.update_options == 'cost':
+				if not self.file_cost:
+					raise ValidationError(_('Please upload CSV formatted file to update.'))
+		elif self.options == 'remove':
+			if self.remove_options == 'duplicate':
+				if not self.file_remove_duplicate:
 					raise ValidationError(_('Please upload CSV formatted file to update.'))
 			
 	@api.multi
@@ -274,3 +371,35 @@ class ProductUpdateCategory(models.TransientModel):
 		product_id = self.find_product(values.get('Internal Reference'))
 		if product_id:
 			product_id.write({'long_desc':values.get('Long Description')})
+
+	@api.multi
+	def update_product_cost_price(self):
+		# Method is used to fetch all data from selected csv file
+		if not self.file_cost:
+			raise Warning(_('Please Select CSV File.'))
+		else:
+			keys = ['Internal Reference','Name','Cost']
+			try:
+				data = base64.b64decode(self.file_cost)
+				file_input = io.StringIO(data.decode("utf-8"))
+				file_input.seek(0)
+				reader = csv.reader(file_input, delimiter=',')
+			except ValueError:  
+				raise ValidationError(_('Not a Valid File!'))
+			reader_info = []
+			reader_info.extend(reader)
+			values = {}
+			for i in range(len(reader_info)):
+				field = map(str, reader_info[i])
+				values = dict(zip(keys, field))
+				if values:
+					if values['Internal Reference'] == 'Internal Reference':
+						continue
+					res=self.update_product_cost(values)
+			return res
+
+	@api.multi
+	def update_product_cost(self,values):
+		product_id = self.find_product(values.get('Internal Reference'))
+		if product_id:
+			product_id.write({'standard_price':values.get('Cost')})
