@@ -68,4 +68,8 @@ OMC-173 = Update COST price from SYSPRO's inventory valuation report
 
 Version = 12.0.1.11.0
 =====================
-OMC-175 = Duplicate products in parallel1 DB
+OMC-175 = Duplicate products in parallel1 
+
+Version = 12.0.1.11.1
+=====================
+-Resolved issue of duplicate product.

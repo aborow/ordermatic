@@ -97,7 +97,10 @@ class ProductUpdateCategory(models.TransientModel):
 
 	@api.multi
 	def check_bom_change_product_ref(self,product_id):
-		bom_id = self.env['mrp.bom'].search([('product_tmpl_id','=',product_id.id)])
+		bom_id = self.env['mrp.bom'].search(['|',
+			('active','=',False),
+			('active','=',True),
+			('product_tmpl_id','=',product_id.id)])
 		if bom_id:
 			original_product_id = self.env['product.template'].search(['|',
 			('active','=',False),
@@ -110,7 +113,10 @@ class ProductUpdateCategory(models.TransientModel):
 
 	@api.multi
 	def check_bom_line_change_product_ref(self,product_id):
-		bom_lines = self.env['mrp.bom.line'].search([('product_tmpl_id','=',product_id.id)])
+		bom_lines = self.env['mrp.bom.line'].search(['|',
+			('product_active','=',False),
+			('product_active','=',True),
+			('product_id','=',product_id.id)])
 		if bom_lines:
 			original_product_id = self.env['product.product'].search(['|',
 			('active','=',False),

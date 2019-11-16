@@ -5,7 +5,7 @@
     'name': "Product Update Category",
 
     'summary': """
-        This Module is use for change product category base on list of given csv file. """,
+        This Module is use for change product category base on list of given csv file.""",
 
     'description': """
         OMC-80 = Product Update Category
@@ -25,7 +25,7 @@
     'author': "WIB Technologies, Inc",
     'website': "http://www.wibtec.com",
     'category': 'product',
-    'version': '12.0.1.11.0',
+    'version': '12.0.1.11.1',
 
     # any module necessary for this one to work correctly
     'depends': ['product','sale'],
