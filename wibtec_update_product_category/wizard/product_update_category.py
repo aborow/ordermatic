@@ -69,6 +69,7 @@ class ProductUpdateCategory(models.TransientModel):
 		self.check_bom_change_product_ref(product_tmpl_id)
 		self.check_bom_line_change_product_ref(product_id)
 		self.check_sale_order_line_change_product_ref(product_id)
+		self.check_purchase_order_line_change_product_ref(product_id)
 
 	@api.multi
 	def find_product_with_both(self,reference,name):
@@ -131,6 +132,19 @@ class ProductUpdateCategory(models.TransientModel):
 	@api.multi
 	def check_sale_order_line_change_product_ref(self,product_id):
 		order_lines = self.env['sale.order.line'].search([('product_id','=',product_id.id)])
+		if order_lines:
+			original_product_id = self.env['product.product'].search(['|',
+			('active','=',False),
+			('active','=',True),
+			('default_code','=',product_id.default_code),
+			('name','!=',product_id.name)],limit=1)
+			if original_product_id:
+				[order_line.write({'product_id':original_product_id.id,'product_uom_id':original_product_id.uom_id.id}) for order_line in order_lines]
+		return True
+
+	@api.multi
+	def check_purchase_order_line_change_product_ref(self,product_id):
+		order_lines = self.env['purchase.order.line'].search([('product_id','=',product_id.id)])
 		if order_lines:
 			original_product_id = self.env['product.product'].search(['|',
 			('active','=',False),
