@@ -25,7 +25,7 @@
     'author': "WIB Technologies, Inc",
     'website': "http://www.wibtec.com",
     'category': 'product',
-    'version': '12.0.1.11.1',
+    'version': '12.0.1.11.2',
 
     # any module necessary for this one to work correctly
     'depends': ['product','sale'],

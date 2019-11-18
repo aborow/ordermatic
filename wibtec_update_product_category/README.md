@@ -73,3 +73,7 @@ OMC-175 = Duplicate products in parallel1
 Version = 12.0.1.11.1
 =====================
 -Resolved issue of duplicate product.
+
+Version = 12.0.1.11.2
+======================
+-Resolved issue of duplicate product.
