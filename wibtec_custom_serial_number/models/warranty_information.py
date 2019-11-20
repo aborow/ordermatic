@@ -12,7 +12,7 @@ class WarrantyInformation(models.Model):
 	product_id = fields.Many2one('product.product','Product',required=True)
 	description = fields.Char('Product Description')
 	sale_date = fields.Date('Sales Date',required=True)
-	delivery_date = fields.Date('Delivery Date',required=True)
+	delivery_date = fields.Date('Delivery Date')
 	sales_notes = fields.Text('Sales Notes')
 	serial_number = fields.Char('Serial Number',required=True)
 	partner_id = fields.Many2one('res.partner','Customer',required=True)
