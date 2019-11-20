@@ -17,3 +17,7 @@ Version-12.0.1.0.2
 =====================
 -Solved one issue of creating warranty information.
 -Added contacts into manifest file.
+
+Version-12.0.1.0.3
+====================
+-Solved one issue of creating warranty information.

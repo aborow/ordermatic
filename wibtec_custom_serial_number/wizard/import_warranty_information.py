@@ -62,13 +62,13 @@ class ImportWarrantyInformation(models.TransientModel):
 		# Method will create BOM with values from CSV file
 		product_id = self.find_product(values.get('Product'))
 		partner_id = self.find_partner(values.get('Partner'))
-		if product_template_id.active == False:
-			product_template_id.write({'is_used_in_warranty':True})
+		if product_id.active == False:
+			product_id.write({'is_used_in_warranty':True})
 		warranty_information_id = self.env['warranty.information'].create({
 			'partner_id': partner_id.id if partner_id else False,
 			'customer_ID':values.get('Partner'),
-			'product_id':product_template_id.id if product_template_id else False,
-			'description':product_template_id.long_desc if product_template_id else False,
+			'product_id':product_id.id if product_id else False,
+			'description':product_id.long_desc if product_id else False,
 			'street':partner_id.street if partner_id else False,
 			'street2':partner_id.street2 if partner_id else False,
 			'city':partner_id.city if partner_id else False,
