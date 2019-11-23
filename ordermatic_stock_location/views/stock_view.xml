@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+	<record id="view_stock_location_tree" model="ir.ui.view">
+		<field name="name">dev.tree.product.tags</field>
+		<field name="model">stock.quant</field>
+		<field name="arch" type="xml">
+            <tree string="Inventory Valuation" create="0" delete="0" edit="0" decoration-danger="quantity &lt; 0">
+                <field name="product_id"/>
+                <field name="location_id"/>
+                <field name="lot_id"/>
+                <field name="package_id"/>
+                <field name="owner_id"/>
+                <field name="reserved_quantity" string="Reserved"/>
+                <field name="quantity" string="On Hand"/>
+                <field name="product_uom_id"/>
+                <field name="company_id" groups="base.group_multi_company"/>
+            </tree>
+		</field>
+	</record>
+
+	<record id="action_stock_location" model="ir.actions.act_window">
+        <field name="name">Stock by Location</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">stock.quant</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="view_stock_location_tree"/>
+    </record>
+
+ 	<menuitem name ="Stock by Location"
+              id='menu_stock_location'
+              parent="stock.menu_stock_inventory_control"
+              action="action_stock_location"
+              sequence="10"
+              groups="ordermatic_stock_location.omc_stock_location"/>
+
+</odoo>
