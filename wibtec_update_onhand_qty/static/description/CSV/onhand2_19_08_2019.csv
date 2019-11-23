@@ -1,0 +1,1226 @@
+StockCode,Warehouse,OnHand
+HSG275,WH/Stock/General Assembly,736
+HSG276,WH/Stock/General Assembly,111
+HSG277,WH/Stock/General Assembly,1760
+HSG754,WH/Stock/General Assembly,108
+HSG802,WH/Stock/General Assembly,22
+HSG803,WH/Stock/General Assembly,39
+HSG804,WH/Stock/Raw Materials,37
+HSG900,WH/Stock/General Assembly,103
+HSG9050,WH/Stock/Raw Materials,352
+HSG910M,WH/Stock/General Assembly,62
+HSG930,WH/Stock/General Assembly,14
+HSG930M,WH/Stock/General Assembly,81
+HSG940,WH/Stock/Raw Materials,13
+HSG940M,WH/Stock/General Assembly,9
+HSGM780M,WH/Stock/Raw Materials,1
+HYPERPSS,WH/Stock/Raw Materials,3
+HYPERSMARTPS,WH/Stock/Raw Materials,49
+IC106,WH/Stock/Tech Stock,19
+IC106,WH/Stock/Final Finished Goods,7
+IC112,WH/Stock/Final Finished Goods,1
+IC113B,WH/Stock/Tech Stock,11
+IC113B,WH/Stock/Final Finished Goods,31
+IC720,WH/Stock/Tech Stock,455
+IC782A,WH/Stock/Tech Stock,86
+ICCP,WH/Stock/Final Finished Goods,1
+ICCRT,WH/Stock/Final Finished Goods,9
+ICFT,WH/Stock/Final Finished Goods,5
+ICL,WH/Stock/Final Finished Goods,116
+ICLABT,WH/Stock/Final Finished Goods,8
+IDP2000,WH/Stock/Tech Finished Goods,2
+IDT2-B,WH/Stock/Raw Materials,2
+IND400V3,WH/Stock/Final Finished Goods,8
+IND500,WH/Stock/Final Finished Goods,482
+IPV-BULL,WH/Stock/Raw Materials,14
+IPV-DOOR,WH/Stock/Raw Materials,22
+JC,WH/Stock/Raw Materials,200
+JC,WH/Stock/Tech Stock,6
+JC,WH/Stock/Welding,8
+KB-USB,WH/Stock/Final Finished Goods,35
+KBCONE,WH/Stock/Raw Materials,17
+KITCUPH,WH/Stock/Welding,3
+KITDDDH,WH/Stock/Final Finished Goods,4
+LAM15HT3,WH/Stock/Raw Materials,106
+LAM63,WH/Stock/General Assembly,25
+LAMF300,WH/Stock/Raw Materials,8
+LAMF3W,WH/Stock/General Assembly,41
+LAMF400S,WH/Stock/Raw Materials,3
+LAMF4W,WH/Stock/General Assembly,34
+LAMF4W,WH/Stock/Final Finished Goods,6
+LAMF500,WH/Stock/Raw Materials,6
+LAMF600,WH/Stock/General Assembly,12
+LAMS11230,WH/Stock/General Assembly,4
+LAMS124,WH/Stock/Raw Materials,299
+LAMS124,WH/Stock/Final Finished Goods,5
+LCD500RTRO,WH/Stock/Final Finished Goods,1
+LEDFLEX6.2,WH/Stock/Raw Materials,330
+LEDFLEX6.2,WH/Stock/General Assembly,111.45
+LEDPS100,WH/Stock/General Assembly,8
+LEDPS120,WH/Stock/General Assembly,87
+LEDPS125,WH/Stock/General Assembly,51
+LEDPS130,WH/Stock/General Assembly,9
+LEDSFPODHO,WH/Stock/Raw Materials,180
+LEDSW100P,WH/Stock/General Assembly,35
+DMX105A,WH/Stock/Tech Stock,27
+DRILL#28,WH/Stock/General Assembly,24
+DRILL#30,WH/Stock/General Assembly,12
+DRILL2,WH/Stock/General Assembly,30
+DRILL2A,WH/Stock/Final Finished Goods,12
+DRILLG5,WH/Stock/General Assembly,12
+DT6001BLU,WH/Stock/Final Finished Goods,1
+DT6800BLU,WH/Stock/Final Finished Goods,1
+DT9000,WH/Stock/General Assembly,25
+DT9000,WH/Stock/Final Finished Goods,116
+DT9100,WH/Stock/General Assembly,312
+DT9200,WH/Stock/General Assembly,277
+DT9200X,WH/Stock/Final Finished Goods,3
+DTCONVKIT-B,WH/Stock/General Assembly Finished Goods,2
+DUN-DT5SPK,WH/Stock/General Assembly Finished Goods,2
+DUN-DT6RPV,WH/Stock/General Assembly Finished Goods,1
+DUN-DTCB,WH/Stock/General Assembly,1
+ELC2061,WH/Stock/Tech Stock,389
+ELC229,WH/Stock/Raw Materials,4317
+ELC229,WH/Stock/General Assembly,788
+ELC230,WH/Stock/General Assembly,45
+ELC231,WH/Stock/Raw Materials,7700
+ELC231,WH/Stock/Tech Stock,1227
+ELC231,WH/Stock/General Assembly,329
+ELC232,WH/Stock/Tech Stock,27
+ELC233,WH/Stock/Tech Stock,100
+ELC233,WH/Stock/General Assembly,941
+ELC234,WH/Stock/Tech Stock,39
+ELC234,WH/Stock/General Assembly,14
+ELC270,WH/Stock/Tech Stock,58
+ELC375,WH/Stock/Tech Stock,26
+ELC5000,WH/Stock/Tech Stock,546
+ELC5018,WH/Stock/Tech Stock,87
+ELC5023,WH/Stock/Tech Stock,344
+ET,WH/Stock/Final Finished Goods,17
+ETX100,WH/Stock/Tech Stock,28
+EVMHD-R,WH/Stock/General Assembly,1
+EVMHDKIT,WH/Stock/General Assembly,2
+EVMHDLED-R,WH/Stock/Final Finished Goods,1
+FOPADV2,WH/Stock/Tech Finished Goods,13
+FOPADV2,WH/Stock/Final Finished Goods,6
+FUSE1G,WH/Stock/Tech Stock,128
+FUSE5,WH/Stock/Tech Stock,74
+GAS100,WH/Stock/General Assembly,128.26
+GAS200,WH/Stock/Raw Materials,1000
+GAS200,WH/Stock/General Assembly,10274.84
+GRA1000,WH/Stock/General Assembly,13
+GRA1100,WH/Stock/General Assembly,20
+GRA1200,WH/Stock/General Assembly,22
+GRA1300,WH/Stock/General Assembly,14
+GRA2000,WH/Stock/General Assembly,41
+GRA2100,WH/Stock/General Assembly,13
+HA200,WH/Stock/Final Finished Goods,1
+HS1/16,WH/Stock/Tech Stock,83
+HS1/8,WH/Stock/Tech Stock,26.68
+HSG2213,WH/Stock/Tech Stock,39
+HSG225,WH/Stock/General Assembly,4
+HSG230,WH/Stock/General Assembly,1
+HSG243,WH/Stock/Raw Materials,89
+HSG255,WH/Stock/Raw Materials,152
+HSG255,WH/Stock/General Assembly,137
+HSG260,WH/Stock/General Assembly,522
+HSG2803,WH/Stock/General Assembly,1119
+HSG281,WH/Stock/Raw Materials,50
+HSG281,WH/Stock/Final Finished Goods,1
+HSG2820,WH/Stock/General Assembly,223
+HSG299,WH/Stock/Raw Materials,19
+HSG299,WH/Stock/General Assembly,4
+HYPERDT,WH/Stock/Final Finished Goods,1
+HYPERPCAC,WH/Stock/Final Finished Goods,2
+IC500,WH/Stock/Tech Stock,22
+IC502,WH/Stock/Tech Stock,85
+IC650,WH/Stock/Tech Stock,332
+IC660,WH/Stock/Tech Stock,1
+IC775,WH/Stock/Tech Stock,63
+IC777,WH/Stock/Tech Stock,207
+IC885,WH/Stock/Tech Stock,17
+IC885,WH/Stock/Final Finished Goods,113
+IC900,WH/Stock/Tech Stock,6
+IC910,WH/Stock/Tech Stock,88
+ICMILET,WH/Stock/Final Finished Goods,1608
+ICPDT,WH/Stock/Final Finished Goods,8
+IND1080,WH/Stock/General Assembly,19
+IND34,WH/Stock/Final Finished Goods,10
+KM,WH/Stock/Final Finished Goods,38
+KOLAV1734,WH/Stock/Tech Stock,130
+LAM25T8,WH/Stock/Raw Materials,34
+LAM25T8/841,WH/Stock/Raw Materials,15
+LAM31T8,WH/Stock/Raw Materials,31
+LAM32T8,WH/Stock/Raw Materials,260
+LAMS13080,WH/Stock/General Assembly,137
+LOOP150,WH/Stock/Tech Stock,3
+LOOP210,WH/Stock/Tech Stock,8
+LOOP300,WH/Stock/Final Finished Goods,3
+LP500DPL,WH/Stock/Tech Stock,60
+M105D,WH/Stock/Tech Stock,7
+M105W,WH/Stock/Final Finished Goods,4
+M155CLR,WH/Stock/General Assembly,24.262
+M165,WH/Stock/General Assembly,9
+M17,WH/Stock/Final Finished Goods,43
+M18,WH/Stock/Tech Stock,26
+M18,WH/Stock/Final Finished Goods,178
+M18BLK,WH/Stock/Final Finished Goods,3300
+M19,WH/Stock/Raw Materials,2500
+M19,WH/Stock/Final Finished Goods,6467
+M21,WH/Stock/Raw Materials,1700
+M22,WH/Stock/Raw Materials,150
+M22,WH/Stock/Tech Stock,40
+M22,WH/Stock/General Assembly,159
+M224,WH/Stock/Tech Stock,186
+M225,WH/Stock/General Assembly,732
+M400BR,WH/Stock/Final Finished Goods,113
+M400EFP,WH/Stock/Final Finished Goods,135
+M400SEAL,WH/Stock/Final Finished Goods,3
+M500,WH/Stock/Tech Stock,19
+M500,WH/Stock/Final Finished Goods,78
+M5250,WH/Stock/Raw Materials,160
+M5250,WH/Stock/General Assembly,13
+M601,WH/Stock/Tech Stock,2463
+M601,WH/Stock/Final Finished Goods,122
+M610,WH/Stock/General Assembly,240
+M613,WH/Stock/Tech Stock,92
+M614,WH/Stock/Tech Stock,475
+M614,WH/Stock/General Assembly,216
+M618,WH/Stock/Tech Stock,374
+M61LB,WH/Stock/Raw Materials,5750
+M61LB,WH/Stock/Final Finished Goods,24
+M62,WH/Stock/Tech Stock,98.984
+M62,WH/Stock/General Assembly,20
+M632,WH/Stock/Tech Stock,63
+M7,WH/Stock/General Assembly,28
+M70,WH/Stock/Tech Stock,68
+M730,WH/Stock/Final Finished Goods,1565
+M8,WH/Stock/General Assembly,147
+M80,WH/Stock/General Assembly,21
+M800,WH/Stock/General Assembly,81.5
+M802,WH/Stock/Raw Materials,100
+M802,WH/Stock/General Assembly,9
+M806,WH/Stock/Raw Materials,600
+M806,WH/Stock/General Assembly,300.7
+M81,WH/Stock/Raw Materials,50
+M81,WH/Stock/General Assembly,10
+M810,WH/Stock/Raw Materials,100
+M810,WH/Stock/General Assembly,124
+M813,WH/Stock/General Assembly,59
+M816,WH/Stock/General Assembly,226
+M817,WH/Stock/Raw Materials,98
+M817,WH/Stock/General Assembly,36
+M820,WH/Stock/Raw Materials,50
+M820,WH/Stock/General Assembly,191
+M860,WH/Stock/General Assembly,51
+M865,WH/Stock/General Assembly,62
+M905,WH/Stock/General Assembly,250
+MEM-375,WH/Stock/Tech Stock,11
+MEM-SD8GB,WH/Stock/Tech Stock,58
+MNT-MB7950,WH/Stock/General Assembly,6
+MNT0060,WH/Stock/Final Finished Goods,2
+MONLCD12,WH/Stock/Final Finished Goods,6
+MONLCD12P,WH/Stock/Final Finished Goods,3
+MONRPKIT,WH/Stock/Final Finished Goods,18
+LIDAT,WH/Stock/Final Finished Goods,21
+LT350,WH/Stock/Final Finished Goods,63
+M1025,WH/Stock/General Assembly,80
+M105,WH/Stock/Tech Stock,10
+M1058,WH/Stock/General Assembly,798
+M107,WH/Stock/General Assembly,13
+M108,WH/Stock/General Assembly,3
+M10B,WH/Stock/General Assembly,114
+M1100,WH/Stock/General Assembly,9
+M1120,WH/Stock/Raw Materials,54
+M1125,WH/Stock/Raw Materials,54
+M12316,WH/Stock/General Assembly,2473
+M12317,WH/Stock/Raw Materials,300
+M12317,WH/Stock/General Assembly,621
+M153CLR,WH/Stock/General Assembly,10.9
+M155,WH/Stock/General Assembly,2
+M155,WH/Stock/Final Finished Goods,6
+M192,WH/Stock/Final Finished Goods,1
+M193,WH/Stock/Final Finished Goods,80
+M20,WH/Stock/Final Finished Goods,1765
+M204,WH/Stock/Raw Materials,10
+M204,WH/Stock/General Assembly,14
+M205,WH/Stock/General Assembly,19
+M206,WH/Stock/General Assembly,13
+M207,WH/Stock/General Assembly,15
+M240,WH/Stock/Raw Materials,4
+M250,WH/Stock/Final Finished Goods,100
+M270,WH/Stock/Tech Stock,160
+M275,WH/Stock/Tech Stock,217
+M280,WH/Stock/Raw Materials,3000
+M280,WH/Stock/General Assembly,374
+M285,WH/Stock/Raw Materials,1800
+M285,WH/Stock/General Assembly,115
+M296,WH/Stock/Tech Stock,2722
+M3,WH/Stock/General Assembly,137
+M3000,WH/Stock/Raw Materials,12
+M3000,WH/Stock/General Assembly,4
+M350,WH/Stock/General Assembly,101
+M350A,WH/Stock/General Assembly,141
+M5257,WH/Stock/Raw Materials,12
+M5257,WH/Stock/General Assembly,1
+M5265,WH/Stock/Raw Materials,30
+M5275,WH/Stock/Raw Materials,50
+M5275,WH/Stock/General Assembly,24
+M632B,WH/Stock/Final Finished Goods,228
+M660,WH/Stock/General Assembly,99
+M662,WH/Stock/General Assembly,34
+M733,WH/Stock/Final Finished Goods,164
+M737,WH/Stock/General Assembly,35
+M738,WH/Stock/Raw Materials,30
+M738,WH/Stock/General Assembly,603
+M739,WH/Stock/General Assembly,108
+M739,WH/Stock/Final Finished Goods,15
+M741,WH/Stock/Final Finished Goods,215
+M742,WH/Stock/General Assembly,264
+M750,WH/Stock/General Assembly,573
+M755,WH/Stock/General Assembly,110
+M756,WH/Stock/Final Finished Goods,110
+M826,WH/Stock/General Assembly,22
+M831,WH/Stock/Final Finished Goods,27
+MAG125N,WH/Stock/General Assembly,60
+MAG125S,WH/Stock/Raw Materials,1269
+MAG250,WH/Stock/Raw Materials,200
+MAG250,WH/Stock/General Assembly,490
+MEM200,WH/Stock/Tech Stock,10
+MICP,WH/Stock/Tech Finished Goods,2
+MICP,WH/Stock/Final Finished Goods,4
+MONLCD2075,WH/Stock/Final Finished Goods,5
+MONPSHC,WH/Stock/Final Finished Goods,50
+NBS820,WH/Stock/Tech Stock,667
+NBS825,WH/Stock/Tech Stock,520
+NGARS135,WH/Stock/Raw Materials,45
+NGARS145,WH/Stock/Raw Materials,21
+NGARS155,WH/Stock/Raw Materials,238
+NGARS165,WH/Stock/Raw Materials,219
+NGPSC2PNL,WH/Stock/Final Finished Goods,4
+NGSC100C,WH/Stock/Welding,15
+NGSC110,WH/Stock/Welding,197
+NGSH2-PSA,WH/Stock/Raw Materials,65
+NUT9250,WH/Stock/Raw Materials,316
+NUT9250,WH/Stock/General Assembly,97
+NUT9265,WH/Stock/General Assembly,472
+NUT9350,WH/Stock/General Assembly,453
+NUT9360,WH/Stock/Raw Materials,500
+NUT9360,WH/Stock/General Assembly,115
+NUT9365,WH/Stock/General Assembly,251
+NY100,WH/Stock/Raw Materials,0.583
+OMCTS11,WH/Stock/Powder Coat,1
+OMCTS11,WH/Stock/Tech Finished Goods,1
+PB1606RJV2,WH/Stock/Final Finished Goods,2
+PC824 8.5,WH/Stock/Final Finished Goods,56
+PCA107,WH/Stock/Final Finished Goods,9
+PCA108,WH/Stock/Final Finished Goods,2
+PCA10906,WH/Stock/Final Finished Goods,13
+PCA10910,WH/Stock/Final Finished Goods,40
+PCA10915,WH/Stock/Final Finished Goods,81
+PCA150,WH/Stock/Tech Stock,3
+PCA165,WH/Stock/Tech Stock,8
+PCA170,WH/Stock/Final Finished Goods,3
+PCA30925-VGA,WH/Stock/Final Finished Goods,17
+PCA30930-USB,WH/Stock/Final Finished Goods,11
+PCA310,WH/Stock/Tech Stock,14
+PCB-084S,WH/Stock/Tech Stock,30
+PCB-084SP,WH/Stock/Tech Stock,70
+PCB-1000,WH/Stock/Tech Stock,100
+PCB-1001,WH/Stock/Tech Stock,50
+PCB-1002,WH/Stock/Tech Stock,108
+PCB-1003,WH/Stock/Tech Stock,108
+PCB-364V2,WH/Stock/Tech Stock,20
+PCB-366,WH/Stock/Tech Stock,18
+PCB-373,WH/Stock/Tech Stock,118
+PCB-375,WH/Stock/Tech Stock,23
+PCB-383,WH/Stock/Tech Stock,37
+PCB-407,WH/Stock/Tech Stock,11
+PCB-415,WH/Stock/Tech Stock,6
+PCB-4617B,WH/Stock/Tech Stock,66
+PCCKBM/F,WH/Stock/Final Finished Goods,1
+PCCKBM/MPS2,WH/Stock/Final Finished Goods,57
+PCCM/F3,WH/Stock/Tech Stock,20
+PCCMSM/F,WH/Stock/Final Finished Goods,34
+PCSNAV2014,WH/Stock/Final Finished Goods,31
+PCV01381,WH/Stock/Tech Stock,12
+PCV100,WH/Stock/Final Finished Goods,24
+PCV150,WH/Stock/Raw Materials,13
+PCV64405,WH/Stock/Final Finished Goods,16
+PEX100,WH/Stock/Raw Materials,1500
+PEX100,WH/Stock/General Assembly,896.267
+PEX200,WH/Stock/Raw Materials,1008
+PEX200,WH/Stock/General Assembly,104.828
+PEX300,WH/Stock/General Assembly,238.555
+PHONESUPPORT,WH/Stock/Final Finished Goods,9
+PIP,WH/Stock/Final Finished Goods,15
+PLG1030,WH/Stock/General Assembly,75
+PLG1040,WH/Stock/Tech Stock,39
+PLG1040,WH/Stock/General Assembly,792
+PLG1050,WH/Stock/Raw Materials,50
+PLG1050,WH/Stock/General Assembly,7
+PLG3020,WH/Stock/Raw Materials,126
+PLG4040,WH/Stock/Tech Stock,28
+PLS115,WH/Stock/Raw Materials,72
+POL140,WH/Stock/Sheet Metal,24
+POL140W,WH/Stock/Sheet Metal,4
+POL150,WH/Stock/Sheet Metal,14
+POS1734ETX2,WH/Stock/Tech Stock,19
+POT200,WH/Stock/Tech Stock,21
+POT200,WH/Stock/General Assembly,2
+POT250,WH/Stock/Tech Stock,30
+POT5KA502,WH/Stock/Tech Stock,100
+PS57,WH/Stock/Tech Stock,14
+PS57M,WH/Stock/Tech Stock,1
+PS700,WH/Stock/Tech Stock,52
+PS765,WH/Stock/Tech Stock,2
+PS765M,WH/Stock/Final Finished Goods,9
+MOUSE-USB,WH/Stock/Final Finished Goods,31
+NBS165,WH/Stock/Final Finished Goods,327
+NBS170,WH/Stock/Tech Stock,2983
+NBS170,WH/Stock/General Assembly,365
+NBS170A,WH/Stock/Raw Materials,711
+NBS170A,WH/Stock/Tech Stock,1582
+NBS170A,WH/Stock/General Assembly,659
+NBS171,WH/Stock/Tech Stock,265
+NBS172C,WH/Stock/Tech Stock,1936
+NGARS105,WH/Stock/Raw Materials,114
+NGARS105KIT,WH/Stock/General Assembly,5
+NGARS125,WH/Stock/Raw Materials,54
+NGARSKIT,WH/Stock/Raw Materials,17
+NGSH2-DSA,WH/Stock/Raw Materials,54
+NGSH2-MD,WH/Stock/Raw Materials,500
+NGSH2-MD,WH/Stock/General Assembly,141
+NGSH2-NA,WH/Stock/Final Finished Goods,262
+NGSH2AL-B,WH/Stock/General Assembly Finished Goods,2
+NUT1410,WH/Stock/Raw Materials,100
+NUT1410,WH/Stock/Tech Stock,18
+NUT1410,WH/Stock/General Assembly,78
+NUT1420,WH/Stock/Raw Materials,800
+NUT1420,WH/Stock/General Assembly,393
+NUT1430,WH/Stock/Tech Stock,23
+NUT1430,WH/Stock/General Assembly,279
+NUT2230,WH/Stock/Raw Materials,8823
+NUT2230,WH/Stock/Tech Stock,36
+NUT2230,WH/Stock/General Assembly,736
+NUT2230,WH/Stock/Final Finished Goods,4
+NUT2240,WH/Stock/General Assembly,493
+NUT2410,WH/Stock/Tech Stock,271
+NUT2410,WH/Stock/General Assembly,1049
+NUT2420,WH/Stock/General Assembly,258
+NUT2610,WH/Stock/Raw Materials,242
+NUT2610,WH/Stock/General Assembly,380
+NUT2620,WH/Stock/Raw Materials,1419
+NUT2620,WH/Stock/Welding,575
+NUT2620,WH/Stock/General Assembly,925
+NUT2640,WH/Stock/Raw Materials,50
+NUT2640,WH/Stock/General Assembly,223
+NUT2680,WH/Stock/Raw Materials,200
+NUT2680,WH/Stock/General Assembly,52
+NUT2730,WH/Stock/General Assembly,339
+NUT2805,WH/Stock/Raw Materials,39
+NUT3210,WH/Stock/Tech Stock,17
+NUT3210,WH/Stock/General Assembly,152
+NUT3220,WH/Stock/Raw Materials,300
+NUT3220,WH/Stock/Tech Stock,96
+NUT3220,WH/Stock/General Assembly,48
+NUT3320,WH/Stock/Tech Stock,97
+NUT3420,WH/Stock/General Assembly,956
+NUT3420,WH/Stock/Final Finished Goods,22
+NUT3430,WH/Stock/Tech Stock,41
+NUT3430,WH/Stock/General Assembly,591
+NUT3440,WH/Stock/General Assembly,240
+NUT3620,WH/Stock/Tech Stock,169
+NUT3620,WH/Stock/General Assembly,49
+NUT3620,WH/Stock/Final Finished Goods,25
+NUT4220,WH/Stock/Sheet Metal,656
+NUT4230,WH/Stock/Sheet Metal,328
+NUT5430,WH/Stock/General Assembly,48
+NUT7220,WH/Stock/Welding,24
+NUT7420,WH/Stock/Raw Materials,1971
+NUT7420,WH/Stock/Welding,104
+NUT8210,WH/Stock/General Assembly,584
+NUT8410,WH/Stock/General Assembly,701
+OMCPCSTICK,WH/Stock/Tech Stock,1
+ORDCLASS1,WH/Stock/General Assembly,18
+PB,WH/Stock/Tech Stock,1
+PB,WH/Stock/Final Finished Goods,2
+PB321,WH/Stock/Tech Stock,2
+PCA10925,WH/Stock/Final Finished Goods,93
+PCA111,WH/Stock/Final Finished Goods,2
+PCA300,WH/Stock/Tech Stock,15
+PCA308,WH/Stock/Final Finished Goods,4
+PCA30906-VGA,WH/Stock/Tech Stock,32
+PCA30906-VGA,WH/Stock/Final Finished Goods,11
+PCA531,WH/Stock/Final Finished Goods,1
+PCA9020,WH/Stock/Tech Stock,26
+PCB-0103,WH/Stock/Tech Stock,2
+PCB-054,WH/Stock/Tech Stock,31
+PCB-345,WH/Stock/Tech Stock,15
+PCB-354,WH/Stock/Tech Stock,78
+PCB-356,WH/Stock/Tech Stock,17
+PCCDP100,WH/Stock/Tech Stock,149
+PCCF/F,WH/Stock/Raw Materials,112
+PCCF/F,WH/Stock/Final Finished Goods,442
+PCCVEM/M,WH/Stock/Final Finished Goods,26
+PCH115,WH/Stock/Tech Stock,11
+PCS-WIN7LC,WH/Stock/Tech Stock,4
+PLG2010,WH/Stock/Raw Materials,723
+PLG2010,WH/Stock/General Assembly,59
+PLG2020,WH/Stock/Tech Stock,234
+PLG2030,WH/Stock/General Assembly,377
+PLG2040,WH/Stock/Raw Materials,54
+PLG2040,WH/Stock/General Assembly,96
+PLS400,WH/Stock/Final Finished Goods,773
+POT100,WH/Stock/Tech Stock,28
+POT100HW,WH/Stock/Tech Stock,132
+POT130,WH/Stock/Tech Stock,3
+POT140,WH/Stock/Tech Stock,112
+PS-DR1512,WH/Stock/General Assembly,9
+PS-DR6012,WH/Stock/General Assembly,3
+PS-PCS,WH/Stock/Tech Stock,4
+PS15,WH/Stock/Tech Stock,3
+PS15,WH/Stock/Final Finished Goods,5
+PS15824,WH/Stock/Final Finished Goods,2
+PS30,WH/Stock/Tech Stock,4
+PS30U120,WH/Stock/Final Finished Goods,19
+PS30U120M,WH/Stock/Final Finished Goods,1
+PT790500S591002,WH/Stock/Tech Stock,19
+PT850,WH/Stock/Tech Stock,7
+QV1000LED,WH/Stock/General Assembly Finished Goods,1
+R10,WH/Stock/Tech Stock,5373
+R100,WH/Stock/Tech Stock,1021
+R100K,WH/Stock/Tech Stock,2021
+R15K,WH/Stock/Tech Stock,1740
+R1K,WH/Stock/Tech Stock,402
+R220,WH/Stock/Tech Stock,111
+R220K,WH/Stock/Tech Stock,76
+R22K,WH/Stock/Tech Stock,1140
+R5.6K,WH/Stock/Tech Stock,2743
+RA220,WH/Stock/Tech Stock,95
+RD220,WH/Stock/Tech Stock,73
+RE27,WH/Stock/Tech Stock,52
+REL34,WH/Stock/Tech Stock,39
+REL400,WH/Stock/Tech Stock,93
+RIV122,WH/Stock/General Assembly,630
+RIV130A,WH/Stock/General Assembly,976
+RIV145,WH/Stock/General Assembly,3000
+RIV146,WH/Stock/General Assembly,3138
+ROD,WH/Stock/Final Finished Goods,172
+S126,WH/Stock/Final Finished Goods,8
+S210I,WH/Stock/Final Finished Goods,9
+S2KD1080,WH/Stock/General Assembly,55
+S2KD1100,WH/Stock/Final Finished Goods,7
+S2KD1125,WH/Stock/Raw Materials,2
+SCW2415,WH/Stock/Tech Stock,1197
+SCW2415,WH/Stock/General Assembly,1324
+SCW2433,WH/Stock/Raw Materials,4521
+SCW2433,WH/Stock/General Assembly,4635
+SCW2435,WH/Stock/Raw Materials,2000
+SCW2435,WH/Stock/Tech Stock,16
+SCW2435,WH/Stock/General Assembly,1068
+SCW2440,WH/Stock/Raw Materials,33965
+SCW2440,WH/Stock/General Assembly,159
+SCW2455,WH/Stock/Raw Materials,3122
+SCW2455,WH/Stock/General Assembly,3843
+SCW2458,WH/Stock/General Assembly,50
+SCW2459,WH/Stock/Raw Materials,500
+SCW2459,WH/Stock/General Assembly,299
+SCW2460,WH/Stock/Raw Materials,2151
+SCW2461A,WH/Stock/Raw Materials,25
+SCW2461A,WH/Stock/Final Finished Goods,76
+SCW2462,WH/Stock/Final Finished Goods,1004
+SCW2463,WH/Stock/Raw Materials,5637
+SCW2463,WH/Stock/Final Finished Goods,839
+PST1,WH/Stock/Raw Materials,450
+PST1/2,WH/Stock/Raw Materials,350
+PST1/4,WH/Stock/General Assembly,147.458
+PST3/4,WH/Stock/Raw Materials,40
+PSTC3001U,WH/Stock/Tech Stock,16
+PSTC3001U,WH/Stock/Final Finished Goods,6
+PT-CD7220REAR,WH/Stock/Final Finished Goods,1
+PTHRP5,WH/Stock/Welding,0.653
+PVC4IN,WH/Stock/General Assembly,22
+PVCC,WH/Stock/Final Finished Goods,4
+PVCG,WH/Stock/Final Finished Goods,1
+QV1025KIT,WH/Stock/General Assembly,16
+QV1050,WH/Stock/Raw Materials,39
+QV2000LED,WH/Stock/Final Finished Goods,4
+QWERTY,WH/Stock/Final Finished Goods,1
+QWERTYPLB,WH/Stock/Tech Stock,7
+QWERTYR,WH/Stock/Final Finished Goods,4
+QWIK004,WH/Stock/General Assembly,1512
+R10K,WH/Stock/Final Finished Goods,5506
+R10MEG,WH/Stock/Tech Stock,3291
+R12K,WH/Stock/Tech Stock,763
+R1MEG,WH/Stock/Tech Stock,15
+R2.2K,WH/Stock/Tech Stock,2082
+R2.2KX,WH/Stock/Tech Stock,110
+R3.9K,WH/Stock/Tech Stock,1000
+R300,WH/Stock/Tech Stock,4887
+R4.7K,WH/Stock/Tech Stock,693
+R47,WH/Stock/Tech Stock,100
+R470,WH/Stock/Final Finished Goods,50
+R470K,WH/Stock/Final Finished Goods,86
+R47K,WH/Stock/Final Finished Goods,816
+REL5196,WH/Stock/Tech Stock,37
+REL700,WH/Stock/Tech Stock,92
+REL750,WH/Stock/Tech Stock,18
+RFID-125,WH/Stock/Tech Stock,91
+RFID125BP,WH/Stock/Tech Stock,114
+RIV105,WH/Stock/Raw Materials,500
+RIV105,WH/Stock/Sheet Metal,2138
+RIV105,WH/Stock/General Assembly,1728
+RIV110,WH/Stock/Welding,662
+RIV110,WH/Stock/General Assembly,8871
+RIV120A,WH/Stock/General Assembly,1312
+RM1301,WH/Stock/Final Finished Goods,6
+RP3.9K,WH/Stock/Tech Stock,177
+RP330A,WH/Stock/Tech Stock,362
+S120,WH/Stock/Raw Materials,24
+S120,WH/Stock/Final Finished Goods,2
+S202A,WH/Stock/Final Finished Goods,6
+S2KD1000,WH/Stock/Final Finished Goods,11
+S2KH2300,WH/Stock/Raw Materials,315
+S2KH2300,WH/Stock/Final Finished Goods,33
+SCW1095,WH/Stock/Raw Materials,207
+SCW1100,WH/Stock/General Assembly,364
+SCW1105,WH/Stock/Raw Materials,18
+SCW1105,WH/Stock/Welding,154
+SCW1130,WH/Stock/Raw Materials,202
+SCW1140,WH/Stock/General Assembly,37
+SCW1145,WH/Stock/General Assembly,163
+SCW1150,WH/Stock/Welding,10
+SCW1150,WH/Stock/General Assembly,68
+SCW1160,WH/Stock/Raw Materials,69
+SCW1210,WH/Stock/Raw Materials,100
+SCW1220,WH/Stock/Raw Materials,500
+SCW1220,WH/Stock/Tech Stock,4
+SCW1230,WH/Stock/Tech Stock,158
+SCW1233,WH/Stock/Tech Stock,53
+SCW2000,WH/Stock/Tech Stock,292
+SCW2001,WH/Stock/Tech Stock,129
+SCW2002,WH/Stock/Tech Stock,165
+SCW2003,WH/Stock/Tech Stock,160
+SCW2210,WH/Stock/Tech Stock,8
+SCW2210,WH/Stock/General Assembly,409
+SCW3215,WH/Stock/Raw Materials,300
+SCW3215,WH/Stock/Tech Stock,7
+SCW3215,WH/Stock/General Assembly,225
+SCW3218,WH/Stock/Raw Materials,37232
+SCW3220,WH/Stock/Raw Materials,1000
+SCW3220,WH/Stock/Tech Stock,415
+SCW3220,WH/Stock/Welding,385
+SCW3220,WH/Stock/General Assembly,123
+SCW3222,WH/Stock/Raw Materials,2000
+SCW3222,WH/Stock/Tech Stock,214
+SCW3222,WH/Stock/General Assembly,1337
+SCW3225,WH/Stock/Raw Materials,16223
+SCW3225,WH/Stock/Tech Stock,486
+SCW3225,WH/Stock/General Assembly,963
+SCW3235,WH/Stock/Raw Materials,6224
+SCW3235,WH/Stock/Tech Stock,537
+SCW3235,WH/Stock/General Assembly,78
+SCW3240,WH/Stock/Tech Stock,656
+SCW3240,WH/Stock/General Assembly,356
+SCW3247,WH/Stock/Tech Stock,104
+SCW3250,WH/Stock/Raw Materials,14479
+SCW3250,WH/Stock/Tech Stock,746
+SCW3250,WH/Stock/General Assembly,160
+SCW3275,WH/Stock/Raw Materials,100
+SCW3275,WH/Stock/Tech Stock,215
+SCW3275,WH/Stock/General Assembly,57
+SCW3400,WH/Stock/Raw Materials,19993
+SCW3400,WH/Stock/Tech Stock,76
+SCW3400,WH/Stock/General Assembly,1128
+SCW3405,WH/Stock/Raw Materials,1000
+SCW3405,WH/Stock/General Assembly,809
+SCW3410,WH/Stock/Raw Materials,6013
+SCW3410,WH/Stock/Tech Stock,449
+SCW3420,WH/Stock/Raw Materials,6107
+SCW3420,WH/Stock/Tech Stock,88
+SCW3420,WH/Stock/General Assembly,337
+SCW3450,WH/Stock/General Assembly,402
+SCW3451,WH/Stock/General Assembly,1600
+SCW3455,WH/Stock/General Assembly,82
+SCW4240,WH/Stock/Tech Stock,1414
+SCW4255,WH/Stock/General Assembly,1901
+SCW4260,WH/Stock/Raw Materials,555
+SCW4260,WH/Stock/Final Finished Goods,490
+SCW4263,WH/Stock/Raw Materials,5000
+SCW4263,WH/Stock/General Assembly,974
+SCW4265,WH/Stock/Raw Materials,4555
+SCW4265,WH/Stock/Tech Stock,20
+SCW4282,WH/Stock/General Assembly,170
+SCW4285,WH/Stock/Tech Stock,715
+SCW4295,WH/Stock/General Assembly,162
+SCW4310,WH/Stock/Raw Materials,300
+SCW4310,WH/Stock/General Assembly,1538
+SCWM3000,WH/Stock/Tech Stock,124
+SCWM4010,WH/Stock/Tech Stock,240
+SCWM4012,WH/Stock/Tech Stock,226
+SCWM4012,WH/Stock/General Assembly,261
+SH1030CUS,WH/Stock/General Assembly,2
+SH2020CR,WH/Stock/Raw Materials,5
+SH2040CR,WH/Stock/Raw Materials,4
+SH2050CR,WH/Stock/Raw Materials,5
+SL59,WH/Stock/Final Finished Goods,1
+SL59A,WH/Stock/Final Finished Goods,17
+SM1010,WH/Stock/Sheet Metal,40
+SM1026,WH/Stock/Sheet Metal,0.005
+SM1030,WH/Stock/Sheet Metal,155.307
+SM1035,WH/Stock/Sheet Metal,51.429
+SM1041,WH/Stock/Sheet Metal,147
+SM1070,WH/Stock/Sheet Metal,7.111
+SM1080,WH/Stock/Sheet Metal,306.8
+SM1100,WH/Stock/Sheet Metal,155.714
+SM1110,WH/Stock/Sheet Metal,116
+SM1120,WH/Stock/Sheet Metal,360
+SM1130,WH/Stock/Sheet Metal,127.222
+SM2008,WH/Stock/Sheet Metal,720
+SM2020,WH/Stock/Sheet Metal,373
+SM2030,WH/Stock/Sheet Metal,800
+SM2040,WH/Stock/Sheet Metal,367.667
+SM2050,WH/Stock/Sheet Metal,91.475
+SM2060,WH/Stock/Sheet Metal,1386.75
+SM2070,WH/Stock/Sheet Metal,43.872
+SM2090,WH/Stock/Welding,27
+SM2150,WH/Stock/Welding,44
+SM2220,WH/Stock/Welding,88
+SM2260,WH/Stock/Welding,1
+SM3020,WH/Stock/Sheet Metal,192
+SM3022,WH/Stock/Sheet Metal,2
+SM3025,WH/Stock/Sheet Metal,111.6
+SM3027,WH/Stock/Sheet Metal,29.46
+SM3028,WH/Stock/Sheet Metal,1621
+SM3030,WH/Stock/Sheet Metal,499.3
+SM3030GW,WH/Stock/Sheet Metal,1549
+SCW2464,WH/Stock/Raw Materials,250
+SCW2464,WH/Stock/General Assembly,134
+SCW2466,WH/Stock/Raw Materials,4000
+SCW2466,WH/Stock/General Assembly,1865
+SCW2467,WH/Stock/Raw Materials,857
+SCW2467,WH/Stock/Tech Stock,120
+SCW2468,WH/Stock/Raw Materials,5000
+SCW2468,WH/Stock/Welding,558
+SCW2468,WH/Stock/General Assembly,2434
+SCW2468C,WH/Stock/Raw Materials,250
+SCW2468C,WH/Stock/General Assembly,560
+SCW2469,WH/Stock/General Assembly,415
+SCW2470ECB,WH/Stock/Raw Materials,2878
+SCW2473,WH/Stock/Raw Materials,1300
+SCW2473,WH/Stock/General Assembly,486
+SCW2478,WH/Stock/General Assembly,54
+SCW2479,WH/Stock/Raw Materials,357
+SCW2480,WH/Stock/Raw Materials,1102
+SCW2480,WH/Stock/Tech Stock,244
+SCW2500,WH/Stock/Raw Materials,2350
+SCW2500,WH/Stock/General Assembly,140
+SCW2500ECB,WH/Stock/Raw Materials,1471
+SCW2500ECB,WH/Stock/General Assembly,249
+SCW2610,WH/Stock/Welding,11
+SCW2610,WH/Stock/General Assembly,597
+SCW2610,WH/Stock/Final Finished Goods,37
+SCW2615,WH/Stock/Raw Materials,50
+SCW2615,WH/Stock/General Assembly,127
+SCW2620,WH/Stock/General Assembly,395
+SCW2628,WH/Stock/Raw Materials,50
+SCW2628,WH/Stock/General Assembly,6
+SCW2650,WH/Stock/Raw Materials,195
+SCW2653,WH/Stock/General Assembly,95
+SCW2655,WH/Stock/Raw Materials,33
+SCW2656,WH/Stock/Raw Materials,20
+SCW2656,WH/Stock/General Assembly,13
+SCW2657,WH/Stock/Raw Materials,100
+SCW2657,WH/Stock/General Assembly,184
+SCW2658,WH/Stock/Raw Materials,200
+SCW2658,WH/Stock/General Assembly,72
+SCW2660,WH/Stock/Raw Materials,178
+SCW2660,WH/Stock/General Assembly,16
+SCW2661,WH/Stock/Raw Materials,100
+SCW2661,WH/Stock/General Assembly,178
+SCW2663,WH/Stock/Raw Materials,150
+SCW2663,WH/Stock/General Assembly,190
+SCW2665,WH/Stock/Raw Materials,100
+SCW2675,WH/Stock/Raw Materials,50
+SCW2675,WH/Stock/General Assembly,16
+SCW2680,WH/Stock/Raw Materials,160
+SCW2680,WH/Stock/General Assembly,64
+SCW2685,WH/Stock/Raw Materials,18
+SCW2685,WH/Stock/General Assembly,16
+SCW2720,WH/Stock/Raw Materials,24
+SCW2720,WH/Stock/Welding,10
+SCW2725,WH/Stock/Raw Materials,43
+SCW2730,WH/Stock/Raw Materials,10
+SCW2730,WH/Stock/General Assembly,25
+SCW2740,WH/Stock/Raw Materials,16
+SCW2800,WH/Stock/Raw Materials,13
+SCW2801,WH/Stock/Raw Materials,102
+SCW3115,WH/Stock/Raw Materials,500
+SCW3115,WH/Stock/General Assembly,47
+SCW3120,WH/Stock/Tech Stock,1410
+SCW3127,WH/Stock/Tech Stock,519
+SCW3127,WH/Stock/General Assembly,41
+SCW3140,WH/Stock/Raw Materials,102
+SCW3140,WH/Stock/Tech Stock,244
+SCW4325,WH/Stock/General Assembly,858
+SCW4410,WH/Stock/Raw Materials,500
+SCW4410,WH/Stock/General Assembly,720
+SCW4510,WH/Stock/General Assembly,75
+SCW4520,WH/Stock/General Assembly,97
+SCW4608,WH/Stock/General Assembly,358
+SCW4620,WH/Stock/General Assembly,58
+SCW5210,WH/Stock/Tech Stock,31
+SCW6230,WH/Stock/Raw Materials,3312
+SCW6230,WH/Stock/General Assembly,184
+SCW7620,WH/Stock/Raw Materials,100
+SCW7620,WH/Stock/General Assembly,18
+SCW7640,WH/Stock/General Assembly,52
+SCW8020,WH/Stock/General Assembly,72
+SCW8020,WH/Stock/Final Finished Goods,50
+SCW8050,WH/Stock/Sheet Metal,699
+SCW8055,WH/Stock/Sheet Metal,58
+SCW8060,WH/Stock/Sheet Metal,476
+SCW8075,WH/Stock/Sheet Metal,52
+SCW8100,WH/Stock/Raw Materials,2977
+SCW8100,WH/Stock/Sheet Metal,733
+SCW8105,WH/Stock/Sheet Metal,838
+SCW8125,WH/Stock/Sheet Metal,1361
+SCW8130,WH/Stock/Sheet Metal,230
+SCW8200,WH/Stock/Sheet Metal,133
+SCW8210,WH/Stock/Sheet Metal,61
+SCW8211,WH/Stock/Sheet Metal,40
+SCW8504,WH/Stock/Raw Materials,1880
+SCW8505,WH/Stock/Raw Materials,2000
+SCW8505,WH/Stock/General Assembly,1559
+SCW8800,WH/Stock/Raw Materials,100
+SCW8800,WH/Stock/General Assembly,111
+SCW8830,WH/Stock/Raw Materials,20
+SCW8840,WH/Stock/Raw Materials,81
+SCW9000,WH/Stock/Raw Materials,52
+SCW9050,WH/Stock/General Assembly,162
+SCW9060,WH/Stock/Final Finished Goods,68
+SCW9110,WH/Stock/Raw Materials,4
+SCW9200,WH/Stock/General Assembly,16
+SH2051CUS,WH/Stock/General Assembly,2
+SH2080CUS,WH/Stock/General Assembly,1
+SH2090CUS,WH/Stock/General Assembly,2
+SM4152,WH/Stock/Welding,86
+SM4155,WH/Stock/Welding,120
+SM4179,WH/Stock/Welding,19
+SM4185,WH/Stock/Welding,103
+SM4190,WH/Stock/Welding,8
+SM4200,WH/Stock/Welding,25
+SM4250,WH/Stock/Welding,525
+SM5410,WH/Stock/Welding,32
+SM6010,WH/Stock/Welding,71.334
+SM6035,WH/Stock/Welding,169.5
+SM6045,WH/Stock/Welding,60
+SM7010,WH/Stock/Sheet Metal,160
+SM8000,WH/Stock/Sheet Metal,329
+SM8005,WH/Stock/Sheet Metal,54
+SM8100,WH/Stock/Raw Materials,190
+SM9007,WH/Stock/Welding,266.5
+SM9009,WH/Stock/Welding,686
+SM9095,WH/Stock/Sheet Metal,0.253
+SMARTWAVE-KIT,WH/Stock/Final Finished Goods,6
+SMARTWAVE-KNOB,WH/Stock/Tech Stock,48
+SME1100,WH/Stock/Welding,29.89
+SME1125,WH/Stock/Welding,236.833
+SME1150,WH/Stock/Welding,15
+SME2000,WH/Stock/Welding,2
+SME2050,WH/Stock/Raw Materials,42
+SME2050,WH/Stock/Welding,30
+SME2050C,WH/Stock/Raw Materials,2
+SME2100C,WH/Stock/Raw Materials,8
+SME3000,WH/Stock/Raw Materials,34
+SME3000,WH/Stock/Welding,19
+SME3000C,WH/Stock/Raw Materials,2
+SME9055,WH/Stock/Welding,10
+SME9060,WH/Stock/Welding,11
+SME9065,WH/Stock/Welding,23
+SME9066,WH/Stock/Welding,18
+SMF1000,WH/Stock/Welding,9
+SMF1010,WH/Stock/Welding,41
+SMF1020,WH/Stock/Welding,58
+SMF1040,WH/Stock/Welding,47
+SMF1050,WH/Stock/Welding,81
+SMF1060,WH/Stock/Welding,96
+SMF1090,WH/Stock/Welding,26
+SMF1095,WH/Stock/Welding,39
+SMF2010,WH/Stock/Welding,9
+SMF2020,WH/Stock/Welding,93
+SMF2025,WH/Stock/Welding,9
+SMF2081,WH/Stock/Welding,14
+SMF2082,WH/Stock/Welding,12
+SM3040,WH/Stock/Sheet Metal,9.04
+SM3041,WH/Stock/Sheet Metal,837.866
+SM3050,WH/Stock/Sheet Metal,40.6
+SM3051,WH/Stock/Sheet Metal,144
+SM3055,WH/Stock/Sheet Metal,89
+SM3056,WH/Stock/Sheet Metal,80
+SM3065,WH/Stock/Sheet Metal,58
+SM3070,WH/Stock/Sheet Metal,54.93
+SM3080,WH/Stock/Welding,169.038
+SM3090,WH/Stock/Welding,53.958
+SM4010,WH/Stock/Welding,2.5
+SM4030,WH/Stock/Welding,83.666
+SM4040,WH/Stock/Welding,2470.299
+SM4091,WH/Stock/Welding,15
+SM4099,WH/Stock/Welding,24
+SM4100,WH/Stock/Welding,24.417
+SM4110,WH/Stock/Welding,293.248
+SM4135,WH/Stock/Welding,70
+SM4140,WH/Stock/Welding,210
+SME6010,WH/Stock/Raw Materials,275
+SME6010C,WH/Stock/Raw Materials,13
+SME6010IM,WH/Stock/Raw Materials,53
+SME6010MA,WH/Stock/Raw Materials,88
+SME6700,WH/Stock/Welding,1936
+SME6750,WH/Stock/Welding,48
+SME7020,WH/Stock/General Assembly,254
+SME7030,WH/Stock/Welding,667.8
+SME7040,WH/Stock/Welding,550.32
+SME7050,WH/Stock/Raw Materials,62
+SME7050,WH/Stock/Welding,50.32
+SME8000,WH/Stock/General Assembly,59
+SME8020,WH/Stock/General Assembly,53
+SME8020BB,WH/Stock/General Assembly,7
+SME8030,WH/Stock/Raw Materials,2
+SME8040,WH/Stock/General Assembly,55
+SME8050,WH/Stock/Raw Materials,114
+SME8050,WH/Stock/General Assembly,13
+SME8050V2,WH/Stock/General Assembly,5
+SME8070,WH/Stock/Raw Materials,436
+SME8080,WH/Stock/Raw Materials,1
+SME8081,WH/Stock/Welding,948
+SME8500,WH/Stock/Raw Materials,375
+SME8505,WH/Stock/Raw Materials,286
+SME8510,WH/Stock/Raw Materials,179
+SME8515,WH/Stock/Raw Materials,173
+SME9000,WH/Stock/Raw Materials,4
+SME9005,WH/Stock/Welding,278.348
+SME9008,WH/Stock/Welding,10.334
+SME9010,WH/Stock/Raw Materials,71
+SME9015,WH/Stock/Raw Materials,74
+SME9020,WH/Stock/Raw Materials,71
+SME9021,WH/Stock/Raw Materials,1
+SME9025,WH/Stock/Raw Materials,71
+SME9026,WH/Stock/Raw Materials,1
+SME9045,WH/Stock/Welding,24
+SME9050,WH/Stock/Welding,26
+SMH120,WH/Stock/Raw Materials,50
+SMH120,WH/Stock/General Assembly,28
+SMH130,WH/Stock/General Assembly,18
+SMH135,WH/Stock/General Assembly,14
+SMH140,WH/Stock/Final Finished Goods,6032
+SMH210,WH/Stock/Raw Materials,89
+SMH210,WH/Stock/Tech Stock,20
+SMH210,WH/Stock/Final Finished Goods,2
+SMH220,WH/Stock/Raw Materials,101
+SMP1100,WH/Stock/Raw Materials,422
+SMP140,WH/Stock/Final Finished Goods,382
+SMP150,WH/Stock/Final Finished Goods,7
+SMP160,WH/Stock/Final Finished Goods,5
+SMP235,WH/Stock/Raw Materials,46
+SMP450,WH/Stock/Welding,5
+SMS1000,WH/Stock/Raw Materials,874
+SMS2000,WH/Stock/Raw Materials,199
+SMS2000A,WH/Stock/Raw Materials,21
+SMS3000,WH/Stock/Tech Stock,7
+SMS3000,WH/Stock/General Assembly,1492
+SOC105,WH/Stock/Tech Stock,1
+SOC115,WH/Stock/Final Finished Goods,1224
+SOC125,WH/Stock/Tech Stock,151
+SOC130,WH/Stock/Tech Stock,8
+SPK2000B,WH/Stock/Raw Materials,16
+SPK2000B,WH/Stock/General Assembly,13
+SPK410,WH/Stock/Raw Materials,3
+SPK410,WH/Stock/General Assembly,2
+SPK4WPD,WH/Stock/Raw Materials,178
+SPK4WPD,WH/Stock/General Assembly,1
+SPK508,WH/Stock/Raw Materials,880
+SPK508,WH/Stock/Tech Stock,5
+SPK508,WH/Stock/General Assembly,7
+SPK508M,WH/Stock/Final Finished Goods,11
+SPR200,WH/Stock/General Assembly,66
+SPR250,WH/Stock/General Assembly,11
+SPR300,WH/Stock/Raw Materials,1215
+SPR300,WH/Stock/General Assembly,7
+SSD32GB,WH/Stock/Tech Stock,4
+SSD64GB,WH/Stock/Tech Stock,13
+SUB-DTC,WH/Stock/Final Finished Goods,1
+SUBDT2BP,WH/Stock/General Assembly,4
+SW185,WH/Stock/Tech Stock,6
+SW185A,WH/Stock/Tech Stock,71
+SW185A,WH/Stock/Final Finished Goods,58
+SW201,WH/Stock/Tech Stock,20
+SW32B,WH/Stock/General Assembly,139
+SW32B,WH/Stock/Final Finished Goods,50
+SW32C,WH/Stock/Raw Materials,210
+SW32C,WH/Stock/General Assembly,145
+SW383,WH/Stock/Tech Stock,767
+SW383,WH/Stock/Final Finished Goods,133
+SW383A,WH/Stock/Tech Stock,1478
+SW383A,WH/Stock/Final Finished Goods,325
+SW383B,WH/Stock/Final Finished Goods,988
+SW54420,WH/Stock/Tech Stock,100
+SW54420,WH/Stock/General Assembly,16
+SW54423,WH/Stock/Tech Stock,10
+SW59,WH/Stock/Tech Stock,8
+SW59A,WH/Stock/Tech Stock,9
+SW660,WH/Stock/Tech Stock,12
+SWBD1300,WH/Stock/Raw Materials,4
+SWBD1300,WH/Stock/Tech Stock,12
+SWBD1700A,WH/Stock/Final Finished Goods,6
+TEL106,WH/Stock/Tech Finished Goods,3
+TEL108,WH/Stock/Final Finished Goods,5
+TEL123,WH/Stock/Tech Stock,11
+TEL175,WH/Stock/Tech Stock,7
+TER187,WH/Stock/Raw Materials,1590
+TER187,WH/Stock/Tech Stock,574
+TER192,WH/Stock/Raw Materials,1971
+TER192A,WH/Stock/Raw Materials,3192
+TER210,WH/Stock/Tech Stock,383
+TER211,WH/Stock/Raw Materials,3000
+TER211,WH/Stock/Tech Stock,677
+TER211,WH/Stock/General Assembly,195
+TER553,WH/Stock/Tech Stock,8
+TER553,WH/Stock/General Assembly,178
+TER634,WH/Stock/Raw Materials,541
+TER690,WH/Stock/Raw Materials,2551
+TER690,WH/Stock/General Assembly,243
+TER694,WH/Stock/Tech Stock,57
+TER695A,WH/Stock/Raw Materials,400
+TER695A,WH/Stock/General Assembly,261
+TER695A,WH/Stock/Final Finished Goods,82
+TOP1003,WH/Stock/Final Finished Goods,10
+TR122A,WH/Stock/Tech Stock,45
+TR150,WH/Stock/Tech Stock,23
+TR155,WH/Stock/Tech Stock,266
+TRF09D,WH/Stock/Raw Materials,63
+TRF09D,WH/Stock/Tech Stock,9
+TSUBV2KIT,WH/Stock/Tech Finished Goods,1
+ULCD500,WH/Stock/Tech Stock,26
+VCHANNELS,WH/Stock/Final Finished Goods,29
+VIEW1500FR,WH/Stock/General Assembly,1
+WAS2680,WH/Stock/General Assembly,785
+WAS2730,WH/Stock/General Assembly,249
+WAS2740,WH/Stock/General Assembly,188
+WAS2830,WH/Stock/Raw Materials,50
+WAS2830,WH/Stock/General Assembly,20
+WAS2840,WH/Stock/Raw Materials,83
+WAS2840,WH/Stock/General Assembly,30
+WAS3010,WH/Stock/Tech Stock,165
+WAS3210,WH/Stock/General Assembly,104
+WAS3420,WH/Stock/Raw Materials,2448
+WAS3420,WH/Stock/Tech Stock,1678
+WAS3420,WH/Stock/General Assembly,101
+WAS3610,WH/Stock/General Assembly,509
+WAS3612,WH/Stock/General Assembly,688
+WAS3615,WH/Stock/Raw Materials,300
+WAS3615,WH/Stock/General Assembly,227
+WAS3620,WH/Stock/Raw Materials,1569
+WAS3625,WH/Stock/Raw Materials,500
+WAS3625,WH/Stock/General Assembly,335
+WAS3630,WH/Stock/Welding,27
+WAS3635,WH/Stock/General Assembly,1574
+WAS3640,WH/Stock/Raw Materials,500
+WAS3640,WH/Stock/General Assembly,208
+WAS4420,WH/Stock/Raw Materials,5176
+WAS4420,WH/Stock/Final Finished Goods,953
+WAS4620,WH/Stock/Welding,199
+WAS5630,WH/Stock/General Assembly,81
+WAS5635,WH/Stock/Raw Materials,500
+WAS5635,WH/Stock/General Assembly,188
+WAS6420,WH/Stock/Tech Stock,646
+WAS6420,WH/Stock/General Assembly,657
+WAS6600,WH/Stock/General Assembly,1232
+WB110,WH/Stock/Final Finished Goods,53
+WB110A,WH/Stock/Final Finished Goods,6648
+WIR11141,WH/Stock/Final Finished Goods,4
+WIR183SO,WH/Stock/General Assembly,349
+WIR200,WH/Stock/Tech Stock,3318
+WIR200,WH/Stock/Final Finished Goods,7475
+WIR500GRAY,WH/Stock/Tech Stock,389.5
+WIR500GRAY,WH/Stock/Final Finished Goods,5000.75
+WIR6020GRN,WH/Stock/Raw Materials,1000
+WIR620BLK,WH/Stock/Raw Materials,1000
+WIR620BLK,WH/Stock/Tech Stock,584
+WIR620BLU,WH/Stock/Raw Materials,1000
+WIR620BLU,WH/Stock/General Assembly,733
+WIR620BRN,WH/Stock/Tech Stock,150.833
+WIR620GRAY,WH/Stock/Tech Stock,1000.33
+WIR620GRN,WH/Stock/Tech Stock,629.503
+WIR620GRN,WH/Stock/General Assembly,770
+WIR620ORG,WH/Stock/Raw Materials,1000
+WIR620ORG,WH/Stock/Tech Stock,550.777
+WIR620PUR,WH/Stock/Raw Materials,4000
+WIR620RED,WH/Stock/Tech Stock,923.677
+WIR620WHT,WH/Stock/Raw Materials,25000
+WIR620WHT,WH/Stock/Tech Stock,309.664
+WIR620WHT,WH/Stock/General Assembly,3561.5
+WIR620YEL,WH/Stock/Raw Materials,6000
+WIR620YEL,WH/Stock/Tech Stock,222
+WIR620YEL,WH/Stock/General Assembly,2463
+WIR622RED,WH/Stock/Raw Materials,1000
+WIR626RED,WH/Stock/Tech Stock,72.501
+WIR9012WHT,WH/Stock/Raw Materials,5500
+WIR912ORG,WH/Stock/Raw Materials,500
+WIR914GRN,WH/Stock/Raw Materials,1000
+WIR916PUR,WH/Stock/Raw Materials,1000
+WKOPTIBS2,WH/Stock/Final Finished Goods,1
+WKOPTIBS3,WH/Stock/Tech Finished Goods,1
+WKOPTIFP,WH/Stock/Final Finished Goods,1
+WKOPTIMP,WH/Stock/Final Finished Goods,2
+WM.75,WH/Stock/Final Finished Goods,143
+WM1.25,WH/Stock/Final Finished Goods,222
+XSLKCB2,WH/Stock/Final Finished Goods,4
+XSLKCB2R,WH/Stock/Final Finished Goods,1
+SMF2083,WH/Stock/Welding,9
+SMF2085,WH/Stock/Welding,5
+SMF2090,WH/Stock/Welding,3
+SMF2990,WH/Stock/Welding,4
+SMF2995,WH/Stock/Welding,2
+SMF3000,WH/Stock/General Assembly,94
+SMF3005,WH/Stock/Welding,4
+SMF3010,WH/Stock/Welding,5
+SMF3015,WH/Stock/Welding,1
+SMF3022,WH/Stock/Welding,7
+SMF3027,WH/Stock/Welding,7
+SMF3032,WH/Stock/Raw Materials,3
+SMF3032,WH/Stock/Welding,3
+SMF3033,WH/Stock/General Assembly,7
+SMH100,WH/Stock/Raw Materials,29
+SMH100,WH/Stock/General Assembly,33
+SMH105,WH/Stock/Raw Materials,50
+SMH105,WH/Stock/Tech Stock,1
+SMH105,WH/Stock/General Assembly,3
+SMP003,WH/Stock/Raw Materials,19
+SMP020-V2,WH/Stock/Raw Materials,198
+SMP100,WH/Stock/Raw Materials,3
+SMP100,WH/Stock/Final Finished Goods,8
+SMP165,WH/Stock/Final Finished Goods,1
+SMP245,WH/Stock/Final Finished Goods,25
+SMP246-U,WH/Stock/Raw Materials,27
+SMP246-U,WH/Stock/Final Finished Goods,35
+SMP525,WH/Stock/Welding,21
+SMP535,WH/Stock/Final Finished Goods,1
+SOC160,WH/Stock/Tech Stock,1442
+SPK32-4M,WH/Stock/Final Finished Goods,1
+SPK3WI,WH/Stock/General Assembly,16
+SPK700,WH/Stock/Tech Stock,101
+STARS170,WH/Stock/Raw Materials,1
+STARS180,WH/Stock/General Assembly,44
+SW-CCT,WH/Stock/General Assembly,41
+SW-DB,WH/Stock/Tech Stock,310
+SW01,WH/Stock/General Assembly,54
+SW06,WH/Stock/Tech Stock,10
+SW08,WH/Stock/Tech Stock,6
+SW090,WH/Stock/Tech Stock,5
+SW1101,WH/Stock/Tech Stock,5
+SW2125,WH/Stock/Tech Stock,16
+SW32,WH/Stock/General Assembly,69
+SW32A,WH/Stock/Raw Materials,180
+SW32A,WH/Stock/Tech Stock,38
+SW49,WH/Stock/Tech Stock,11
+SW49A,WH/Stock/Tech Stock,5
+SW4L,WH/Stock/Tech Stock,211
+SW4L,WH/Stock/General Assembly,26
+SW4LA,WH/Stock/Final Finished Goods,436
+SW4LDB,WH/Stock/Final Finished Goods,57
+SW692,WH/Stock/Tech Stock,62
+SW730,WH/Stock/Tech Stock,2
+SW841,WH/Stock/Final Finished Goods,29
+SWBD1900,WH/Stock/Final Finished Goods,25
+SWCCTBN,WH/Stock/General Assembly,22
+SWCCTBST,WH/Stock/General Assembly,2
+SWCCTBT,WH/Stock/General Assembly,4
+SWCCTFR,WH/Stock/General Assembly,3
+SWCCTYG,WH/Stock/Raw Materials,2
+TBWDFT,WH/Stock/Welding,61
+TER-B,WH/Stock/General Assembly,715
+TER101,WH/Stock/Tech Stock,128
+TER115,WH/Stock/General Assembly,536
+TER150,WH/Stock/Raw Materials,1858
+TER1610,WH/Stock/General Assembly,970
+TER1610,WH/Stock/Final Finished Goods,501
+TER273,WH/Stock/Raw Materials,200
+TER273,WH/Stock/General Assembly,26
+TER422,WH/Stock/Tech Stock,3
+TER422,WH/Stock/General Assembly,578
+TER452,WH/Stock/Tech Stock,44
+TER452,WH/Stock/General Assembly,304
+TER72B,WH/Stock/Tech Stock,1
+TER72B,WH/Stock/General Assembly,696
+TER800,WH/Stock/Raw Materials,800
+TER805,WH/Stock/Raw Materials,950
+TER901A,WH/Stock/Tech Stock,331
+TER901A,WH/Stock/General Assembly,108
+TER901A,WH/Stock/Final Finished Goods,2153
+TL130,WH/Stock/General Assembly,50
+TMB500,WH/Stock/Final Finished Goods,20
+TOP3006,WH/Stock/Final Finished Goods,3
+TP-S-6A6A,WH/Stock/Final Finished Goods,41
+TR170,WH/Stock/Tech Stock,200
+TR190,WH/Stock/Tech Stock,41
+TR210,WH/Stock/Tech Stock,98
+TR225,WH/Stock/Tech Stock,66
+TR230,WH/Stock/Tech Stock,30
+TR250,WH/Stock/Tech Stock,823
+TRF30,WH/Stock/Final Finished Goods,8
+TRF30MB,WH/Stock/Final Finished Goods,5
+TSSBD,WH/Stock/Tech Finished Goods,13
+TSSBD,WH/Stock/Final Finished Goods,2
+TSSBD3,WH/Stock/Tech Finished Goods,14
+TSSBD3,WH/Stock/Final Finished Goods,9
+VALUPVP,WH/Stock/Raw Materials,4
+VENT100,WH/Stock/General Assembly,11
+VESABRK,WH/Stock/Raw Materials,60
+VG1,WH/Stock/Final Finished Goods,16
+VIEW3025,WH/Stock/Raw Materials,4
+WAS1000,WH/Stock/General Assembly,107
+WAS1210,WH/Stock/Tech Stock,498
+WAS2610,WH/Stock/Raw Materials,2865
+WAS2620,WH/Stock/Raw Materials,96
+WAS2620,WH/Stock/Welding,114
+WEL2240,WH/Stock/Raw Materials,372
+WEL2520,WH/Stock/Welding,934
+WEL2525,WH/Stock/Welding,376
+WEL2630,WH/Stock/Welding,468
+WEL2640,WH/Stock/Welding,6223
+WEL2640,WH/Stock/General Assembly,177
+WEL2680,WH/Stock/General Assembly,9
+WEL2710,WH/Stock/Welding,436
+WEL2840,WH/Stock/General Assembly,105
+WEL2845,WH/Stock/Raw Materials,1000
+WEL2845,WH/Stock/Welding,60
+WEL2865,WH/Stock/Welding,830
+WIR100,WH/Stock/Tech Stock,6560
+WIR100,WH/Stock/Final Finished Goods,9690
+WIR400,WH/Stock/General Assembly,392
+WIR450A,WH/Stock/Tech Stock,590
+WIR6016GRN,WH/Stock/Raw Materials,2000
+WIR6018BLK,WH/Stock/General Assembly,1255.45
+WIR6018BLU,WH/Stock/Raw Materials,9000
+WIR6018BRN,WH/Stock/Raw Materials,5000
+WIR6018GRAY,WH/Stock/Raw Materials,4000
+WIR6018GRN,WH/Stock/General Assembly,1319.95
+WIR6018PUR,WH/Stock/Raw Materials,1000
+WIR6018PUR,WH/Stock/General Assembly,890
+WIR6018RED,WH/Stock/Raw Materials,1000
+WIR6018RED,WH/Stock/General Assembly,500
+WIR6018WHT,WH/Stock/General Assembly,544.45
+WIR6018YEL,WH/Stock/Raw Materials,4000
+WIR626YEL,WH/Stock/Tech Stock,72.501
+WIR710,WH/Stock/Tech Stock,70
+WIR916G/Y,WH/Stock/Raw Materials,6100
+WIR916G/Y,WH/Stock/Tech Stock,347.7
+WK824,WH/Stock/Final Finished Goods,5
+WKADQM,WH/Stock/Final Finished Goods,2
+WKEMI,WH/Stock/Final Finished Goods,2
+WKOPTIBS,WH/Stock/Final Finished Goods,1
+XSL49A,WH/Stock/Final Finished Goods,35
+XSLKCB34R,WH/Stock/Final Finished Goods,2
+XTAL245,WH/Stock/Tech Stock,44
+ZZZTEST,WH/Stock/Final Finished Goods,1

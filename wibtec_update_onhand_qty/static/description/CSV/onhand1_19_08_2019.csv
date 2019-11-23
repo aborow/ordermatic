@@ -1,0 +1,1225 @@
+StockCode,Warehouse,OnHand
+1734-RS,WH/Stock/Tech Stock,4
+1734APCADAP,WH/Stock/Final Finished Goods,55
+1734APCKIT,WH/Stock/Final Finished Goods,10
+1734ETX2,WH/Stock/Final Finished Goods,1
+1734ETX2R,WH/Stock/Final Finished Goods,3
+3MG5BC,WH/Stock/Final Finished Goods,2
+3MG5CP,WH/Stock/Final Finished Goods,2
+3MG5HE,WH/Stock/Final Finished Goods,6
+3MG5MIC,WH/Stock/Final Finished Goods,5
+3MG5SPK,WH/Stock/Final Finished Goods,11
+3MLOOP100XT,WH/Stock/Final Finished Goods,1
+3MWIR475A,WH/Stock/Final Finished Goods,1080
+48X54BT,WH/Stock/Raw Materials,6
+48X54FS,WH/Stock/Raw Materials,14
+48X54T2FS,WH/Stock/Raw Materials,5
+48X54WBT,WH/Stock/General Assembly,4
+600-ANWSH,WH/Stock/General Assembly,9
+600-AVT,WH/Stock/Tech Stock,9
+600-BMP100,WH/Stock/Final Finished Goods,9
+600-DT9200,WH/Stock/Sheet Metal,221
+600-DT9200X,WH/Stock/Sheet Metal,21
+600-DTSW100,WH/Stock/Tech Stock,13
+600-LCY,WH/Stock/Tech Stock,2
+600-MIC123,WH/Stock/General Assembly,5
+600-PIMH,WH/Stock/Tech Stock,65
+600-QVABS120,WH/Stock/General Assembly,6
+600-S2KD1200,WH/Stock/General Assembly,6
+700-16SPBB,WH/Stock/Welding,18
+700-16SPBBK,WH/Stock/Raw Materials,14
+700-16SPBBODY,WH/Stock/Raw Materials,1
+700-16SPBBODY,WH/Stock/Welding,7
+700-16SPBC,WH/Stock/Welding,2
+700-16SPBT,WH/Stock/Welding,1
+700-1734-1,WH/Stock/Welding,16
+700-1734-3,WH/Stock/Welding,2
+700-1734-4,WH/Stock/Welding,27
+700-1734-5,WH/Stock/Welding,20
+700-1734-7,WH/Stock/Welding,27
+700-1734-CSW,WH/Stock/Raw Materials,16
+700-1PANELDT-1,WH/Stock/General Assembly,124
+700-20X24SLIM-1,WH/Stock/Raw Materials,1
+700-20X24SLIM-2,WH/Stock/Raw Materials,6
+700-20X24SLIM-3,WH/Stock/Raw Materials,1
+700-20X27SLIM-1,WH/Stock/Raw Materials,34
+700-20X27SLIM-2,WH/Stock/Raw Materials,90
+700-211-7,WH/Stock/Raw Materials,26
+700-211-7CHICK,WH/Stock/Raw Materials,50
+700-211-8U,WH/Stock/Welding,19
+700-211S-3,WH/Stock/Raw Materials,95
+700-211S-8,WH/Stock/Welding,8
+700-24MAGSIGN-2,WH/Stock/Welding,41
+700-24MAGSIGN-3,WH/Stock/Welding,58
+700-24MAGSIGN-4L,WH/Stock/Welding,36
+700-24MAGSIGN-4R,WH/Stock/Welding,29
+700-24X36SLIM-1,WH/Stock/Raw Materials,2
+700-24X36SLIM-2,WH/Stock/Raw Materials,8
+700-24X36SLIM-3,WH/Stock/Raw Materials,5
+700-311-1LED,WH/Stock/Raw Materials,28
+700-311-2LED,WH/Stock/Raw Materials,61
+700-311-3LED,WH/Stock/Raw Materials,130
+700-311-4LED,WH/Stock/Raw Materials,8
+700-311F-1,WH/Stock/Welding,18
+700-311F-1BM,WH/Stock/Welding,13
+700-311F-3,WH/Stock/Welding,28
+700-311F-4,WH/Stock/Welding,1
+700-311F-5A,WH/Stock/Welding,65
+700-311F-5B,WH/Stock/Welding,62
+700-311F-6,WH/Stock/Welding,54
+700-311F-7,WH/Stock/Raw Materials,14
+700-311F-SWC,WH/Stock/Raw Materials,1
+700-311S-1,WH/Stock/Raw Materials,3
+700-311S-2,WH/Stock/Raw Materials,17
+700-311S-4D,WH/Stock/Raw Materials,3
+700-311S-4P,WH/Stock/Raw Materials,6
+700-311S-6D,WH/Stock/Raw Materials,29
+700-311S-6DREV,WH/Stock/Raw Materials,9
+700-311S-6P,WH/Stock/Raw Materials,26
+700-311S-6PREV,WH/Stock/Raw Materials,5
+700-311S-8BM,WH/Stock/Raw Materials,18
+700-48X54V2-10,WH/Stock/Raw Materials,33
+700-48X54V2-11,WH/Stock/Raw Materials,26
+700-48X54V2-2,WH/Stock/Raw Materials,44
+700-48X54V2-22C,WH/Stock/Raw Materials,11
+700-48X54V2-23,WH/Stock/Raw Materials,9
+700-48X54V2-24,WH/Stock/Raw Materials,3
+700-48X54V2-3C,WH/Stock/Raw Materials,21
+700-48X54V2-3C,WH/Stock/General Assembly,8
+700-48X54V2-4,WH/Stock/Raw Materials,13
+700-48X54V2-4,WH/Stock/General Assembly,8
+700-48X54V2-5,WH/Stock/Raw Materials,1
+700-48X54V2-6,WH/Stock/Raw Materials,3
+700-48X54V2-7,WH/Stock/Raw Materials,87
+700-48X54V2-7,WH/Stock/General Assembly,12
+700-48X54V2-8C,WH/Stock/Raw Materials,12
+700-48X54V2-8C,WH/Stock/General Assembly,2
+700-48X54V2-9,WH/Stock/Raw Materials,1
+700-48X54V2-9WM,WH/Stock/Raw Materials,1
+700-48X74-17,WH/Stock/Raw Materials,29
+700-48X74-17,WH/Stock/General Assembly,2
+700-48X74-18,WH/Stock/Raw Materials,7
+700-48X74-2,WH/Stock/Raw Materials,10
+700-48X74-2,WH/Stock/General Assembly,4
+700-48X74-3,WH/Stock/Welding,5
+700-48X74-4,WH/Stock/Welding,17
+700-48X74-5,WH/Stock/Welding,20
+700-48X74-6,WH/Stock/Raw Materials,32
+700-4PANELDT-1,WH/Stock/Raw Materials,26
+700-4PANELDT-1S,WH/Stock/Raw Materials,8
+700-4PANELDT-2,WH/Stock/Raw Materials,88
+700-4PANELDT-3,WH/Stock/Raw Materials,49
+700-4PANELDT-4,WH/Stock/Raw Materials,170
+700-4PANELDT-5,WH/Stock/Raw Materials,12
+700-4PANELDT-6,WH/Stock/Raw Materials,24
+700-4PANELDT-7,WH/Stock/Raw Materials,30
+700-4PANELDT-7,WH/Stock/General Assembly,12
+700-4PANELDT-8,WH/Stock/Raw Materials,52
+700-4PANELDT-9,WH/Stock/Raw Materials,4
+700-91X51-11,WH/Stock/Raw Materials,6
+700-91X51-13,WH/Stock/Raw Materials,16
+700-91X51-15,WH/Stock/Raw Materials,3
+700-91X51-17,WH/Stock/General Assembly,81
+700-91X51-3A,WH/Stock/Raw Materials,1
+700-91X51-3B,WH/Stock/Raw Materials,2
+700-91X51-9,WH/Stock/Raw Materials,5
+700-999-28,WH/Stock/Welding,10
+700-999-28A,WH/Stock/Welding,2
+700-999-29,WH/Stock/Welding,34
+700-999-30,WH/Stock/Welding,17
+700-999-35,WH/Stock/Raw Materials,190
+700-999-37,WH/Stock/Sheet Metal,28
+700-999-37,WH/Stock/General Assembly,14
+700-999-7V2,WH/Stock/Raw Materials,45
+700-999-SPKRBDW,WH/Stock/Welding,2
+700-999-SPKRBDW,WH/Stock/Final Finished Goods,2
+700-ANWSFS-10,WH/Stock/Raw Materials,217
+700-AV824,WH/Stock/Raw Materials,35
+700-AWNPAT-1,WH/Stock/Welding,3
+700-AWNPAT-2,WH/Stock/Welding,5
+700-AWNPAT-3,WH/Stock/Welding,24
+700-AWNPAT-4,WH/Stock/Welding,4
+700-AWNPAT-5,WH/Stock/Welding,10
+700-AWNPAT-6,WH/Stock/Final Finished Goods,12
+700-AWNXL-1,WH/Stock/General Assembly,103
+700-AWNXL-10,WH/Stock/Welding,3
+700-AWNXL-11,WH/Stock/Raw Materials,10
+700-AWNXL-12,WH/Stock/Raw Materials,14
+700-AWNXL-2,WH/Stock/Raw Materials,96
+700-AWNXL-2,WH/Stock/General Assembly,13
+700-AWNXL-3,WH/Stock/Raw Materials,176
+700-AWNXL-8,WH/Stock/Raw Materials,18
+700-AWNXL-9,WH/Stock/Raw Materials,32
+700-BHSL,WH/Stock/Raw Materials,42
+700-BHSL,WH/Stock/Tech Stock,63
+700-BHSS,WH/Stock/Raw Materials,128
+700-BHSS,WH/Stock/Final Finished Goods,11
+700-BLZ2PRO,WH/Stock/Sheet Metal,1
+700-BLZGRIDDLE,WH/Stock/Sheet Metal,1
+700-BLZHESTAN30,WH/Stock/Sheet Metal,1
+700-BLZHESTAN36,WH/Stock/Sheet Metal,1
+700-BRAUMSOCU-1,WH/Stock/Welding,6
+700-BRAUMSOCU-10,WH/Stock/Raw Materials,2
+700-BRAUMSOCU-12,WH/Stock/Welding,9
+700-BRAUMSOCU-1SWC,WH/Stock/Raw Materials,1
+700-BRAUMSOCU-3,WH/Stock/Welding,8
+700-BRAUMSOCU-4,WH/Stock/Raw Materials,6
+700-BRAUMSOCU-4,WH/Stock/Welding,7
+700-BRAUMSOCU-5,WH/Stock/Raw Materials,8
+700-BRAUMSOCU-6R,WH/Stock/Raw Materials,26
+700-BRAUMSOCU-8,WH/Stock/Welding,5
+700-BRMSCANOPY-10,WH/Stock/General Assembly,13
+700-BRMSCANOPY-15,WH/Stock/Raw Materials,4
+700-BRMSCANOPY-15,WH/Stock/General Assembly,4
+700-BRMSCANOPY-16,WH/Stock/Raw Materials,11
+700-BRMSCANOPY-17,WH/Stock/Raw Materials,8
+700-BRMSCANOPY-17,WH/Stock/General Assembly,1
+700-BRMSCANOPY-18,WH/Stock/General Assembly,1
+700-BRMSCANOPY-5,WH/Stock/Raw Materials,5
+700-BRMSCANOPY-7,WH/Stock/Raw Materials,2
+700-BRMSCANOPY-7,WH/Stock/General Assembly,5
+700-BRMSCANOPY-9,WH/Stock/Raw Materials,13
+700-BROTMEN-1,WH/Stock/Welding,1
+700-BROTMEN-10,WH/Stock/Raw Materials,11
+700-BROTMEN-11,WH/Stock/Raw Materials,16
+700-BROTMEN-2,WH/Stock/Welding,7
+700-BROTMEN-3,WH/Stock/Welding,47
+700-BROTMEN-4,WH/Stock/Welding,6
+700-BROTMEN-5,WH/Stock/Welding,3
+700-BROTMEN-6,WH/Stock/Welding,14
+700-BROTMEN-7,WH/Stock/Raw Materials,16
+700-BROTMEN-8,WH/Stock/Raw Materials,9
+700-BROTMEN-SWC,WH/Stock/Raw Materials,4
+700-CDCB,WH/Stock/Welding,75
+700-CDLST,WH/Stock/Welding,37
+700-CDLT,WH/Stock/Welding,36
+700-CDMST,WH/Stock/Welding,34
+700-CDMT,WH/Stock/Welding,16
+700-CDS5,WH/Stock/Welding,12
+700-CDS6,WH/Stock/Welding,19
+700-CDS6GC,WH/Stock/Welding,15
+700-CDS8,WH/Stock/Welding,7
+700-CDSST,WH/Stock/Welding,14
+700-CDST,WH/Stock/Welding,21
+700-CISBK,WH/Stock/Welding,12
+700-CITZBANK-6,WH/Stock/General Assembly,3
+700-CKOFDS-V2,WH/Stock/Tech Stock,57
+700-CROCANOPY-1,WH/Stock/Raw Materials,7
+700-CROCANOPY-10,WH/Stock/Powder Coat,6
+700-CROCANOPY-10,WH/Stock/Welding,4
+700-CROCANOPY-11,WH/Stock/Powder Coat,6
+700-CROCANOPY-11,WH/Stock/Welding,4
+700-CROCANOPY-13L,WH/Stock/Welding,35
+700-CROCANOPY-13R,WH/Stock/Welding,36
+700-CROCANOPY-14,WH/Stock/Raw Materials,8
+700-CROCANOPY-15,WH/Stock/Raw Materials,1
+700-CROCANOPY-16,WH/Stock/Raw Materials,4
+700-CROCANOPY-16,WH/Stock/Welding,4
+700-CROCANOPY-17,WH/Stock/Raw Materials,3
+700-CROCANOPY-17,WH/Stock/Welding,8
+700-CROCANOPY-18,WH/Stock/Welding,10
+700-CROCANOPY-19,WH/Stock/Welding,7
+700-CROCANOPY-2,WH/Stock/Raw Materials,2
+700-CROCANOPY-20,WH/Stock/Raw Materials,9
+700-CROCANOPY-21,WH/Stock/Raw Materials,12
+700-CROCANOPY-3,WH/Stock/Raw Materials,2
+700-CROCANOPY-4,WH/Stock/Raw Materials,2
+700-CROCANOPY-5,WH/Stock/Raw Materials,17
+700-CROCANOPY-6,WH/Stock/Raw Materials,3
+700-CROCANOPY-7,WH/Stock/Raw Materials,11
+700-CROCANOPY-8,WH/Stock/Raw Materials,4
+700-CROCANOPY-9,WH/Stock/Raw Materials,2
+700-CROCANOPY-9,WH/Stock/Welding,6
+700-CUP5SC,WH/Stock/Welding,10
+700-CUP6SC,WH/Stock/Welding,11
+700-CUP8SC,WH/Stock/Raw Materials,24
+700-CUPC5,WH/Stock/Welding,4
+700-CUPC6,WH/Stock/Welding,8
+700-CUPC8,WH/Stock/Welding,2
+700-DBSG,WH/Stock/General Assembly,89
+700-DBWING-1,WH/Stock/Raw Materials,18
+700-DBWING-2,WH/Stock/Raw Materials,163
+700-DBWING-3,WH/Stock/Raw Materials,8
+700-DBWING-4,WH/Stock/Raw Materials,26
+700-DBWING-5,WH/Stock/Raw Materials,25
+700-DD-14,WH/Stock/Raw Materials,56
+700-DD-15,WH/Stock/Raw Materials,4
+700-DD-18,WH/Stock/Raw Materials,3
+700-DD-18,WH/Stock/General Assembly,1
+700-DD-1B,WH/Stock/Raw Materials,7
+700-DD-1L,WH/Stock/Raw Materials,9
+700-DD-1R,WH/Stock/Raw Materials,9
+700-DD-2,WH/Stock/Raw Materials,6
+700-DD-2W,WH/Stock/Raw Materials,8
+700-DD-3L,WH/Stock/Raw Materials,6
+700-DD-4,WH/Stock/Raw Materials,5
+700-DD-53,WH/Stock/Raw Materials,3
+700-DD-53V2,WH/Stock/Raw Materials,6
+700-DD-54,WH/Stock/Raw Materials,1
+700-DD-9,WH/Stock/Raw Materials,90
+700-DDBAR-1,WH/Stock/Raw Materials,8
+700-DDBAR-2,WH/Stock/Raw Materials,30
+700-DDBAR-3,WH/Stock/Raw Materials,11
+700-DDBAR-5,WH/Stock/Raw Materials,2
+700-DDBAR-6,WH/Stock/Raw Materials,4
+700-DDBAR-7,WH/Stock/Raw Materials,3
+700-DDBAR-8,WH/Stock/Raw Materials,28
+700-DDBB,WH/Stock/Welding,9
+700-DDBBR,WH/Stock/Welding,38
+700-DDBS,WH/Stock/Welding,27
+700-DDCANOPY-1,WH/Stock/Welding,2
+700-DDCANOPY-13,WH/Stock/Welding,172
+700-DDCANOPY-14,WH/Stock/Raw Materials,44
+700-DDCANOPY-15,WH/Stock/Raw Materials,8
+700-DDCANOPY-17,WH/Stock/Raw Materials,11
+700-DDCANOPY-18,WH/Stock/Raw Materials,4
+700-DDCANOPY-2S,WH/Stock/Welding,1
+700-DDCANOPY-6,WH/Stock/Raw Materials,67
+700-DDCANOPY-9,WH/Stock/Welding,20
+700-DDCB,WH/Stock/Welding,22
+700-DDCS,WH/Stock/Welding,19
+700-DDDC,WH/Stock/Welding,1
+700-DDG,WH/Stock/Welding,225
+700-DDGS,WH/Stock/Welding,38
+700-DDPV-1,WH/Stock/Raw Materials,9
+700-DDPV-3,WH/Stock/General Assembly,8
+700-DDS,WH/Stock/Welding,39
+700-DDS1,WH/Stock/Welding,24
+700-DDS2,WH/Stock/Welding,43
+700-DDST,WH/Stock/Welding,16
+700-DDTA-1,WH/Stock/Raw Materials,4
+700-DDTA-2,WH/Stock/Raw Materials,5
+700-DDTA-3,WH/Stock/Raw Materials,10
+700-DDTA-8,WH/Stock/Tech Stock,7
+700-DDWB,WH/Stock/Welding,35
+700-DWU-2,WH/Stock/Raw Materials,3
+700-DWU-3,WH/Stock/Raw Materials,8
+700-DWU-6,WH/Stock/Raw Materials,36
+700-FCD,WH/Stock/Welding,1
+700-FCP,WH/Stock/Welding,1
+700-FFR,WH/Stock/Welding,4
+700-FPPVCMNT-3,WH/Stock/Raw Materials,55
+700-HBAC,WH/Stock/Raw Materials,97
+700-HBAC,WH/Stock/General Assembly,63
+700-HBC,WH/Stock/Raw Materials,8
+700-HBC,WH/Stock/General Assembly,28
+700-HRF-SWC,WH/Stock/Raw Materials,69
+700-IPB-10,WH/Stock/Raw Materials,17
+700-IPB2-1,WH/Stock/Raw Materials,2
+700-ISP-2,WH/Stock/Raw Materials,5
+700-ISP-3,WH/Stock/Welding,5
+700-ISP-4,WH/Stock/Welding,3
+700-ISP-5,WH/Stock/Welding,15
+700-ISP-8,WH/Stock/Raw Materials,12
+700-ISP-8,WH/Stock/General Assembly,6
+700-ISP-9,WH/Stock/Raw Materials,63
+700-JAGBAR-1,WH/Stock/Raw Materials,6
+700-JAGCANOPY-1,WH/Stock/Welding,13
+700-JAGCANOPY-11,WH/Stock/Raw Materials,3
+700-JAGCANOPY-12,WH/Stock/Raw Materials,3
+700-JAGCANOPY-13,WH/Stock/Raw Materials,3
+700-JAGCANOPY-14,WH/Stock/Raw Materials,13
+700-JAGCANOPY-15,WH/Stock/General Assembly,14
+700-JAGCANOPY-16,WH/Stock/Raw Materials,5
+700-JAGCANOPY-2,WH/Stock/Welding,8
+700-JAGCANOPY-23,WH/Stock/Welding,104
+700-JAGCANOPY-26,WH/Stock/Welding,15
+700-JAGCANOPY-27,WH/Stock/Welding,15
+700-JAGCANOPY-3,WH/Stock/Welding,16
+700-JAGCANOPY-4,WH/Stock/Welding,8
+700-JAGCANOPY-5,WH/Stock/Raw Materials,1
+700-JAGCANOPY-7,WH/Stock/Raw Materials,3
+700-LBC10,WH/Stock/Welding,2
+700-LBC6,WH/Stock/Welding,9
+700-LBCD10,WH/Stock/Welding,3
+700-LBCD6,WH/Stock/Welding,8
+700-LBE,WH/Stock/Welding,11
+700-LBH6,WH/Stock/Welding,11
+700-LBL,WH/Stock/Welding,37
+700-LBLA,WH/Stock/Welding,82
+700-LBLD10,WH/Stock/Welding,4
+700-LBLD6,WH/Stock/Welding,5
+700-LEDSB-1,WH/Stock/Tech Stock,1
+700-LEDSB-1V2,WH/Stock/Tech Stock,77
+700-LEDSB-2,WH/Stock/Tech Stock,13
+700-LEDSB-2V2,WH/Stock/Tech Stock,24
+700-MAYODT-11,WH/Stock/Welding,235
+700-MAYODT-15,WH/Stock/Raw Materials,6
+700-MAYODT-16,WH/Stock/Raw Materials,4
+700-MAYODT-5,WH/Stock/Raw Materials,1
+700-MAYODT-6,WH/Stock/Raw Materials,144
+700-MAYODT-8,WH/Stock/Welding,6
+700-MOBK,WH/Stock/Welding,61
+700-MOF2,WH/Stock/Welding,75
+700-MOFG,WH/Stock/Welding,189
+700-MOFH,WH/Stock/Welding,79
+700-MOL,WH/Stock/Raw Materials,2
+700-MOLA,WH/Stock/Welding,153
+700-MONPSH-1,WH/Stock/Tech Stock,165
+700-MONPSH-2,WH/Stock/Raw Materials,115
+700-MONPSH-2,WH/Stock/Tech Stock,37
+700-MOSG,WH/Stock/Raw Materials,1
+700-MOSG,WH/Stock/Tech Stock,44
+700-MS,WH/Stock/Raw Materials,22
+700-MSC,WH/Stock/Raw Materials,6
+700-MSWC,WH/Stock/Raw Materials,34
+700-NEL,WH/Stock/Sheet Metal,48
+700-NGDT-11,WH/Stock/Raw Materials,1
+700-NGDT-12,WH/Stock/Raw Materials,1
+700-NGDT-13,WH/Stock/Raw Materials,1
+700-NGDT-14,WH/Stock/Raw Materials,24
+700-NGDT-15,WH/Stock/Raw Materials,43
+700-NGDT-2,WH/Stock/Raw Materials,2
+700-NGDT-6C,WH/Stock/Raw Materials,28
+700-NGPB-1,WH/Stock/Raw Materials,10
+700-NGPB-2,WH/Stock/Raw Materials,7
+700-NGPB-3,WH/Stock/Raw Materials,6
+700-NGPB-5,WH/Stock/Raw Materials,7
+700-NGPB-6,WH/Stock/Raw Materials,22
+700-NGPB-8,WH/Stock/Raw Materials,14
+700-NGSC-2UL,WH/Stock/Raw Materials,44
+700-NGSC-2UL-ALUM,WH/Stock/Raw Materials,44
+700-NGSC-5,WH/Stock/Raw Materials,63
+700-NGSC-6,WH/Stock/Raw Materials,85
+700-OCU-CS-6,WH/Stock/Raw Materials,9
+700-OM3BP,WH/Stock/Welding,3
+700-OM3HS,WH/Stock/Tech Stock,55
+700-OM3MM,WH/Stock/Tech Stock,50
+700-OM3PB,WH/Stock/Welding,71
+700-OM3SS,WH/Stock/Final Finished Goods,39
+700-OM3T-PB,WH/Stock/Raw Materials,15
+700-OM962-10,WH/Stock/Welding,1
+700-OM962-11,WH/Stock/Welding,40
+700-OM962-12,WH/Stock/Welding,10
+700-OM962-13,WH/Stock/Welding,14
+700-OM962-14,WH/Stock/Welding,14
+700-OM962-2,WH/Stock/Welding,13
+700-OM962-3,WH/Stock/Welding,12
+700-OM962-4,WH/Stock/Welding,23
+700-OM962-5,WH/Stock/Welding,34
+700-OM962-6,WH/Stock/Welding,93
+700-OM962-7,WH/Stock/Welding,20
+700-OM962-8,WH/Stock/Welding,52
+700-OM962-9,WH/Stock/Welding,15
+700-PBABS,WH/Stock/Tech Stock,26
+700-PBB,WH/Stock/Welding,17
+700-PBBK,WH/Stock/Raw Materials,18
+700-PBH,WH/Stock/Raw Materials,13
+700-PBT,WH/Stock/Welding,18
+700-PDB,WH/Stock/Raw Materials,2
+700-PDBB,WH/Stock/Welding,24
+700-PDHC,WH/Stock/Raw Materials,13
+700-PDPL,WH/Stock/Raw Materials,27
+700-PDS,WH/Stock/Raw Materials,35
+700-PDS,WH/Stock/General Assembly,1
+700-PDSB,WH/Stock/Raw Materials,7
+700-PDSC,WH/Stock/Raw Materials,10
+700-PDTB,WH/Stock/Welding,24
+700-PDTT,WH/Stock/Welding,75
+700-PHSG,WH/Stock/Tech Stock,31
+700-PNLDTWNG-1,WH/Stock/Raw Materials,28
+700-PNLDTWNG-2,WH/Stock/Raw Materials,5
+700-PNLDTWNG-5,WH/Stock/Raw Materials,8
+700-POLLOTROP-3,WH/Stock/Welding,22
+700-POLLOTROP-4,WH/Stock/Welding,5
+700-POLLOTROP-5,WH/Stock/Welding,23
+700-POLLOTROP-7,WH/Stock/Raw Materials,14
+700-POLLOTROP-8,WH/Stock/Raw Materials,5
+700-PSS,WH/Stock/Tech Finished Goods,88
+700-QVCS,WH/Stock/Raw Materials,52
+700-QVF1P-1,WH/Stock/Raw Materials,2
+700-QVLB,WH/Stock/Raw Materials,8
+700-QVLBT,WH/Stock/Raw Materials,11
+700-QVLED,WH/Stock/Raw Materials,29
+700-QVSBT,WH/Stock/Raw Materials,14
+700-QVSL,WH/Stock/Raw Materials,12
+700-QVSR,WH/Stock/Raw Materials,14
+700-RSKNFRME-2,WH/Stock/General Assembly,96
+700-S2K-21,WH/Stock/General Assembly,62
+700-S2K-22,WH/Stock/Raw Materials,212
+700-S2K-2A,WH/Stock/Welding,33
+700-S2K-33,WH/Stock/Raw Materials,176
+700-S2K-33R1,WH/Stock/Raw Materials,31
+700-S2K-33R1,WH/Stock/General Assembly,21
+700-S2KH2200,WH/Stock/General Assembly,359
+700-SBTCR-9,WH/Stock/Welding,157
+700-SLHC,WH/Stock/Welding,1
+700-SLLA,WH/Stock/Welding,178
+700-SLSA,WH/Stock/Welding,184
+700-SMP140BC,WH/Stock/Raw Materials,10
+700-SMP140CC,WH/Stock/Raw Materials,10
+700-SMPBRKT3,WH/Stock/Welding,74
+700-SMPCHAN2,WH/Stock/Welding,17
+700-SMPGUS3,WH/Stock/Welding,29
+700-SMPSHELF1,WH/Stock/Welding,25
+700-SMPTAB,WH/Stock/Welding,17
+700-SMS-13,WH/Stock/Welding,490
+700-SMS-14,WH/Stock/Welding,19
+700-SMS-14A,WH/Stock/Welding,10
+700-SMS-14SWC,WH/Stock/Welding,2
+700-SPB-13,WH/Stock/Raw Materials,22
+700-SPCB,WH/Stock/Welding,17
+700-SPK550-1,WH/Stock/Raw Materials,24
+700-SPK550-2,WH/Stock/Raw Materials,33
+700-SPK550-3,WH/Stock/Raw Materials,27
+700-SPK550-3,WH/Stock/Tech Stock,1
+700-SPK550-4,WH/Stock/Raw Materials,31
+700-SPK550-4,WH/Stock/Tech Stock,4
+700-SPK550-5,WH/Stock/Raw Materials,28
+700-SPK550-5,WH/Stock/Tech Stock,7
+700-SPSCB,WH/Stock/Welding,12
+700-SPSCH,WH/Stock/Welding,18
+700-SPSCHCOM,WH/Stock/Raw Materials,20
+700-SPSCV,WH/Stock/Raw Materials,13
+700-SPSLP-S,WH/Stock/Raw Materials,10
+700-SPSS,WH/Stock/Tech Stock,8
+700-SPSS,WH/Stock/General Assembly,11
+700-SPSSB,WH/Stock/Sheet Metal,46
+700-SPSSM,WH/Stock/Raw Materials,5
+700-SPSSM,WH/Stock/General Assembly,1
+700-SPSSM-PAN,WH/Stock/Raw Materials,8
+700-SSMR-2-V2,WH/Stock/General Assembly,42
+700-SUBDT2-6,WH/Stock/Welding,62
+700-SUBDT3-1,WH/Stock/Sheet Metal,1
+700-SUBDT3-7,WH/Stock/Welding,1
+700-SUBDT3-HSC,WH/Stock/Raw Materials,3
+700-SUBDT4-13,WH/Stock/Raw Materials,83
+700-SUBDT4-15,WH/Stock/Raw Materials,39
+700-SUBDT4-18,WH/Stock/Raw Materials,27
+700-SUBDT4-19,WH/Stock/Raw Materials,32
+700-SUBDT4-20V2,WH/Stock/Raw Materials,19
+700-SUBDT4-20V2,WH/Stock/General Assembly,3
+700-SWBOX2-C,WH/Stock/Raw Materials,21
+700-T-1,WH/Stock/Raw Materials,631
+700-T-1,WH/Stock/General Assembly,86
+700-T-14,WH/Stock/General Assembly,270
+700-T-14E,WH/Stock/General Assembly,114
+700-T-15,WH/Stock/General Assembly,132
+700-T-15S,WH/Stock/Raw Materials,200
+700-T-15S,WH/Stock/General Assembly,652
+700-T-16,WH/Stock/Raw Materials,2
+700-T-16,WH/Stock/General Assembly,1
+700-T-17,WH/Stock/Sheet Metal,80
+700-T-18,WH/Stock/Raw Materials,4
+700-T-19,WH/Stock/Raw Materials,1046
+700-T-20,WH/Stock/Raw Materials,15
+700-T-21,WH/Stock/Raw Materials,32
+700-T-25,WH/Stock/Raw Materials,304
+700-T-25,WH/Stock/General Assembly,9
+700-T-2L,WH/Stock/Raw Materials,1
+700-T-2R,WH/Stock/Raw Materials,8
+700-T-3,WH/Stock/Raw Materials,50
+700-T-30,WH/Stock/Sheet Metal,534
+700-T-35,WH/Stock/General Assembly,1317
+700-T-37,WH/Stock/General Assembly,41
+700-T-39,WH/Stock/Raw Materials,7
+700-T-4,WH/Stock/Raw Materials,543
+700-T-4,WH/Stock/General Assembly,1205
+700-T-40,WH/Stock/Welding,46
+700-T-46,WH/Stock/General Assembly,116
+700-T-50,WH/Stock/General Assembly,305
+700-T-51,WH/Stock/General Assembly,175
+700-T-53,WH/Stock/Raw Materials,242
+700-T-54,WH/Stock/Welding,28
+700-T-56,WH/Stock/General Assembly,88
+700-T-57,WH/Stock/General Assembly,19
+700-T-6,WH/Stock/Sheet Metal,75
+700-T-7,WH/Stock/General Assembly,725
+700-T-8,WH/Stock/Raw Materials,45
+700-T-9,WH/Stock/Raw Materials,249
+700-T-LED-1,WH/Stock/Raw Materials,36
+700-T-LED-1,WH/Stock/General Assembly,6
+700-T-LED-10,WH/Stock/Raw Materials,216
+700-T-LED-10,WH/Stock/General Assembly,51
+700-T-LED-11,WH/Stock/Raw Materials,45
+700-T-LED-12,WH/Stock/Raw Materials,28
+700-T-LED-2,WH/Stock/Raw Materials,16
+700-T-LED-3,WH/Stock/General Assembly,8
+700-T-LED-4,WH/Stock/Raw Materials,65
+700-T-LED-6,WH/Stock/Raw Materials,200
+700-T-LED-6,WH/Stock/General Assembly,84
+700-T-LED-7,WH/Stock/Raw Materials,80
+700-T-LED-7,WH/Stock/General Assembly,17
+700-T-LED-8,WH/Stock/Raw Materials,51
+700-T-LED-9,WH/Stock/General Assembly,23
+700-TBVE-1,WH/Stock/Welding,44
+700-TBVE-10,WH/Stock/Raw Materials,79
+700-TBVE-10,WH/Stock/General Assembly,17
+700-TBVE-13,WH/Stock/Raw Materials,221
+700-TBVE-13,WH/Stock/General Assembly,46
+700-TBVE-14,WH/Stock/Raw Materials,130
+700-TBVE-15,WH/Stock/Welding,12
+700-TBVE-17,WH/Stock/Welding,10
+700-TBVE-27,WH/Stock/Raw Materials,42
+700-TBVE-27,WH/Stock/General Assembly,24
+700-TBVE-3,WH/Stock/General Assembly,115
+700-TBVE-36,WH/Stock/Raw Materials,32
+700-TBVE-4,WH/Stock/General Assembly,89
+700-TBVE-5,WH/Stock/General Assembly,127
+700-TBVE-6,WH/Stock/General Assembly,322
+700-TBVE-7,WH/Stock/General Assembly,82
+700-TBVE-8,WH/Stock/Raw Materials,33
+700-TBVE-9,WH/Stock/General Assembly,67
+700-TPLANB-1,WH/Stock/Raw Materials,2
+700-TPLANB-10,WH/Stock/Raw Materials,24
+700-TPLANB-11,WH/Stock/Raw Materials,207
+700-TPLANB-12,WH/Stock/Raw Materials,60
+700-TPLANB-14,WH/Stock/Raw Materials,30
+700-TPLANB-15,WH/Stock/Raw Materials,24
+700-TPLANB-15,WH/Stock/General Assembly,1
+700-TPLANB-16,WH/Stock/Raw Materials,9
+700-TPLANB-16,WH/Stock/General Assembly,1
+700-TPLANB-18,WH/Stock/Raw Materials,6
+700-TPLANB-2,WH/Stock/Raw Materials,6
+700-TPLANB-2V2,WH/Stock/Raw Materials,1
+700-TPLANB-3,WH/Stock/Raw Materials,12
+700-TPLANB-4,WH/Stock/Raw Materials,2
+700-TPLANB-4,WH/Stock/General Assembly,4
+700-TPLANB-5,WH/Stock/Raw Materials,24
+700-TPLANB-5,WH/Stock/General Assembly,5
+700-TPLANB-6A,WH/Stock/Raw Materials,30
+700-TPLANB-6A,WH/Stock/General Assembly,3
+700-TPLANB-6B,WH/Stock/Raw Materials,30
+700-TPLANB-6B,WH/Stock/General Assembly,14
+700-TPLANB-7,WH/Stock/Raw Materials,3
+700-TPLANB-7,WH/Stock/General Assembly,4
+700-TPLANB-8,WH/Stock/Raw Materials,16
+700-VGA-DPC-1,WH/Stock/Tech Stock,132
+700-VGA-DPC-2,WH/Stock/Tech Stock,123
+700-WNDWCANOPY-1,WH/Stock/Welding,33
+700-WNDWCANOPY-14,WH/Stock/Welding,3
+700-WNDWCANOPY-14,WH/Stock/General Assembly,5
+700-WNDWCANOPY-2,WH/Stock/Welding,38
+700-WNDWCANOPY-3,WH/Stock/Welding,66
+700-WNDWCANOPY-4,WH/Stock/Welding,38
+700-WNDWCANOPY-5,WH/Stock/Welding,168
+700-XDQKP-SW,WH/Stock/Raw Materials,19
+77-311F-GW,WH/Stock/Raw Materials,2
+77-311F-GW,WH/Stock/General Assembly,1
+77-48B-BST,WH/Stock/General Assembly,2
+77-48B-FR,WH/Stock/Raw Materials,1
+77-48B-MA,WH/Stock/Raw Materials,2
+77-48BS-BST,WH/Stock/General Assembly,2
+77-48BS-FR,WH/Stock/Raw Materials,3
+77-48CS-BST,WH/Stock/General Assembly,1
+77-48CS-FR,WH/Stock/Raw Materials,5
+77-48CS2-BST,WH/Stock/General Assembly,1
+77-48DR-BST,WH/Stock/General Assembly,12
+77-48DR-FR,WH/Stock/Raw Materials,12
+77-48FS-BST,WH/Stock/General Assembly,12
+77-48FS-FR,WH/Stock/Raw Materials,6
+77-48H-BST,WH/Stock/Powder Coat,12
+77-48H-FR,WH/Stock/Raw Materials,25
+77-48IP-GW,WH/Stock/Raw Materials,1
+77-48IP-GW,WH/Stock/General Assembly,3
+77-48SB-BST,WH/Stock/General Assembly,2
+77-48SB-FR,WH/Stock/Raw Materials,16
+77-48SM-BST,WH/Stock/Powder Coat,1
+77-48SM-FR,WH/Stock/Raw Materials,4
+77-48SW-BST,WH/Stock/General Assembly,2
+77-48SW-FR,WH/Stock/Raw Materials,17
+77-48T-BST,WH/Stock/General Assembly,2
+77-48T-FR,WH/Stock/Raw Materials,2
+77-48T-MA,WH/Stock/Raw Materials,2
+77-48WBS-BST,WH/Stock/General Assembly,4
+77-48WBS-FR,WH/Stock/Raw Materials,2
+77-48WBT-BST,WH/Stock/General Assembly,8
+77-48WBT-FR,WH/Stock/Raw Materials,2
+77-48WBT-MA,WH/Stock/Raw Materials,3
+77-48WMB-BST,WH/Stock/Raw Materials,4
+77-48WMB-BST,WH/Stock/General Assembly,24
+77-48WMB-FR,WH/Stock/Raw Materials,24
+77-AWNXL1-BLU,WH/Stock/Raw Materials,3
+77-AWNXL2-BLU,WH/Stock/Raw Materials,15
+77-AWNXL3-BLU,WH/Stock/Raw Materials,29
+77-AWNXLCZ-BLU,WH/Stock/Raw Materials,2
+77-AWNXLCZB-BLU,WH/Stock/Raw Materials,2
+77-AWNXLSR-BLU,WH/Stock/Raw Materials,29
+77-AWNXLWB-BLU,WH/Stock/Raw Materials,29
+77-BROTMEN-10-BM,WH/Stock/General Assembly,20
+77-BROTMEN-DR-BM,WH/Stock/General Assembly,6
+77-BROTMEN-MNT-BM,WH/Stock/General Assembly,3
+77-BROTMEN-SWC-BM,WH/Stock/General Assembly,1
+77-CASE100,WH/Stock/Final Finished Goods,22
+77-CROCPY12-BP,WH/Stock/Raw Materials,8
+77-CROCPY14-BP,WH/Stock/Raw Materials,2
+77-CROCPY14-BP,WH/Stock/General Assembly,5
+77-CROCPY15-BP,WH/Stock/General Assembly,7
+77-CROCPY2-BP,WH/Stock/Raw Materials,12
+77-CROCPY3-BLU,WH/Stock/Powder Coat,5
+77-CROCPY4-BLU,WH/Stock/Powder Coat,5
+77-CROCPY6-BLU,WH/Stock/Powder Coat,5
+77-CROCPY7-BLU,WH/Stock/Powder Coat,5
+77-CROCPY8-BP,WH/Stock/General Assembly,7
+77-CROCPY9-BP,WH/Stock/General Assembly,4
+77-CROCPYMP-BP,WH/Stock/Powder Coat,1
+77-CROCPYWING-BLU,WH/Stock/General Assembly,1
+77-DD10-DO,WH/Stock/General Assembly,4
+77-DD10-DP,WH/Stock/General Assembly,3
+77-DD11-DO,WH/Stock/General Assembly,5
+77-DD11-DP,WH/Stock/General Assembly,5
+77-DD16-GW,WH/Stock/Raw Materials,1
+77-DD19-GB,WH/Stock/Raw Materials,44
+77-DD20-GB,WH/Stock/Raw Materials,54
+77-DD36-GB,WH/Stock/Raw Materials,4
+77-DD36-GB,WH/Stock/General Assembly,1
+77-DD8-GB,WH/Stock/General Assembly,1
+77-DD80-GB,WH/Stock/General Assembly,57
+77-DDB80-BB,WH/Stock/General Assembly,28
+77-DDCB10-DO,WH/Stock/General Assembly,1
+77-DDCB11-DO,WH/Stock/General Assembly,1
+77-DDCB2-DO,WH/Stock/Raw Materials,2
+77-DDCB2-DO,WH/Stock/Powder Coat,1
+77-DDCB5-DO,WH/Stock/Raw Materials,7
+77-DDCB9-DO,WH/Stock/General Assembly,1
+77-DDCPY12-DO,WH/Stock/Raw Materials,7
+77-DDCPY15-DO,WH/Stock/Raw Materials,1
+77-DDCPY15-GW,WH/Stock/General Assembly,43
+77-DDCPY3-DO,WH/Stock/Raw Materials,9
+77-DDCPY6-BLU,WH/Stock/General Assembly,14
+77-DDCPY6-DO,WH/Stock/Raw Materials,7
+77-DDCPY6-DO,WH/Stock/General Assembly,1
+77-DDCPY7-DO,WH/Stock/Raw Materials,1
+77-DDCPY8-DO,WH/Stock/Raw Materials,1
+77-DDCPYTP-GW,WH/Stock/Raw Materials,1
+77-DDDR1-BB,WH/Stock/General Assembly,4
+77-DDDR1-DO,WH/Stock/General Assembly,4
+77-DDDR1-DP,WH/Stock/General Assembly,4
+77-DDDTPB-BT,WH/Stock/Raw Materials,5
+77-DDFRM-GB,WH/Stock/Raw Materials,2
+77-DDIP-GW,WH/Stock/Raw Materials,6
+77-DDPV-2-GB,WH/Stock/Raw Materials,1
+77-DDPV36-GB,WH/Stock/Raw Materials,2
+77-DDSP2-GB,WH/Stock/Raw Materials,5
+77-DDSP2-GB,WH/Stock/General Assembly,1
+77-DDSP7-GB,WH/Stock/General Assembly,8
+77-DDXTFA-DO,WH/Stock/General Assembly,4
+77-DDXTFA-DP,WH/Stock/General Assembly,4
+77-DDXTFAC-BB,WH/Stock/General Assembly,7
+77-DDXTFAC-DO,WH/Stock/General Assembly,4
+77-DDXTFAC-DP,WH/Stock/General Assembly,4
+77-DDXTFB-DO,WH/Stock/General Assembly,3
+700-TCH,WH/Stock/Tech Stock,238
+77-DT6DR2-BLU,WH/Stock/General Assembly,44
+77-DT6FC-BLU,WH/Stock/Powder Coat,4
+77-DT6FC-BLU,WH/Stock/General Assembly,1
+77-DT6FCS-BLU,WH/Stock/Powder Coat,4
+77-DT6FCS-BLU,WH/Stock/General Assembly,1
+77-DT6FL-BLU,WH/Stock/Powder Coat,4
+77-DT6FL-BLU,WH/Stock/General Assembly,1
+77-DT6FR-BLU,WH/Stock/Powder Coat,4
+77-DT6FR-BLU,WH/Stock/General Assembly,1
+77-DT6FS-BLU,WH/Stock/Powder Coat,1
+77-DT6FS-BLU,WH/Stock/General Assembly,1
+77-DT6ML-BLU,WH/Stock/Raw Materials,7
+77-DT6MU-BLU,WH/Stock/Raw Materials,7
+77-DT6OC1-BLU,WH/Stock/General Assembly,6
+77-DT6OC11-BLU,WH/Stock/Raw Materials,4
+77-DT6OC11-BLU,WH/Stock/General Assembly,1
+77-DT6OC5-BLU,WH/Stock/Raw Materials,10
+77-DT6OC6L-BLU,WH/Stock/Raw Materials,20
+77-DT6OC6R-BLU,WH/Stock/Raw Materials,18
+77-DT6PF-BLU,WH/Stock/General Assembly,1
+77-DT6SB-BLU,WH/Stock/General Assembly,12
+77-DT6SF-BLU,WH/Stock/Raw Materials,12
+77-DT6W-BLU,WH/Stock/General Assembly,20
+77-DT6W2-BLU,WH/Stock/General Assembly,20
+77-DT6WB-BLU,WH/Stock/General Assembly,39
+77-DT6WB2-BLU,WH/Stock/General Assembly,20
+77-EXT1000-B5,WH/Stock/General Assembly,12
+77-EXT1006-B5,WH/Stock/General Assembly,6
+77-EXT1007-B5,WH/Stock/General Assembly,6
+77-EXT1008-B5,WH/Stock/General Assembly,8
+77-ICPY18-GW,WH/Stock/General Assembly,3
+77-ICPY19-GW,WH/Stock/Raw Materials,2
+77-ICPY20-GW,WH/Stock/Sheet Metal,6
+77-ICPY21-GW,WH/Stock/General Assembly,13
+77-ICPY22-GW,WH/Stock/Raw Materials,6
+77-ICPY22-GW,WH/Stock/General Assembly,5
+77-ICPY24-GW,WH/Stock/Raw Materials,9
+77-ICPY24-GW,WH/Stock/General Assembly,4
+77-ICPY25-GW,WH/Stock/Raw Materials,8
+77-ICPY25-GW,WH/Stock/General Assembly,5
+77-ICPY28-GW,WH/Stock/Raw Materials,12
+77-ICPY28-GW,WH/Stock/General Assembly,4
+77-ICPY29-GW,WH/Stock/Raw Materials,12
+77-ICPY29-GW,WH/Stock/General Assembly,4
+77-ICPY9-DP,WH/Stock/General Assembly,5
+77-ICPYLS-BLU,WH/Stock/General Assembly,2
+77-ICPYMP-BLU,WH/Stock/General Assembly,5
+77-ICPYP-GW,WH/Stock/Raw Materials,1
+77-ICPYTP-GW,WH/Stock/General Assembly,5
+77-IPV1-FR,WH/Stock/Raw Materials,9
+77-IPV11-FR,WH/Stock/Raw Materials,7
+77-IPV2-FR,WH/Stock/Raw Materials,8
+77-IPVB-FR,WH/Stock/Raw Materials,2
+77-IPVBS-FR,WH/Stock/Raw Materials,5
+77-IPVBULL-FR,WH/Stock/Raw Materials,2
+77-IPVDR-FR,WH/Stock/Raw Materials,5
+77-IPVPOP-FR,WH/Stock/Raw Materials,2
+77-IPVT-BST,WH/Stock/Raw Materials,2
+77-IPVT-FR,WH/Stock/Raw Materials,2
+77-ISP2-BT,WH/Stock/General Assembly,4
+77-ISP9-BT,WH/Stock/General Assembly,2
+77-ISP9-FR,WH/Stock/Raw Materials,1
+77-ISPMB-BT,WH/Stock/General Assembly,2
+77-JCB1-CUS,WH/Stock/General Assembly,1
+77-M8-BLU,WH/Stock/General Assembly,10
+77-MOCC-BST,WH/Stock/Raw Materials,2
+77-MOCC-BST,WH/Stock/Tech Stock,14
+77-MSC-BST,WH/Stock/Tech Stock,16
+77-PDB-BT,WH/Stock/General Assembly,3
+77-PDHC-BT,WH/Stock/Raw Materials,1
+77-PDHC-BT,WH/Stock/General Assembly,6
+77-PDPC-BT,WH/Stock/General Assembly,7
+77-PDSC-BT,WH/Stock/Raw Materials,3
+77-PDSC-BT,WH/Stock/General Assembly,5
+77-PDSCC-BT,WH/Stock/Raw Materials,1
+77-PDSCC-BT,WH/Stock/General Assembly,5
+77-PDSCV-BT,WH/Stock/Raw Materials,6
+77-PDSLP-BT,WH/Stock/General Assembly,10
+77-PPFC2-BS,WH/Stock/Raw Materials,11
+77-QV1-FR,WH/Stock/Raw Materials,9
+77-QV1P2-FR,WH/Stock/Raw Materials,1
+77-QV2-FR,WH/Stock/Raw Materials,5
+77-QV3-FR,WH/Stock/Raw Materials,6
+77-QV4-FR,WH/Stock/Raw Materials,6
+77-QV5-FR,WH/Stock/Raw Materials,6
+77-RFID2V2-BT,WH/Stock/Raw Materials,37
+77-RFID3-BT,WH/Stock/Raw Materials,82
+77-RFID3-BT,WH/Stock/Final Finished Goods,11
+77-SBTCRCV2-GW,WH/Stock/Raw Materials,68
+77-SDT12-BT,WH/Stock/Raw Materials,20
+77-SDT13-BT,WH/Stock/Raw Materials,14
+77-SDTB-BT,WH/Stock/Raw Materials,3
+77-SDTBASE-BT,WH/Stock/Raw Materials,8
+77-SDTBULL-YG,WH/Stock/Raw Materials,8
+77-SDTDR-BT,WH/Stock/Raw Materials,9
+77-SDTHS-BT,WH/Stock/Raw Materials,1
+77-SDTIP-GW,WH/Stock/Raw Materials,9
+77-SDTPOP-YG,WH/Stock/Raw Materials,8
+77-SDTT-BT,WH/Stock/Raw Materials,2
+77-SLFP-BST,WH/Stock/Raw Materials,41
+77-SLFP-BST,WH/Stock/Final Finished Goods,2
+77-SLMMP-BST,WH/Stock/Raw Materials,22
+77-SLMMP-BST,WH/Stock/Final Finished Goods,11
+77-SLTC-BST,WH/Stock/Raw Materials,13
+77-SME9010-BN,WH/Stock/General Assembly,20
+77-SME9015-BN,WH/Stock/General Assembly,19
+77-SME9020-BN,WH/Stock/General Assembly,22
+77-SME9025-BN,WH/Stock/General Assembly,22
+77-SMS2L-BT,WH/Stock/Raw Materials,2
+77-SMS2L-FR,WH/Stock/Raw Materials,15
+77-SMS2L-YG,WH/Stock/Raw Materials,15
+77-SMS2R-BT,WH/Stock/Raw Materials,2
+77-SMS2R-FR,WH/Stock/Raw Materials,15
+77-SMS2R-YG,WH/Stock/Raw Materials,17
+77-SPSCG-BT,WH/Stock/Raw Materials,18
+77-SPSCG-BT,WH/Stock/General Assembly,16
+77-SPV1-BT,WH/Stock/Raw Materials,1
+77-SPV3-YG,WH/Stock/Raw Materials,5
+77-SPVBULL-YG,WH/Stock/Raw Materials,9
+77-SPVDR-BT,WH/Stock/Raw Materials,6
+77-SSC2AL-BS,WH/Stock/Raw Materials,108
+77-SUB10A-BT,WH/Stock/Raw Materials,4
+77-SUB10C-BT,WH/Stock/Raw Materials,4
+77-SUB2-BT,WH/Stock/Raw Materials,44
+77-SUBB-MA,WH/Stock/Raw Materials,4
+77-SUBHS-BT,WH/Stock/Raw Materials,3
+77-SUBIP-GW,WH/Stock/Raw Materials,3
+77-SUBTMBASE-BT,WH/Stock/Raw Materials,2
+77-SUBTMBASE-BT,WH/Stock/General Assembly,2
+77-SWBOX2-BT,WH/Stock/Raw Materials,3
+77-TB11-B5,WH/Stock/General Assembly,31
+77-TB17-GW,WH/Stock/Raw Materials,31
+77-TB18-BN,WH/Stock/General Assembly,1
+77-TB18W-BN,WH/Stock/General Assembly,1
+77-TB1L-BN,WH/Stock/Raw Materials,19
+77-TB1R-BN,WH/Stock/Raw Materials,17
+77-TB22-B5,WH/Stock/Raw Materials,636
+77-TB22-B5,WH/Stock/General Assembly,593
+77-TB24-B5,WH/Stock/General Assembly,826
+77-TB28-B5,WH/Stock/General Assembly,248
+77-TB36-BN,WH/Stock/Raw Materials,6
+77-TB38-BN,WH/Stock/General Assembly,13
+77-TB39-GW,WH/Stock/Raw Materials,17
+77-TB4-MA,WH/Stock/Powder Coat,22
+77-TB42-B5,WH/Stock/General Assembly,15
+77-TB49-B5,WH/Stock/General Assembly,32
+77-TB52-BN,WH/Stock/Raw Materials,5
+77-TB53-B5,WH/Stock/General Assembly,187
+77-TB7-B5,WH/Stock/General Assembly,8
+77-TB7-BB,WH/Stock/General Assembly,28
+77-TB7-BLU,WH/Stock/General Assembly,4
+77-TB7-DO,WH/Stock/General Assembly,24
+77-TB7-DP,WH/Stock/General Assembly,23
+77-TB8-BN,WH/Stock/Raw Materials,2
+77-TBDR1-B5,WH/Stock/General Assembly,100
+77-TBDR2-B5,WH/Stock/General Assembly,100
+77-TBDR3-B5,WH/Stock/General Assembly,66
+77-TBDR4-B5,WH/Stock/General Assembly,66
+77-TBDR5-B5,WH/Stock/General Assembly,10
+77-TBDRTV-B5,WH/Stock/General Assembly,13
+77-TBEXSUP-BN,WH/Stock/General Assembly,19
+77-TBIP-GW,WH/Stock/Raw Materials,3
+77-TBPB9L-BN,WH/Stock/Raw Materials,25
+77-TBPB9R-BN,WH/Stock/Raw Materials,33
+77-TBPBSB-GW,WH/Stock/Raw Materials,10
+77-TBVE2-BN,WH/Stock/General Assembly,51
+77-TBVE36-BN,WH/Stock/General Assembly,19
+77-TBVE8-BN,WH/Stock/General Assembly,19
+77-TM3-BT,WH/Stock/Raw Materials,6
+77-TMB502-BT,WH/Stock/General Assembly,21
+77-TMB502-BT,WH/Stock/Final Finished Goods,42
+77-TMHS-BT,WH/Stock/Raw Materials,2
+77-V3C1-HGB,WH/Stock/Raw Materials,17
+77-V3C1-HGB,WH/Stock/General Assembly,2
+77-V3C2-HGB,WH/Stock/General Assembly,2
+77-V3F-HGB,WH/Stock/General Assembly,1
+800-IND34,WH/Stock/Tech Stock,7
+800-LAM36,WH/Stock/Tech Stock,3
+800-LAM36B,WH/Stock/Tech Stock,1
+800-LPSWBD,WH/Stock/Tech Stock,1
+800-OM3SW59,WH/Stock/Final Finished Goods,1
+800-XSLKCB2,WH/Stock/Tech Stock,8
+824CB,WH/Stock/Final Finished Goods,1
+900-DDXTFA,WH/Stock/Raw Materials,17
+900-DDXTFAC,WH/Stock/Raw Materials,16
+900-DDXTFB,WH/Stock/Raw Materials,21
+900-DDXTFBC,WH/Stock/Raw Materials,21
+900-DT6-ML,WH/Stock/Raw Materials,1
+900-DT6700-1,WH/Stock/Raw Materials,2
+900-DT6700-11,WH/Stock/General Assembly,379
+900-DT6700-13,WH/Stock/General Assembly,119
+900-DT6DR-1,WH/Stock/General Assembly,10
+900-DT6DR-2,WH/Stock/General Assembly,10
+900-ICPYS,WH/Stock/Raw Materials,2
+900-ISP-MB,WH/Stock/Raw Materials,1
+900-V15C1,WH/Stock/Welding,8
+900-V15C2,WH/Stock/Welding,8
+950-DT6-4PF,WH/Stock/Raw Materials,3
+950-DT6-PF,WH/Stock/Raw Materials,2
+950-DT62F,WH/Stock/Raw Materials,2
+950-TB-INTGP,WH/Stock/Raw Materials,6
+ACR100,WH/Stock/Raw Materials,20
+ACR205,WH/Stock/Raw Materials,3
+ACR205B,WH/Stock/Raw Materials,3
+ACR270,WH/Stock/Raw Materials,3
+ACR275,WH/Stock/Raw Materials,3
+ACR285,WH/Stock/Raw Materials,3
+ACR350,WH/Stock/Raw Materials,1
+ACR450,WH/Stock/Raw Materials,144
+ACR550,WH/Stock/General Assembly,18
+APW100,WH/Stock/Raw Materials,4
+BAL232,WH/Stock/Raw Materials,152
+BAL232,WH/Stock/General Assembly,27
+BAL232,WH/Stock/Final Finished Goods,5
+BAL328,WH/Stock/Raw Materials,2
+CAP270,WH/Stock/Final Finished Goods,78
+CAP277,WH/Stock/Final Finished Goods,255
+CAP280,WH/Stock/Tech Stock,3
+CAP295,WH/Stock/Tech Stock,8
+CAP298,WH/Stock/Tech Stock,68
+CAP300,WH/Stock/Tech Stock,890
+CAP335,WH/Stock/Tech Stock,69
+CAP420,WH/Stock/Tech Stock,1153
+CASE100,WH/Stock/Tech Stock,50
+CBL125,WH/Stock/General Assembly,20
+CBL125,WH/Stock/Final Finished Goods,20
+CBLRCA6,WH/Stock/Tech Stock,14
+CBLRCA6,WH/Stock/Final Finished Goods,33
+CBLSV6,WH/Stock/Final Finished Goods,64
+CCF1/2,WH/Stock/Raw Materials,60
+CCF1/2,WH/Stock/General Assembly,4
+CCF1/8,WH/Stock/General Assembly,45.979
+CCW,WH/Stock/Final Finished Goods,86
+CDC,WH/Stock/Raw Materials,7
+CIR200,WH/Stock/Raw Materials,14
+CIT2050A,WH/Stock/Final Finished Goods,5
+CONN-116022,WH/Stock/General Assembly,35
+CONN-1725698,WH/Stock/General Assembly,23
+CONN-3022276,WH/Stock/General Assembly,6
+CONN-CV011315TB,WH/Stock/Raw Materials,15
+CONN155,WH/Stock/Final Finished Goods,10
+CONN175A,WH/Stock/Tech Stock,50
+CONN176,WH/Stock/General Assembly,77
+CONN177,WH/Stock/General Assembly,579
+CONN178,WH/Stock/Tech Stock,152
+CONN178,WH/Stock/General Assembly,4
+CONN179,WH/Stock/General Assembly,248
+CONN182,WH/Stock/Tech Stock,1590
+CONN190A,WH/Stock/Tech Stock,57
+CONN193,WH/Stock/Tech Stock,1217
+CONN196,WH/Stock/Tech Stock,1856
+CONN197,WH/Stock/Tech Stock,814
+CONN198,WH/Stock/Tech Stock,425
+CONN199,WH/Stock/Tech Stock,661
+CONN201,WH/Stock/Tech Stock,30
+CONN202A,WH/Stock/Tech Stock,13
+CONN205,WH/Stock/Tech Stock,123
+CONN215,WH/Stock/Tech Stock,127
+CONN400,WH/Stock/Tech Stock,16
+CONN400M,WH/Stock/Final Finished Goods,17
+CONN401,WH/Stock/Tech Stock,45
+CONN402,WH/Stock/Tech Stock,62
+CONN420,WH/Stock/Tech Stock,7
+CONN4212,WH/Stock/Tech Stock,16
+CONN4424,WH/Stock/Tech Stock,171
+CONN520A,WH/Stock/Tech Stock,145
+CONN700,WH/Stock/Tech Stock,11
+CONN720,WH/Stock/Tech Stock,8
+CONN720,WH/Stock/General Assembly,7
+CONN730,WH/Stock/Tech Stock,6
+CONN731,WH/Stock/Tech Stock,38
+CONN733,WH/Stock/Tech Stock,14
+CONN735,WH/Stock/Tech Stock,46
+CONN736,WH/Stock/Tech Stock,47
+CONN740,WH/Stock/Tech Stock,5
+CONN7510,WH/Stock/Tech Stock,105
+CONN7580,WH/Stock/Final Finished Goods,189
+CONN759,WH/Stock/Final Finished Goods,50
+CONN7590,WH/Stock/Final Finished Goods,129
+CONN759A,WH/Stock/Final Finished Goods,201
+CONN760,WH/Stock/Tech Stock,24
+CONN770,WH/Stock/Tech Stock,5
+CONN771A,WH/Stock/Tech Stock,50
+CONN772,WH/Stock/Tech Stock,65
+CONN772A,WH/Stock/Tech Stock,36
+CONN773,WH/Stock/Tech Stock,45
+CONN775,WH/Stock/Tech Stock,27
+CONN775A,WH/Stock/Tech Stock,8
+CONNFO4531,WH/Stock/Tech Stock,43
+CONNFO4531,WH/Stock/Final Finished Goods,299
+CONNFO4533,WH/Stock/Tech Stock,23
+CONNFO4533,WH/Stock/Final Finished Goods,519
+CONNHDMI-VGA,WH/Stock/Tech Stock,5
+77-DDXTFB-DP,WH/Stock/General Assembly,3
+77-DDXTFBC-DO,WH/Stock/General Assembly,3
+77-DDXTFBC-DP,WH/Stock/General Assembly,2
+77-DT64PF-BLU,WH/Stock/Powder Coat,3
+77-DT6700-1-BLU,WH/Stock/General Assembly,4
+77-DT6700-10-DP,WH/Stock/General Assembly,56
+77-DT6700-12-BLU,WH/Stock/General Assembly,14
+77-DT6700-6-GW,WH/Stock/Raw Materials,6
+77-DT6700-6-GW,WH/Stock/Sheet Metal,14
+77-DT6700-7-GW,WH/Stock/Raw Materials,6
+77-DT6700-7-GW,WH/Stock/Sheet Metal,14
+77-DT6700-7-GW,WH/Stock/General Assembly,2
+77-DT6700-8-GW,WH/Stock/Sheet Metal,14
+77-DT6700-8-GW,WH/Stock/General Assembly,4
+77-DT6DR1-BLU,WH/Stock/General Assembly,44
+77-V7F-HGB,WH/Stock/General Assembly,3
+77-VALUPVP-GW,WH/Stock/Raw Materials,2
+77-VGA1-BT,WH/Stock/Final Finished Goods,1
+77-VGA2-BT,WH/Stock/Final Finished Goods,14
+800-824CB,WH/Stock/Tech Stock,17
+800-AV824,WH/Stock/Tech Stock,7
+900-AWNXL-WB,WH/Stock/Raw Materials,10
+900-AWNXL13-1,WH/Stock/Raw Materials,5
+900-AWNXL13-1SA,WH/Stock/Raw Materials,5
+900-AWNXL6-7,WH/Stock/Raw Materials,3
+900-AWNXL6-7SA,WH/Stock/Raw Materials,3
+900-AWNXL8,WH/Stock/Raw Materials,4
+900-AWNXL8SA,WH/Stock/Raw Materials,4
+900-CROCANOPY-TP,WH/Stock/Raw Materials,1
+900-DD-10,WH/Stock/Raw Materials,17
+900-DD-11,WH/Stock/Raw Materials,8
+900-DDCB10,WH/Stock/Raw Materials,1
+900-DDCB11,WH/Stock/Raw Materials,1
+900-DDCB9,WH/Stock/Raw Materials,1
+900-DDCPY,WH/Stock/Raw Materials,1
+900-DDCPY-MP,WH/Stock/Raw Materials,3
+900-PVBT,WH/Stock/Raw Materials,4
+900-SME8050V2,WH/Stock/Raw Materials,4
+900-T-21WC,WH/Stock/Raw Materials,6
+900-TB-18,WH/Stock/Raw Materials,2
+950-TB-17,WH/Stock/Raw Materials,19
+950-TB-2,WH/Stock/Welding,3
+950-TB-23,WH/Stock/General Assembly,15
+950-TB-3,WH/Stock/Raw Materials,1930
+950-TB-3,WH/Stock/General Assembly,227
+ACC035,WH/Stock/Tech Stock,54
+ACC037,WH/Stock/Final Finished Goods,39
+AW140,WH/Stock/General Assembly,26
+AW145,WH/Stock/General Assembly,26
+BAR004,WH/Stock/Raw Materials,982
+BAR004,WH/Stock/General Assembly,10
+BAR006,WH/Stock/Tech Stock,4
+BAR006,WH/Stock/General Assembly,15
+BAR40208,WH/Stock/Raw Materials,1900
+BAR40208,WH/Stock/Tech Stock,49
+BAR40208,WH/Stock/General Assembly,76
+BAR7311,WH/Stock/Tech Stock,140
+CAN-S3-S-CTCLD-25A93N,WH/Stock/Raw Materials,2
+CAN-S3-S-CTCLD-35N93N-M,WH/Stock/Raw Materials,1
+CAN-S3-W-CTFRM,WH/Stock/Raw Materials,1
+CAP120,WH/Stock/Tech Stock,1452
+CAP165,WH/Stock/Tech Stock,83
+CAP190,WH/Stock/Tech Stock,110
+CAP200,WH/Stock/Tech Stock,953
+CAP220,WH/Stock/Tech Stock,277
+CAP230,WH/Stock/Final Finished Goods,81
+CAP236,WH/Stock/Final Finished Goods,33
+CAP240A,WH/Stock/Final Finished Goods,82
+CBL2512M,WH/Stock/Final Finished Goods,11
+CBL2525M,WH/Stock/Final Finished Goods,7
+CBL2535M,WH/Stock/Final Finished Goods,3
+CBL2550M,WH/Stock/Final Finished Goods,6
+CDFO15,WH/Stock/Final Finished Goods,6
+CDFO25,WH/Stock/Final Finished Goods,1
+CDFO35,WH/Stock/Final Finished Goods,2
+CIR250,WH/Stock/Raw Materials,25
+CIT651,WH/Stock/Final Finished Goods,1
+CLIP100,WH/Stock/General Assembly,405
+CONN03,WH/Stock/Tech Stock,9
+CONN103,WH/Stock/Tech Stock,68
+CONN104,WH/Stock/Tech Stock,76
+CONN125,WH/Stock/Tech Stock,663
+CONN125A,WH/Stock/Tech Stock,26
+CONN145,WH/Stock/Tech Stock,13
+CONN145,WH/Stock/Final Finished Goods,8
+CONN300,WH/Stock/Tech Stock,48
+CONN302,WH/Stock/Tech Stock,34
+CONN315,WH/Stock/Tech Stock,41
+CONN316,WH/Stock/Tech Stock,17
+CONN317,WH/Stock/Tech Stock,5
+CONN318,WH/Stock/Tech Stock,61
+CONN335,WH/Stock/Tech Stock,44
+CONN525,WH/Stock/Tech Stock,26
+CONN540,WH/Stock/Tech Stock,1420
+CONN560,WH/Stock/Tech Stock,102
+CONN580A,WH/Stock/Tech Stock,492
+CONN580A,WH/Stock/Final Finished Goods,1592
+CONN600,WH/Stock/Tech Stock,26
+CONN615,WH/Stock/Tech Stock,262
+CONN630,WH/Stock/Tech Stock,10
+CONN640,WH/Stock/Tech Stock,4
+CONN645,WH/Stock/Tech Stock,250
+CONN752,WH/Stock/Tech Stock,15
+CONN7570,WH/Stock/Tech Stock,97
+CONN7570,WH/Stock/General Assembly,10
+CONN800A,WH/Stock/Tech Stock,74
+CONN860,WH/Stock/Tech Stock,5
+CONN900,WH/Stock/Tech Stock,251
+CONN990,WH/Stock/General Assembly,9
+CONN995,WH/Stock/General Assembly,9
+CONNFO1523,WH/Stock/Tech Stock,52
+CONNFO2523,WH/Stock/Tech Stock,112
+CONNFO4501,WH/Stock/Tech Stock,373
+CONNFO4501,WH/Stock/Final Finished Goods,1002
+CONNFO4511,WH/Stock/Tech Stock,488
+CONNFO4511,WH/Stock/Final Finished Goods,1537
+CONNFO4515,WH/Stock/Tech Stock,12
+CONNFO4515,WH/Stock/Final Finished Goods,96
+COR143,WH/Stock/Raw Materials,16
+COR183A,WH/Stock/Tech Stock,2
+COR183A,WH/Stock/Final Finished Goods,69
+COR183B,WH/Stock/Raw Materials,128
+COR183B,WH/Stock/Final Finished Goods,111
+COR580,WH/Stock/Final Finished Goods,32
+COR75,WH/Stock/Tech Stock,22
+COR75,WH/Stock/General Assembly,4
+COR75,WH/Stock/Final Finished Goods,12
+COR75A,WH/Stock/Final Finished Goods,81
+CRT1100,WH/Stock/General Assembly,2
+CRT1200,WH/Stock/General Assembly,9
+CRTBDT,WH/Stock/General Assembly,31
+CUP6,WH/Stock/Welding,2
+CUP6GC,WH/Stock/Welding,1
+CUP6S,WH/Stock/Welding,1
+CUP6S,WH/Stock/Final Finished Goods,1
+CUP6SGC,WH/Stock/Welding,1
+CUP8,WH/Stock/Welding,1
+DD300,WH/Stock/Tech Stock,9
+DD450,WH/Stock/Tech Stock,39
+DD56,WH/Stock/Tech Stock,8
+DIN-DNR35S1-2,WH/Stock/General Assembly,4
+DMX-9GA0812P4J001,WH/Stock/General Assembly,5
+DMX-EC8025M12CA,WH/Stock/General Assembly,5
+DMX105,WH/Stock/Tech Stock,11
+COP2017,WH/Stock/Tech Stock,241
+COR105,WH/Stock/Tech Stock,12
+COR20,WH/Stock/Final Finished Goods,67
+COR50,WH/Stock/General Assembly,10
+COR500,WH/Stock/Final Finished Goods,1
+CSFO15,WH/Stock/Final Finished Goods,7
+CSFO25,WH/Stock/Final Finished Goods,3
+CSFO35,WH/Stock/Final Finished Goods,7
+CSFO40,WH/Stock/Final Finished Goods,7
+CSFO50,WH/Stock/Final Finished Goods,2
+CTR,WH/Stock/Final Finished Goods,3
+CUP5,WH/Stock/Welding,3
+CUP5,WH/Stock/Final Finished Goods,1
+CUP5BC,WH/Stock/Welding,3
+CUP5CE,WH/Stock/Welding,1
+CUP5S,WH/Stock/Welding,3
+CUPRA,WH/Stock/Welding,41
+CUPRAL,WH/Stock/Welding,163
+DBIPV-IG,WH/Stock/Raw Materials,3
+DBIPV-IG,WH/Stock/General Assembly,6
+DBIPV-IG,WH/Stock/Final Finished Goods,1
+DBIPV-OG,WH/Stock/Raw Materials,8
+DCTR,WH/Stock/Final Finished Goods,8
+DCTRSM,WH/Stock/Final Finished Goods,2
+DD-G,WH/Stock/Tech Stock,97
+DD-IND,WH/Stock/Tech Stock,11
+DD-R,WH/Stock/Tech Stock,4180
+DD-RA,WH/Stock/Tech Stock,7
+DD100,WH/Stock/Tech Stock,171
+DD104,WH/Stock/Tech Stock,3572
+DD110,WH/Stock/Tech Stock,3054
+DD155,WH/Stock/Tech Stock,37
+DELL7050,WH/Stock/Tech Stock,2
+DELLKB,WH/Stock/Final Finished Goods,14
+DELLMOUSE,WH/Stock/Final Finished Goods,17
+DMX106A,WH/Stock/Final Finished Goods,5
+DMX112,WH/Stock/Tech Stock,11
+DMX135,WH/Stock/General Assembly,30
+DROP,WH/Stock/Welding,136
+DT1350CP2,WH/Stock/Final Finished Goods,2
+DT6040BLU,WH/Stock/General Assembly,24
+DT6050,WH/Stock/General Assembly,37
+DT6300BLUSKT,WH/Stock/Final Finished Goods,1
+DT6310BLU,WH/Stock/Final Finished Goods,1
+DT6700BLU,WH/Stock/Final Finished Goods,3
+DT6700MK,WH/Stock/Final Finished Goods,5
+DTT-PCS,WH/Stock/Final Finished Goods,1
+DUN-DT1,WH/Stock/General Assembly Finished Goods,2
+ELC505,WH/Stock/Tech Stock,1106
+ELC510,WH/Stock/Tech Stock,15
+ELC600,WH/Stock/Tech Stock,11
+ETX110,WH/Stock/Tech Stock,28
+ETX120,WH/Stock/Tech Stock,28
+EVABK,WH/Stock/Final Finished Goods,17
+EVBP,WH/Stock/Final Finished Goods,2
+EVEMBMLED,WH/Stock/Final Finished Goods,9
+EVEMBMV2LED,WH/Stock/General Assembly Finished Goods,1
+EVLVD,WH/Stock/General Assembly,1
+EVROT,WH/Stock/Final Finished Goods,1
+EXT1000,WH/Stock/Final Finished Goods,2
+FOS32D,WH/Stock/Tech Finished Goods,9
+FOS32D,WH/Stock/Final Finished Goods,3
+FOS6340R,WH/Stock/Final Finished Goods,3
+FUSE.75G,WH/Stock/Tech Stock,91
+FUSE1,WH/Stock/Tech Stock,27
+FUSE1,WH/Stock/General Assembly,46
+FUSE100,WH/Stock/Tech Stock,486
+FUSE101,WH/Stock/Raw Materials,300
+FUSE101,WH/Stock/Tech Stock,102
+FUSE101,WH/Stock/General Assembly,109
+HD4GRC5,WH/Stock/Final Finished Goods,10
+HDMI-15-M/M,WH/Stock/Final Finished Goods,5
+HDST400,WH/Stock/Tech Stock,10
+HDST400,WH/Stock/Final Finished Goods,1
+HEAT-028109-00,WH/Stock/General Assembly,4
+HS3/16,WH/Stock/Tech Stock,184
+HSG1000,WH/Stock/General Assembly,72
+HSG248,WH/Stock/Final Finished Goods,49
+HSG268,WH/Stock/Raw Materials,29
+HSG268A,WH/Stock/Raw Materials,48
+HSG268A,WH/Stock/General Assembly,26
+HSG273,WH/Stock/Raw Materials,35
+HSG273A,WH/Stock/Raw Materials,10
+HSG274,WH/Stock/Raw Materials,45
+HSG274,WH/Stock/Final Finished Goods,116
+HSG275,WH/Stock/Raw Materials,3170

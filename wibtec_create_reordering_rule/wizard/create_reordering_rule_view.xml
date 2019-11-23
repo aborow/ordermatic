@@ -1,0 +1,36 @@
+<odoo>
+    <data>
+       <!-- View record for create reordering rule -->
+        <record id="view_create_reordering_rule" model="ir.ui.view">
+            <field name="name">create.reordering.rule.wizard</field>
+            <field name="model">create.reordering.rule</field>
+            <field name="arch" type="xml">
+                <form string="Create Reordering Rule">
+                    <h4>Are you Sure you want to create "Reordering Rules" for all the products?</h4>
+                    <footer>
+                        <button name="create_reordering_rule" string="Create" type="object" class="oe_highlight"/>
+                        <button name="Cancel" string="Cancel" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <!-- Start Add Action for Menu create reordering rule -->
+        <record id="action_create_reordering_rule" model="ir.actions.act_window">
+            <field name="name">Create Reordering Rule</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">create.reordering.rule</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <!-- Menuitem for create reordering rule -->
+        <menuitem id="menu_create_reordering_rule" 
+            parent="stock.menu_stock_inventory_control" 
+            sequence="10"
+            action="action_create_reordering_rule" 
+            string="Create Reordering Rule"/>
+
+    </data>
+</odoo>

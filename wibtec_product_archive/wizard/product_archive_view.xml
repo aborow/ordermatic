@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!-- View record for product archive -->
+    	<record id="view_product_archive" model="ir.ui.view">
+            <field name="name">product.archive.form.wizard</field>
+            <field name="model">product.archive</field>
+            <field name="arch" type="xml">
+                <form string="Update Product">
+                    <group>
+                        <field name="file" filename="name"/>
+                    </group>
+                    <footer>
+                        <button name="update_product" string="Update" type="object" class="oe_highlight"/>
+                        <button name="Cancel" string="Cancel" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+    	<!-- Start Add Action for Menu "product Archive" -->
+        <record id="action_product_archive" model="ir.actions.act_window">
+            <field name="name">Update Archive Product</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">product.archive</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <!-- Menuitem for product archive -->
+        <menuitem id="menu_product_archive" 
+            parent="mrp.menu_mrp_bom" 
+            action="action_product_archive" 
+            string="Update Product Archive"
+            sequence="3"/>
+
+    </data>
+</odoo>

@@ -4,8 +4,7 @@
 {
     'name': "Wibtec Sales",
 
-    'summary': """
-        	This Module is used to add dates in sale order from.  """,
+    'summary': """This Module is used to add dates in sale order from.  """,
 
     'description': """
         OMC-33 = "New fields for Sales Order Form"
@@ -15,7 +14,6 @@
         OMC-151 = "Add OMC Project Delivery Date and OMC Actual Delivery Date to Sales Analysis Report"
         OMC-152 = "Move Fields on Quote / Sales Order Form"
         OMC-144 = "Sales & MFG: Update OMC Actual Delivery Date with Delivery Order DONE date"
-
         OMC-161 = Delivery scheduled date comes from SO 'OMC Projected Delivery Date' (once the SO is confirmed)
     """,
     'author': "WIB Technologies, Inc",
