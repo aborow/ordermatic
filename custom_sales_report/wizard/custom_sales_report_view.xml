@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Form view of Custom Sales Report -->
+    <record id="view_custom_sales_report" model="ir.ui.view">
+        <field name="name">custom.sales.report.form</field>
+        <field name="model">custom.sales.report</field>
+        <field name="arch" type="xml">
+             <form string="Custom Sales Report">
+
+                <div class="card bg-light">
+                    <div class="card-body"><i class="fa fa-fw fa-file"/>Please select dates and click "Print" button to get report.</div> 
+                </div>
+                <group>
+                    <group>
+                        <field name="from_date"/>
+                    </group>
+                    <group>
+                        <field name="to_date"/>
+                    </group>
+                </group>
+                <footer>
+                    <button name="print_xls" string='Print' type="object" class="btn-primary"/>
+                    <button string="CANCEL" class="btn-default" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action of Custom Sales Report-->
+    <record id="action_custom_sales_report" model="ir.actions.act_window">
+        <field name="name">Custom Sales Report</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">custom.sales.report</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <!-- Menuitem for print report -->
+    <menuitem id="menu_custom_sales_report" name="Custom Sales Report" action="action_custom_sales_report" parent="sale.menu_sale_report" sequence="10"/>
+
+</odoo>
