@@ -50,5 +50,5 @@ class SaleOrder(models.Model):
 		if pick:
 			pick.scheduled_date = datetime.datetime.combine(
 													pick.sale_id.omc_projected_shipping_date,
-													datetime.datetime.min.time()
+													pick.scheduled_date.time()
 													)
