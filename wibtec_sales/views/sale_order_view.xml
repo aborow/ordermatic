@@ -9,7 +9,8 @@
             <field name="arch" type="xml">
                 <xpath expr="//div[@name='carrier_selection']" position="after">
                     <field name="customer_requested_delivery_date"/>
-                    <field name="omc_projected_shipping_date"/>
+                    <field name="omc_projected_shipping_date"
+                        attrs="{'readonly':[('state','!=','draft')]}"/>
                     <field name="omc_actual_delivery_date"/>
                 </xpath>
                 <xpath expr="//field[@name='partner_shipping_id']" position="after">
