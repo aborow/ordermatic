@@ -12,6 +12,7 @@ import datetime
 class CustomSalesReport(models.TransientModel):
 
     _name = "custom.sales.report"
+    _description = "Custom Sales Report"
 
     from_date = fields.Date('From Date')
     to_date = fields.Date('To Date')
@@ -101,80 +102,78 @@ class CustomSalesReport(models.TransientModel):
             colm += 1
             worksheet.write(row, colm, 'Order Line Status', header_format)
             for order in sale_orders:
-                colm = 0
-                row += 1
-                if order.date_order:
-                    worksheet.write(row, colm,datetime.datetime.strptime(str(order.date_order),'%Y-%m-%d %H:%M:%S').strftime('%d-%m-%Y %H:%M:%S'), data_format)
-                else:
-                    worksheet.write(row, colm,'-', data_format)
-                colm += 1
-                if order.user_id:
-                    worksheet.write(row, colm, order.user_id.name, data_format)
-                else:
-                    worksheet.write(row, colm,'-', data_format)
-                colm += 1
-                if order.order_contact:
-                    worksheet.write(row, colm, order.order_contact, data_format)
-                else:
-                    worksheet.write(row, colm,'-', data_format)
-                colm += 1
-                if order.name:
-                    worksheet.write(row, colm, order.name, data_format)
-                else:
-                    worksheet.write(row, colm,'-', data_format)
-                colm += 1
-                if order.partner_id:
-                    worksheet.write(row, colm, order.partner_id.name, data_format)
-                else:
-                    worksheet.write(row, colm,'-', data_format)
-                colm += 1
-                if order.customer_requested_delivery_date:
-                    worksheet.write(row, colm, datetime.datetime.strptime(str(order.customer_requested_delivery_date),'%Y-%m-%d').strftime('%d-%m-%Y'), data_format)
-                else:
-                    worksheet.write(row, colm,'-', data_format)
-                colm += 1
-                if order.omc_projected_shipping_date:
-                    worksheet.write(row, colm, datetime.datetime.strptime(str(order.omc_projected_shipping_date),'%Y-%m-%d').strftime('%d-%m-%Y'), data_format)
-                else:
-                    worksheet.write(row, colm,'-', data_format)
-                colm += 1
-                if order.state:
-                    worksheet.write(row, colm, str(order.state).capitalize(), data_format)
-                else:
-                    worksheet.write(row, colm,'-', data_format)
-                colm += 1
-                if order.order_line:
-                    for line in order.order_line:
-                        if line.product_id:
-                            worksheet.write(row, colm, line.product_id.name, data_format)
-                        elif line.display_type == 'line_note':
-                            worksheet.write(row, colm, line.name, data_format)
-                        row += 1
-                    row -= len(order.order_line)
+                for line in order.order_line:
+                    colm = 0
+                    row += 1
+                    if order.date_order:
+                        worksheet.write(row, colm,datetime.datetime.strptime(str(order.date_order),'%Y-%m-%d %H:%M:%S').strftime('%d-%m-%Y %H:%M:%S'), data_format)
+                    else:
+                        worksheet.write(row, colm,'-', data_format)
                     colm += 1
-                    for line in order.order_line:
+                    if order.user_id:
+                        worksheet.write(row, colm, order.user_id.name, data_format)
+                    else:
+                        worksheet.write(row, colm,'-', data_format)
+                    colm += 1
+                    if order.order_contact:
+                        worksheet.write(row, colm, order.order_contact, data_format)
+                    else:
+                        worksheet.write(row, colm,'-', data_format)
+                    colm += 1
+                    if order.name:
+                        worksheet.write(row, colm, order.name, data_format)
+                    else:
+                        worksheet.write(row, colm,'-', data_format)
+                    colm += 1
+                    if order.partner_id:
+                        worksheet.write(row, colm, order.partner_id.name, data_format)
+                    else:
+                        worksheet.write(row, colm,'-', data_format)
+                    colm += 1
+                    if order.customer_requested_delivery_date:
+                        worksheet.write(row, colm, datetime.datetime.strptime(str(order.customer_requested_delivery_date),'%Y-%m-%d').strftime('%d-%m-%Y'), data_format)
+                    else:
+                        worksheet.write(row, colm,'-', data_format)
+                    colm += 1
+                    if order.omc_projected_shipping_date:
+                        worksheet.write(row, colm, datetime.datetime.strptime(str(order.omc_projected_shipping_date),'%Y-%m-%d').strftime('%d-%m-%Y'), data_format)
+                    else:
+                        worksheet.write(row, colm,'-', data_format)
+                    colm += 1
+                    if order.state:
+                        worksheet.write(row, colm, str(order.state).capitalize(), data_format)
+                    else:
+                        worksheet.write(row, colm,'-', data_format)
+                    colm += 1
+                    if line.product_id:
+                        worksheet.write(row, colm, line.product_id.name, data_format)
+                    elif line.display_type == 'line_note':
+                        worksheet.write(row, colm, line.name, data_format)
+                    else:
+                        worksheet.write(row, colm,'-', data_format)
+                    colm += 1
+                    if line.product_uom_qty:
                         worksheet.write(row, colm, line.product_uom_qty, data_format)
-                        row += 1
-                    row -= len(order.order_line)
+                    else:
+                        worksheet.write(row, colm,'-', data_format)
                     colm += 1
-                    for line in order.order_line:
+                    if line.product_uom:
                         worksheet.write(row, colm, line.product_uom.name, data_format)
-                        row += 1
-                    row -= len(order.order_line)
+                    else:
+                        worksheet.write(row, colm,'-', data_format)
                     colm += 1
-                    for line in order.order_line:
+                    if line.qty_delivered:
                         worksheet.write(row, colm, line.qty_delivered, data_format)
-                        row += 1
-                    row -= len(order.order_line)
+                    else:
+                        worksheet.write(row, colm,'-', data_format)  
                     colm += 1
-                    for line in order.order_line:
-                        if line.product_uom_qty < line.qty_delivered:
-                            worksheet.write(row, colm, 'Open', data_format)
-                        elif line.product_uom_qty <= line.qty_delivered:
-                            worksheet.write(row, colm, 'Closed', data_format)
-                        else:
-                            worksheet.write(row, colm, '-', data_format)
-                        row += 1
+                    if line.product_uom_qty < line.qty_delivered:
+                        worksheet.write(row, colm, 'Open', data_format)
+                    elif line.product_uom_qty <= line.qty_delivered:
+                        worksheet.write(row, colm, 'Closed', data_format)
+                    else:
+                        worksheet.write(row, colm, '-', data_format)
+                    colm += 1
         workbook.close()
         fp.seek(0)
         result = base64.b64encode(fp.read())
