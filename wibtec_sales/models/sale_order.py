@@ -30,10 +30,7 @@ class SaleOrder(models.Model):
 	                                            'name': 'Update delivery date',
 	                                            'model_id': res_model_id,
 	                                            'state': 'code',
-	                                            'code': "model.update_delivery_date(%s,'%s')" % (
-																								self.id,
-																								self.omc_projected_shipping_date
-																								),
+	                                            'code': "model.update_delivery_date(%s)" % (self.id),
 	                                            'interval_number': 1,
 	                                            'interval_type': 'minutes',
 	                                            'nextcall': datetime.datetime.now() \
@@ -44,11 +41,14 @@ class SaleOrder(models.Model):
 		return res
 
 
-	def update_delivery_date(self, sale_id, date):
+	def update_delivery_date(self, sale_id):
 		pick = self.env['stock.picking'].search(
 												[('sale_id','=',sale_id)],
 												order='id ASC',
 												limit=1
 												)
 		if pick:
-			pick.scheduled_date = date
+			pick.scheduled_date = datetime.datetime.combine(
+													pick.sale_id.omc_projected_shipping_date,
+													pick.scheduled_date.time()
+													)
