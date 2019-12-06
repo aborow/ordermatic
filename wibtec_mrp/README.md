@@ -13,6 +13,9 @@ Light Blue - Available / Ready
 Yellow - Pending
 Green - Finished
 
+OMC-197 
+===========
+- Add Default Finished Good location to the Routing
 
 Version - 12.0.1.0.1
 ======================
@@ -25,3 +28,8 @@ Version - 12.0.1.0.2
 Version - 12.0.1.0.3
 ====================
 -Solved issue of click in kanban.
+
+Version - 12.0.1.0.4
+=====================
+-Added "Default Finished Good Location" to the Routing.
+-Added functionality that if the routing used in the MO has a “Finished products location”  then it should update the "Finsished Production Location" in the MO with this location.
