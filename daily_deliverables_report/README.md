@@ -17,3 +17,7 @@ Version - 12.0.1.0.2
 ======================
 -Changed name to "Daily Deliverables Report"
 -Added condition which ingores draft and cancelled sale orders to get printed.
+
+Version - 12.0.1.0.3
+====================
+-Added "Internal Reference" field into the report.

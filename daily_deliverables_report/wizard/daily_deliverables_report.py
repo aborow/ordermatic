@@ -67,13 +67,14 @@ class DailyDeliverablesReport(models.TransientModel):
         worksheet.set_column('K:K', 15)
         worksheet.set_column('L:L', 15)
         worksheet.set_column('M:M', 20)
+        worksheet.set_column('N:N', 20)
         not_exist = workbook.add_format({'bold': True, 'font_color': 'red'})
         row = 0
         colm = 0
         header_string = 'Daily Deliverables Report From ' + \
             str(self.from_date) + ' to ' + str(self.to_date)
         worksheet.merge_range(
-            'A1:M2', header_string, report_header_format)
+            'A1:N2', header_string, report_header_format)
         sale_orders = self.get_sale_orders()
         if sale_orders:
             row += 3
@@ -94,6 +95,8 @@ class DailyDeliverablesReport(models.TransientModel):
             worksheet.write(row, colm, 'Status', header_format)
             colm += 1
             worksheet.write(row, colm, 'Order Lines', header_format)
+            colm += 1
+            worksheet.write(row, colm, 'Internal Reference', header_format)
             colm += 1
             worksheet.write(row, colm, 'Qty Ordered', header_format)
             colm += 1
@@ -150,6 +153,11 @@ class DailyDeliverablesReport(models.TransientModel):
                         worksheet.write(row, colm, line.product_id.name, data_format)
                     elif line.display_type == 'line_note':
                         worksheet.write(row, colm, line.name, data_format)
+                    else:
+                        worksheet.write(row, colm,'-', data_format)
+                    colm += 1
+                    if line.product_id.default_code:
+                        worksheet.write(row, colm, line.product_id.default_code, data_format)
                     else:
                         worksheet.write(row, colm,'-', data_format)
                     colm += 1
