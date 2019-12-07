@@ -45,7 +45,7 @@ class DailyDeliverablesReport(models.TransientModel):
         """Method will print the XLS report."""
         sale_orders = self.get_sale_orders()
         if not sale_orders:
-            raise UserError(
+            raise ValidationError(
                 _('No records found.'))
         fp = io.BytesIO()
         workbook = xlsxwriter.Workbook(fp)
