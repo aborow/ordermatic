@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record model="ir.ui.view" id="workcenter_line_kanban_inherited">
+        <field name="name">mrp.routing.form</field>
+        <field name="model">mrp.routing</field>
+        <field name="inherit_id" ref="mrp.mrp_routing_form_view"/>
+        <field name="arch" type="xml">
+            <field name="location_id" position="after">
+                <field name="finished_products_location_id"/>
+            </field>
+        </field>
+    </record>
+
+</odoo>
