@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_exemption_code,access_exemption_code,model_exemption_code,base.group_erp_manager,1,1,1,1
+access_exemption_code_account_user,access_exemption_code_account_user,model_exemption_code,account.group_account_user,1,1,1,1
+access_exemption_code_account_manager,access_exemption_code_account_manager,model_exemption_code,account.group_account_manager,1,1,1,1

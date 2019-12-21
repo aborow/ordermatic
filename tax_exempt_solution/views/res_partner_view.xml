@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+		<!-- Inherited View record for res.partner -->
+		<record id="view_partner_form" model="ir.ui.view">
+			<field name="name">res.partner.form</field>
+			<field name="model">res.partner</field>
+			<field name="inherit_id" ref="base.view_partner_form"/>
+			<field name="arch" type="xml">
+				<xpath expr="//notebook" postion="inside">
+					<page string="Tax Status" groups="account.group_account_user,account.group_account_manager">
+						<group>
+							<group>
+								<field name="is_tax_exempt"/>
+								<field name="tax_exempt_certificate"/>
+							</group>
+							<group>
+								<field name="exemption_code_id"/>
+								<field name="exemption_number"/>
+							</group>
+						</group>
+					</page>
+				</xpath>
+			</field>
+		</record>
+	</data>
+</odoo>
