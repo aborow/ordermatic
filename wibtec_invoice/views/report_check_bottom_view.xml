@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 	<data>
-
 		<!-- CSS Called -->
         <template id="assets_common_check" name="wibtec_invoice_check_bottom" inherit_id="web.report_assets_common">
             <xpath expr="." position="inside">

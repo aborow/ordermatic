@@ -6,7 +6,6 @@ import datetime
 from odoo.tools.misc import formatLang
 from odoo.tools import float_is_zero, float_compare
 
-
 class AccountInvoice(models.Model):
 
 	_inherit = "account.invoice"

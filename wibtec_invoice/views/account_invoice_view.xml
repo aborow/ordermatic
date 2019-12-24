@@ -14,7 +14,6 @@
                 </xpath>
             </field>
         </record>
-
         <record id="view_account_invoice_customer_inherited" model="ir.ui.view">
             <field name="name">account.invoice.customer.form.inherited</field>
             <field name="model">account.invoice</field>
@@ -28,6 +27,5 @@
                 </xpath>
             </field>
         </record>
-
     </data>
 </odoo>
