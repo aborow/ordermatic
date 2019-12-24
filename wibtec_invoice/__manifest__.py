@@ -10,15 +10,20 @@
     'description': """
         OMC-114 = Update Invoice look and feel
         OMC-133 = Default Sales Tax Payable
+        OMC-166 = Print Check As
+        OMC-167 = Pay to the order of address field change
     """,
     'author': "WIB Technologies, Inc",
     'website': "http://www.wibtec.com",
     'category': 'Invoice',
-    'version': '12.0.1.0.3',
+    'version': '12.0.1.0.4',
     # any module necessary for this one to work correctly
     'depends': ['account'],
     # always loaded
-    'data': [
+    'data': [   
+        'views/res_partner_view.xml',
+        'views/account_invoice_view.xml',
+        'views/report_check_bottom_view.xml',
         'views/report_account_invoice_template.xml',
         'views/reports_views.xml'
     ],

@@ -72,3 +72,12 @@
 	padding:9px 15px; 
 	font-weight:bold;
 }
+
+.ckus_stub .summary_line span {
+    padding: -1 0.1in;
+}
+
+/*.check_header_account_no{
+	text-align: right;
+	padding-left: 155px;
+}*/
