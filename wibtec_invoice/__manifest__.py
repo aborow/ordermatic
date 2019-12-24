@@ -5,7 +5,7 @@
     'name': "Wibtec Invoice",
 
     'summary': """
-        	This Module is used to add format of invoice into qweb report of invoice.""",
+        	This Module is used to add format of invoice into qweb report of invoice. """,
 
     'description': """
         OMC-114 = Update Invoice look and feel
