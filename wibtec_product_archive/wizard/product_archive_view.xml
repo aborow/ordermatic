@@ -12,6 +12,7 @@
                     </group>
                     <footer>
                         <button name="update_product" string="Update" type="object" class="oe_highlight"/>
+                        <button name="update_active_products_with_onhand" string="Onhand" type="object" class="oe_highlight"/>
                         <button name="Cancel" string="Cancel" special="cancel"/>
                     </footer>
                 </form>
