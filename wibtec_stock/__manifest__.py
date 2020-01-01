@@ -11,7 +11,7 @@
     'author': "WIB Technologies, Inc",
     'website': "http://www.wibtec.com",
     'category': 'Stock',
-    'version': '12.0.1.0.1',
+    'version': '12.0.1.0.2',
     # any module necessary for this one to work correctly
     'depends': ['stock','stock_account'],
     # always loaded
@@ -19,7 +19,7 @@
         # 'views/stock_quant_view.xml',
         'views/report_delivery_slip_template.xml',
         'views/report_packing_slip_template.xml',
-        'views/reports_views.xml'
+        'views/reports_views.xml',
     ],
     'auto_install': False,
     'installable': True,
