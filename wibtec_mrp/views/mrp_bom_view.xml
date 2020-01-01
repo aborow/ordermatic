@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+	<record model="ir.ui.view" id="mrp_bom_inherited">
+		<field name="name">mrp.bom.form.inherited</field>
+		<field name="model">mrp.bom</field>
+		<field name="inherit_id" ref="mrp.mrp_bom_form_view"/>
+		<field name="arch" type="xml">
+			<xpath expr="//notebook/page/field[@name='bom_line_ids']/tree" position="attributes">
+				<attribute name="limit">150</attribute>
+			</xpath>
+		</field>
+	</record>
+
+</odoo>
