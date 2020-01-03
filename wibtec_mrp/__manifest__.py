@@ -19,7 +19,6 @@
     # any module necessary for this one to work correctly
     'depends': [
                 'mrp',
-                #'mrp_workorder'
                 ],
     # always loaded
     'data': [
