@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!-- View record for product archive -->
+    	<record id="view_update_locations" model="ir.ui.view">
+            <field name="name">update.locations.form.wizard</field>
+            <field name="model">update.locations</field>
+            <field name="arch" type="xml">
+                <form string="Update Locations">
+                    <div class="card bg-light">
+                        <div class="card-body"><i class="fa fa-fw fa-file"/> Please upload CSV formated file.</div>
+                    </div>
+                    <group>
+                        <group>
+                            <group>
+                                <field name="file" filename="name"/>
+                            </group>
+                       </group>
+                    </group>
+                    <footer>
+                        <button name="update_locations" string="Update Locations" type="object" class="oe_highlight"/>
+                        <button name="Cancel" string="Cancel" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+    	<!-- Start Add Action for Menu -->
+        <record id="action_locations" model="ir.actions.act_window">
+            <field name="name">Update Locations</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">update.locations</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <!-- Menuitem for product archive -->
+        <menuitem id="menu_update_locations" 
+            parent="stock.menu_stock_inventory_control" 
+            action="action_locations" 
+            string="Update Locations"
+            sequence="4"/>
+
+    </data>
+</odoo>
