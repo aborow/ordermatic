@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <!-- <delete id="base.access_ir_module_module_group_user" model="ir.model.access"/> -->
+
+
+    <record id="make_invisible" model="res.groups">
+        <field name="name">Show Run Schedular Menu</field>
+    </record>
+
+</odoo>
