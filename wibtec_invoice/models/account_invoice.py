@@ -6,10 +6,16 @@ import datetime
 from odoo.tools.misc import formatLang
 from odoo.tools import float_is_zero, float_compare
 
-
 class AccountInvoice(models.Model):
 
 	_inherit = "account.invoice"
+
+	amount_discount = fields.Float('Discount Amount',compute='compute_amount_discount')
+
+	@api.one
+	@api.depends('invoice_line_ids.discount_amount')
+	def compute_amount_discount(self):
+		self.amount_discount = sum(line.discount_amount for line in self.invoice_line_ids)
 				
 	@api.multi
 	# Returns the origin date
@@ -64,3 +70,20 @@ class AccountInvoice(models.Model):
 				return res
 			res = formatLang(self.env, amount_to_show, currency_obj=currency)
 		return res
+
+
+class AccountInvoiceLine(models.Model):
+
+	_inherit = "account.invoice.line"
+
+	discount_amount = fields.Float('Discount Amount',compute='compute_discount_amount')
+
+	@api.multi
+	@api.depends('discount')
+	def compute_discount_amount(self):
+		for invoice in self:
+			if invoice.discount:
+				price = invoice.price_unit * invoice.quantity
+				invoice.discount_amount = round(price - invoice.price_subtotal,2)
+			else:
+				invoice.discount_amount = 0.0

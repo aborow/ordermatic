@@ -10,7 +10,6 @@
             file="wibtec_invoice.report_invoice" 
             name="wibtec_invoice.report_invoice"
             />
-
         <!-- Removed menu of report invoice without payment -->
         <report
             id="account.account_invoices_without_payment"
@@ -23,7 +22,6 @@
             print_report_name="(object._get_report_base_filename())"
             menu="False"
         />
-
         <!-- Removed menu of report invoice with payment -->
         <report
             id="account.account_invoices"
@@ -36,7 +34,6 @@
             print_report_name="(object._get_report_base_filename())"
             groups="account.group_account_invoice"
             menu="False"
-        />
-            
+        />  
     </data>
 </odoo>

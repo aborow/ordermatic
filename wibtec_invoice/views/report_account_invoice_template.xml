@@ -7,7 +7,6 @@
                 <link rel="stylesheet" href="/wibtec_invoice/static/src/css/report.css"/>
             </xpath>
         </template>
-
         <template id="professional_external_layout">
             <!-- Multicompany -->
             <t t-if="o and 'company_id' in o">

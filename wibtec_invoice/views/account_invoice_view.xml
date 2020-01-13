@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="view_account_invoice_supplier_inherited" model="ir.ui.view">
+            <field name="name">account.invoice.supplier.form.inherited</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_supplier_form"/>
+            <field name="arch" type="xml">
+                <field name="date_invoice" position="after">
+                    <field name="amount_discount" invisible="1"/>
+                </field>
+                <xpath expr="//notebook/page/field[@name='invoice_line_ids']/tree/field[@name='discount']" position="after">
+                    <field name="discount_amount" invisible="1"/>
+                </xpath>
+            </field>
+        </record>
+        <record id="view_account_invoice_customer_inherited" model="ir.ui.view">
+            <field name="name">account.invoice.customer.form.inherited</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_form"/>
+            <field name="arch" type="xml">
+                <field name="date_invoice" position="after">
+                    <field name="amount_discount" invisible="1"/>
+                </field>
+                <xpath expr="//notebook/page/field[@name='invoice_line_ids']/tree/field[@name='discount']" position="after">
+                    <field name="discount_amount" invisible="1"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

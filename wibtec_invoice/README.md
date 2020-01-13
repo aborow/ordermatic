@@ -16,10 +16,10 @@ Version - 12.0.1.0.2
 =====================
 -Added "Order Contact" field into header after address.
 
-OMC-133
-================
-Default Sales Tax Payable
-
 Version - 12.0.1.0.3
 =====================
 -Added "Sales Tax Payable" as default account when any tax which have tax scope sales.
+
+Version - 12.0.1.0.4
+========================
+-Changes in check bottom as per the format of check.
