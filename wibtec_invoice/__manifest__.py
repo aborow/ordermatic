@@ -10,15 +10,16 @@
     'description': """
         OMC-114 = Update Invoice look and feel
         OMC-133 = Default Sales Tax Payable
+	OMC-134 = Check Format Customizations
         OMC-166 = Print Check As
         OMC-167 = Pay to the order of address field change
     """,
     'author': "WIB Technologies, Inc",
     'website': "http://www.wibtec.com",
     'category': 'Invoice',
-    'version': '12.0.1.0.4',
+    'version': '12.0.1.0.5',
     # any module necessary for this one to work correctly
-    'depends': ['account'],
+    'depends': ['account','l10n_us_check_printing'],
     # always loaded
     'data': [   
         'views/res_partner_view.xml',
