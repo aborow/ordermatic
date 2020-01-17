@@ -23,3 +23,7 @@ Version - 12.0.1.0.3
 Version - 12.0.1.0.4
 ========================
 -Changes in check bottom as per the format of check.
+
+Version - 12.0.1.0.5
+=======================
+-Added changed to check format.

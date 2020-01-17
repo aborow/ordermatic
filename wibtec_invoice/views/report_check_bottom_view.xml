@@ -14,16 +14,16 @@
 				<!-- <div class="sequence_number" t-if="page['sequence_number']" t-esc="page['sequence_number']"/> -->
 				<div class="row summary_line">
 					<div class="col-3 mt-2 text-left" style="font-size:smaller;">
-						<span t-esc="page['account_no']" style="padding-left:95px;margin-right: 9px;"/>
+						<span t-esc="page['account_no']" style="padding-left:90px;margin-right: 9px;"/>
 					</div>
 					<div class="col-5 mt-2 text-left" style="font-size:smaller;">
-						<span t-esc="page['partner_name']" style="margin-left:75px;margin-right: 9px;"/>
+						<span t-esc="page['partner_name']" style="margin-left:65px;margin-right: 9px;"/>
 					</div>
 					<div class="col-2  mt-2 text-left" style="font-size:smaller;">
-						<span t-esc="page['sequence_number']" style="margin-right:5px;margin-left:10px"/>
+						<span t-esc="page['sequence_number']" style="margin-right:5px;margin-left:5px"/>
 					</div>
 					<div class="col-2 mt-2 text-right" style="font-size:smaller;">
-						<span t-esc="page['payment_date']" style="margin-right:10px"/>
+						<span t-esc="page['payment_date']" style="margin-right:5px;"/>
 					</div>
 				</div>
 
@@ -82,7 +82,7 @@
 						<tr t-if="len(page['stub_lines']) > 5"><td colspan="6" class="text-right">...</td></tr>
 					</tbody>
 				</table>
-				<div class="stub_total_amount" style="font-size:smaller;margin-bottom:-5px;margin-right: 50px;">
+				<div class="stub_total_amount" style="font-size:smaller;margin-bottom:-1px;margin-right: 50px;">
 					<t t-esc="page['amount']"/>
 				</div>
 			</div>
