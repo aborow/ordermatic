@@ -36,7 +36,13 @@
             <field name="inherit_id" ref="helpdesk.helpdesk_tickets_view_tree"/>
             <field name="arch" type="xml">
                 <field name="partner_id" position="after">
+                    <field name="create_date"/>
+                    <field name="close_date"/>
                     <field name="due_date"/>
+                </field>
+                <field name="tag_ids" position="after">
+                    <field name="priority"/>
+                    <field name="ticket_type_id"/>
                 </field>
             </field>
         </record>
