@@ -21,6 +21,10 @@ OMC-169
 ===============
 Update BOM view to show 150 records instead of 40 records.
 
+OMC-198
+========
+Material Availability Change
+
 Version - 12.0.1.0.1
 ======================
 -Change color to kanban based on status.
@@ -41,3 +45,7 @@ Version - 12.0.1.0.4
 Version - 12.0.1.0.5
 ====================
 -Added functionality that BOM view should show 150 records instead of 40 records.
+
+Version - 12.0.1.0.6
+======================
+-Added field "Available" to the  "Consume Material" one2many.
