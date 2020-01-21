@@ -21,3 +21,7 @@ Version - 12.0.1.0.2
 Version - 12.0.1.0.3
 ====================
 -Added "Internal Reference" field into the report.
+
+Version - 12.0.1.0.4
+=====================
+-Added "Product Category" field into the report.
