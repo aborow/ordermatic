@@ -17,4 +17,4 @@ class StockMove(models.Model):
 
 	_inherit = "stock.move"
 
-	onhand_qty = fields.Float('Available',related='product_id.onhand_qty')
+	onhand_qty = fields.Float('On Hand',related='product_id.onhand_qty')
