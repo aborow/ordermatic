@@ -23,7 +23,7 @@
 						<span t-esc="page['sequence_number']" style="margin-right:5px;margin-left:5px"/>
 					</div>
 					<div class="col-2 mt-2 text-right" style="font-size:smaller;">
-						<span t-esc="page['payment_date']" style="margin-right:5px;"/>
+						<span t-esc="page['payment_date']" style="margin-right:3px;"/>
 					</div>
 				</div>
 
