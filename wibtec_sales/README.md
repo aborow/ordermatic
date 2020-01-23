@@ -47,3 +47,7 @@ Version - 12.0.1.0.8
 Version - 12.0.1.0.9
 ======================
 -Added functionality in which OMC Actual Delivery date will be automatically added when the transfer gets done.
+
+Version - 12.0.1.0.10
+=====================
+-Added the field "Invoice Count" (existing field) to Sales Order view, To Invoice view and Quotation View.
