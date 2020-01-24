@@ -116,8 +116,11 @@
                                                         <div class="col-xs-7 text-left" name="company_address">
                                                             <b style="font-size:16px;">Shipping address:</b>
                                                             <p style="font-size:14px;font-family: 'Times New Roman', Times, serif;">
+                                                                <t t-if="o.partner_shipping_id.display_name">
+                                                                   <span t-field="o.partner_shipping_id.display_name"/>
+                                                                </t>
                                                                 <t t-if="o.partner_shipping_id.street">
-                                                                    <span t-field="o.partner_shipping_id.street"/>
+                                                                    <br/><span t-field="o.partner_shipping_id.street"/>
                                                                 </t>
                                                                 <t t-if="o.partner_shipping_id.street2">
                                                                    <br/><span t-field="o.partner_shipping_id.street2"/>
@@ -136,8 +139,11 @@
                                                         <div class="col-xs-7 text-left" name="company_address">
                                                             <b style="font-size:16px;">Invoicing address:</b>
                                                             <p style="font-size:14px;font-family: 'Times New Roman', Times, serif;">
-                                                               <t t-if="o.partner_id.street">
-                                                                   <span t-field="o.partner_id.street"/>
+                                                                <t t-if="o.partner_id.display_name">
+                                                                   <span t-field="o.partner_id.display_name"/>
+                                                                </t>
+                                                                <t t-if="o.partner_id.street">
+                                                                   <br/><span t-field="o.partner_id.street"/>
                                                                 </t>
                                                                 <t t-if="o.partner_id.street2">
                                                                     <br/><span t-field="o.partner_id.street2"/>
