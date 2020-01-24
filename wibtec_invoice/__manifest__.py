@@ -13,19 +13,12 @@
 	OMC-134 = Check Format Customizations
         OMC-166 = Print Check As
         OMC-167 = Pay to the order of address field change
-<<<<<<< HEAD
-=======
         OMC-230 = Company name is missing from Invoice
->>>>>>> 39203ffb0f2f876d18b3b368d3027e798e015008
     """,
     'author': "WIB Technologies, Inc",
     'website': "http://www.wibtec.com",
     'category': 'Invoice',
-<<<<<<< HEAD
-    'version': '12.0.1.0.5',
-=======
     'version': '12.0.1.0.6',
->>>>>>> 39203ffb0f2f876d18b3b368d3027e798e015008
     # any module necessary for this one to work correctly
     'depends': ['account','l10n_us_check_printing'],
     # always loaded

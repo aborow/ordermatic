@@ -26,12 +26,8 @@ Version - 12.0.1.0.4
 
 Version - 12.0.1.0.5
 =======================
-<<<<<<< HEAD
--Added changed to check format.
-=======
 -Added changed to check format.
 
 Version - 12.0.1.0.6
 =======================
 -Added customer name to the invoice print.
->>>>>>> 39203ffb0f2f876d18b3b368d3027e798e015008
