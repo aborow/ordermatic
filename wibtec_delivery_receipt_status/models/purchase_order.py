@@ -8,9 +8,9 @@ class PurchaseOrder(models.Model):
 	_inherit = 'purchase.order'
 
 	receipt_status = fields.Selection([
-		('full', "Fully Delivered"),
-		('partial', "Partially Delivered"),
-		('not', "Not Delivered"),
+		('full', "Fully Received"),
+		('partial', "Partially Received"),
+		('not', "Not Received"),
 	], string="Receipt Status",compute='update_receipt_status',store=True)
 	
 	@api.multi
