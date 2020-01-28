@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!-- Inherited View Of Purchase Order form For Delivery Status-->
+    	<record id="view_sale_order_inherit_for_received_status" model="ir.ui.view">
+            <field name="name">purchase.order.form</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.purchase_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='date_order']" position="after">
+                    <field name="receipt_status" attrs="{'invisible': [('state', '!=', 'purchase')]}"/>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- Inherited View Of purchase Order form For Delivery Status-->
+        <record id="view_tree_purchase_order_inherit_for_received_status" model="ir.ui.view">
+            <field name="name">purchase.order.tree</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.purchase_order_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='state']" position="after">
+                    <field name="receipt_status"/>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- Inherited View Of purchase Order Search Delivery Status-->
+        <record id="view_purchase_order_search_for_received_status_inherit" model="ir.ui.view">
+            <field name="name">purchase.order.search</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.view_purchase_order_filter"/>
+            <field name="arch" type="xml">
+                <xpath expr="//search" position="inside">
+                    <filter string="Fully Delivered" name="Fully Delivered" domain="[('receipt_status','=','full')]"/>
+                    <filter string="Partially Delivered" name="Partially Delivered" domain="[('receipt_status','=','partial')]"/>
+                    <filter string="Not Delivered" name="Not Delivered" domain="[('receipt_status','=','not')]"/>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

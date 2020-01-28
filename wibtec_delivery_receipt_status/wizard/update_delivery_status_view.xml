@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!-- View record for update_delivery_status -->
+    	<record id="view_update_delivery_status" model="ir.ui.view">
+            <field name="name">update.delivery.status.form</field>
+            <field name="model">update.delivery.status</field>
+            <field name="arch" type="xml">
+                <form string="Update Delivery Status">
+                    <div class="card bg-light">
+                        <div class="card-body"><i class="fa fa-fw fa-file"/> Please click Update to update the deliery and received status.</div> 
+                    </div>
+                    <footer>
+                        <button name="update_delivery_status" string="Update" type="object" class="oe_highlight"/>
+                        <button name="Cancel" string="Cancel" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+    	<!-- Start Add Action for Menu "delivery status" -->
+        <record id="action_update_delivery_status" model="ir.actions.act_window">
+            <field name="name">Update Delivery Status</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">update.delivery.status</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+    </data>
+</odoo>
