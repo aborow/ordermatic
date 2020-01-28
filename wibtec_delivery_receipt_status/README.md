@@ -8,3 +8,5 @@ Install the Application => Apps -> Wibtec Delivery/Receipt Status (Technical Nam
 OMC-213
 ====================
 New Delivery Status Flag in Sales Orders and Receipt Status Flag in Purchase Orders
+
+
