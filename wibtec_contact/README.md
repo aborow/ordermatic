@@ -20,3 +20,7 @@ Version - 12.0.1.0.1
 =====================
 -Added fields in search view of partner.
 -Change search to non sensitive.
+
+Version - 12.0.1.0.2
+====================
+-Move internal reference field
