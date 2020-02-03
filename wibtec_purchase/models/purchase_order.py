@@ -22,4 +22,4 @@ class PurchaseOrderLine(models.Model):
 				elif line.product_id.name and not line.product_id.default_code:
 					line.name = str(line.product_id.name)
 			else:
-				self.vendor_product_code = False
+				line.vendor_product_code = False
