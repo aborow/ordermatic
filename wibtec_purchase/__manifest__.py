@@ -8,11 +8,12 @@
 
     'description': """
         OMC-228 = "Add Vendor Product Code to Purchase Order Printout"
+        OMC-226 = "Purchase order printout is wrong"
     """,
     'author': "WIB Technologies, Inc",
     'website': "http://www.wibtec.com",
     'category': 'Sales',
-    'version': '12.0.1.0.0',
+    'version': '12.0.1.1.0',
     # any module necessary for this one to work correctly
     'depends': ['purchase'],
     # always loaded
