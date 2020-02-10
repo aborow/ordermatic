@@ -3,6 +3,21 @@
 
 from odoo import api, fields, models, _
 
+class PurchaseOrder(models.Model):
+
+	_inherit = 'purchase.order'
+
+	shipping_address_id = fields.Many2one('res.partner',string='Address')
+
+	@api.onchange('partner_id')
+	def onchange_partner(self):
+		#onchange of partner will set the shipping address default.
+		partner_id = self.env['res.partner'].search([('parent_id','=',self.company_id.partner_id.id),('type','=','delivery')])
+		if partner_id:
+			self.shipping_address_id = partner_id.id
+		else:
+			self.shipping_address_id = False
+	
 class PurchaseOrderLine(models.Model):
 
 	_inherit = "purchase.order.line"
