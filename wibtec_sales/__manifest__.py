@@ -16,11 +16,12 @@
         OMC-144 = "Sales & MFG: Update OMC Actual Delivery Date with Delivery Order DONE date"
         OMC-161 = Delivery scheduled date comes from SO 'OMC Projected Delivery Date' (once the SO is confirmed)
         OMC-224 = Please add the field "Invoice Count" (existing field) to Sales Order view, To Invoice view and Quotation View
+        OMC-236 = Search archive products is not searching by internal reference fields
     """,
     'author': "WIB Technologies, Inc",
     'website': "http://www.wibtec.com",
     'category': 'Sales',
-    'version': '12.0.1.0.10',
+    'version': '12.0.1.0.11',
     # any module necessary for this one to work correctly
     'depends': ['sale','delivery','sale_enterprise','sale_stock'],
     # always loaded

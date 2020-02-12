@@ -51,3 +51,7 @@ Version - 12.0.1.0.9
 Version - 12.0.1.0.10
 =====================
 -Added the field "Invoice Count" (existing field) to Sales Order view, To Invoice view and Quotation View.
+
+Version - 12.0.1.0.11
+=====================
+-Added functionality Search archive products is not searching by internal reference field.
