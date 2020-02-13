@@ -8,10 +8,10 @@ class AccountTax(models.Model):
 
 	_inherit = 'account.tax'
 
-	@api.onchange('type_tax_use')
-	def onchange_type_tax_use(self):
-		if self.type_tax_use != 'sale':
-			self.account_id = False
+	# @api.onchange('type_tax_use')
+	# def onchange_type_tax_use(self):
+	# 	if self.type_tax_use != 'sale':
+	# 		self.account_id = False
 
 	@api.model
 	def _default_tax_account(self):

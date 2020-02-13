@@ -10,10 +10,10 @@
     'description': """
         OMC-114 = Update Invoice look and feel
         OMC-133 = Default Sales Tax Payable
-	OMC-134 = Check Format Customizations
+        OMC-134 = Check Format Customizations
         OMC-166 = Print Check As
         OMC-167 = Pay to the order of address field change
-        OMC-230 = Company name is missing from Invoice
+        OMC-239 = Tax Account defaults
     """,
     'author': "WIB Technologies, Inc",
     'website': "http://www.wibtec.com",
