@@ -8,10 +8,15 @@ class AccountTax(models.Model):
 
 	_inherit = 'account.tax'
 
-	# @api.onchange('type_tax_use')
-	# def onchange_type_tax_use(self):
-	# 	if self.type_tax_use != 'sale':
-	# 		self.account_id = False
+	@api.onchange('type_tax_use')
+	def onchange_type_tax_use(self):
+		if self.type_tax_use == 'sale':
+			account_id =  self.env['account.account'].search([('name','=','Sales Tax Payable'),('code','=','111202')], limit=1)
+			self.account_id = account_id.id
+			self.refund_account_id = account_id.id
+		else:
+			self.account_id = False
+			self.refund_account_id = False
 
 	@api.model
 	def _default_tax_account(self):
