@@ -12,12 +12,12 @@
     'author': "WIB Technologies, Inc",
     'website': "http://www.wibtec.com",
     'category': 'Accounts',
-    'version': '12.0.1.0.0',
+    'version': '12.0.1.0.1',
     # any module necessary for this one to work correctly
     'depends': ['account_reports'],
     # always loaded
     'data': [
-       
+       'views/account_followup_report.xml'
     ],
     'auto_install': False,
     'installable': True,
