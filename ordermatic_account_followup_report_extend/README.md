@@ -7,3 +7,7 @@ Install the Application => Apps ->  (Technical Name: ordermatic_account_followup
 OMC-235
 ====================
 -Customer Statement Change
+
+Version - 12.0.1.0.1
+=====================
+-Changed the address position of the partner into the report same as SYSPRO.

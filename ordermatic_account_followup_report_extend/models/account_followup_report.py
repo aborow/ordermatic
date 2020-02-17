@@ -158,7 +158,7 @@ class AccountFollowupReport(models.AbstractModel):
                 'style': 'text-align:center; white-space:nowrap;border:0px;background-color: white;',
                 'unfoldable': False,
                 'level': -1,
-                'columns': [type(v) == dict and v or {'name': v} for v in balance_list],
+                'columns': [type(v) == dict and v or {'name': v} for v in balance_list if balance_list],
             })
             lines.append({
                 'id': line_num,
@@ -199,8 +199,7 @@ class AccountFollowupReport(models.AbstractModel):
         new_balance_list.append(formatLang(self.env, balance_list[3], currency_obj=currency))
         new_balance_list.append(formatLang(self.env, balance_list[4], currency_obj=currency))
         new_balance_list.append(formatLang(self.env, balance_list[5], currency_obj=currency))
-        return new_balance_list              
-
+        return new_balance_list
 
     @api.multi
     def calculate_days(self,date_maturity):
