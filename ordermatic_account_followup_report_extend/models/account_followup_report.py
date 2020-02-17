@@ -151,7 +151,6 @@ class AccountFollowupReport(models.AbstractModel):
                 'columns': [type(v) == dict and v or {'name': v} for v in column_aged_rec],
             })
             balance_list = self._find_values(aml_recs,currency)
-            print ("\n balance_list&&&&&&&&&&&&&&&&&&&&&&&&&&&&77",balance_list)
             line_num += 1
             lines.append({
                 'id': line_num,

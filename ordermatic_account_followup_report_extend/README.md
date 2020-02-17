@@ -10,4 +10,4 @@ OMC-235
 
 Version - 12.0.1.0.1
 =====================
--Changed the address position of the partner into the report.
+-Changed the address position of the partner into the report same as SYSPRO.

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
+    <!-- Override the report to change the position of address. -->
     <template id="account_reports.followup_filter_info_template">
         <div t-if='context.get("mail") != True' class="print_only" style='margin-bottom: 20px;'>
             <t t-if="invoice_address_id" t-set="partner_addr" t-value="invoice_address_id"></t>
