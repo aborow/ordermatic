@@ -20,12 +20,13 @@
         OMC-121 = Make VENDOR Tax default to Tax Exempt
         OMC-173 = Update COST price from SYSPRO's inventory valuation report
         OMC-175 = Duplicate products in parallel1 DB
+        OMC-222 = Syspro Historic Costs
     """,
 
     'author': "WIB Technologies, Inc",
     'website': "http://www.wibtec.com",
     'category': 'product',
-    'version': '12.0.1.11.2',
+    'version': '12.0.1.12.2',
 
     # any module necessary for this one to work correctly
     'depends': ['product','sale'],

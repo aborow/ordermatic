@@ -77,3 +77,9 @@ Version = 12.0.1.11.1
 Version = 12.0.1.11.2
 ======================
 -Resolved issue of duplicate product.
+
+OMC-222 = Syspro Historic Costs
+
+Version = 12.0.1.12.2 
+======================
+-Added cost price update change.

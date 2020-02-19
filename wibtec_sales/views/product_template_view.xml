@@ -22,6 +22,9 @@
                 <xpath expr="//search" position="inside">
                     <field name="long_desc" string="Long Description" filter_domain="[('long_desc', 'ilike', self)]"/>
                 </xpath>
+                <xpath expr="//search/field[@name='name']" position="replace">
+                    <field name="name" string="Product" filter_domain="['|', '|','|', ('product_variant_ids.default_code', 'ilike', self),('name', 'ilike', self), ('barcode', 'ilike', self),('default_code', 'ilike', self)]"/>
+                </xpath>
             </field>
         </record>
 

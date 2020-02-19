@@ -21,9 +21,6 @@ except ImportError:
     _logger.debug('Cannot `import base64`.')
 
 
-globle_list = [11769, 11773, 11799, 11803, 11806, 11820, 11828, 11846, 11847, 11848, 11849, 11855, 11857, 11892, 11897, 11899, 11900, 11901, 11902, 11905, 11908, 11917, 11928, 11933, 11941, 11943, 11947, 11948, 11952, 11962, 11963, 11964, 11970, 11980, 11982, 12023, 12030, 12068, 12074, 12084, 12128, 12157, 12164, 12223, 12224, 12229, 12255, 12258, 12261, 12262, 12268, 12273, 12276, 12277, 12278, 12281, 12283, 12297, 12329, 12342, 12343, 12398, 12407, 12424, 12436, 12438, 12439, 12470, 12474, 12481, 12484, 12485, 12486, 12491, 12493, 12498, 12500, 12502, 12505, 12517, 12557, 12558, 12559, 12561, 12589, 12598, 12601, 12604, 12605, 12613, 12614, 12616, 12620, 12634, 12642, 12643, 12647, 12648, 12655, 12672, 12682, 12743, 12764, 12781, 12794, 12813, 12835, 12837, 12897, 12906, 12910, 12918, 12934, 12939, 12942, 12954, 12984, 12991, 13050, 13058, 13088, 13092, 13098, 13099, 13131, 13172, 13173, 13226, 13231, 13286, 13290, 13302, 13357, 13358, 13396, 13422, 13437, 13463, 13466, 13470, 13473, 13474, 13486, 13539, 13543, 13556, 13555, 13580, 13707, 13775, 13782, 13783, 13797, 13856, 13880, 13889, 13891, 14057, 14096, 14098, 14116, 14122, 14129, 14178, 14185, 14188, 14193, 14195, 14201, 14211, 14230, 14231, 14252, 14277, 14334, 14347, 14364, 14391, 14404, 14415, 14425, 14428, 14433, 14434, 14454, 14485, 14486, 14487, 14488, 14501, 14539, 14541, 14577, 14589, 14599, 14615, 14619, 14621, 14675, 14684, 14689, 14692, 14700, 14717, 14724, 14728, 14729, 14730, 14731, 14734, 14737, 14738, 14741, 14742, 14750]
-# final_dict_list = [] 
-
 class ProductUpdateCategory(models.TransientModel):
 
     _name = "product.update.category"
@@ -318,7 +315,6 @@ class ProductUpdateCategory(models.TransientModel):
     @api.multi
     def find_product(self,reference):
         # Method is will return Product if condition will fulfill else return warning.
-        print ("\n reference--------------------------------",reference)
         product_template_obj=self.env['product.template'].search(['|',('active','=',False),('active','=',True),('default_code','=',reference)],limit=1)
         if product_template_obj:
             return product_template_obj
@@ -418,7 +414,8 @@ class ProductUpdateCategory(models.TransientModel):
         if not self.file_cost:
             raise Warning(_('Please Select CSV File.'))
         else:
-            keys = ['Internal Reference','Name','Qty','Value']
+            # keys = ['Internal Reference','Name','Qty','Value']
+            keys = ['Internal Reference','Name','Cost']
             try:
                 data = base64.b64decode(self.file_cost)
                 file_input = io.StringIO(data.decode("utf-8"))
@@ -444,19 +441,25 @@ class ProductUpdateCategory(models.TransientModel):
         final_inv_qty = 0.0
         cost = 0.0
         final_dict_list = {}
-        product_id = self.find_product(values.get('Internal Reference'))
-        if product_id:
-          if product_id.is_cost_added == True:
-              final_inv_val = product_id.inv_val + float(values.get('Value'))
-              final_inv_qty = product_id.inv_qty + float(values.get('Qty'))
-              cost = final_inv_val/final_inv_qty
-              product_id.write({'standard_price':cost,'inv_val':final_inv_val,
-                  'inv_qty':final_inv_qty})
-              product_id.write({'is_duplicate':True})
-          else:
-              cost = float(values.get('Value'))/float(values.get('Qty'))
-              product_id.write(
-                  {'standard_price':cost,
-                  'is_cost_added':True,
-                  'inv_val':float(values.get('Value')),
-                  'inv_qty':float(values.get('Qty'))})
+        product_tmpl_id = self.find_product(values.get('Internal Reference'))
+        if product_tmpl_id:
+            # if product_id.is_cost_added == True:
+            #   final_inv_val = product_id.inv_val + float(values.get('Value'))
+            #   final_inv_qty = product_id.inv_qty + float(values.get('Qty'))
+            #   cost = final_inv_val/final_inv_qty
+            #   product_id.write({'standard_price':cost,'inv_val':final_inv_val,
+            #       'inv_qty':final_inv_qty})
+            #   product_id.write({'is_duplicate':True})
+            # else:
+            #     cost = float(values.get('Value'))/float(values.get('Qty'))
+            #     product_id.write(
+            #       {'standard_price':cost,
+            #       'is_cost_added':True,
+            #       'inv_val':float(values.get('Value')),
+            #       'inv_qty':float(values.get('Qty'))})
+            if (product_tmpl_id.is_cost_added == False and product_tmpl_id.standard_price == 0.0) or (product_tmpl_id.is_cost_added == False and product_tmpl_id.qty_available == 0.0):
+                if product_tmpl_id.active == False:
+                    product_tmpl_id.write({'active':True})
+                product_tmpl_id.update({'standard_price':values.get('Cost'),'is_cost_added':True})
+            else:
+                pass
