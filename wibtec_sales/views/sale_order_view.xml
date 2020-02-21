@@ -12,6 +12,7 @@
                     <field name="omc_projected_shipping_date"
                         attrs="{'readonly':[('state','!=','draft')]}"/>
                     <field name="omc_actual_delivery_date"/>
+                    <field name="commitment_date"/>
                 </xpath>
                 <xpath expr="//field[@name='partner_shipping_id']" position="after">
                     <field name="order_contact"/>
