@@ -12,7 +12,6 @@ class SaleOrder(models.Model):
 	omc_projected_shipping_date = fields.Date('OMC Projected Shipping Date')
 	omc_actual_delivery_date = fields.Date('OMC Actual Delivery Date')
 	order_contact = fields.Char('Order Contact')
-	commitment_date = fields.Date('Commitment Date')
 
 	@api.multi
 	def action_confirm(self):
