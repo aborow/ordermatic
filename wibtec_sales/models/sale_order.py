@@ -12,14 +12,13 @@ class SaleOrder(models.Model):
 	omc_projected_shipping_date = fields.Date('OMC Projected Shipping Date')
 	omc_actual_delivery_date = fields.Date('OMC Actual Delivery Date')
 	order_contact = fields.Char('Order Contact')
+	commitment_date = fields.Date('Commitment Date')
 
 	@api.multi
 	def action_confirm(self):
 		res = super(SaleOrder, self).action_confirm()
 		if not self.order_contact:
 			raise ValidationError(_('Please enter value for "Order Contact" to confirm the quotation.'))
-
-
 		# The creation of a delivery order when a SO is confirmed is not such a
 		# straightforward thing as there are two steps involved. So, in order not
 		# to fall into any sort of caveat, the update of the delivery scheduled date
