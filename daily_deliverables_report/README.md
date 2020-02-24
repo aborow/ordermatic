@@ -25,3 +25,9 @@ Version - 12.0.1.0.3
 Version - 12.0.1.0.4
 =====================
 -Added "Product Category" field into the report.
+
+Version - 12.0.1.0.5
+=====================
+-Added a column for "Projected Lead Time".
+-Added calculation for "Projected Lead Time".
+-Changed the format of "Order Date".
