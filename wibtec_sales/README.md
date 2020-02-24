@@ -55,3 +55,7 @@ Version - 12.0.1.0.10
 Version - 12.0.1.0.11
 =====================
 -Added functionality Search archive products is not searching by internal reference field.
+
+Version - 12.0.1.0.12
+=====================
+-Added functionality that adds the commitment date same as projected date if projected date get change.
