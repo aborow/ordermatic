@@ -18,8 +18,6 @@ class SaleOrder(models.Model):
 		res = super(SaleOrder, self).action_confirm()
 		if not self.order_contact:
 			raise ValidationError(_('Please enter value for "Order Contact" to confirm the quotation.'))
-
-
 		# The creation of a delivery order when a SO is confirmed is not such a
 		# straightforward thing as there are two steps involved. So, in order not
 		# to fall into any sort of caveat, the update of the delivery scheduled date
@@ -27,17 +25,17 @@ class SaleOrder(models.Model):
 		if self.omc_projected_shipping_date:
 			res_model_id = self.env['ir.model'].search([('model','=','sale.order')]).id
 			cron_id = self.env['ir.cron'].sudo().create({
-	                                            'name': 'Update delivery date',
-	                                            'model_id': res_model_id,
-	                                            'state': 'code',
-	                                            'code': "model.update_delivery_date(%s)" % (self.id),
-	                                            'interval_number': 1,
-	                                            'interval_type': 'minutes',
-	                                            'nextcall': datetime.datetime.now() \
-	                                                            + datetime.timedelta(minutes = 1),
-	                                            'numbercall': 1,
-	                                            'doall': True
-	                                            })
+												'name': 'Update delivery date',
+												'model_id': res_model_id,
+												'state': 'code',
+												'code': "model.update_delivery_date(%s)" % (self.id),
+												'interval_number': 1,
+												'interval_type': 'minutes',
+												'nextcall': datetime.datetime.now() \
+																+ datetime.timedelta(minutes = 1),
+												'numbercall': 1,
+												'doall': True
+												})
 		return res
 
 
@@ -52,3 +50,10 @@ class SaleOrder(models.Model):
 													pick.sale_id.omc_projected_shipping_date,
 													pick.scheduled_date.time()
 													)
+
+	@api.onchange('omc_projected_shipping_date')
+	def _onchange_omc_projected_shipping_date(self):
+		#Onchange of omc_projected_shipping_date
+		if self.omc_projected_shipping_date:
+			current_date_time = datetime.datetime.now()
+			self.commitment_date = datetime.datetime.combine(self.omc_projected_shipping_date,current_date_time.time())
