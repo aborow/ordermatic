@@ -20,14 +20,15 @@ class AccountFollowupReport(models.AbstractModel):
                    {'name': _('Date'), 'class': 'date', 'style': 'text-align:center; white-space:nowrap;'},
                    {'name': _('Due Date'), 'class': 'date', 'style': 'text-align:center; white-space:nowrap;'},
                    {'name': _('Source Document'), 'style': 'text-align:center; white-space:nowrap;'},
-                   {'name': _('Paid/Credit'), 'style': 'text-align:center; white-space:nowrap;'},
+                   {'name': _('Amount'), 'style': 'text-align:right; white-space:nowrap;'},
+                   {'name': _('Paid/Credit'), 'style': 'text-align:right; white-space:nowrap;'},
                    {'name': _('Communication'), 'style': 'text-align:center; white-space:nowrap;'},
                    {'name': _('Expected Date'), 'class': 'date', 'style': 'white-space:nowrap;'},
                    {'name': _('Excluded'), 'class': 'date', 'style': 'white-space:nowrap;'},
                    {'name': _('Total Due'), 'class': 'number o_price_total', 'style': 'text-align:right; white-space:nowrap;'}
                   ]
         if self.env.context.get('print_mode'):
-            headers = headers[:6] + headers[8:]  # Remove the 'Expected Date' and 'Excluded' columns
+            headers = headers[:7] + headers[9:]  # Remove the 'Expected Date' and 'Excluded' columns
         return headers
 
     def _get_lines(self, options, line_id=None):
@@ -76,10 +77,12 @@ class AccountFollowupReport(models.AbstractModel):
                 expected_pay_date = format_date(self.env, aml.expected_pay_date, lang_code=lang_code) if aml.expected_pay_date else ''
                 paid_total_amount = aml.invoice_id.amount_total - aml.invoice_id.residual
                 paid_amount = formatLang(self.env, paid_total_amount, currency_obj=currency)
+                total_amount = formatLang(self.env, aml.invoice_id.amount_total, currency_obj=currency)
                 columns = [
                     format_date(self.env, aml.date, lang_code=lang_code),
                     date_due,
                     aml.invoice_id.origin,
+                    total_amount,
                     paid_amount if paid_total_amount > 0.0 else ' ',
                     move_line_name,
                     expected_pay_date + ' ' + (aml.internal_note or ''),
@@ -87,7 +90,7 @@ class AccountFollowupReport(models.AbstractModel):
                     amount,
                 ]
                 if self.env.context.get('print_mode'):
-                    columns = columns[:5] + columns[7:]
+                    columns = columns[:6] + columns[8:]
                 lines.append({
                     'id': aml.id,
                     'invoice_id': aml.invoice_id.id,
@@ -109,7 +112,7 @@ class AccountFollowupReport(models.AbstractModel):
                 'class': 'total',
                 'unfoldable': False,
                 'level': 0,
-                'columns': [{'name': v} for v in [''] * (4 if self.env.context.get('print_mode') else 6) + [total >= 0 and _('Total Due') or '', total_due]],
+                'columns': [{'name': v} for v in [''] * (5 if self.env.context.get('print_mode') else 7) + [total >= 0 and _('Total Due') or '', total_due]],
             })
             if total_issued > 0:
                 total_issued = formatLang(self.env, total_issued, currency_obj=currency)
@@ -120,7 +123,7 @@ class AccountFollowupReport(models.AbstractModel):
                     'class': 'total',
                     'unfoldable': False,
                     'level': 0,
-                    'columns': [{'name': v} for v in [''] * (4 if self.env.context.get('print_mode') else 6) + [_('Total Overdue'), total_issued]],
+                    'columns': [{'name': v} for v in [''] * (5 if self.env.context.get('print_mode') else 7) + [_('Total Overdue'), total_issued]],
                 })
             # Add an empty line after the total to make a space between two currencies
             line_num += 1
@@ -130,12 +133,12 @@ class AccountFollowupReport(models.AbstractModel):
                     'style': 'text-align:left; white-space:nowrap;',
                     'unfoldable': False,
                     'level': 0,
-                    'columns': [{'name': v} for v in [''] * (6 if self.env.context.get('print_mode') else 8)],
+                    'columns': [{'name': v} for v in [''] * (7 if self.env.context.get('print_mode') else 9)],
                 })
             line_num += 1
             column_aged_rec = [
                     'Balance',
-                    # 'Not Due',
+                    'Current',
                     '0-30 Days',
                     '30-60 Days',
                     '60-90 Days',
@@ -145,7 +148,7 @@ class AccountFollowupReport(models.AbstractModel):
             lines.append({
                 'id': line_num,
                 'name': '',
-                'style': 'text-align:center;white-space:nowrap;border:0px;background-color: white;',
+                'style': 'text-align:right;white-space:nowrap;border:0px;background-color: white;',
                 'unfoldable': False,
                 'level': 1,
                 'columns': [type(v) == dict and v or {'name': v} for v in column_aged_rec],
@@ -155,7 +158,7 @@ class AccountFollowupReport(models.AbstractModel):
             lines.append({
                 'id': line_num,
                 'name': '',
-                'style': 'text-align:center; white-space:nowrap;border:0px;background-color: white;',
+                'style': 'text-align:right; white-space:nowrap;border:0px;background-color: white;',
                 'unfoldable': False,
                 'level': -1,
                 'columns': [type(v) == dict and v or {'name': v} for v in balance_list if balance_list],
@@ -176,29 +179,30 @@ class AccountFollowupReport(models.AbstractModel):
 
     @api.multi
     def _find_values(self,aml_recs,currency):
-        balance_list = [0,0,0,0,0,0]
+        balance_list = [0,0,0,0,0,0,0]
         new_balance_list = []
         for aml in aml_recs:
             days = self.calculate_days(aml.date_maturity)
-            # if days < 0:
-            #     balance_list[1] += aml.invoice_id.residual
-            if days >= 0 and days <= 30:
+            if days < 0:
                 balance_list[1] += aml.invoice_id.residual
-            elif days >= 30 and days <= 60:
+            if days >= 0 and days <= 30:
                 balance_list[2] += aml.invoice_id.residual
-            elif days >= 60 and days <= 90:
+            elif days >= 30 and days <= 60:
                 balance_list[3] += aml.invoice_id.residual
-            elif days >= 90 and days <= 120:
+            elif days >= 60 and days <= 90:
                 balance_list[4] += aml.invoice_id.residual
-            elif days >= 120:
+            elif days >= 90 and days <= 120:
                 balance_list[5] += aml.invoice_id.residual
-            balance_list[0] = balance_list[1]+balance_list[2]+balance_list[3]+balance_list[4]+balance_list[5]
+            elif days >= 120:
+                balance_list[6] += aml.invoice_id.residual
+        balance_list[0] = balance_list[1]+balance_list[2]+balance_list[3]+balance_list[4]+balance_list[5]+balance_list[6]
         new_balance_list.append(formatLang(self.env, balance_list[0], currency_obj=currency))
         new_balance_list.append(formatLang(self.env, balance_list[1], currency_obj=currency))
         new_balance_list.append(formatLang(self.env, balance_list[2], currency_obj=currency))
         new_balance_list.append(formatLang(self.env, balance_list[3], currency_obj=currency))
         new_balance_list.append(formatLang(self.env, balance_list[4], currency_obj=currency))
         new_balance_list.append(formatLang(self.env, balance_list[5], currency_obj=currency))
+        new_balance_list.append(formatLang(self.env, balance_list[6], currency_obj=currency))
         return new_balance_list
 
     @api.multi
