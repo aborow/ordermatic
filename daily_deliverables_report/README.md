@@ -31,3 +31,7 @@ Version - 12.0.1.0.5
 -Added a column for "Projected Lead Time".
 -Added calculation for "Projected Lead Time".
 -Changed the format of "Order Date".
+
+Version - 12.0.1.0.6
+=====================
+-Changed the position of columns Projected Lead Time & OMC Projected Shipping Date.
