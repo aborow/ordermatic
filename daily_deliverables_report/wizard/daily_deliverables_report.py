@@ -66,11 +66,11 @@ class DailyDeliverablesReport(models.TransientModel):
         worksheet.set_column('D:D', 20)
         worksheet.set_column('E:E', 25)
         worksheet.set_column('F:F', 35)
-        worksheet.set_column('G:G', 20)
+        worksheet.set_column('G:G', 15)
         worksheet.set_column('H:H', 35)
-        worksheet.set_column('I:I', 15)
-        worksheet.set_column('J:J', 35)
-        worksheet.set_column('K:K', 25)
+        worksheet.set_column('I:I', 20)
+        worksheet.set_column('J:J', 25)
+        worksheet.set_column('K:K', 35)
         worksheet.set_column('L:L', 20)
         worksheet.set_column('M:M', 20)
         worksheet.set_column('N:N', 20)
@@ -98,15 +98,15 @@ class DailyDeliverablesReport(models.TransientModel):
             colm += 1
             worksheet.write(row, colm, 'Customer Requested Delivery Date', header_format)
             colm += 1
-            worksheet.write(row, colm, 'Projected Lead Time', header_format)
-            colm += 1
-            worksheet.write(row, colm, 'OMC Projected Shipping Date', header_format)
-            colm += 1
             worksheet.write(row, colm, 'Status', header_format)
             colm += 1
             worksheet.write(row, colm, 'Order Lines', header_format)
             colm += 1
             worksheet.write(row, colm, 'Product Category', header_format)
+            colm += 1
+            worksheet.write(row, colm, 'Projected Lead Time', header_format)
+            colm += 1
+            worksheet.write(row, colm, 'OMC Projected Shipping Date', header_format)
             colm += 1
             worksheet.write(row, colm, 'Internal Reference', header_format)
             colm += 1
@@ -151,17 +151,6 @@ class DailyDeliverablesReport(models.TransientModel):
                     else:
                         worksheet.write(row, colm,'-', data_format)
                     colm += 1
-                    if order.omc_projected_shipping_date and order.date_order:
-                        days = self.calculate_days(order.omc_projected_shipping_date,order.date_order)
-                        worksheet.write(row, colm, days, data_format)
-                    else:
-                        worksheet.write(row, colm,'-', data_format)
-                    colm += 1
-                    if order.omc_projected_shipping_date:
-                        worksheet.write(row, colm, datetime.datetime.strptime(str(order.omc_projected_shipping_date),'%Y-%m-%d').strftime('%Y-%m-%d'), data_format)
-                    else:
-                        worksheet.write(row, colm,'-', data_format)
-                    colm += 1
                     if order.state:
                         worksheet.write(row, colm, str(order.state).capitalize(), data_format)
                     else:
@@ -176,6 +165,17 @@ class DailyDeliverablesReport(models.TransientModel):
                     colm += 1
                     if line.product_id.categ_id:
                         worksheet.write(row, colm, line.product_id.categ_id.complete_name, data_format)
+                    else:
+                        worksheet.write(row, colm,'-', data_format)
+                    colm += 1
+                    if order.omc_projected_shipping_date and order.date_order:
+                        days = self.calculate_days(order.omc_projected_shipping_date,order.date_order)
+                        worksheet.write(row, colm, days, data_format)
+                    else:
+                        worksheet.write(row, colm,'-', data_format)
+                    colm += 1
+                    if order.omc_projected_shipping_date:
+                        worksheet.write(row, colm, datetime.datetime.strptime(str(order.omc_projected_shipping_date),'%Y-%m-%d').strftime('%Y-%m-%d'), data_format)
                     else:
                         worksheet.write(row, colm,'-', data_format)
                     colm += 1
