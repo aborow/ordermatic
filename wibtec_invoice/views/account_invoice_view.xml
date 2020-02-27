@@ -25,6 +25,10 @@
                 <xpath expr="//notebook/page/field[@name='invoice_line_ids']/tree/field[@name='discount']" position="after">
                     <field name="discount_amount" invisible="1"/>
                 </xpath>
+                <!--Added new field in invoice for note-->
+                <xpath expr="/form/sheet/notebook/page[2]/group/group/field[@name='name']" position="after">
+                    <field name="note_of_invoice"/>
+                </xpath>
             </field>
         </record>
     </data>

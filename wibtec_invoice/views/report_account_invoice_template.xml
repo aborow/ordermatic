@@ -38,6 +38,7 @@
                         <td>
                             <div class="col-xs-10 text-left">
                                 <b>Email:</b> <span t-field="o.company_id.partner_id.email"/><br/><b>TaxID:</b><span t-field="o.company_id.vat"/>
+                                <br/><b>PO/Customer Reference:</b><span t-field="o.name"/>
                             </div>
                         </td>
                         <td>
@@ -388,6 +389,13 @@
                                                     <h2 style="font-size:14px; font-weight:bold; color:#000; margin-bottom:0; text-transform:capitalize; margin-top:8px; color: black;">Payments is Pending</h2>
                                                 </td>
                                             </tr>
+                                            <!--New Fields Added For Notes of Invoice-->
+                                            <tr>
+                                                <td>
+                                                    <b>Notes of Invoice: </b>
+                                                    <span t-field="o.note_of_invoice"/>
+                                                </td>
+                                            </tr>
                                             <tr>
                                                 <td class="pull-left" colspan="2" style="font-size:13px; color:black; padding-top:100px; ">
                                                     <ul style="padding-left:15px; margin:0">
@@ -429,6 +437,22 @@
                     <t t-call="wibtec_invoice.report_invoice_professional_main" t-lang="o.partner_id.lang"/>
                 </t>
             </t>
+        </template>
+        <!--Inherit The Invoice Report For add The New Fields-->
+        <template id="report_invoice_document_inherit_wibtec_invoice" inherit_id="account.report_invoice_document">
+            <xpath expr="//address" position="before">
+                <t t-if="o.name">
+                    <div>
+                        <strong>PO/Customer Reference:</strong>
+                        <div t-field="o.name"/>
+                    </div>
+                </t>
+            </xpath>
+            <p name='comment' position="before">
+                <p t-if="o.note_of_invoice">
+                    <b>Notes of Invoice: </b><span t-field="o.note_of_invoice"/>
+                </p>
+            </p>
         </template>
     </data>
 </odoo>
