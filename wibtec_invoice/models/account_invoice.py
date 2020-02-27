@@ -11,6 +11,10 @@ class AccountInvoice(models.Model):
 	_inherit = "account.invoice"
 
 	amount_discount = fields.Float('Discount Amount',compute='compute_amount_discount')
+	note_of_invoice = fields.Text("Notes of Invoice")
+	name = fields.Char(string='PO/Customer Reference', index=True,
+					   readonly=True, states={'draft': [('readonly', False)]}, copy=False,
+					   help='The name that will be used on account move lines')
 
 	@api.one
 	@api.depends('invoice_line_ids.discount_amount')

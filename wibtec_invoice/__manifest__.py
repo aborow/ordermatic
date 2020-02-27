@@ -14,20 +14,23 @@
         OMC-166 = Print Check As
         OMC-167 = Pay to the order of address field change
         OMC-239 = Tax Account defaults
+        OMC-243 = Notes for Invoices
+        OMC-244 = Update Customer Reference Field
     """,
     'author': "WIB Technologies, Inc",
     'website': "http://www.wibtec.com",
     'category': 'Invoice',
-    'version': '12.0.1.0.7',
+    'version': '12.0.1.0.8',
     # any module necessary for this one to work correctly
-    'depends': ['account','l10n_us_check_printing'],
+    'depends': ['account','l10n_us_check_printing', 'sale_management'],
     # always loaded
     'data': [   
         'views/res_partner_view.xml',
         'views/account_invoice_view.xml',
         'views/report_check_bottom_view.xml',
         'views/report_account_invoice_template.xml',
-        'views/reports_views.xml'
+        'views/reports_views.xml',
+        'views/sale_order_view.xml',
     ],
     'auto_install': False,
     'installable': True,
