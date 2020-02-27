@@ -49,3 +49,7 @@ Version - 12.0.1.0.5
 Version - 12.0.1.0.6
 ======================
 -Added field "Available" to the  "Consume Material" one2many.
+
+Version - 12.0.1.0.7
+===================
+-Added a functionality that expands all the boms with the childs.

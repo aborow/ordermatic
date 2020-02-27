@@ -12,11 +12,12 @@
         OMC-197 = Add Default Finished Good location to the Routing
         OMC-169 = Update BOM view to show 150 records instead of 40 records
         OMC-198 = Material Availability Change
+        OMC-237 = Create an Expand ALL button in BOM > Structure and Cost screen
     """,
     'author': "WIB Technologies, Inc",
     'website': "http://www.wibtec.com",
     'category': 'Manufacturing',
-    'version': '12.0.1.0.6',
+    'version': '12.0.1.0.7',
     # any module necessary for this one to work correctly
     'depends': [
                 'mrp',
@@ -28,6 +29,7 @@
         'views/mrp_bom_view.xml',
         'views/mrp_production_view.xml'
     ],
+    'qweb': ['static/src/xml/mrp.xml'],
     'auto_install': False,
     'installable': True,
     'application': False
