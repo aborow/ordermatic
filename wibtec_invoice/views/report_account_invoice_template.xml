@@ -450,7 +450,10 @@
             </xpath>
             <p name='comment' position="before">
                 <p t-if="o.note_of_invoice">
+                    <br/>
                     <b>Notes of Invoice: </b><span t-field="o.note_of_invoice"/>
+                    <br/>
+                    <br/>
                 </p>
             </p>
         </template>
