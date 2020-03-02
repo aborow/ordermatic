@@ -35,3 +35,7 @@ Version - 12.0.1.0.5
 Version - 12.0.1.0.6
 =====================
 -Changed the position of columns Projected Lead Time & OMC Projected Shipping Date.
+
+Version - 12.0.1.0.7
+=====================
+-Solved access right related issue.

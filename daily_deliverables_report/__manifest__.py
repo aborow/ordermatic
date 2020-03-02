@@ -6,11 +6,12 @@
     'description': """
         OMC-159 : Custom Sales Report
         OMC-257 : Update Daily Delivery Report
+        OMC-259 : Daily Deliverable Report Error
     """,
     'author': "WIB Technologies, Inc",
     'website': "http://www.wibtec.com",
     'category': 'Stock',
-    'version': '12.0.1.0.6',
+    'version': '12.0.1.0.7',
     # any module necessary for this one to work correctly
     'depends': ['sale'],
     # always loaded

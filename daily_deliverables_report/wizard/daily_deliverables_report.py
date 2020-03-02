@@ -214,7 +214,7 @@ class DailyDeliverablesReport(models.TransientModel):
             {'name': 'daily_deliverables_report.xlsx', 'datas_fname': 'Daily Deliverables Report.xlsx', 'datas': result})
         download_url = '/web/content/' + \
             str(attachment_id.id) + '?download=True'
-        base_url = self.env['ir.config_parameter'].get_param('web.base.url')
+        base_url = self.env['ir.config_parameter'].sudo().get_param('web.base.url')
         return {
             "type": "ir.actions.act_url",
             "url": str(base_url) + str(download_url),
