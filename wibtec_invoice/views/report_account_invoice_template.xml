@@ -392,7 +392,7 @@
                                             <!--New Fields Added For Notes of Invoice-->
                                             <tr>
                                                 <td>
-                                                    <b>Notes of Invoice: </b>
+                                                    <b>Notes For Invoice: </b>
                                                     <span t-field="o.note_of_invoice"/>
                                                 </td>
                                             </tr>
@@ -451,7 +451,7 @@
             <p name='comment' position="before">
                 <p t-if="o.note_of_invoice">
                     <br/>
-                    <b>Notes of Invoice: </b><span t-field="o.note_of_invoice"/>
+                    <b>Notes For Invoice: </b><span t-field="o.note_of_invoice"/>
                     <br/>
                     <br/>
                 </p>

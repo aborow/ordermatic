@@ -40,3 +40,7 @@ Version - 12.0.1.0.8
 =====================
 -Added "Notes of Invoice" field in SO and Invoice also in invoice pdf and online form.
 -Rename the customer reference field to be “PO/Customer Reference” on the invoice, printout and customer portal form.
+
+Version - 12.0.1.0.9
+=====================
+-Changed the label in all to "Notes For Invoice".
