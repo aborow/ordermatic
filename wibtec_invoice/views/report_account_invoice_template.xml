@@ -36,7 +36,7 @@
                             </div>
                         </td>
                         <td>
-                            <div class="col-xs-10 text-left">
+                            <div class="col-xs-5 text-left">
                                 <b>Email:</b> <span t-field="o.company_id.partner_id.email"/><br/><b>TaxID:</b><span t-field="o.company_id.vat"/>
                                 <br/><b>PO/Customer Reference:</b><span t-field="o.name"/>
                             </div>
@@ -82,7 +82,7 @@
                 <t t-set="o" t-value="o.with_context({'lang':o.partner_id.lang})"/>
                 <div class="page">
                     <div class="oe_structure"/>
-                    <br/><br/><br/>
+                    <br/><br/><br/><br/><br/><br/>
                     <table border="0" cellpadding="0" cellspacing="0" width="100%">
                         <tbody>
                             <tr>
