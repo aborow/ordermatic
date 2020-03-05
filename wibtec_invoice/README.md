@@ -44,3 +44,7 @@ Version - 12.0.1.0.8
 Version - 12.0.1.0.9
 =====================
 -Changed the label in all to "Notes For Invoice".
+
+Vesion - 12.0.1.0.10
+=====================
+-Solved the issue the Invoice is cutting off the name of the company name.
