@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+
+        <!-- Added fields for direct and indirect order -->
+        <record id="view_mrp_production_filter" model="ir.ui.view">
+            <field name="name">Mrp Production Indirect Direct Orders</field>
+            <field name="model">mrp.production</field>
+            <field name="inherit_id" ref="mrp.mrp_production_form_view"/>
+            <field name="arch" type="xml">
+                <field name="origin" position="after">
+                    <field name="direct_mo_orders" widget="many2many_tags"/>
+                    <field name="indirect_mo_orders" widget="many2many_tags"/>
+                    <field name="indirect_po_orders" widget="many2many_tags"/>
+                </field>
+            </field>
+        </record>
+
+    </data>
+</odoo>
