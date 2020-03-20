@@ -8,11 +8,12 @@
 
     'description': """
         OMC-235 = "Customer Statement Change"
+        OMC-265 = "Customer Follow up report not reflecting negative values properly"
     """,
     'author': "WIB Technologies, Inc",
     'website': "http://www.wibtec.com",
     'category': 'Accounts',
-    'version': '12.0.1.0.2',
+    'version': '12.0.1.0.3',
     # any module necessary for this one to work correctly
     'depends': ['account_reports'],
     # always loaded

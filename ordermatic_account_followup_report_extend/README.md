@@ -16,3 +16,7 @@ Version - 12.0.1.0.2
 ====================
 -Added a coulmn "Amount" into the aged part in followup report.
 -Added a column "Current" into the aged part in followup report.
+
+Version - 12.0.1.0.3
+=====================
+-Solved issues of credit note.
