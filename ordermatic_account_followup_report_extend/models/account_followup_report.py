@@ -75,15 +75,22 @@ class AccountFollowupReport(models.AbstractModel):
                 amount = formatLang(self.env, amount, currency_obj=currency)
                 line_num += 1
                 expected_pay_date = format_date(self.env, aml.expected_pay_date, lang_code=lang_code) if aml.expected_pay_date else ''
-                paid_total_amount = aml.invoice_id.amount_total - aml.invoice_id.residual
+                if aml.invoice_id.type == 'out_refund':
+                    paid_total_amount = -1 * (aml.invoice_id.amount_total - aml.invoice_id.residual)
+                else:
+                    paid_total_amount = aml.invoice_id.amount_total - aml.invoice_id.residual
+                if aml.invoice_id.type == 'out_refund':
+                    total_amount_final = -1 * (aml.invoice_id.amount_total)
+                else:
+                    total_amount_final = aml.invoice_id.amount_total
                 paid_amount = formatLang(self.env, paid_total_amount, currency_obj=currency)
-                total_amount = formatLang(self.env, aml.invoice_id.amount_total, currency_obj=currency)
+                total_amount = formatLang(self.env, total_amount_final, currency_obj=currency)
                 columns = [
                     format_date(self.env, aml.date, lang_code=lang_code),
                     date_due,
                     aml.invoice_id.origin,
                     total_amount,
-                    paid_amount if paid_total_amount > 0.0 else ' ',
+                    paid_amount if paid_total_amount != 0.0 else paid_amount,
                     move_line_name,
                     expected_pay_date + ' ' + (aml.internal_note or ''),
                     {'name': aml.blocked, 'blocked': aml.blocked},
@@ -183,18 +190,22 @@ class AccountFollowupReport(models.AbstractModel):
         new_balance_list = []
         for aml in aml_recs:
             days = self.calculate_days(aml.date_maturity)
+            if aml.invoice_id.type == 'out_refund':
+                residual = -1 * aml.invoice_id.residual
+            else:
+                residual = aml.invoice_id.residual
             if days < 0:
-                balance_list[1] += aml.invoice_id.residual
+                balance_list[1] += residual
             if days >= 0 and days <= 30:
-                balance_list[2] += aml.invoice_id.residual
+                balance_list[2] += residual
             elif days >= 30 and days <= 60:
-                balance_list[3] += aml.invoice_id.residual
+                balance_list[3] += residual
             elif days >= 60 and days <= 90:
-                balance_list[4] += aml.invoice_id.residual
+                balance_list[4] += residual
             elif days >= 90 and days <= 120:
-                balance_list[5] += aml.invoice_id.residual
+                balance_list[5] += residual
             elif days >= 120:
-                balance_list[6] += aml.invoice_id.residual
+                balance_list[6] += residual
         balance_list[0] = balance_list[1]+balance_list[2]+balance_list[3]+balance_list[4]+balance_list[5]+balance_list[6]
         new_balance_list.append(formatLang(self.env, balance_list[0], currency_obj=currency))
         new_balance_list.append(formatLang(self.env, balance_list[1], currency_obj=currency))
