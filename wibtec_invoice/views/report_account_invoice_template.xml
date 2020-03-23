@@ -306,6 +306,14 @@
                                                                 <span style="color:black;" t-field="o.amount_total" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/>
                                                             </td>
                                                         </tr>
+                                                        <t t-if="o.residual != 0.0">
+                                                            <tr>
+                                                                <td class="pull-right" colspan="2" style="padding:9px 10px 7px 0px; font-size:15px; text-transform:uppercase; color: black;">Amount Due</td>
+                                                                <td align="right" style="padding:9px 0px 7px 10px;font-size:15px; text-transform:uppercase; ">
+                                                                    <span style="color:black;" t-field="o.residual" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/>
+                                                                </td>
+                                                            </tr>
+                                                        </t>
                                                     </table>
                                                 </td>
                                                 <tr>
@@ -390,7 +398,7 @@
                                                 </td>
                                             </tr>
                                             <!--New Fields Added For Notes of Invoice-->
-                                            <tr>
+                                            <tr t-if="o.note_of_invoice">
                                                 <td>
                                                     <b>Notes For Invoice: </b>
                                                     <span t-field="o.note_of_invoice"/>

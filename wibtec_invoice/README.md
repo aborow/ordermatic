@@ -52,3 +52,7 @@ Vesion - 12.0.1.0.10
 Vesion - 12.0.1.0.11
 =====================
 -Solved one grammer related issue in invoice format.
+
+Vesion - 12.0.1.0.12
+=====================
+-Added "Amount Due" in invoice
