@@ -17,7 +17,7 @@
         OMC-243 = Notes for Invoices
         OMC-244 = Update Customer Reference Field
         OMC-261 = Invoice is cutting off the name of the company
-        OMC-246 = Add Tracking Numbers to invoices
+        OMC-264 = Grammar Error (Quick Change to Production Please)
     """,
     'author': "WIB Technologies, Inc",
     'website': "http://www.wibtec.com",
