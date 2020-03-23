@@ -386,11 +386,11 @@
                                             </tr>
                                             <tr t-if="not o.payment_move_line_ids">
                                                 <td>
-                                                    <h2 style="font-size:14px; font-weight:bold; color:#000; margin-bottom:0; text-transform:capitalize; margin-top:8px; color: black;">Payments is Pending</h2>
+                                                    <h2 style="font-size:14px; font-weight:bold; color:#000; margin-bottom:0; text-transform:capitalize; margin-top:8px; color: black;">Payment is Pending</h2>
                                                 </td>
                                             </tr>
                                             <!--New Fields Added For Notes of Invoice-->
-                                            <tr t-if="o.note_of_invoice">
+                                            <tr>
                                                 <td>
                                                     <b>Notes For Invoice: </b>
                                                     <span t-field="o.note_of_invoice"/>
@@ -399,12 +399,6 @@
                                             <tr>
                                                 <td class="pull-left" colspan="2" style="font-size:13px; color:black; padding-top:100px; ">
                                                     <ul style="padding-left:15px; margin:0">
-                                                        <t t-if="o.tracking_numbers">
-                                                            <li style="color:black;">
-                                                                <b>Tracking Reference:</b>
-                                                                <span t-field="o.tracking_numbers"/>
-                                                            </li>
-                                                        </t>
                                                         <t t-if="o.payment_term_id.name">
                                                             <li style="color:black;">
                                                                 <b>Payment Term: </b>
