@@ -21,7 +21,7 @@
 
     # always loaded
     'data': [
-        'security/ir.model.access.csv',
+        # 'security/ir.model.access.csv',
         'wizard/product_archive_view.xml',
     ],
 

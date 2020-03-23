@@ -18,7 +18,7 @@
     'depends': ['stock'],
     # always loaded
     'data': [
-        'security/ir.model.access.csv',
+        # 'security/ir.model.access.csv',
         'wizard/update_stock_inventory_line_view.xml',
         'views/stock_inventory_view.xml'
     ],

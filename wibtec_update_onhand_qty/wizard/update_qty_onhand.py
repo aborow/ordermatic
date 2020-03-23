@@ -23,6 +23,7 @@ except ImportError:
 class UpdateQuantityOnhand(models.TransientModel):
 
     _name = 'update.quantity.onhand'
+    _description = 'Update Quantity OnHand'
 
     file = fields.Binary('Upload File')
 

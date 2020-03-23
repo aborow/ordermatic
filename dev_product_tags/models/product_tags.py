@@ -12,14 +12,17 @@ from odoo import models, fields
 
 
 class product_tags(models.Model):
+
     _name = 'product.tags'
+    _description = "Product Tags"
 
     name = fields.Char(string="Tag Name", required="1")
 
 
 class product_template(models.Model):
+
     _inherit = 'product.template'
 
     tag_ids = fields.Many2many('product.tags', string='Tags')
 
-# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
+# vim:expandtab:smartindent:tab																																																										stop=4:softtabstop=4:shiftwidth=4:

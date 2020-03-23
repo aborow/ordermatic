@@ -24,6 +24,7 @@ except ImportError:
 class ProductUpdateCategory(models.TransientModel):
 
     _name = "product.update.category"
+    _description = "Product Update Category"
 
     file = fields.Binary('Upload Category File')
     file_long_desc = fields.Binary('Upload Long Description File')
@@ -164,6 +165,7 @@ class ProductUpdateCategory(models.TransientModel):
         supplier_taxes_id = self.env['account.tax'].search([('name','=','Tax Exempt'),
                                                         ('type_tax_use','=','purchase')])
         supplier_taxes = [supplier_taxes_id.id]
+        print ("\n supplier_taxes++++++++++++++++++++++++++++++++=",supplier_taxes)
         # vendor_tax_id = self.env['account.tax'].search([('name','=','Tax 8.25%'),
         #                                               ('type_tax_use','=','purchase'),
         #                                               ('amount','=',8.2500)])

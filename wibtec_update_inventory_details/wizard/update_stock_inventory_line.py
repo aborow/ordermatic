@@ -22,6 +22,7 @@ except ImportError:
 class updateStockInventoryLine(models.TransientModel):
 
 	_name = "update.stock.inventory.line"
+	_description = "Update Stock Inventory Line"
 
 	file = fields.Binary('Select File')
 	stock_inventory_id = fields.Many2one('stock.inventory',string="Stock Inventory",readonly=True) 

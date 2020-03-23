@@ -33,7 +33,7 @@
 
     # always loaded
     'data': [
-        'security/ir.model.access.csv',
+        #'security/ir.model.access.csv',
         'wizard/product_update_category_view.xml',
     ],
 
