@@ -6,5 +6,6 @@ from odoo import api, fields, models, _
 class ExemptionCode(models.Model):
 
 	_name = "exemption.code"
+	_description = "Exemption Code"
 
 	name = fields.Char('Name')

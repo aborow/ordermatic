@@ -23,6 +23,7 @@ except ImportError:
 class UpdateLocations(models.TransientModel):
 
     _name = 'update.locations'
+    _description = "Update Locations"
 
     file = fields.Binary('Upload File')
 

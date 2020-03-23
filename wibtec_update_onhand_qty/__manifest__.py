@@ -22,7 +22,7 @@
 
     # always loaded
     'data': [
-        'security/ir.model.access.csv',
+        # 'security/ir.model.access.csv',
         'wizard/update_qty_onhand_view.xml',
         'wizard/update_locations_view.xml'
     ],
