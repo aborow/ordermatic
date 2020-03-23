@@ -17,11 +17,12 @@
         OMC-243 = Notes for Invoices
         OMC-244 = Update Customer Reference Field
         OMC-261 = Invoice is cutting off the name of the company
+        OMC-264 = Grammar Error (Quick Change to Production Please)
     """,
     'author': "WIB Technologies, Inc",
     'website': "http://www.wibtec.com",
     'category': 'Invoice',
-    'version': '12.0.1.0.10',
+    'version': '12.0.1.0.11',
     # any module necessary for this one to work correctly
     'depends': ['account','l10n_us_check_printing', 'sale_management'],
     # always loaded

@@ -48,3 +48,7 @@ Version - 12.0.1.0.9
 Vesion - 12.0.1.0.10
 =====================
 -Solved the issue the Invoice is cutting off the name of the company name.
+
+Vesion - 12.0.1.0.11
+=====================
+-Solved one grammer related issue in invoice format.

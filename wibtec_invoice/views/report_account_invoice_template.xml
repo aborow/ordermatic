@@ -386,7 +386,7 @@
                                             </tr>
                                             <tr t-if="not o.payment_move_line_ids">
                                                 <td>
-                                                    <h2 style="font-size:14px; font-weight:bold; color:#000; margin-bottom:0; text-transform:capitalize; margin-top:8px; color: black;">Payments is Pending</h2>
+                                                    <h2 style="font-size:14px; font-weight:bold; color:#000; margin-bottom:0; text-transform:capitalize; margin-top:8px; color: black;">Payment is Pending</h2>
                                                 </td>
                                             </tr>
                                             <!--New Fields Added For Notes of Invoice-->
