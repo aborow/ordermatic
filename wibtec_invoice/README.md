@@ -49,6 +49,20 @@ Vesion - 12.0.1.0.10
 =====================
 -Solved the issue the Invoice is cutting off the name of the company name.
 
-Vesion - 12.0.1.0.11
+Version - 12.0.1.0.11
+======================
+-Added a field "Tracking Reference" in the invoice form view.
+-Added functionality that will adds the tracking reference number from the delivery order to invoice.
+-Added that tracking reference number field to invoice report.
+
+Vesion - 12.0.1.0.12
 =====================
 -Solved one grammer related issue in invoice format.
+
+Vesion - 12.0.1.0.13
+=====================
+-Added "Amount Due" in invoice
+
+Version - 12.0.1.0.14
+======================
+-Added "Tracking Reference" to preview version of invoice.

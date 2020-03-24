@@ -306,6 +306,14 @@
                                                                 <span style="color:black;" t-field="o.amount_total" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/>
                                                             </td>
                                                         </tr>
+                                                        <t t-if="o.residual != 0.0">
+                                                            <tr>
+                                                                <td class="pull-right" colspan="2" style="padding:9px 10px 7px 0px; font-size:15px; text-transform:uppercase; color: black;">Amount Due</td>
+                                                                <td align="right" style="padding:9px 0px 7px 10px;font-size:15px; text-transform:uppercase; ">
+                                                                    <span style="color:black;" t-field="o.residual" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/>
+                                                                </td>
+                                                            </tr>
+                                                        </t>
                                                     </table>
                                                 </td>
                                                 <tr>
@@ -390,7 +398,7 @@
                                                 </td>
                                             </tr>
                                             <!--New Fields Added For Notes of Invoice-->
-                                            <tr>
+                                            <tr t-if="o.note_of_invoice">
                                                 <td>
                                                     <b>Notes For Invoice: </b>
                                                     <span t-field="o.note_of_invoice"/>
@@ -399,6 +407,12 @@
                                             <tr>
                                                 <td class="pull-left" colspan="2" style="font-size:13px; color:black; padding-top:100px; ">
                                                     <ul style="padding-left:15px; margin:0">
+                                                        <t t-if="o.tracking_numbers">
+                                                            <li style="color:black;">
+                                                                <b>Tracking Reference:</b>
+                                                                <span t-field="o.tracking_numbers"/>
+                                                            </li>
+                                                        </t>
                                                         <t t-if="o.payment_term_id.name">
                                                             <li style="color:black;">
                                                                 <b>Payment Term: </b>
@@ -449,6 +463,11 @@
                 </t>
             </xpath>
             <p name='comment' position="before">
+                <p t-if="o.tracking_numbers">
+                    <br/>
+                    <b>Tracking Reference:</b><span t-field="o.tracking_numbers"/>
+                    <br/>
+                </p>
                 <p t-if="o.note_of_invoice">
                     <br/>
                     <b>Notes For Invoice: </b><span t-field="o.note_of_invoice"/>
