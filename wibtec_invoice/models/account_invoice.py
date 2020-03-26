@@ -20,17 +20,18 @@ class AccountInvoice(models.Model):
 	@api.multi
 	@api.depends('origin')
 	def _add_tracking_numbers(self):
-		sale_id = self.env['sale.order'].search([('name','=',self.origin)])
-		if sale_id:
-			tracking_numbers = ''
-			for picking in sale_id.picking_ids:
-				if picking.carrier_tracking_ref and picking.sale_id:
-					if not self.tracking_numbers:
-						tracking_numbers = picking.carrier_tracking_ref
-						self.update({'tracking_numbers':tracking_numbers})
-					else:
-						tracking_numbers = tracking_numbers + ',' + picking.carrier_tracking_ref
-						self.update({'tracking_numbers':tracking_numbers})
+		for invoice in self:
+			sale_id = self.env['sale.order'].search([('name','=',invoice.origin)])
+			if sale_id:
+				tracking_numbers = ''
+				for picking in sale_id.picking_ids:
+					if picking.carrier_tracking_ref and picking.sale_id:
+						if not invoice.tracking_numbers:
+							tracking_numbers = picking.carrier_tracking_ref
+							invoice.update({'tracking_numbers':tracking_numbers})
+						else:
+							tracking_numbers = tracking_numbers + ',' + picking.carrier_tracking_ref
+							invoice.update({'tracking_numbers':tracking_numbers})
 
 	@api.one
 	@api.depends('invoice_line_ids.discount_amount')
