@@ -11,7 +11,7 @@
     'category': 'Stock',
     'version': '12.0.1.0.1',
     # any module necessary for this one to work correctly
-    'depends': ['stock'],
+    'depends': ['stock','sale'],
     # always loaded
     'data': [
         'wizard/custom_sales_report_view.xml',
