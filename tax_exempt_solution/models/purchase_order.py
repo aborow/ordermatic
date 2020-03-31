@@ -12,6 +12,7 @@ class PurchaseOrder(models.Model):
 	def onchange_partner_id_warning(self):
 		res = super(PurchaseOrder, self).onchange_partner_id_warning()
 		if self.partner_id and self.partner_id.is_tax_exempt == True:
+			self.update({'fiscal_position_id':False})
 			tax_id = self.env['account.tax'].search([('name','=','Tax Exempt-Purchases'),('type_tax_use','=','purchase')])
 			if tax_id:
 				[line.write({'taxes_id': [(6, 0, tax_id.ids)]}) for line in self.order_line]
@@ -28,6 +29,7 @@ class PurchaseOrderLine(models.Model):
 	def onchange_product_id(self):
 		res = super(PurchaseOrderLine, self).onchange_product_id()
 		if self.product_id and self.order_id.partner_id.is_tax_exempt == True:
+			self.update({'fiscal_position_id':False})
 			tax_id = self.env['account.tax'].search([('name','=','Tax Exempt-Purchases'),('type_tax_use','=','purchase')])
 			if tax_id:
 				self.update({'taxes_id': [(6, 0, tax_id.ids)]})
