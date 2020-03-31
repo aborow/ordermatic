@@ -44,6 +44,7 @@ class AccountInvoice(models.Model):
 				if len(line.invoice_line_tax_ids) != 1 or float_compare(line.invoice_line_tax_ids.amount, tax_rate, precision_digits=3):
 					raise_warning = True
 					tax_id = self.env['account.tax'].search([('name','=','Tax Exempt-Sales'),('type_tax_use','=','sale')])
+					self.fiscal_position_id = False
 					if tax_id.id in line.invoice_line_tax_ids.ids:
 						line.invoice_line_tax_ids = tax_id
 					else:

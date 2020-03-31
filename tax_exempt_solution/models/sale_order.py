@@ -16,6 +16,7 @@ class SaleOrder(models.Model):
 	def onchange_partner_id(self):
 		res = super(SaleOrder, self).onchange_partner_id()
 		if self.partner_id and self.partner_id.is_tax_exempt == True:
+			self.update({'fiscal_position_id':False})
 			tax_id = self.env['account.tax'].search([('name','=','Tax Exempt-Sales'),('type_tax_use','=','sale')])
 			if tax_id:
 				[line.write({'tax_id': [(6, 0, tax_id.ids)]}) for line in self.order_line]
@@ -52,6 +53,7 @@ class SaleOrder(models.Model):
 					tax_id = self.env['account.tax'].search([('name','=','Tax Exempt-Sales'),('type_tax_use','=','sale')])
 					if tax_id.id in line.tax_id.ids:
 						line.tax_id = tax_id
+						self.fiscal_position_id = False
 					else:
 						tax_rate = float_round(tax_rate, precision_digits=3)
 						tax = self.env['account.tax'].with_context(active_test=False).sudo().search([
@@ -82,6 +84,7 @@ class SaleOrderLine(models.Model):
 	def product_id_change(self):
 		res = super(SaleOrderLine, self).product_id_change()
 		if self.product_id and self.order_id.partner_id.is_tax_exempt == True:
+			self.order_id.update({'fiscal_position_id':False})
 			tax_id = self.env['account.tax'].search([('name','=','Tax Exempt-Sales'),('type_tax_use','=','sale')])
 			if tax_id:
 				self.update({'tax_id': [(6, 0, tax_id.ids)]})
