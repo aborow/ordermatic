@@ -17,3 +17,7 @@ Version - 12.0.1.0.1
 Version - 12.0.1.0.2
 =====================
 -Solved a issue that taxcloud should not create a record if the tax is "exempt" in sale and purchase.
+
+Version - 12.0.1.0.3
+=====================
+-Fix issue that taxcloud should not create a record if the tax is "exempt" in sale and purchase.
