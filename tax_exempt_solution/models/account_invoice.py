@@ -49,6 +49,7 @@ class AccountInvoice(models.Model):
 					if len(line.invoice_line_tax_ids) != 1 or float_compare(line.invoice_line_tax_ids.amount, tax_rate, precision_digits=3):
 						raise_warning = True
 						if tax_id.id in line.invoice_line_tax_ids.ids:
+							self.fiscal_position_id = False
 							line.invoice_line_tax_ids = tax_id
 						else:
 							tax_rate = float_round(tax_rate, precision_digits=3)
