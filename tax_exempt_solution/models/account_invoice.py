@@ -17,6 +17,7 @@ class AccountInvoice(models.Model):
 		tax_id = self.env['account.tax'].search([('name','=','Tax Exempt-Sales'),('type_tax_use','=','sale')])
 		is_exemption_tax_ids =  any(True if tax_id.id in line.invoice_line_tax_ids.ids else False for line in self.invoice_line_ids)
 		if self.partner_id and self.partner_id.is_tax_exempt == True or is_exemption_tax_ids == True:
+			self.write({'fiscal_position_id':False})
 			pass
 		else:
 			company = self.company_id
@@ -49,7 +50,6 @@ class AccountInvoice(models.Model):
 					if len(line.invoice_line_tax_ids) != 1 or float_compare(line.invoice_line_tax_ids.amount, tax_rate, precision_digits=3):
 						raise_warning = True
 						if tax_id.id in line.invoice_line_tax_ids.ids:
-							self.fiscal_position_id = False
 							line.invoice_line_tax_ids = tax_id
 						else:
 							tax_rate = float_round(tax_rate, precision_digits=3)
