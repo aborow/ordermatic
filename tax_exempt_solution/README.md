@@ -21,3 +21,10 @@ Version - 12.0.1.0.2
 Version - 12.0.1.0.3
 =====================
 -Fix issue that taxcloud should not create a record if the tax is "exempt" in sale and purchase.
+
+Version - 12.0.1.1.0(Added new featrue)
+========================================
+-Disable capture calls in Odoo to taxcloud (only lookup should work)
+-Create Odoo export to comply with Odoo upload process template
+(only import Taxable sales in the export)be able to run the report anytime in date range
+-Check tax exempt functionality for company tax status and make sure it is working for tax exempt line items.

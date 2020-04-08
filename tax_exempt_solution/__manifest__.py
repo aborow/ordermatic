@@ -10,16 +10,18 @@
     'description': """
         OMC-141 = Accounting: Tax Exempt Solution for Customers
         OMC-271 = Sales Tax exemption for Credit Notes
+        OMC-268 = Tax Cloud issue with API
     """,
     'author': "WIB Technologies, Inc",
     'website': "http://www.wibtec.com",
     'category': 'Contacts',
-    'version': '12.0.1.0.3',
+    'version': '12.0.1.1.0',
     # any module necessary for this one to work correctly
     'depends': ['base','sale','sale_account_taxcloud','account_taxcloud'],
     # always loaded
     'data': [
         'security/ir.model.access.csv',
+        'wizard/taxable_sales_upload_report_view.xml',
         'views/res_partner_view.xml'
     ],
     'auto_install': False,
