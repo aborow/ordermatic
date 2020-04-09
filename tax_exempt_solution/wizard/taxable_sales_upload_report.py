@@ -92,10 +92,10 @@ class TaxableSalesUploadReport(models.TransientModel):
 				# Add lines in csv
 				for line in invoice.invoice_line_ids:
 					tax_id = self.env['account.tax'].search([('name','=','Tax Exempt-Sales'),('type_tax_use','=','sale')])
-					if tax_id.id not in line.invoice_line_tax_ids.ids or self.invoice_id.partner_id.is_tax_exempt == False or line.invoice_line_tax_ids:
+					if tax_id.id not in line.invoice_line_tax_ids.ids and line.invoice_id.partner_id.is_tax_exempt == False and line.invoice_line_tax_ids:
 						spamwriter.writerow([
 											invoice.id if invoice.id else '',
-											invoice.partner_id.id if invoice.partner_id.id else '',
+											invoice.partner_id.ref if invoice.partner_id.ref else str(invoice.partner_id.id),
 											datetime.datetime.strptime(str(invoice.create_date),'%Y-%m-%d %H:%M:%S.%f').strftime('%Y%m%d') if invoice.create_date else '',
 											datetime.datetime.strptime(str(current_date),'%Y-%m-%d').strftime('%Y%m%d') or '',
 											datetime.datetime.strptime(str(current_date),'%Y-%m-%d').strftime('%Y%m%d') or '',
