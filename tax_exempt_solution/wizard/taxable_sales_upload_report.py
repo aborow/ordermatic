@@ -30,11 +30,16 @@ class TaxableSalesUploadReport(models.TransientModel):
 	@api.multi
 	def get_date_domain(self):
 		"""Method will filter record based on domain."""
+		tax_id = self.env['account.tax'].search([('name','=','Tax Exempt-Sales'),('type_tax_use','=','sale')])
 		domain = [
-			('create_date', '>=', self.from_date),
-			('create_date', '<=', self.to_date),
-			('type','=','out_invoice'),
-			('partner_id.is_tax_exempt','=',False)
+			('date_invoice', '>=', self.from_date),
+			('date_invoice', '<=', self.to_date),
+			('type','in',['out_invoice','out_refund']),
+			('state','not in',['draft','cancel']),
+			('amount_tax','!=',0.0),
+			('partner_id.is_tax_exempt','=',False),
+			('invoice_line_ids.invoice_line_tax_ids','!=',tax_id.id),
+			('invoice_line_ids.invoice_line_tax_ids','!=',False)
 			]
 		return domain
 
@@ -57,6 +62,15 @@ class TaxableSalesUploadReport(models.TransientModel):
 				for line in invoice.invoice_line_ids:
 					line.write({'index_no': index})
 					index += 1
+	@api.multi
+	def find_internal_reference(self,partner_id):
+		if partner_id.ref:
+			return partner_id.ref
+		elif not partner_id.ref:
+			if partner_id.parent_id and partner_id.parent_id.ref:
+				return partner_id.parent_id.ref
+			else:
+				return partner_id.id
 
 	@api.multi
 	def print_csv_report(self):
@@ -64,12 +78,13 @@ class TaxableSalesUploadReport(models.TransientModel):
 		if not invoices:
 			raise ValidationError(
 				_('No records found.'))
-		# Create or open csv file in write mode
+
 		with open(os.path.join("/tmp", "taxable_sales_upload_report.csv"), 'w', newline='') as csvfile:
 
 			# specify delimiter to csv file
 			spamwriter = csv.writer(csvfile, delimiter=',',quotechar='\'', quoting=csv.QUOTE_MINIMAL)
 			# Add label in header
+			
 			spamwriter.writerow(['OrderID'] + ['CustomerID'] +
 								['TransactionDate'] + ['AuthorizedDate'] +
 								['CapturedDate'] + ['DeliveredBySeller'] + 
@@ -89,13 +104,14 @@ class TaxableSalesUploadReport(models.TransientModel):
 				self.calculate_index(invoice)
 				tic_category_id = self._get_tic_category_id()
 				tic_category = self.env['product.tic.category'].browse(tic_category_id)
+				partner_ref = self.find_internal_reference(invoice.partner_id)
 				# Add lines in csv
+				tax_id = self.env['account.tax'].search([('name','=','Tax Exempt-Sales'),('type_tax_use','=','sale')])
 				for line in invoice.invoice_line_ids:
-					tax_id = self.env['account.tax'].search([('name','=','Tax Exempt-Sales'),('type_tax_use','=','sale')])
 					if tax_id.id not in line.invoice_line_tax_ids.ids and line.invoice_id.partner_id.is_tax_exempt == False and line.invoice_line_tax_ids:
 						spamwriter.writerow([
-											invoice.id if invoice.id else '',
-											invoice.partner_id.ref if invoice.partner_id.ref else str(invoice.partner_id.id),
+											invoice.number if invoice.number else '',
+											partner_ref or '',
 											datetime.datetime.strptime(str(invoice.create_date),'%Y-%m-%d %H:%M:%S.%f').strftime('%Y%m%d') if invoice.create_date else '',
 											datetime.datetime.strptime(str(current_date),'%Y-%m-%d').strftime('%Y%m%d') or '',
 											datetime.datetime.strptime(str(current_date),'%Y-%m-%d').strftime('%Y%m%d') or '',
