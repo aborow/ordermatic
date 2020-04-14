@@ -19,9 +19,9 @@ class AccountInvoice(models.Model):
 		if self.partner_id and self.partner_id.is_tax_exempt == True:
 			tax_id = self.env['account.tax'].search([('name','=','Tax Exempt-Sales'),('type_tax_use','=','sale')])
 			if tax_id:
-				[line.write({'invoice_line_tax_ids': [(6, 0, tax_id.ids)]}) for line in self.invoice_line_ids]
+				[line.update({'invoice_line_tax_ids': [(6, 0, tax_id.ids)]}) for line in self.invoice_line_ids]
 		elif self.partner_id and self.partner_id.is_tax_exempt == False:
-			[line.write({'invoice_line_tax_ids': [(6, 0, line.product_id.taxes_id.ids)]}) for line in self.invoice_line_ids]
+			[line.update({'invoice_line_tax_ids': [(6, 0, line.product_id.taxes_id.ids)]}) for line in self.invoice_line_ids]
 		return res
 
 	@api.multi
@@ -120,12 +120,19 @@ class AccountInvoiceLine(models.Model):
 
 	index_no = fields.Integer('Index',default=0)
 
-	@api.multi
+	@api.onchange('invoice_line_tax_ids')
+	def onchange_tinvoice_line_tax_ids(self):
+		tax_id = self.env['account.tax'].search([('name','=','Tax Exempt-Sales'),('type_tax_use','=','sale')])
+		if self.invoice_id.partner_id and self.invoice_id.partner_id.is_tax_exempt == True:
+			if tax_id:
+				self.invoice_line_tax_ids = [(6, 0, tax_id.ids)]
+
+	@api.multi	
 	@api.onchange('product_id')
 	def _onchange_product_id(self):
 		res = super(AccountInvoiceLine, self)._onchange_product_id()
 		if self.product_id and self.invoice_id.partner_id.is_tax_exempt == True:
 			tax_id = self.env['account.tax'].search([('name','=','Tax Exempt-Sales'),('type_tax_use','=','sale')])
 			if tax_id:
-				self.update({'invoice_line_tax_ids': [(6, 0, tax_id.ids)]})
+				self.invoice_line_tax_ids = [(6, 0, tax_id.ids)]
 		return res

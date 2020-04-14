@@ -15,7 +15,7 @@
     'author': "WIB Technologies, Inc",
     'website': "http://www.wibtec.com",
     'category': 'Contacts',
-    'version': '12.0.1.1.1',
+    'version': '12.0.1.2.0',
     # any module necessary for this one to work correctly
     'depends': ['base','sale','sale_account_taxcloud','account_taxcloud'],
     # always loaded

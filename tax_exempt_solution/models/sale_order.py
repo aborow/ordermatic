@@ -18,9 +18,9 @@ class SaleOrder(models.Model):
 		if self.partner_id and self.partner_id.is_tax_exempt == True:
 			tax_id = self.env['account.tax'].search([('name','=','Tax Exempt-Sales'),('type_tax_use','=','sale')])
 			if tax_id:
-				[line.write({'tax_id': [(6, 0, tax_id.ids)]}) for line in self.order_line]
+				[line.update({'tax_id': [(6, 0, tax_id.ids)]}) for line in self.order_line]
 		elif self.partner_id and self.partner_id.is_tax_exempt == False:
-			[line.write({'tax_id': [(6, 0, line.product_id.taxes_id.ids)]}) for line in self.order_line]
+			[line.update({'tax_id': [(6, 0, line.product_id.taxes_id.ids)]}) for line in self.order_line]
 		return res
 
 	@api.multi
@@ -78,6 +78,26 @@ class SaleOrder(models.Model):
 class SaleOrderLine(models.Model):
 
 	_inherit = "sale.order.line"
+
+	@api.onchange('tax_id')
+	def onchange_tinvoice_line_tax_ids(self):
+		tax_id = self.env['account.tax'].search([('name','=','Tax Exempt-Sales'),('type_tax_use','=','sale')])
+		if self.order_id.partner_id and self.order_id.partner_id.is_tax_exempt == True:
+			if tax_id:
+				self.tax_id = [(6, 0, tax_id.ids)]
+
+	@api.multi
+	def _compute_tax_id(self):
+		for line in self:
+			fpos = line.order_id.fiscal_position_id or line.order_id.partner_id.property_account_position_id
+			# If company_id is set, always filter taxes by the company
+			taxes = line.product_id.taxes_id.filtered(lambda r: not line.company_id or r.company_id == line.company_id)
+			if line.order_id.partner_id and line.order_id.partner_id.is_tax_exempt == True:
+				tax_id = self.env['account.tax'].search([('name','=','Tax Exempt-Sales'),('type_tax_use','=','sale')])
+				if tax_id:
+					line.update({'tax_id': [(6, 0, tax_id.ids)]})
+			else:
+				line.tax_id = fpos.map_tax(taxes, line.product_id, line.order_id.partner_shipping_id) if fpos else taxes
 
 	@api.multi
 	@api.onchange('product_id')
