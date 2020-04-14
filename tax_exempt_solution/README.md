@@ -28,3 +28,8 @@ Version - 12.0.1.1.0(Added new featrue)
 -Create Odoo export to comply with Odoo upload process template
 (only import Taxable sales in the export)be able to run the report anytime in date range
 -Check tax exempt functionality for company tax status and make sure it is working for tax exempt line items.
+
+Version - 12.0.1.1.1
+======================
+-Solve issues for report upload.
+-Changed customerid to internal reference of partner.

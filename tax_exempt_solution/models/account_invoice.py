@@ -13,15 +13,6 @@ class AccountInvoice(models.Model):
 	_inherit = 'account.invoice'
 
 	@api.multi
-	def calculate_index(self):
-		for invoice in self:
-			if invoice.invoice_line_ids:
-				for index in range(0,len(invoice.invoice_line_ids)-1):
-					for line in invoice.invoice_line_ids:
-						line.write({'index_no': index})
-						index += 1
-
-	@api.multi
 	@api.onchange('partner_id')
 	def onchange_partner_id(self):
 		res = super(AccountInvoice, self)._onchange_partner_id()
