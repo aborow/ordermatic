@@ -21,22 +21,23 @@ class AccountInvoice(models.Model):
     @api.depends('origin')
     def _add_tracking_numbers(self):
         for invoice in self:
-            self.env.cr.execute("SELECT order_line_id FROM sale_order_line_invoice_rel WHERE invoice_line_id in %s", (tuple(
-                invoice.invoice_line_ids.ids),))
-            rows = self.env.cr.dictfetchall()
-            sale_line_ids = [x['order_line_id'] for x in rows]
-            if sale_line_ids:
-                sale_order_recs = self.env['sale.order.line'].browse(sale_line_ids).mapped('order_id')
-                tracking_numbers = ''
-                for sale_id in sale_order_recs:
-                    for picking in sale_id.picking_ids:
-                        if picking.carrier_tracking_ref and picking.sale_id:
-                            if not invoice.tracking_numbers:
-                                tracking_numbers = picking.carrier_tracking_ref
-                                invoice.update({'tracking_numbers':tracking_numbers})
-                            else:
-                                tracking_numbers = tracking_numbers + ',' + picking.carrier_tracking_ref
-                                invoice.update({'tracking_numbers':tracking_numbers})
+            if invoice.invoice_line_ids:
+                self.env.cr.execute("SELECT order_line_id FROM sale_order_line_invoice_rel WHERE invoice_line_id in %s", (tuple(
+                    invoice.invoice_line_ids.ids),))
+                rows = self.env.cr.dictfetchall()
+                sale_line_ids = [x['order_line_id'] for x in rows]
+                if sale_line_ids:
+                    sale_order_recs = self.env['sale.order.line'].browse(sale_line_ids).mapped('order_id')
+                    tracking_numbers = ''
+                    for sale_id in sale_order_recs:
+                        for picking in sale_id.picking_ids:
+                            if picking.carrier_tracking_ref and picking.sale_id:
+                                if not invoice.tracking_numbers:
+                                    tracking_numbers = picking.carrier_tracking_ref
+                                    invoice.update({'tracking_numbers':tracking_numbers})
+                                else:
+                                    tracking_numbers = tracking_numbers + ',' + picking.carrier_tracking_ref
+                                    invoice.update({'tracking_numbers':tracking_numbers})
 
     @api.one
     @api.depends('invoice_line_ids.discount_amount')
