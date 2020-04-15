@@ -66,3 +66,7 @@ Vesion - 12.0.1.0.13
 Version - 12.0.1.0.14
 ======================
 -Added "Tracking Reference" to preview version of invoice.
+
+Version - 12.0.1.0.15
+======================
+-Solved issue of OMC-275.
