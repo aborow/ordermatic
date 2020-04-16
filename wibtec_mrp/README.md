@@ -53,3 +53,9 @@ Version - 12.0.1.0.6
 Version - 12.0.1.0.7
 ===================
 -Added a functionality that expands all the boms with the childs.
+
+Version - 12.0.1.0.8
+===================
+-Update Work Order with correct Time().
+-Added field "Remaining Duration".
+-Update "Remaining Duration" based "Quantity Produced".
