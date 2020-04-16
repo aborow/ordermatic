@@ -13,11 +13,12 @@
         OMC-169 = Update BOM view to show 150 records instead of 40 records
         OMC-198 = Material Availability Change
         OMC-237 = Create an Expand ALL button in BOM > Structure and Cost screen
+        OMC-269 = Update Work Order with correct Time
     """,
     'author': "WIB Technologies, Inc",
     'website': "http://www.wibtec.com",
     'category': 'Manufacturing',
-    'version': '12.0.1.0.7',
+    'version': '12.0.1.0.8',
     # any module necessary for this one to work correctly
     'depends': [
                 'mrp',
