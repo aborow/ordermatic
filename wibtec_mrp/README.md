@@ -59,3 +59,7 @@ Version - 12.0.1.0.8
 -Update Work Order with correct Time().
 -Added field "Remaining Duration".
 -Update "Remaining Duration" based "Quantity Produced".
+
+Version - 12.0.1.0.9
+===================
+-Fix the issue of updating the effective end date.
