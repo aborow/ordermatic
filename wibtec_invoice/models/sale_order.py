@@ -13,7 +13,10 @@ class SaleOrder(models.Model):
 	def _prepare_invoice(self):
 		result = super(SaleOrder, self)._prepare_invoice()
 		if self.note_of_invoice:
-			result.update({'note_of_invoice': self.note_of_invoice,'tracking_numbers':self.tracking_numbers})
+			result.update({'note_of_invoice': self.note_of_invoice})
+		if self.tracking_numbers:
+			result.update({'tracking_numbers':self.tracking_numbers})
+		result.update({'comment':self.env.user.company_id.invoice_note if self.env.user.company_id.invoice_note else self.note})
 		return result
 
 
