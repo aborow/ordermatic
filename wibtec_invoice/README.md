@@ -70,3 +70,9 @@ Version - 12.0.1.0.14
 Version - 12.0.1.0.15
 ======================
 -Solved issue of OMC-275.
+
+Version - 12.0.1.0.16
+======================
+-OMC-245 Setup Terms and Conditions for both Sales Orders and Invoices
+	* Added field "Terms and Conditions" for the invoice "Terms and Conditions".
+	* Set that notes as default for invoice and also while invoice is created from the sale order.
