@@ -20,11 +20,12 @@
         OMC-246 = Add Tracking Numbers to invoices
         OMC-264 = Grammar Error (Quick Change to Production Please)
         OMC-266 = Add Amount Due to Invoice Print Out
+	OMC-275 = Tracking Number Issue while accesing Invoices
     """,
     'author': "WIB Technologies, Inc",
     'website': "http://www.wibtec.com",
     'category': 'Invoice',
-    'version': '12.0.1.0.14',
+    'version': '12.0.1.0.15',
     # any module necessary for this one to work correctly
     'depends': ['account','l10n_us_check_printing', 'sale_management'],
     # always loaded
