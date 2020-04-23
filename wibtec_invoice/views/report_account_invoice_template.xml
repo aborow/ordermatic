@@ -421,7 +421,7 @@
                                                         </t>
                                                         <t t-if="o.comment">
                                                             <li style="color:black;">
-                                                                <b>Comment: </b>
+                                                                <b>Terms &amp; Conditions:</b><br/>
                                                                 <span t-field="o.comment"/>
                                                             </li>
                                                         </t>
@@ -473,6 +473,12 @@
                     <b>Notes For Invoice: </b><span t-field="o.note_of_invoice"/>
                     <br/>
                     <br/>
+                </p>
+            </p>
+            <p name='comment' position="replace">
+                <p t-if="o.comment" name="comment">
+                    <b>Terms &amp; Conditions:</b><br/>
+                    <span t-field="o.comment"/>
                 </p>
             </p>
         </template>
