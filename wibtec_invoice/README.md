@@ -76,3 +76,8 @@ Version - 12.0.1.0.16
 -OMC-245 Setup Terms and Conditions for both Sales Orders and Invoices
 	* Added field "Terms and Conditions" for the invoice "Terms and Conditions".
 	* Set that notes as default for invoice and also while invoice is created from the sale order.
+
+Version - 12.0.1.0.17
+======================
+- Changed Label for comment into the invoice report.
+- Added "Terms & Conditions" label into the preview on invoice.
