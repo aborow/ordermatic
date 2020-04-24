@@ -25,7 +25,7 @@
     'category': 'Sales',
     'version': '12.0.1.0.13',
     # any module necessary for this one to work correctly
-    'depends': ['sale','delivery','sale_enterprise','sale_stock'],
+    'depends': ['sale','delivery','sale_enterprise','sale_stock','sale_subscription'],
     # always loaded
     'data': [
         'views/sale_order_view.xml',

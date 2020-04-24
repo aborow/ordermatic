@@ -62,4 +62,4 @@ Version - 12.0.1.0.12
 
 Version - 12.0.1.0.13
 ======================
--Added a file in sale subscription.
+-Added a filed in sale subscription.
