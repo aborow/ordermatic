@@ -18,11 +18,12 @@
         OMC-224 = Please add the field "Invoice Count" (existing field) to Sales Order view, To Invoice view and Quotation View
         OMC-236 = Search archive products is not searching by internal reference fields
         OMC-258 = Commitment Date Bug
+        OMC-277 = add company internal reference to subscription
     """,
     'author': "WIB Technologies, Inc",
     'website': "http://www.wibtec.com",
     'category': 'Sales',
-    'version': '12.0.1.0.12',
+    'version': '12.0.1.0.13',
     # any module necessary for this one to work correctly
     'depends': ['sale','delivery','sale_enterprise','sale_stock'],
     # always loaded

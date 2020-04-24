@@ -59,3 +59,7 @@ Version - 12.0.1.0.11
 Version - 12.0.1.0.12
 =====================
 -Added functionality that adds the commitment date same as projected date if projected date get change.
+
+Version - 12.0.1.0.13
+======================
+-Added a file in sale subscription.
