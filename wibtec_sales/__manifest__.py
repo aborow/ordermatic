@@ -28,6 +28,7 @@
     'depends': ['sale','delivery','sale_enterprise','sale_stock','sale_subscription'],
     # always loaded
     'data': [
+        'views/sale_subscription_view.xml',
         'views/sale_order_view.xml',
         'views/report_sale_order.xml',
         'views/product_template_view.xml'
