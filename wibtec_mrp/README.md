@@ -63,3 +63,7 @@ Version - 12.0.1.0.8
 Version - 12.0.1.0.9
 ===================
 -Fix the issue of updating the effective end date.
+
+Version - 12.0.1.0.10
+======================
+-Forcefully added "False" in settings so, MRP II do not get installed automatically.
