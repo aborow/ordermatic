@@ -50,7 +50,8 @@ class MrpProduction(models.Model):
 			if order.bom_id:
 				for bom_line in order.bom_id.bom_line_ids:
 					indirect_orders_mo = self.env['mrp.production'].search([('product_tmpl_id','=',bom_line.product_id.product_tmpl_id.id),('state','=','confirmed')])
-					[indirect_orders_mo_list.append(order.id) for order in indirect_orders_mo if 'OP' in order.origin]
+					if indirect_orders_mo:
+						[indirect_orders_mo_list.append(order.id) for order in indirect_orders_mo if order.origin and 'OP' in order.origin]
 		final_indirect_orders_mo = self.env['mrp.production'].browse(indirect_orders_mo_list)
 		if self.state not in ('done','cancel'):
 			if final_indirect_orders_mo:
@@ -80,7 +81,8 @@ class MrpProduction(models.Model):
 			if order.bom_id and order.state not in ('done','cancel'):
 				for bom_line in order.bom_id.bom_line_ids:
 					indirect_orders_po = self.env['purchase.order.line'].search([('product_id','=',bom_line.product_id.id),('state','=','purchase')])
-					[indirect_orders_po_list.append(line.order_id.id) for line in indirect_orders_po if line.order_id.origin and 'OP' in  line.order_id.origin]
+					if indirect_orders_po:
+						[indirect_orders_po_list.append(line.order_id.id) for line in indirect_orders_po if line.order_id.origin and 'OP' in  line.order_id.origin]
 		final_indirect_orders_po = self.env['purchase.order'].browse(indirect_orders_po_list)
 		if self.state not in ('done','cancel'):
 			if final_indirect_orders_po:
