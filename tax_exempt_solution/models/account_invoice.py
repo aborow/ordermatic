@@ -13,6 +13,18 @@ class AccountInvoice(models.Model):
 	_inherit = 'account.invoice'
 
 	@api.multi
+	@api.onchange('partner_id')
+	def onchange_partner_id(self):
+		res = super(AccountInvoice, self)._onchange_partner_id()
+		if self.partner_id and self.partner_id.is_tax_exempt == True:
+			tax_id = self.env['account.tax'].search([('name','=','Tax Exempt-Sales'),('type_tax_use','=','sale')])
+			if tax_id:
+				[line.update({'invoice_line_tax_ids': [(6, 0, tax_id.ids)]}) for line in self.invoice_line_ids]
+		elif self.partner_id and self.partner_id.is_tax_exempt == False:
+			[line.update({'invoice_line_tax_ids': [(6, 0, line.product_id.taxes_id.ids)]}) for line in self.invoice_line_ids]
+		return res
+
+	@api.multi
 	def validate_taxes_on_invoice(self):
 		company = self.company_id
 		Param = self.env['ir.config_parameter']
@@ -46,6 +58,8 @@ class AccountInvoice(models.Model):
 					tax_id = self.env['account.tax'].search([('name','=','Tax Exempt-Sales'),('type_tax_use','=','sale')])
 					if tax_id.id in line.invoice_line_tax_ids.ids:
 						line.invoice_line_tax_ids = tax_id
+					elif not line.invoice_line_tax_ids:
+						pass
 					else:
 						tax_rate = float_round(tax_rate, precision_digits=3)
 						tax = self.env['account.tax'].sudo().search([
@@ -71,15 +85,16 @@ class AccountInvoice(models.Model):
 			current_date = fields.Datetime.context_timestamp(self, datetime.datetime.now())
 
 			if self.type == 'out_invoice':
-				request.client.service.AuthorizedWithCapture(
-					request.api_login_id,
-					request.api_key,
-					request.customer_id,
-					request.cart_id,
-					self.id,
-					current_date,  # DateAuthorized
-					current_date,  # DateCaptured
-				)
+				if self.state == 'open':
+					request.client.service.AuthorizedWithCapture(
+						request.api_login_id,
+						request.api_key,
+						request.customer_id,
+						request.cart_id,
+						self.id,
+						current_date,  # DateAuthorized
+						current_date,  # DateCaptured
+					)
 			elif self.type == 'out_refund':
 				request.set_invoice_items_detail(self)
 				origin_invoice = self.env['account.invoice'].search([('number', '=', self.origin)], limit=1)
@@ -98,3 +113,26 @@ class AccountInvoice(models.Model):
 			return {'warning': _('The tax rates have been updated, you may want to check it before validation')}
 		else:
 			return True
+
+class AccountInvoiceLine(models.Model):
+
+	_inherit = "account.invoice.line"
+
+	index_no = fields.Integer('Index',default=0)
+
+	@api.onchange('invoice_line_tax_ids')
+	def onchange_tinvoice_line_tax_ids(self):
+		tax_id = self.env['account.tax'].search([('name','=','Tax Exempt-Sales'),('type_tax_use','=','sale')])
+		if self.invoice_id.partner_id and self.invoice_id.partner_id.is_tax_exempt == True:
+			if tax_id:
+				self.invoice_line_tax_ids = [(6, 0, tax_id.ids)]
+
+	@api.multi	
+	@api.onchange('product_id')
+	def _onchange_product_id(self):
+		res = super(AccountInvoiceLine, self)._onchange_product_id()
+		if self.product_id and self.invoice_id.partner_id.is_tax_exempt == True:
+			tax_id = self.env['account.tax'].search([('name','=','Tax Exempt-Sales'),('type_tax_use','=','sale')])
+			if tax_id:
+				self.invoice_line_tax_ids = [(6, 0, tax_id.ids)]
+		return res

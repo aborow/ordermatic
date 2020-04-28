@@ -11,6 +11,15 @@ class AccountInvoice(models.Model):
 
     _inherit = "account.invoice"
 
+<<<<<<< HEAD
+=======
+    def _default_comment_custom(self):
+        invoice_type = self.env.context.get('type', 'out_invoice')
+        if invoice_type == 'out_invoice' and self.env['ir.config_parameter'].sudo().get_param('invoice.use_invoice_note'):
+            return self.env.user.company_id.invoice_note
+
+    comment = fields.Text(default=_default_comment_custom)
+>>>>>>> OMC-245
     amount_discount = fields.Float(
         'Discount Amount', compute='compute_amount_discount')
     note_of_invoice = fields.Text("Notes For Invoice")
@@ -20,6 +29,19 @@ class AccountInvoice(models.Model):
     tracking_numbers = fields.Char(
         "Tracking Numbers", compute='_add_tracking_numbers')
 
+<<<<<<< HEAD
+=======
+
+    @api.onchange('partner_id', 'company_id')
+    def _onchange_delivery_address(self):
+        addr = self.partner_id.address_get(['delivery'])
+        self.partner_shipping_id = addr and addr.get('delivery')
+        inv_type = self.type or self.env.context.get('type', 'out_invoice')
+        if inv_type == 'out_invoice':
+            company = self.company_id or self.env.user.company_id
+            self.comment = company.with_context(lang=self.partner_id.lang).invoice_note or (self._origin.company_id == company and self.comment)
+
+>>>>>>> OMC-245
     @api.multi
     @api.depends('origin')
     def _add_tracking_numbers(self):
