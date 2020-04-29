@@ -11,6 +11,7 @@
         OMC-123 = Internal Notes need to show up on the Company's landing page not under a tab
         OMC-124 = Need to be able to search by Street address and/or City
         OMC-221 = Move internal reference field
+        OMC-280 = Add Opt_Out Field to Contact record
     """,
     'author': "WIB Technologies, Inc",
     'website': "http://www.wibtec.com",

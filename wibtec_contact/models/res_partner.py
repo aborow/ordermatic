@@ -7,7 +7,4 @@ class ResPartner(models.Model):
 
 	_inherit = "res.partner"
 
-	is_tax_exempt = fields.Boolean('Is Tax Exempt')
-	exemption_number = fields.Char('Exemption Number')
-	exemption_code_id = fields.Many2one('exemption.code',string="Exemption Code")
-	tax_exempt_certificate = fields.Binary('Tax Exempt Certificate')
+	opt_out = fields.Boolean(string='Opt Out')
