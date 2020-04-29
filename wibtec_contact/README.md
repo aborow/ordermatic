@@ -24,3 +24,7 @@ Version - 12.0.1.0.1
 Version - 12.0.1.0.2
 ====================
 -Move internal reference field
+
+Version - 12.0.1.0.3
+====================
+-Add Opt_Out Field to Contact record

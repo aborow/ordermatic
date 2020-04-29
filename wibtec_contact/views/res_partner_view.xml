@@ -19,6 +19,22 @@
                 <xpath expr="//notebook/page[@name='sales_purchases']/group/group[3]/field[@name='ref']" position="attributes">
                     <attribute name="invisible">1</attribute>
                 </xpath>
+                <xpath expr="//field[@name='email']" position="replace">
+                    <div>
+                        <table>
+                            <tr>
+                                <td><field name="email"/></td>
+                                <td> </td>
+                                <td>
+                                    (
+                                    <field name="opt_out"/>
+                                    <label for="opt_out" string="Opt Out"/>
+                                    )
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </xpath>
             </field>
         </record>
 
