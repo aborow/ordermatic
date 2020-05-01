@@ -16,7 +16,7 @@
     'category': 'Sales',
     'version': '12.0.1.2.1',
     # any module necessary for this one to work correctly
-    'depends': ['base'],
+    'depends': ['base','account'],
     # always loaded
     'data': [
         'wizard/taxable_sales_upload_report_view.xml',
