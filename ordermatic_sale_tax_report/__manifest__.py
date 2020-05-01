@@ -2,26 +2,24 @@
 # Part of AktivSoftware See LICENSE file for full
 # copyright and licensing details.
 {
-    'name': "Tax Exempt Solution for Customers",
+    'name': "Sales Tax Report",
 
     'summary': """
-        	This Module is used to add Tax Exempt Solution for Customers. """,
+        	This Module is used to export the record of invoices into the proper format. """,
 
     'description': """
-        OMC-141 = Accounting: Tax Exempt Solution for Customers
-        OMC-271 = Sales Tax exemption for Credit Notes
-        OMC-268 = Tax Cloud issue with API
+        OMC-268 : Tax Cloud issue with API
+        OMC-272 = Create Sales Tax Report
     """,
     'author': "WIB Technologies, Inc",
     'website': "http://www.wibtec.com",
-    'category': 'Contacts',
+    'category': 'Sales',
     'version': '12.0.1.2.1',
     # any module necessary for this one to work correctly
-    'depends': ['base','sale','sale_account_taxcloud','account_taxcloud'],
+    'depends': ['base'],
     # always loaded
     'data': [
-        'security/ir.model.access.csv',
-        'views/res_partner_view.xml'
+        'wizard/taxable_sales_upload_report_view.xml',
     ],
     'auto_install': False,
     'installable': True,

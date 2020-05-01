@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Form view of Taxable Sales Upload Report -->
+    <record id="view_taxable_sales_upload_report" model="ir.ui.view">
+        <field name="name">taxable.sales.upload.report.form</field>
+        <field name="model">taxable.sales.upload.report</field>
+        <field name="arch" type="xml">
+             <form string="Taxable Sales Upload Report">
+                <div class="card bg-light">
+                    <div class="card-body"><i class="fa fa-fw fa-file"/>Please select dates and click "Print" button to get report.</div> 
+                </div>
+                <group>
+                    <group>
+                        <field name="from_date"/>
+                        <field name="to_date"/>
+                    </group>
+                    <group>
+                        <field name="country_id" invisible="1"/>
+                        <field name="state_ids" widget="many2many_tags" domain="[('country_id','=',country_id)]"/>
+                    </group>
+                </group>
+                <footer>
+                    <!-- <button name="print_xls" string='Print XLS' type="object" class="btn-primary"/> -->
+                    <button name="print_csv_report" string='Print CSV' type="object" class="btn-primary"/>
+                    <button string="CANCEL" class="btn-default" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action of Taxable Sales Upload Report-->
+    <record id="action_taxable_sales_upload_report" model="ir.actions.act_window">
+        <field name="name">Taxable Sales Upload Report</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">taxable.sales.upload.report</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <!-- Menuitem for print report -->
+    <menuitem id="menu_taxable_sales_upload_report" name="Taxable Sales Upload Report" action="action_taxable_sales_upload_report" parent="account.menu_finance_reports" sequence="15"/>
+
+</odoo>
