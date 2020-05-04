@@ -20,6 +20,7 @@
 	width:25%;
 	height:25%;
 }
+
 .image_style{
 	max-height:80px;
 	align-self: center;
@@ -48,9 +49,9 @@
 	font-weight:bold; 
 	text-transform:uppercase;
 	width:150px;
-	height:120px;
+	height:115px;
 	font-size:14px;
-	padding-bottom: 20px;
+	padding-bottom: 15px;
 	padding-top: 40px;
 }
 .border {
