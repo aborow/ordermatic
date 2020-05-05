@@ -35,3 +35,12 @@ Version - 12.0.1.2.1
 -Added state filter in wizard
 -Removed filter that was not allowing to display records that has 0 tax.
 -Removed "Tax Excemption" functionality(as we are now going to use from avalara).
+
+Version - 12.0.1.2.2
+======================
+-Added Tax Rate in Report.
+-Added Discount and Suntotal in the report.
+-Removed CaptureDate and AuthorizedDate.	
+-Added Invoice payemt status in the report.
+-Changed value of transaction date from create date to invoice date.
+-Added account in the report.
