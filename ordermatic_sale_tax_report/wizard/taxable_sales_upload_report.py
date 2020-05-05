@@ -77,6 +77,24 @@ class TaxableSalesUploadReport(models.TransientModel):
 				return partner_id.id
 
 	@api.multi
+	def get_taxes_percentage(self,line):
+		tax_percentage = 0.0
+		for tax in line.invoice_line_tax_ids:
+			tax_percentage = tax_percentage + tax.amount
+		return tax_percentage
+
+	@api.multi
+	def get_state(self,invoice):
+		state = ''
+		if invoice.state == 'open':
+			state = 'Open'
+		elif invoice.state == 'in_payment':
+			state = 'In Payment'
+		elif invoice.state == 'paid':
+			state = 'Paid'
+		return state 
+
+	@api.multi
 	def print_csv_report(self):
 		invoices = self.get_account_invoices()
 		if not invoices:
@@ -90,13 +108,13 @@ class TaxableSalesUploadReport(models.TransientModel):
 			# Add label in header
 	
 			spamwriter.writerow(['OrderID'] + ['CustomerID'] +
-								['TransactionDate'] + ['AuthorizedDate'] +
-								['CapturedDate'] + ['DeliveredBySeller'] + 
+								['TransactionDate'] + ['DeliveredBySeller'] + 
 								['ShipFromAddr1'] + ['ShipFromAddr2'] + ['ShipFromCity'] +
 								['ShipFromState'] + ['ShipFromZip5'] + ['ShipFromZip4'] +
 								['ShipToAddr1'] + ['ShipToAddr2'] + ['ShipToAddr2'] + ['ShipToState'] + ['ShipToZip5'] +
-								['ShipToZip4'] + ['CartItemIndex'] + ['CartItem'] + ['CartItemTIC'] + ['CartItemPrice'] +
-								['CartItemQty'] + ['CartItemTaxRate'] + ['CartItemTaxAmount'])
+								['ShipToZip4'] + ['Invoice Payment Status'] + ['CartItemIndex'] + ['CartItem'] +
+								['Account'] + ['CartItemTIC'] + ['CartItemPrice'] +
+								['CartItemQty'] + ['CartItemTaxRate'] + ['CartItemTaxAmount'] + ['Discount(%)'] + ['Subtotal'])
 
 			# Removed old attachment if any
 			existing_attachment = self.env['ir.attachment'].search(
@@ -106,17 +124,17 @@ class TaxableSalesUploadReport(models.TransientModel):
 			current_date = fields.Date.today()
 			for invoice in invoices:
 				self.calculate_index(invoice)
+				state = self.get_state(invoice)
 				tic_category_id = self._get_tic_category_id()
 				tic_category = self.env['product.tic.category'].browse(tic_category_id)
 				partner_ref = self.find_internal_reference(invoice.partner_id)
 				# Add lines in csv
 				for line in invoice.invoice_line_ids:
+					tax_percentage = self.get_taxes_percentage(line)
 					spamwriter.writerow([
 										invoice.number if invoice.number else '',
 										partner_ref or '',
-										datetime.datetime.strptime(str(invoice.create_date),'%Y-%m-%d %H:%M:%S.%f').strftime('%Y%m%d') if invoice.create_date else '',
-										datetime.datetime.strptime(str(current_date),'%Y-%m-%d').strftime('%Y%m%d') or '',
-										datetime.datetime.strptime(str(current_date),'%Y-%m-%d').strftime('%Y%m%d') or '',
+										datetime.datetime.strptime(str(invoice.date_invoice),'%Y-%m-%d').strftime('%Y%m%d') if invoice.date_invoice else '',
 										0 if invoice.id else '',
 										invoice.company_id.partner_id.street.replace(",", " ") if invoice.company_id.partner_id.street else '',
 										invoice.company_id.partner_id.street2.replace(",", " ") if invoice.company_id.partner_id.street2 else '',
@@ -130,13 +148,17 @@ class TaxableSalesUploadReport(models.TransientModel):
 										invoice.partner_shipping_id.state_id.code or '',
 										invoice.partner_shipping_id.zip or '',
 										'',
+										state or '',
 										line.index_no if line.index_no > 0 else 0,
 										line.product_id.id or '',
+										line.account_id.code + ' ' +line.account_id.name or '',
 										tic_category.code or 0,
 										line.price_unit or '',
 										line.quantity or '',
-										'',
-										line.price_tax or ''
+										tax_percentage or '',
+										line.price_tax or '',
+										line.discount or '',
+										line.price_subtotal or ''
 										])
 			# closed connection
 			csvfile.close()
