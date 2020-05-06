@@ -24,35 +24,36 @@
                 <table class="table_header">
                     <thead class="thead">
                         <h5 class="h5_uppercase"><span t-field="o.company_id.name"/></h5>
-                    </thead>
+                    </thead><br/>
                     <tr>
                         <td>
                             <img class="image_style" t-if="company.logo" t-att-src="image_data_uri(company.logo)" alt="Logo"/>
                         </td>
                         <td>
-                            <div class="col-xs-7 text-left" name="company_address">
+                            <div class="col-xs-7 text-left" name="company_address" style="margin-top:-19px;margin-bottom:-17px;">
                                 <b>Mailing Address:</b>
                                 <address t-field="o.company_id.partner_id" t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": True}' />
                             </div>
                         </td>
                         <td>
-                            <div class="col-xs-5 text-left">
-                                <b>Email:</b> <span t-field="o.company_id.partner_id.email"/><br/><b>TaxID:</b><span t-field="o.company_id.vat"/>
-                                <br/><b>PO/Customer Reference:</b><span t-field="o.name"/>
+                            <div class="col-xs-5 text-left" style="margin-top:-19px;margin-bottom:-17px;">
+                                <b>Email:</b> <span t-field="o.company_id.partner_id.email"/><br/><b>TaxID:</b><span t-field="o.company_id.vat"/><t t-if="o.name"><br/><b>PO/Customer Reference:</b><span t-field="o.name"/></t>
                             </div>
                         </td>
                         <td>
-                            <h5 class="invoice_number">
-                                <span t-if="o.type == 'out_invoice' and (o.state == 'open' or o.state == 'paid')">Invoice</span>
-                                <span t-if="o.type == 'out_invoice' and o.state == 'proforma2'">PRO-FORMA</span>
-                                <span t-if="o.type == 'out_invoice' and o.state == 'draft'">Draft Invoice</span>
-                                <span t-if="o.type == 'out_invoice' and o.state == 'cancel'">Cancelled Invoice</span>
-                                <span t-if="o.type == 'out_refund'">Refund</span>
-                                <span t-if="o.type == 'in_refund'">Vendor Refund</span>
-                                <span t-if="o.type == 'in_invoice'">Vendor Bill</span>
-                                <br/>
-                                <span t-field="o.number"/>
-                            </h5>
+                            <div style="margin-top:-19px;margin-bottom:-17px;">
+                                <h5 class="invoice_number">
+                                    <span t-if="o.type == 'out_invoice' and (o.state == 'open' or o.state == 'paid')">Invoice</span>
+                                    <span t-if="o.type == 'out_invoice' and o.state == 'proforma2'">PRO-FORMA</span>
+                                    <span t-if="o.type == 'out_invoice' and o.state == 'draft'">Draft Invoice</span>
+                                    <span t-if="o.type == 'out_invoice' and o.state == 'cancel'">Cancelled Invoice</span>
+                                    <span t-if="o.type == 'out_refund'">Refund</span>
+                                    <span t-if="o.type == 'in_refund'">Vendor Refund</span>
+                                    <span t-if="o.type == 'in_invoice'">Vendor Bill</span>
+                                    <br/>
+                                    <span t-field="o.number"/>
+                                </h5>
+                            </div>
                         </td>
                     </tr>
                 </table>
@@ -82,7 +83,7 @@
                 <t t-set="o" t-value="o.with_context({'lang':o.partner_id.lang})"/>
                 <div class="page">
                     <div class="oe_structure"/>
-                    <br/><br/><br/><br/><br/><br/>
+                    <br/><br/><br/><!-- <br/><br/><br/> -->
                     <table border="0" cellpadding="0" cellspacing="0" width="100%">
                         <tbody>
                             <tr>

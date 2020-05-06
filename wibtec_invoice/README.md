@@ -81,3 +81,11 @@ Version - 12.0.1.0.17
 ======================
 - Changed Label for comment into the invoice report.
 - Added "Terms & Conditions" label into the preview on invoice.
+
+Version - 12.0.1.0.18
+======================
+-Fix issue of overlapping
+
+Version - 12.0.1.0.19
+======================
+-Fixed Batch payment bug of odoo.
