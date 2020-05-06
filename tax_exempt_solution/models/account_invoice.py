@@ -118,8 +118,6 @@ class AccountInvoiceLine(models.Model):
 
 	_inherit = "account.invoice.line"
 
-	index_no = fields.Integer('Index',default=0)
-
 	@api.onchange('invoice_line_tax_ids')
 	def onchange_tinvoice_line_tax_ids(self):
 		tax_id = self.env['account.tax'].search([('name','=','Tax Exempt-Sales'),('type_tax_use','=','sale')])

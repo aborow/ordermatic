@@ -47,3 +47,7 @@ Version - 12.0.1.2.0
 -There are several that are not showing up in the report that have something in the customer’s internal reference field for example, Not currently showing Braums BRA0003 Braums BRAUMS
 -The Order ID column in the report should pull from the Invoice number, not the Odoo ID (Invoice # is much easier to find and reference)
 -Fix Tax Exempt issue with Company, I marked a company “Tax exempt” and it still generated a tax amount for that company after adding a product with “Tax Cloud” as the default tax in the sales order line.  If the company is tax exempt than it should not generate taxable amount for any reason.
+
+Version - 12.0.1.2.1
+=====================
+-Saprate the module for Sale Tax Report
