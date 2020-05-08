@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Form view of Payment Applied Report -->
+    <record id="view_payment_applied_report" model="ir.ui.view">
+        <field name="name">payment.applied.report.form</field>
+        <field name="model">payment.applied.report</field>
+        <field name="arch" type="xml">
+             <form string="Payment Applied Report">
+                <div class="card bg-light">
+                    <div class="card-body"><i class="fa fa-fw fa-file"/>Please select dates and click "Print" button to get report.</div> 
+                </div>
+                <group>
+                    <group>
+                        <field name="from_date"/>
+                    </group>
+                    <group>
+                        <field name="to_date"/>
+                    </group>
+                </group>
+                <footer>
+                    <button name="print_xls" string='Print XLS' type="object" class="btn-primary"/>
+                    <button string="CANCEL" class="btn-default" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action of Payment Applied Report Report-->
+    <record id="action_payment_applied_report" model="ir.actions.act_window">
+        <field name="name">Payment Applied Report</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">payment.applied.report</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <!-- Menuitem for print report -->
+    <menuitem id="menu_payment_applied_report" name="Payment Applied Report" action="action_payment_applied_report" parent="account.menu_finance_reports" sequence="16"/>
+
+</odoo>
