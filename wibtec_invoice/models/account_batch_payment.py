@@ -17,7 +17,7 @@ class AccountBatchPayment(models.Model):
 	def validate_batch(self):
 		records = self.filtered(lambda x: x.state == 'draft')
 		for record in records:
-			record.payment_ids.post()
+			record.payment_ids.filtered(lambda r: r.state == 'draft').post()
 			record.payment_ids.write({'state':'sent', 'payment_reference': record.name})
 		records.write({'state': 'sent'})
 
