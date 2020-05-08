@@ -28,3 +28,7 @@ Version - 12.0.1.0.2
 Version - 12.0.1.0.3
 ====================
 -Add Opt_Out Field to Contact record
+
+Version - 12.0.1.0.4
+====================
+-Added W9 Field to Contact record

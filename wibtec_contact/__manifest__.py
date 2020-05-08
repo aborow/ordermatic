@@ -12,13 +12,14 @@
         OMC-124 = Need to be able to search by Street address and/or City
         OMC-221 = Move internal reference field
         OMC-280 = Add Opt_Out Field to Contact record
+        OMC-285 = W9 Field
     """,
     'author': "WIB Technologies, Inc",
     'website': "http://www.wibtec.com",
     'category': 'Contacts',
-    'version': '12.0.1.0.3',
+    'version': '12.0.1.0.4',
     # any module necessary for this one to work correctly
-    'depends': ['base'],
+    'depends': ['base','account'],
     # always loaded
     'data': [
         'views/res_partner_view.xml',
