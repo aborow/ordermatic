@@ -67,3 +67,7 @@ Version - 12.0.1.0.13
 Version - 12.0.1.0.14
 ======================
 -View Change for Sales Orders: Remove Sales Person add Customer Reference.
+
+Version - 12.0.1.0.15
+======================
+-View Change for Product List View
