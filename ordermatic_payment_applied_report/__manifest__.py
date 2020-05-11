@@ -13,7 +13,7 @@
     'author': "WIB Technologies, Inc",
     'website': "http://www.wibtec.com",
     'category': 'Sales',
-    'version': '12.0.1.0.1',
+    'version': '12.0.1.0.2',
     # any module necessary for this one to work correctly
     'depends': ['base','account'],
     # always loaded

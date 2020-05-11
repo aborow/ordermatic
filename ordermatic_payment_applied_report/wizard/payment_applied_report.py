@@ -46,7 +46,6 @@ class PaymentAppliedReport(models.TransientModel):
 	def find_journal_item(self,partner,invoice):
 		"""Method will find journal item based on domain and returns it."""
 		account_move_line_id = self.env['account.move.line'].search([
-			('partner_id','=',partner.id),
 			('invoice_id','=',invoice.id),
 			('debit','!=',0.0)],order='id asc',limit=1)
 		return account_move_line_id
@@ -91,7 +90,7 @@ class PaymentAppliedReport(models.TransientModel):
 			colm += 1
 			worksheet.write(row, colm, 'Payment Date', header_format)
 			colm += 1
-			worksheet.write(row, colm, 'Payment Amount', header_format)
+			worksheet.write(row, colm, 'Invoice Amount', header_format)
 			colm += 1
 			worksheet.write(row, colm, 'Status', header_format)
 			colm += 1
@@ -169,10 +168,7 @@ class PaymentAppliedReport(models.TransientModel):
 					colm += 1
 					if account_move_line_id:
 						remaining_amount = payment.amount - amount_paid
-						if remaining_amount > 0.0:
-							worksheet.write(row, colm,remaining_amount, data_format)
-						else:
-							worksheet.write(row, colm,0, data_format)
+						worksheet.write(row, colm,round(remaining_amount,3), data_format)
 					else:
 						worksheet.write(row, colm,' ', data_format)
 					colm += 1
