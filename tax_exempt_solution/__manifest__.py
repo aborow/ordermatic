@@ -15,13 +15,12 @@
     'author': "WIB Technologies, Inc",
     'website': "http://www.wibtec.com",
     'category': 'Contacts',
-    'version': '12.0.1.2.0',
+    'version': '12.0.1.2.1',
     # any module necessary for this one to work correctly
     'depends': ['base','sale','sale_account_taxcloud','account_taxcloud'],
     # always loaded
     'data': [
         'security/ir.model.access.csv',
-        'wizard/taxable_sales_upload_report_view.xml',
         'views/res_partner_view.xml'
     ],
     'auto_install': False,
