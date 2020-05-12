@@ -85,3 +85,11 @@ Version - 12.0.1.0.17
 Version - 12.0.1.0.18
 ======================
 -Fix issue of overlapping
+
+Version - 12.0.1.0.19
+======================
+-Fixed Batch payment bug of odoo.
+
+Version - 12.0.1.0.20
+======================
+-Fixed issue of batch payment validation.
