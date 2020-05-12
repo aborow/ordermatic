@@ -8,3 +8,4 @@ class ResPartner(models.Model):
 	_inherit = "res.partner"
 
 	opt_out = fields.Boolean(string='Opt Out')
+	is_w9_file = fields.Boolean(string="W9 on file?")

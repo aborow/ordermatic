@@ -38,6 +38,22 @@
             </field>
         </record>
 
+        <!-- Inherited View record for -->
+        <record id="view_partner_account_form" model="ir.ui.view">
+            <field name="name">res.partner.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="account.view_partner_property_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook/page[@name='accounting']" position="inside">
+                    <group string="Other">
+                        <group>
+                            <field name="is_w9_file"/>
+                        </group>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+
         <!-- Inherited search View record for res.partner -->
         <record id="view_partner_search" model="ir.ui.view">
             <field name="name">res.partner.search</field>
