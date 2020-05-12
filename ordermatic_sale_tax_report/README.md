@@ -44,3 +44,7 @@ Version - 12.0.1.2.2
 -Added Invoice payemt status in the report.
 -Changed value of transaction date from create date to invoice date.
 -Added account in the report.
+
+Version - 12.0.1.2.3
+=====================
+-Added the partner name column before the customerID.

@@ -77,6 +77,16 @@ class TaxableSalesUploadReport(models.TransientModel):
 				return partner_id.id
 
 	@api.multi
+	def find_partner_name(self,partner_id):
+		if partner_id.parent_id:
+			partner_name = str(partner_id.parent_id.name)+ ' ' + str(partner_id.name)
+			partner = partner_name.replace(',', '')
+			return partner
+		else:
+			partner = str(partner_id.name).replace(',', '')
+			return partner
+
+	@api.multi
 	def get_taxes_percentage(self,line):
 		tax_percentage = 0.0
 		for tax in line.invoice_line_tax_ids:
@@ -107,7 +117,7 @@ class TaxableSalesUploadReport(models.TransientModel):
 			spamwriter = csv.writer(csvfile, delimiter=',',quotechar='\'', quoting=csv.QUOTE_MINIMAL)
 			# Add label in header
 	
-			spamwriter.writerow(['OrderID'] + ['CustomerID'] +
+			spamwriter.writerow(['OrderID'] + ['Partner Name'] + ['CustomerID'] + 
 								['TransactionDate'] + ['DeliveredBySeller'] + 
 								['ShipFromAddr1'] + ['ShipFromAddr2'] + ['ShipFromCity'] +
 								['ShipFromState'] + ['ShipFromZip5'] + ['ShipFromZip4'] +
@@ -128,11 +138,14 @@ class TaxableSalesUploadReport(models.TransientModel):
 				tic_category_id = self._get_tic_category_id()
 				tic_category = self.env['product.tic.category'].browse(tic_category_id)
 				partner_ref = self.find_internal_reference(invoice.partner_id)
+				partner_name = self.find_partner_name(invoice.partner_id)
+				
 				# Add lines in csv
 				for line in invoice.invoice_line_ids:
 					tax_percentage = self.get_taxes_percentage(line)
 					spamwriter.writerow([
 										invoice.number if invoice.number else '',
+										partner_name or '',
 										partner_ref or '',
 										datetime.datetime.strptime(str(invoice.date_invoice),'%Y-%m-%d').strftime('%Y%m%d') if invoice.date_invoice else '',
 										0 if invoice.id else '',
