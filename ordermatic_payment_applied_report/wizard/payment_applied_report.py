@@ -31,7 +31,8 @@ class PaymentAppliedReport(models.TransientModel):
 			('payment_date', '<=', self.to_date),
 			('state','in',['posted','sent']),
 			('partner_type','=','customer'),
-			('payment_type','=','inbound')
+			('payment_type','=','inbound'),
+			('invoice_ids','!=',False)
 			]
 		return domain
 
@@ -55,8 +56,7 @@ class PaymentAppliedReport(models.TransientModel):
 		"""Method will print the XLS report."""
 		payments = self.get_account_payments()
 		if not payments:
-			raise ValidationError(
-				_('No records found.'))
+			raise ValidationError(_('No records found.'))
 		fp = io.BytesIO()
 		workbook = xlsxwriter.Workbook(fp)
 		worksheet = workbook.add_worksheet('Payment Applied Report')
@@ -75,6 +75,7 @@ class PaymentAppliedReport(models.TransientModel):
 		worksheet.set_column('I:I', 22)
 		worksheet.set_column('J:J', 20)
 		worksheet.set_column('K:K', 20)
+		worksheet.set_column('L:L', 20)
 		not_exist = workbook.add_format({'bold': True, 'font_color': 'red'})
 		row = 0
 		colm = 0
@@ -89,6 +90,8 @@ class PaymentAppliedReport(models.TransientModel):
 			worksheet.write(row, colm, 'Customer', header_format)
 			colm += 1
 			worksheet.write(row, colm, 'Payment Date', header_format)
+			colm += 1
+			worksheet.write(row, colm, 'Payment Amount', header_format)
 			colm += 1
 			worksheet.write(row, colm, 'Invoice Amount', header_format)
 			colm += 1
@@ -139,6 +142,11 @@ class PaymentAppliedReport(models.TransientModel):
 					colm += 1
 					if payment.amount:
 						worksheet.write(row, colm,payment.amount, data_format)
+					else:
+						worksheet.write(row, colm,' ', data_format)
+					colm += 1
+					if invoice.amount_total:
+						worksheet.write(row, colm,invoice.amount_total, data_format)
 					else:
 						worksheet.write(row, colm,' ', data_format)
 					colm += 1
