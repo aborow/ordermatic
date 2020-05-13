@@ -71,3 +71,7 @@ Version - 12.0.1.0.14
 Version - 12.0.1.0.15
 ======================
 -View Change for Product List View
+
+Version - 12.0.1.0.16
+======================
+-Change the position of internal reference field in product view.
