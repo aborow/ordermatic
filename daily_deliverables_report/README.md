@@ -39,3 +39,7 @@ Version - 12.0.1.0.6
 Version - 12.0.1.0.7
 =====================
 -Solved access right related issue.
+
+Version - 12.0.1.0.8
+=====================
+-Exclude the records those are in state sent.

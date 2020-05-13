@@ -30,7 +30,7 @@ class DailyDeliverablesReport(models.TransientModel):
         domain = [
             ('omc_projected_shipping_date', '>=', self.from_date),
             ('omc_projected_shipping_date', '<=', self.to_date),
-            ('state','in',('sale','sent','done'))]
+            ('state','in',('sale','done'))]
         return domain
 
     @api.multi

@@ -11,7 +11,7 @@
     'author': "WIB Technologies, Inc",
     'website': "http://www.wibtec.com",
     'category': 'Stock',
-    'version': '12.0.1.0.7',
+    'version': '12.0.1.0.8',
     # any module necessary for this one to work correctly
     'depends': ['sale'],
     # always loaded
