@@ -93,11 +93,11 @@ class PaymentAppliedReport(models.TransientModel):
 			colm += 1
 			worksheet.write(row, colm, 'Payment Amount', header_format)
 			colm += 1
-			worksheet.write(row, colm, 'Invoice Amount', header_format)
-			colm += 1
 			worksheet.write(row, colm, 'Status', header_format)
 			colm += 1
 			worksheet.write(row, colm, 'Associated Invoice', header_format)
+			colm += 1
+			worksheet.write(row, colm, 'Invoice Amount', header_format)
 			colm += 1
 			worksheet.write(row, colm, 'Payment Applied Date', header_format)
 			colm += 1
@@ -145,11 +145,6 @@ class PaymentAppliedReport(models.TransientModel):
 					else:
 						worksheet.write(row, colm,' ', data_format)
 					colm += 1
-					if invoice.amount_total:
-						worksheet.write(row, colm,invoice.amount_total, data_format)
-					else:
-						worksheet.write(row, colm,' ', data_format)
-					colm += 1
 					if payment.state:
 						if payment.state == 'posted':
 							worksheet.write(row, colm,'Posted', data_format)
@@ -160,6 +155,11 @@ class PaymentAppliedReport(models.TransientModel):
 					colm += 1
 					if invoice:
 						worksheet.write(row, colm,invoice.number, data_format)
+					else:
+						worksheet.write(row, colm,' ', data_format)
+					colm += 1
+					if invoice.amount_total:
+						worksheet.write(row, colm,invoice.amount_total, data_format)
 					else:
 						worksheet.write(row, colm,' ', data_format)
 					colm += 1
