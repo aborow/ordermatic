@@ -25,7 +25,7 @@
     'author': "WIB Technologies, Inc",
     'website': "http://www.wibtec.com",
     'category': 'Sales',
-    'version': '12.0.1.0.15',
+    'version': '12.0.1.0.16',
     # any module necessary for this one to work correctly
     'depends': ['sale','delivery','sale_enterprise','sale_stock','sale_subscription','mrp','stock'],
     # always loaded
