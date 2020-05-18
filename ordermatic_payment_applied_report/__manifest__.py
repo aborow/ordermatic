@@ -13,12 +13,14 @@
     'author': "WIB Technologies, Inc",
     'website': "http://www.wibtec.com",
     'category': 'Sales',
-    'version': '12.0.1.0.3',
+    'version': '12.0.1.0.4',
     # any module necessary for this one to work correctly
     'depends': ['base','account'],
     # always loaded
     'data': [
+        'security/ir.model.access.csv',
         'wizard/payment_applied_report_view.xml',
+        'views/account_payment_view.xml'
     ],
     'auto_install': False,
     'installable': True,
