@@ -19,6 +19,7 @@
                 </group>
                 <footer>
                     <button name="print_xls" string='Print XLS' type="object" class="btn-primary"/>
+                    <button name="calculate_amounts" string='Calculate Amounts' type="object" class="btn-primary"/>
                     <button string="CANCEL" class="btn-default" special="cancel"/>
                 </footer>
             </form>

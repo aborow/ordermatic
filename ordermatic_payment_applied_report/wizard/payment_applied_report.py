@@ -52,6 +52,14 @@ class PaymentAppliedReport(models.TransientModel):
 		return account_move_line_id
 
 	@api.multi
+	def calculate_amounts(self):
+		"""Method will create payment history and returns it."""
+		invoice_ids = self.env['account.invoice'].search([])
+		for invoice in invoice_ids:
+			invoice.create_payment_history()
+		return invoice_ids
+
+	@api.multi
 	def print_xls(self):
 		"""Method will print the XLS report."""
 		payments = self.get_account_payments()
@@ -110,6 +118,9 @@ class PaymentAppliedReport(models.TransientModel):
 				invoice_ids = self.env['account.invoice'].search([('payment_ids','in',payment.id)],order = "id asc")
 				for invoice in invoice_ids:
 					account_move_line_id = self.find_journal_item(payment.partner_id,invoice)
+					payment_history_id = self.env['payment.invoice.history'].search([
+						('invoice_id','=',invoice.id),
+						('payment_id','=',payment.id)],limit=1)
 					colm = 0	
 					row += 1
 					if payment.name:
@@ -169,14 +180,13 @@ class PaymentAppliedReport(models.TransientModel):
 						worksheet.write(row, colm,' ', data_format)
 					colm += 1
 					if account_move_line_id:
-						amount_paid += account_move_line_id.debit
-						worksheet.write(row, colm,account_move_line_id.debit, data_format)
+						worksheet.write(row, colm,payment_history_id.amount_applied, data_format)
 					else:
 						worksheet.write(row, colm,' ', data_format)
 					colm += 1
 					if account_move_line_id:
 						remaining_amount = payment.amount - amount_paid
-						worksheet.write(row, colm,round(remaining_amount,3), data_format)
+						worksheet.write(row, colm,round(payment_history_id.amount_unapplied,3), data_format)
 					else:
 						worksheet.write(row, colm,' ', data_format)
 					colm += 1
