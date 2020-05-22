@@ -75,3 +75,7 @@ Version - 12.0.1.0.15
 Version - 12.0.1.0.16
 ======================
 -Change the position of internal reference field in product view.
+
+Version - 12.0.1.1.0
+======================
+-Added a functionality that if the user will archive the product template then it should not salable.
