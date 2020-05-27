@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+
+
+	 <record id="view_validate_customer_address" model="ir.ui.view">
+        <field name="name">validate.customer.address.form.wizard</field>
+        <field name="model">validate.customer.address.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Update Product Customer Tax">
+            	<sheet>
+            		<group>
+                        <group>
+                			<!-- <field name="start"/>
+                            <field name="end"/> -->
+                            <field name="is_failed" invisible="1"/>
+                            <field name="last_partner_id" readonly='1'/>
+                        </group>
+            		</group>
+                    <group>
+                        <field name="customer_name" attrs="{'invisible': [('is_failed','=', False)]}"/>
+                    </group>
+            	</sheet>
+                <footer>
+                    <button name="action_customer_validate" 
+                        string="Update Customer Address" 
+                        type="object"
+                        class="oe_highlight"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+	<!-- Start Add Action for Menu "Van Stock" -->
+    <record id="action_validate_customer_address" model="ir.actions.act_window">
+        <field name="name">Validate Customer Address</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">validate.customer.address.wizard</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+	<!-- End Add Action for Menu "Van Stock" -->
+    <!-- record model="ir.actions.act_window" id="action_update_sale_order_fully_invoiced">
+        <field name="name">Update Sale Order Fully Invoice</field>
+        <field name="res_model">sale.order.fully.invoice.wizard</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+    </record> -->
+
+    <menuitem id="menu_action_validate_customer_address" 
+        parent="sale.menu_sale_config" 
+        action="action_validate_customer_address" 
+        string="Validate Customer Address"/>
+
+
+    </data>
+</openerp>
