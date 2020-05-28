@@ -3,7 +3,7 @@
 	<data>
 
 		<!--Partner Tax & Address Validation-->
-	   <record id="view_partner_details_form_inherit1" model="ir.ui.view">
+		<record id="view_partner_details_form_inherit1" model="ir.ui.view">
 			<field name="name">res.partner.details.form.inherit1</field>
 			<field name="model">res.partner</field>
 			<field name="type">form</field>
@@ -32,9 +32,9 @@
 							<group col="4" colspan="4">
 								<field name="tax_exempt"/>
 								<field name="tax_exempt_certificate" attrs="{'invisible': [('tax_exempt','!=',True)]}"/>
-							   <newline/>
-							   <field name="exemption_number" attrs="{'invisible': [('tax_exempt','!=',True)]}"/>
-							   <field name="exemption_code_id" attrs="{'invisible': [('tax_exempt','!=',True)]}"/>
+								<newline/>
+								<field name="exemption_number" attrs="{'invisible': [('tax_exempt','!=',True)]}"/>
+								<field name="exemption_code_id" attrs="{'invisible': [('tax_exempt','!=',True)]}"/>
 							</group>
 						</group>
 					</page>
@@ -50,30 +50,6 @@
 			<field name="date_validation"/>
 			<field name="validation_method"/>
 		</record>
-
-		 <!-- <record id="ir_actions_server_project_sample" model="ir.actions.server">
-            <field name="name">Project: Activate Sample Project</field>
-            <field name="model_id" ref="project.model_project_project"/>
-            <field name="state">code</field>
-            <field name="code">action = model.activate_sample_project()</field>
-        </record> -->
-<!--         
-	<record id="action_call_address_validation" model="ir.values">
-			<field name="name">Address Validation Call</field>
-			<field name="key2">client_action_multi</field>
-			<field name="model">res.partner</field>
-			<field name="value" eval="'ir.actions.server,%d'%action_call_address_validation_method" />
-			<field name="object" eval="True" />
-		</record> -->
-
-
-		<!-- <act_window id="action_call_address_validation" 
-			name="Address Validation Call"
-			src_model="res.partner" 
-			res_model="res.partner" 
-			view_type="form" view_mode="form" 
-			key2="client_action_multi" 
-			target="new"/> -->
 
 	</data>
 </odoo>

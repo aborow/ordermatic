@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 {
     "name": "Wibtec Avalara Avatax Connector",
     "summary": "Sales tax Calculation",

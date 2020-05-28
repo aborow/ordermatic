@@ -2,17 +2,6 @@
 
 from odoo import api, fields, models, _
 from odoo.addons.wibtec_avatax_connector.models.avalara_api import AvaTaxService
-#from avalara_salestax.avalara_api import AvaTaxService
-#from ../avalara_api import AvaTaxService
-'''
-def load_src(name, fpath):
-    import os, imp
-    return imp.load_source(name, os.path.join(os.path.dirname(__file__), fpath))
-
-aapi = load_src("aapi", "../avalara_api.py")
-from aapi import AvaTaxService 
-    '''
-
 
 class AvalaraSalestaxPing(models.TransientModel):
     _name = 'avalara.salestax.ping'
