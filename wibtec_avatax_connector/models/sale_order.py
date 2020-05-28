@@ -34,13 +34,9 @@ class SaleOrder(models.Model):
         also check address validation by avalara  
         """
         res = super(SaleOrder, self).onchange_partner_id()
-#        addr = self.partner_shipping_id
-        # self.exemption_code = self.partner_id.exemption_number or ''
-        self.exemption_code = self.get_25_chara_exemption_number(
-            self.partner_id.exemption_number)
+        self.exemption_code = self.partner_id.exemption_number or ''
         self.exemption_code_id = self.partner_id.exemption_code_id.id or None
         self.tax_add_shipping = True
-#        self.tax_address = str((addr.name  or '')+ '\n'+(addr.street or '')+ '\n'+(addr.city and addr.city+', ' or ' ')+(addr.state_id and addr.state_id.name or '')+ ' '+(addr.zip or '')+'\n'+(addr.country_id and addr.country_id.name or ''))
         self.tax_add_id = self.partner_shipping_id.id
         if self.partner_id.validation_method:
             self.is_add_validate = True
@@ -50,8 +46,6 @@ class SaleOrder(models.Model):
 
     @api.model
     def create(self, vals):
-        #        if vals['partner_id']:
-        #            vals['tax_add_id'] = vals['partner_id']
         ship_add_id = False
 
         if 'tax_add_default' in vals and vals['tax_add_default']:
@@ -60,34 +54,9 @@ class SaleOrder(models.Model):
             ship_add_id = vals['partner_invoice_id']
         elif 'tax_add_shipping' in vals and vals['tax_add_shipping']:
             ship_add_id = vals['partner_shipping_id']
-#        else:
-#            ship_add_id = vals['partner_id']
         if ship_add_id:
             vals['tax_add_id'] = ship_add_id
-#            vals['tax_address'] = str(ship_add_id.name+ '\n'+(ship_add_id.street or '')+ '\n'+(ship_add_id.city and ship_add_id.city+', ' or ' ')+(ship_add_id.state_id and ship_add_id.state_id.name or '')+ ' '+(ship_add_id.zip or '')+'\n'+(ship_add_id.country_id and ship_add_id.country_id.name or ''))
         return super(SaleOrder, self).create(vals)
-
-    @api.multi
-    def write(self, vals):
-        res = super(SaleOrder, self).write(vals)
-        # _logger.info("\n\n\n\n::::::WRITEEE::SO <%s>", vals)
-    #     if 'tax_add_default' in vals or 'tax_add_invoice' in vals \
-    #             or 'tax_add_shipping' in vals:
-    #         for self_obj in self:
-    #             ship_add_id = False
-    #             if 'tax_add_default' in vals and vals['tax_add_default']:
-    #                 ship_add_id = self_obj.partner_id
-    #             elif 'tax_add_invoice' in vals and vals['tax_add_invoice']:
-    #                 ship_add_id = self_obj.partner_invoice_id or self_obj.partner_id
-    #             elif 'tax_add_shipping' in vals and vals['tax_add_shipping']:
-    #                 ship_add_id = self_obj.partner_shipping_id or self_obj.partner_id
-    # #            else:
-    # #                ship_add_id = self.partner_id
-    #             if ship_add_id:
-    #                 vals['tax_add_id'] = ship_add_id.id
-    #                vals['tax_address'] = str(ship_add_id.name+ '\n'+(ship_add_id.street or '')+ '\n'+(ship_add_id.city and ship_add_id.city+', ' or ' ')+(ship_add_id.state_id and ship_add_id.state_id.name or '')+ ' '+(ship_add_id.zip or '')+'\n'+(ship_add_id.country_id and ship_add_id.country_id.name or ''))
-        # print (ll)
-        return res
 
     @api.multi
     def copy(self, default=None):
@@ -110,50 +79,6 @@ class SaleOrder(models.Model):
         })
         return invoice_vals
 
-    # @api.onchange('order_line.tax_id')
-    # def onchange_tax_id(self):
-    #     """
-    #     Compute the total amounts of the SO.
-    #     """
-    #     for sale in self:
-    #         sale.compute_tax()
-
-    # @api.depends('order_line.price_total', 'order_line.tax_id')
-    # def _amount_all(self):
-    #     """
-    #     Compute the total amounts of the SO. OLD Method
-    #     """
-    #     res = super(SaleOrder, self)._amount_all()
-    #     for order in self:
-    #         _logger.info(
-    #             "\n\n\n Order @@##@@ line.price_tax::: <%s>", order.state)
-    #         # if order.order_line:
-    #         amount_tax = 0.0
-
-    #         if order.state not in ['draft', 'sent']:
-    #             _logger.info("\n\n\n _amount_all CALLLLLLLLLLLLLL::")
-    #             amount_tax = order.compute_tax()
-    #         _logger.info(
-    #             "\n\n\n Order ???????? amount_tax::: <%s>", amount_tax)
-    #         _logger.info("\n\n\n Order ::: order.order_lin@!!!!!<%s>(%s)(%s)(%s)",
-    #                      order, order.state, order.amount_untaxed, order.order_line)
-    #         for line in order.order_line:
-    #             _logger.info(
-    #                 "\n\n\n Order @@##@@ line.price_tax::: <%s>", line.price_tax)
-    #             amount_tax += line.price_tax
-    #         _logger.info(
-    #             "\n\n\n Order 1111 amount_tax::: <%s>", amount_tax)
-    #         amount_tax += order.tax_amount
-    #         _logger.info(
-    #             "\n\n\n Order 22222 amount_tax::: <%s>", amount_tax)
-    #         order.update({
-    #             'amount_tax': order.pricelist_id.currency_id.round(amount_tax),
-    #             'amount_total': order.amount_untaxed + amount_tax,
-    #         })
-    #         _logger.info(" order ::: order@@@@ <%s>(%s)",
-    #                      order.amount_tax, order.amount_untaxed)
-    #     return res
-
     @api.depends('order_line.price_total', 'order_line.tax_id')
     def _amount_all(self):
         """
@@ -162,20 +87,13 @@ class SaleOrder(models.Model):
         SO then Avatax is not calculate so solve this issue
         """
         for order in self:
-            # _logger.info("\n\n\n _amount_all CALLLLLLLLLLLLLL::")
             if order.state not in ['draft', 'sent']:
                 order.compute_tax()
             amount_untaxed = amount_tax = 0.0
             for line in order.order_line:
-                # _logger.info(" order ::: order@@@@ <%s>(%s)",
-                #              line.price_subtotal, line.price_tax)
                 amount_untaxed += line.price_subtotal
                 amount_tax += line.price_tax
-            # if order.tax_amount:
-            amount_tax += order.tax_amount
-            # print("\n\n\n\n:::::::amount_tax::::::", amount_tax)
-            # _logger.info(" order ::: 22222222222@@@@ <%s>(%s)",
-            #              order.amount_tax, order.tax_amount)
+            amount_tax += order.tax_amount           
             order.update({
                 'amount_untaxed': amount_untaxed,
                 'amount_tax': amount_tax,
@@ -186,7 +104,6 @@ class SaleOrder(models.Model):
     def default_tax_address(self):
         if self.tax_add_default and self.partner_id:
             self.tax_add_id = self.partner_id.id
-#            self.tax_address = str(addr.name+ '\n'+(addr.street or '')+ '\n'+(addr.city and addr.city+', ' or ' ')+(addr.state_id and addr.state_id.name or '')+ ' '+(addr.zip or '')+'\n'+(addr.country_id and addr.country_id.name or ''))
             self.tax_add_default = True
             self.tax_add_invoice = self.tax_add_shipping = False
 
@@ -194,7 +111,6 @@ class SaleOrder(models.Model):
     def invoice_tax_address(self):
         if (self.tax_add_invoice and self.partner_invoice_id) or (self.tax_add_invoice and self.partner_id):
             self.tax_add_id = self.partner_invoice_id.id or self.partner_id.id
-#            self.tax_address = str(addr.name+ '\n'+(addr.street or '')+ '\n'+(addr.city and addr.city+', ' or ' ')+(addr.state_id and addr.state_id.name or '')+ ' '+(addr.zip or '')+'\n'+(addr.country_id and addr.country_id.name or ''))
             self.tax_add_default = self.tax_add_shipping = False
             self.tax_add_invoice = True
 
@@ -202,7 +118,6 @@ class SaleOrder(models.Model):
     def delivery_tax_address(self):
         if (self.tax_add_shipping and self.partner_shipping_id) or (self.tax_add_shipping and self.partner_id):
             self.tax_add_id = self.partner_shipping_id.id or self.partner_id.id
-           # self.tax_address = str(addr.name+ '\n'+(addr.street or '')+ '\n'+(addr.city and addr.city+', ' or ' ')+(addr.state_id and addr.state_id.name or '')+ ' '+(addr.zip or '')+'\n'+(addr.country_id and addr.country_id.name or ''))
             self.tax_add_default = self.tax_add_invoice = False
             self.tax_add_shipping = True
 
@@ -225,7 +140,6 @@ class SaleOrder(models.Model):
                                       'draft': [('readonly', False)]})
     tax_add_id = fields.Many2one('res.partner', 'Tax Partner Address (AVATAX)')
     tax_address = fields.Text('Tax Address (AVATAX)')
-    # 'location_code = fields.related('shop_id', 'location_code', type="char", string="Location Code", store=True, readonly=True, help="Origin address location code"),
     location_code = fields.Char(
         'Location Code', help='Origin address location code')
 
@@ -255,7 +169,6 @@ class SaleOrder(models.Model):
         @param order_line: send sub_total of each line and get tax amount
         @param shiiping_line: send shipping amount of each ship line and get ship tax amount  
         """
-        _logger.info("\n\n\n compute_tax ::::::::CALLLLLLLLLLLLLL::")
         avatax_config_obj = self.env['avalara.salestax']
         account_tax_obj = self.env['account.tax']
         avatax_config = avatax_config_obj._get_avatax_config_company()
@@ -271,8 +184,6 @@ class SaleOrder(models.Model):
             ship_from_address_id = self.warehouse_id.partner_id
         else:
             ship_from_address_id = self.company_id.partner_id
-        # _logger.info("\n\n\n Order ship_from_address_id:: <%s>",
-        #              ship_from_address_id)
         if avatax_config and not avatax_config.disable_tax_calculation:
             ava_tax = account_tax_obj.search(
                 [('is_avatax', '=', True),
@@ -291,7 +202,7 @@ class SaleOrder(models.Model):
                         _('This sales order is using a Non Avatax sales tax rate greater than 0%.  Please select AVATAX on the sales order line.'))
             order_date = str(self.date_order).split(' ')[0]
             order_date = datetime.strptime(order_date, "%Y-%m-%d").date()
-            if lines:
+            if lines and self.partner_id.tax_exempt == False:
                 if avatax_config.on_line:
                     # Line level tax calculation
                     # tax based on individual order line
@@ -307,16 +218,10 @@ class SaleOrder(models.Model):
                                                                           line], self.user_id, self.exemption_code or None, self.exemption_code_id.code or None,
                                                                       ).TotalTax
                         o_tax_amt += ol_tax_amt  # tax amount based on total order line total
-                        # line['id'].write({'tax_amt': ol_tax_amt, 'tax_id': [(6,0, tax_id)]})
                         line['id'].write({'tax_amt': ol_tax_amt})
 
                     tax_amount = o_tax_amt
-                    # _logger.info(
-                    #     "\n\n\n Order IFFFFFFFFFFF:: tax_amount <%s>", tax_amount)
                 elif avatax_config.on_order:
-                    # Order level tax calculation
-                    #                lines1.extend(lines2)
-
                     tax_amount = account_tax_obj._get_compute_tax(avatax_config, order_date,
                                                                   self.name, 'SalesOrder', self.partner_id, ship_from_address_id,
                                                                   shipping_add_id, lines, self.user_id, self.exemption_code or None, self.exemption_code_id.code or None,
@@ -334,19 +239,10 @@ class SaleOrder(models.Model):
         else:
             for o_line in self.order_line:
                 o_line.write({'tax_amt': 0.0, })
-#            for s_line in order.shipping_lines:
-#               ship_order_line.write(cr, uid, [s_line.id], {'tax_amt': 0.0,})
-
-        # Need to put in comments because if Sale order id is like NewID then occure Traceback
-        # so as a solution self.update is working
-
-        # self.write({'tax_amount': tax_amount, 'order_line' : []})
         self.update({
             'tax_amount': tax_amount,
             'order_line': [],
         })
-        print("\n\n\n::tax_amount::::::", tax_amount)
-        _logger.info(" computeeeeeee ::: tax_amount <%s>", tax_amount)
         return tax_amount
 
     @api.multi
@@ -363,6 +259,7 @@ class SaleOrder(models.Model):
 
 
 class SaleOrderLine(models.Model):
+    
     _inherit = "sale.order.line"
 
     tax_amt = fields.Float('Avalara Tax', help="tax calculate by avalara")

@@ -48,17 +48,11 @@ class AvaTaxService:
     
 
     def service(self, name):
-        # Solved issue during migration 
-        # In v10 : string.capitalize()
-        # But in v11 : name.capitalize()
-        nameCap = name.capitalize() # So this will be 'Tax' or 'Address'
+        nameCap = name.capitalize()
         # The Python SUDS library can fetch the WSDL down from the server
         # or use a local file URL. We'll use a local file URL.
-#        wsdl_url = 'file:///' + os.getcwd().replace('\\', '/') + '/%ssvc.wsdl.xml' % name
         # If you want to fetch the WSDL from the server, use this instead:
         wsdl_url = 'https://avatax.avalara.net/%s/%ssvc.wsdl' % (nameCap, nameCap)
-        # _logger.info(" wsdl_urlwsdl_url ::: wsdl_url <%s>", wsdl_url )
-        # _logger.info("\n\n suds ::: suds <%s>", suds )
         try:
              svc = suds.client.Client(wsdl_url)
         except urllib.error.URLError as details:
@@ -99,8 +93,6 @@ class AvaTaxService:
         return profile
 
     def get_result(self, svc, operation, request):
-        # print("\n\n\n::request", request)
-        # _logger.info(" requestt ::: request <%s>", request )
         try:
             result = operation(request)
         except suds.WebFault as e:
@@ -112,10 +104,7 @@ class AvaTaxService:
             raise UserError(_(details.reason))
         else:
             if (result.ResultCode != 'Success'):
-                #for w_message in result.Messages.Message:
-#                w_message = result.Messages.Message[0]
                 for w_message in result.Messages.Message:
-#                    print"w_message",w_message
                     if w_message.Severity == 'Error':
                         if (w_message._Name == 'TaxAddressError' or w_message._Name == 'AddressRangeError' or  w_message._Name == 'AddressUnknownStreetError' or w_message._Name == 'AddressNotGeocodedError' or w_message._Name == 'NonDeliverableAddressError' ):
                             raise UserError(_('AvaTax: Warning AvaTax could not validate the street address. \n You can save the address and AvaTax will make an attempt to compute taxes based on the zip code if "Force Address Validation" is disabled in the Avatax connector configuration.  \n\n Also please ensure that the company address is set and Validated.  You can get there by going to Sales->Customers and removing "Customers" filter from the search at the top.  Then go to your company contact info and validate your address in the Avatax Tab'))
@@ -146,18 +135,13 @@ class AvaTaxService:
             raise UserError(_(details.reason))
         else:
             if (result.ResultCode != 'Success'):
-                #for w_message in result.Messages.Message:
-#                w_message = result.Messages.Message[0]
                 for w_message in result.Messages.Message:
-#                    print"w_message",w_message
                     if w_message.Severity == 'Error':
                         if (w_message._Name == 'TaxAddressError' or w_message._Name == 'AddressRangeError' or  w_message._Name == 'AddressUnknownStreetError' or w_message._Name == 'AddressNotGeocodedError' or w_message._Name == 'NonDeliverableAddressError' ):
                             return 'Failed'
                         elif (w_message._Name == 'UnsupportedCountryError' ):
-                            # raise UserError(_("AvaTax: Notice\n\n Address Validation for this country not supported. But, Avalara will still calculate global tax rules."))
                             return 'Failed'
                         else:
-                            # raise UserError(_('AvaTax: Error: '+str(w_message._Name)+"\n\n" "Summary: " + w_message.Summary + "\n Details: " + str(w_message.Details or '') + "\n Severity: " + w_message.Severity))
                             return 'Failed'
             else:
                 return result
@@ -199,7 +183,6 @@ class AvaTaxService:
         request = self.taxSvc.factory.create('GetTaxRequest')
         request.Commit = commit
         request.DetailLevel = 'Diagnostic'
-#        request.DetailLevel = 'Document'
         request.Discount = 0.0
         request.ServiceMode = 'Automatic'   ##service mode = Automatic/Local/Remote
         request.PaymentDate = doc_date
@@ -215,7 +198,6 @@ class AvaTaxService:
             taxoverride.TaxAmount = 5.67
             taxoverride.Reason = 'Refund for purchase of chair'
             request.TaxOverride = taxoverride
-            # _logger.info(" Invoice Date in Avalara ::: taxoverride <%s>", taxoverride )
        
         request.CompanyCode = company_code
         request.DocDate = doc_date
@@ -247,13 +229,11 @@ class AvaTaxService:
             line1.TaxCode = received_lines[line].get('tax_code', None)
             lineslist.append(line1)
         # So now we build request.Lines
-        # _logger.info(" Finall Result ::: lineslist <%s>", lineslist )
         lines = self.taxSvc.factory.create('ArrayOfLine')
         lines.Line = lineslist
         request.Lines = lines
         # And we're ready to make the call
         result = self.get_result(self.taxSvc, self.taxSvc.service.GetTax, request)
-        # _logger.info(" Finall Result ::: result <%s>", result )
         return result
     
     def get_tax_history(self, company_code, doc_code, doc_type):
@@ -262,7 +242,6 @@ class AvaTaxService:
         request.CompanyCode = company_code
         request.DocCode = doc_code
         request.DocType = doc_type
-#        request.CancelCode = cancel_code
         result = self.get_result(self.taxSvc, self.taxSvc.service.GetTaxHistory, request)
         return result
         

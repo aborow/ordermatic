@@ -7,7 +7,9 @@ from odoo.tools import DEFAULT_SERVER_DATE_FORMAT
 
 
 class AvalaraSalestaxAddressValidate(models.TransientModel):
+
     """Address Validation using Avalara API"""
+    
     _name = 'avalara.salestax.address.validate'
     _description = 'Address Validation using AvaTax'
     
@@ -65,9 +67,7 @@ class AvalaraSalestaxAddressValidate(models.TransientModel):
                                 'longitude': '',
                                 'date_validation': False,
                                 'validation_method': '',
-                            })
-#            cr.commit()     #Need to forcefully commit data when address not validate after changes in validate address
-            
+                            })            
             address = address_brw.read(['street', 'street2', 'city', 'state_id', 'zip', 'country_id'])[0]
             address['state_id'] = address.get('state_id') and address['state_id'][0]
             address['country_id'] = address.get('country_id') and address['country_id'][0]
@@ -105,6 +105,7 @@ class AvalaraSalestaxAddressValidate(models.TransientModel):
 
     @api.multi
     def accept_valid_address(self):
+
         """ Updates the existing address with the valid address returned by the service. """
 
         valid_address = self.read()[0]

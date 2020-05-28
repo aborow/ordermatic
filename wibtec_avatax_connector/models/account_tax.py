@@ -8,11 +8,12 @@ from odoo.addons.wibtec_avatax_connector.models.avalara_api import AvaTaxService
 import logging, tempfile
 
 class AccountTax(models.Model):
+
     """Inherit to implement the tax using avatax API"""
+
     _inherit = "account.tax"
     
     is_avatax = fields.Boolean('Is Avatax')
-
 
     @api.model
     def _get_compute_tax(self, avatax_config, doc_date, doc_code, doc_type, partner, ship_from_address, shipping_address,
@@ -26,17 +27,10 @@ class AccountTax(models.Model):
                         
         if not shipping_address:
             raise UserError(_('There is no shipping address defined for the partner.'))        
-        #it's show destination address
-#        shipping_address = address_obj.browse(cr, uid, shipping_address_id, context=context)
-#        if not lines:
-#            raise osv.except_osv(_('AvaTax: Error !'), _('AvaTax needs at least one sale order line defined for tax calculation.'))
         
         if not ship_from_address:
             raise UserError(_('There is no company address defined.'))
 
-        #it's show source address
-#        ship_from_address = address_obj.browse(cr, uid, ship_from_address_id, context=context)
-        
         #this condition is required, in case user select force address validation on AvaTax API Configuration
         if not avatax_config.address_validation:
             if avatax_config.force_address_validation:
@@ -44,7 +38,6 @@ class AccountTax(models.Model):
                     raise UserError(_('Please validate the shipping address for the partner %s.'
                                 % (partner.name)))
 
-#        if not avatax_config.address_validation:
             if not ship_from_address.date_validation:
                 raise UserError(_('Please validate the company address.'))
 
@@ -63,9 +56,7 @@ class AccountTax(models.Model):
                                   shipping_address.city, shipping_address.zip,
                                   shipping_address.state_id and shipping_address.state_id.code or None,
                                   shipping_address.country_id and shipping_address.country_id.code or None, 1).data
-        #using get_tax method to calculate tax based on address   
-#        doc_date = datetime.strftime(datetime.strptime(doc_date,DEFAULT_SERVER_DATETIME_FORMAT), DEFAULT_SERVER_DATE_FORMAT)
-#        print"doc_date",type(doc_date)
+        
         invoice_date = str(invoice_date).split(' ')[0] if invoice_date else False
         result = avalara_obj.get_tax(avatax_config.company_code, doc_date, doc_type,
                                  partner.customer_code, doc_code, origin, destination,

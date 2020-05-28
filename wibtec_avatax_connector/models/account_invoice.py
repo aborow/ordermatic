@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+
 import time
 
 from odoo import _, api, fields, models
@@ -30,7 +31,9 @@ def get_origin_tax_date(self):
 
 
 class AccountInvoice(models.Model):
+
     """Inherit to implement the tax calculation using avatax API"""
+
     _inherit = "account.invoice"
 
     def get_25_chara_exemption_number(self, exemption_number):
@@ -50,8 +53,7 @@ class AccountInvoice(models.Model):
     @api.onchange('partner_id', 'company_id')
     def _onchange_partner_id(self):
         res = super(AccountInvoice, self)._onchange_partner_id()
-        # self.exemption_code = self.partner_id.exemption_number or ''
-        self.exemption_code = self.get_25_chara_exemption_number(self.partner_id.exemption_number)
+        self.exemption_code = self.partner_id.exemption_number
         self.exemption_code_id = self.partner_id.exemption_code_id.id or None
         if self.partner_id.validation_method:
             self.is_add_validate = True
@@ -69,22 +71,11 @@ class AccountInvoice(models.Model):
 
     @api.onchange('invoice_line_ids', 'exemption_code_id')
     def _onchange_invoice_line_ids(self):
-        """
-        CSOI-663 : Draft Stage If user will add Exemption Code then also Calculate Avalatax TAX
-        """
         if self.state == 'draft':
             return super(AccountInvoice, self)._onchange_invoice_line_ids()
-        # taxes_grouped = self.get_taxes_values()
-        # tax_lines = self.tax_line_ids.filtered('manual')
-        # for tax in taxes_grouped.values():
-        #     tax_lines += tax_lines.new(tax)
-        # self.tax_line_ids = tax_lines
-        # return
 
     @api.model
     def create(self, vals):
-        #        if vals['partner_id']:
-        #            vals['partner_shipping_id'] = vals['partner_id']
         ship_add_id = False
         if not vals.get('partner_shipping_id'):
             if vals.get('partner_id'):
@@ -94,7 +85,6 @@ class AccountInvoice(models.Model):
                     addr = partner_recs.address_get(['delivery'])
                     vals.update(
                         {'partner_shipping_id': addr['delivery'] or ''})
-        # _logger.info("Server URL:- \"%s\" (REMOTE)" % vals)
         if 'tax_add_default' in vals and vals['tax_add_default']:
             ship_add_id = vals['partner_id']
         elif 'tax_add_invoice' in vals and vals['tax_add_invoice']:
@@ -105,7 +95,6 @@ class AccountInvoice(models.Model):
             ship_add_id = vals['partner_shipping_id']
         if ship_add_id:
             vals['shipping_add_id'] = ship_add_id
-#            vals['tax_address'] = str(ship_add_id.name+ '\n'+(ship_add_id.street or '')+ '\n'+(ship_add_id.city and ship_add_id.city+', ' or ' ')+(ship_add_id.state_id and ship_add_id.state_id.name or '')+ ' '+(ship_add_id.zip or '')+'\n'+(ship_add_id.country_id and ship_add_id.country_id.name or ''))
         return super(AccountInvoice, self).create(vals)
 
     @api.multi
@@ -119,11 +108,8 @@ class AccountInvoice(models.Model):
             elif 'tax_add_shipping' in vals and vals['tax_add_shipping']:
                 ship_add_id = self_obj.partner_shipping_id or self_obj.\
                     partner_id
-#            else:
-#                ship_add_id = self.partner_id
             if ship_add_id:
                 vals['shipping_add_id'] = ship_add_id.id
-#                vals['tax_address'] = str(ship_add_id.name+ '\n'+(ship_add_id.street or '')+ '\n'+(ship_add_id.city and ship_add_id.city+', ' or ' ')+(ship_add_id.state_id and ship_add_id.state_id.name or '')+ ' '+(ship_add_id.zip or '')+'\n'+(ship_add_id.country_id and ship_add_id.country_id.name or ''))
         return super(AccountInvoice, self).write(vals)
 
     invoice_doc_no = fields.Char('Source/Ref Invoice No', readonly=True,
@@ -151,7 +137,6 @@ class AccountInvoice(models.Model):
     @api.onchange('tax_add_default', 'origin', 'partner_id')
     def default_tax_address(self):
         if self.tax_add_default:
-            #            tax_address = str(self.partner_id.name+ '\n'+(self.partner_id.street or '')+ '\n'+(self.partner_id.city and self.partner_id.city+', ' or ' ')+(self.partner_id.state_id and self.partner_id.state_id.name or '')+ ' '+(self.partner_id.zip or '')+'\n'+(self.partner_id.country_id and self.partner_id.country_id.name or ''))
             shipping_add_id = self.partner_id.id
             if self.origin:
                 if len(self.origin.split(':')) > 1:
@@ -162,45 +147,27 @@ class AccountInvoice(models.Model):
                 sale_ids = self.env['sale.order'].search(
                     [('name', '=', so_origin)])
                 if sale_ids:
-                    #                    tax_address = str(sale_ids[0].partner_id.name+ '\n'+(sale_ids[0].partner_id.street or '')+ '\n'+(sale_ids[0].partner_id.city and sale_ids[0].partner_id.city+', ' or ' ')+(sale_ids[0].partner_id.state_id and sale_ids[0].partner_id.state_id.name or '')+ ' '+(sale_ids[0].partner_id.zip or '')+'\n'+(sale_ids[0].partner_id.country_id and sale_ids[0].partner_id.country_id.name or ''))
                     shipping_add_id = sale_ids[0].partner_shipping_id.id
             self.tax_add_default = True
             self.tax_add_invoice = False
             self.tax_add_shipping = False
-#            self.shipping_address = tax_address
             self.shipping_add_id = shipping_add_id
 
     @api.onchange('tax_add_invoice', 'partner_id')
     def invoice_tax_address(self):
         if self.tax_add_invoice and self.partner_id:
-            #            tax_address = str(self.partner_id.name+ '\n'+(self.partner_id.street or '')+ '\n'+(self.partner_id.city and self.partner_id.city+', ' or ' ')+(self.partner_id.state_id and self.partner_id.state_id.name or '')+ ' '+(self.partner_id.zip or '')+'\n'+(self.partner_id.country_id and self.partner_id.country_id.name or ''))
             self.tax_add_default = False
             self.tax_add_invoice = True
             self.tax_add_shipping = False
-#            self.shipping_address = tax_address
             self.shipping_add_id = self.partner_id.id
 
     @api.onchange('tax_add_shipping', 'origin', 'partner_id')
     def delivery_tax_address(self):
-        """
-        Put Code in comments base on CSOI-348 display Delivery Address in all senario 
-        """
         if self.tax_add_shipping:
-            #            tax_address = str(self.partner_id.name+ '\n'+(self.partner_id.street or '')+ '\n'+(self.partner_id.city and self.partner_id.city+', ' or ' ')+(self.partner_id.state_id and self.partner_id.state_id.name or '')+ ' '+(self.partner_id.zip or '')+'\n'+(self.partner_id.country_id and self.partner_id.country_id.name or ''))
             if self.partner_shipping_id:
                 shipping_add_id = self.partner_shipping_id.id
             else:
                 shipping_add_id = self.partner_id.id
-#             if self.origin:
-#                 if len(self.origin.split(':')) > 1:
-#                     so_origin = self.origin.split(':')[1]
-#                 else:
-#                     so_origin = self.origin.split(':')[0]
-
-#                 sale_ids = self.env['sale.order'].search([('name','=',so_origin)])
-#                 if sale_ids:
-# #                    tax_address = str(sale_ids[0].partner_shipping_id.name+ '\n'+(sale_ids[0].partner_shipping_id.street or '')+ '\n'+(sale_ids[0].partner_shipping_id.city and sale_ids[0].partner_shipping_id.city+', ' or ' ')+(sale_ids[0].partner_shipping_id.state_id and sale_ids[0].partner_shipping_id.state_id.name or '')+ ' '+(sale_ids[0].partner_shipping_id.zip or '')+'\n'+(sale_ids[0].partner_shipping_id.country_id and sale_ids[0].partner_shipping_id.country_id.name or ''))
-#                     shipping_add_id = sale_ids[0].partner_shipping_id.id
             self.tax_add_default = False
             self.tax_add_invoice = False
             self.tax_add_shipping = True
@@ -208,7 +175,6 @@ class AccountInvoice(models.Model):
 
     @api.multi
     def compute(self):
-        #        self.compute_taxes()
         avatax_config_obj = self.env['avalara.salestax']
         account_tax_obj = self.env['account.tax']
         avatax_config = avatax_config_obj._get_avatax_config_company()
@@ -233,7 +199,7 @@ class AccountInvoice(models.Model):
                         raise UserError(
                             _('This Invoice order is using a Non Avatax sales tax rate greater than 0%.  Please select AVATAX on the invoice order line.'))
                 lines = self.create_lines(invoice.invoice_line_ids, sign)
-                if lines:
+                if lines and self.partner_id.tax_exempt == False:
                     if avatax_config.on_line:
                         ava_tax = account_tax_obj.search(
                             [('is_avatax', '=', True),
@@ -258,9 +224,6 @@ class AccountInvoice(models.Model):
                                                  None, invoice.
                                                  exemption_code_id.code or None, True
                                                  ).TotalTax
-    #                        o_tax_amt += ol_tax_amt  #tax amount based on total order line total
-
-                            # line['id'].write({'tax_amt': ol_tax_amt, 'invoice_line_tax_ids': [(6,0, tax_id)]})
                             line['id'].write({'tax_amt': ol_tax_amt})
 
                     elif avatax_config.on_order:
@@ -274,10 +237,6 @@ class AccountInvoice(models.Model):
     @api.multi
     def action_invoice_open(self):
         # lots of duplicate calls to action_invoice_open, so we remove those already open
-        """
-        CSOI-453 and CSOI-332 related changes on Journal Entries
-        for kit products as a customer invoice journal
-        """
         to_open_invoices = self.filtered(lambda inv: inv.state != 'open')
         if to_open_invoices.filtered(lambda inv: inv.state not in ['proforma2', 'draft']):
             raise UserError(
@@ -286,22 +245,6 @@ class AccountInvoice(models.Model):
         to_open_invoices.action_move_create()
         to_open_invoices.invoice_validate()
         return to_open_invoices.action_commit_tax()
-
-    # @api.multi
-    # def action_invoice_open(self):
-    #     # lots of duplicate calls to action_invoice_open, so we remove those already open
-    #     """
-    #     CSOI-453 and CSOI-332 related changes on Journal Entries
-    #     for kit products as a customer invoice journal old version with errors
-    #     """
-    #     to_open_invoices = self.filtered(lambda inv: inv.state != 'open')
-    #     if to_open_invoices.filtered(lambda inv: inv.state not in ['proforma2', 'draft']):
-    #         raise UserError(
-    #             _("Invoice must be in draft or Pro-forma state in order to validate it."))
-    #     to_open_invoices.action_date_assign()
-    #     to_open_invoices.invoice_validate()
-    #     to_open_invoices.action_move_create()
-    #     return to_open_invoices.action_commit_tax()
 
     @api.multi
     def invoice_validate(self):
@@ -374,7 +317,7 @@ class AccountInvoice(models.Model):
                         raise UserError(
                             _('This Invoice order is using a Non Avatax sales tax rate greater than 0%.  Please select AVATAX on the invoice order line.'))
                 lines = invoice.create_lines(invoice.invoice_line_ids, sign)
-                if lines:
+                if lines and self.partner_id.tax_exempt == False:
                     if avatax_config.on_line:
                         for line in lines:
                             ol_tax_amt = account_tax_obj._get_compute_tax(avatax_config, invoice.date_invoice,
@@ -384,8 +327,6 @@ class AccountInvoice(models.Model):
                                                                               line], invoice.user_id, invoice.exemption_code or None, invoice.exemption_code_id.code or None,
                                                                           True,
                                                                           ).TotalTax
-    #                        o_tax_amt += ol_tax_amt  #tax amount based on total order line total
-
                             line['id'].write({'tax_amt': ol_tax_amt})
 
                     elif avatax_config.on_order:
@@ -399,7 +340,7 @@ class AccountInvoice(models.Model):
                     for o_line in invoice.invoice_line_ids:
                         o_line.write({'tax_amt': 0.0, })
 
-                if lines:
+                if lines and self.partner_id.tax_exempt == False:
                     account_tax_obj._get_compute_tax(avatax_config, invoice.date_invoice,
                                                      invoice.number, not invoice.invoice_doc_no and 'SalesInvoice' or 'ReturnInvoice',
                                                      invoice.partner_id, shipping_add_origin_id,
@@ -409,8 +350,6 @@ class AccountInvoice(models.Model):
             else:
                 for o_line in invoice.invoice_line_ids:
                     o_line.write({'tax_amt': 0.0, })
-#                for s_line in invoice.shipping_lines:
-#                    ship_order_line.write(cr, uid, [s_line.id], {'tax_amt': 0.0,})
         return True
 
     @api.multi
@@ -429,7 +368,7 @@ class AccountInvoice(models.Model):
                         raise UserError(
                             _('This Invoice order is using a Non Avatax sales tax rate greater than 0%.  Please select AVATAX on the invoice order line.'))
                 lines = self.create_lines(self.invoice_line_ids)
-                if lines:
+                if lines and self.partner_id.tax_exempt == False:
                     if self.warehouse_id and self.warehouse_id.partner_id:
                         ship_from_address_id = self.warehouse_id.partner_id
                     else:
@@ -449,7 +388,6 @@ class AccountInvoice(models.Model):
                                                                  shipping_add_id, lines, self.user_id, self.exemption_code or None, self.exemption_code_id.code or None, True
                                                                  ).TotalTax
                     if o_tax_amt:
-
                         val = {
                             'invoice_id': self.id,
                             'name': tax[0].name,
@@ -468,17 +406,6 @@ class AccountInvoice(models.Model):
                             tax_grouped[key] = val
                         else:
                             tax_grouped[key]['amount'] += val['amount']
-
-                    # tax_date = get_origin_tax_date(self)
-                    # if not tax_date:
-                    #     tax_date = self.date_invoice or time.strftime('%Y-%m-%d')
-                    # account_tax_obj._get_compute_tax(avatax_config, self.date_invoice,
-                    #                                self.number, not self.invoice_doc_no and 'SalesInvoice' or 'ReturnInvoice',
-                    #                                self.partner_id, ship_from_address_id,
-                    #                                shipping_add_id, lines, self.user_id, self.exemption_code or None, self.exemption_code_id.code or None,
-                    #                                True, tax_date,
-                    #                                self.invoice_doc_no, self.location_code or '')
-
                 for line in self.invoice_line_ids:
                     price_unit = line.price_unit * \
                         (1 - (line.discount or 0.0) / 100.0)
@@ -538,8 +465,6 @@ class AccountInvoice(models.Model):
                 if line.product_id and line.product_id.tax_apply:
                     tax_code = (
                         line.product_id.tax_code_id and line.product_id.tax_code_id.name) or None
-    #            else:
-    #                tax_code = (line.product_id.categ_id.tax_code_id  and line.product_id.categ_id.tax_code_id.name) or None
 
                 # Calculate discount amount
                     discount_amount = 0.0
@@ -596,7 +521,6 @@ class AccountInvoice(models.Model):
                 doc_type = invoice.type == 'out_invoice' and 'SalesInvoice' or 'ReturnInvoice'
                 account_tax_obj.cancel_tax(
                     avatax_config, invoice.number, doc_type, 'DocVoided')
-#        self.write({'internal_number':''})
         return super(AccountInvoice, self).action_cancel()
 
 

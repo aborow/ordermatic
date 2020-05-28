@@ -10,12 +10,13 @@ from odoo.tools import DEFAULT_SERVER_DATE_FORMAT
 
 
 class res_partner(models.Model):
+
     """Update partner information by adding new fields according to avalara partner configuration"""
+
     _inherit = 'res.partner'
     
     exemption_number = fields.Char('Exemption Number', help="Indicates if the customer is exempt or not")
     exemption_code_id = fields.Many2one('exemption.code', 'Exemption Code', help="Indicates the type of exemption the customer may have")
-#    tax_schedule_id = fields.Many2one('tax.schedule', 'Tax Schedule', help="Identifies customers using AVATAX. Only customers with AVATAX designation triggers tax calculation from AvaTax otherwise it will follow the normal tax calculation that odoo provides")
     date_validation = fields.Date('Last Validation Date', readonly=True, help="The date the address was last validated by AvaTax and accepted")
     validation_method = fields.Selection([('avatax', 'AVALARA'), ('usps', 'USPS'), ('other', 'Other')], 'Address Validation Method', readonly=True, help="It gets populated when the address is validated by the method")
     latitude = fields.Char('Latitude')
@@ -43,7 +44,6 @@ class res_partner(models.Model):
         if avatax_config.address_validation:
             raise UserError(_("The AvaTax Address Validation Service is disabled by the administrator. Please make sure it's enabled for the address validation"))
         if country_id and country_id not in [x.id for x in avatax_config.country_ids] or not country_id:
-#            return False
             raise UserError(_("The AvaTax Address Validation Service does not support this country in the configuration, please continue with your normal process."))
         return True
     
@@ -64,7 +64,6 @@ class res_partner(models.Model):
 
     def get_country_id(self, code):
         """ Returns the id of the country from the code. """
-
         country_obj = self.env['res.country']
         country = country_obj.search([('code', '=', code)])
         if country: return country[0].id
@@ -72,13 +71,11 @@ class res_partner(models.Model):
 
     def get_state_code(self, state_id):
         """ Returns the code from the id of the state. """
-
         state_obj = self.env['res.country.state']
         return state_id and state_obj.browse(state_id).code
 
     def get_country_code(self, country_id):
         """ Returns the code from the id of the country. """
-
         country_obj = self.env['res.country']
         return country_id and country_obj.browse(country_id).code
     
@@ -168,8 +165,6 @@ class res_partner(models.Model):
         result = self._script_validate_address(address)
         if result == 'Failed':
             return result
-        # else:
-        #     self.accept_valid_address()
         else:
             ctx2 = self._context.copy()
             ctx2.update({'active_model':'res.partner','active_id':self.id,'active_ids':[self.id]})
@@ -183,7 +178,6 @@ class res_partner(models.Model):
                                     'date_validation': False,
                                     'validation_method': '',
                                 })
-    #            cr.commit()     #Need to forcefully commit data when address not validate after changes in validate address
                 fields=['city','zip','original_city','country','street2','original_state','state','street','original_zip','original_street','original_street2','original_country']
                 address = address_brw.read(['street', 'street2', 'city', 'state_id', 'zip', 'country_id'])[0]
                 address['state_id'] = address.get('state_id') and address['state_id'][0]
@@ -270,7 +264,9 @@ class res_partner(models.Model):
             return valid_address
 
     def _validate_address(self, address, avatax_config=False):
+
         """ Returns the valid address from the AvaTax Address Validation Service. """
+
         avatax_config_obj= self.env['avalara.salestax']
 
         if not avatax_config:
@@ -352,14 +348,6 @@ class res_partner(models.Model):
                 if avatax_config and avatax_config.validation_on_save:
                     
                     if self.check_avatax_support(avatax_config, address.get('country_id')):
-#                        fields_to_read = filter(lambda x: x not in vals, ['street', 'street2', 'city', 'state_id', 'zip', 'country_id'])
-#                        print"self.read(fields_to_read)",self.read(fields_to_read)
-#                        address = fields_to_read and self.read(fields_to_read)[0] or {}
-#                        print"address",address
-#                        address['state_id'] = address.get('state_id') and address['state_id'][0]
-#                        address['country_id'] = address.get('country_id') and address['country_id'][0]
-#                        address.update(vals)
-    
                         valid_address = self._validate_address(address, avatax_config)
                         vals.update({
                             'street': valid_address.Line1,
