@@ -4,7 +4,7 @@ from odoo import api, fields, models, _
 from odoo.tools.translate import _
 import odoo.addons.decimal_precision as dp
 from datetime import datetime
-from odoo.exceptions import UserError
+from odoo.exceptions import UserError,ValidationError
 
 _logger = logging.getLogger(__name__)
 
@@ -259,8 +259,18 @@ class SaleOrder(models.Model):
 
 
 class SaleOrderLine(models.Model):
-    
+
     _inherit = "sale.order.line"
+
+    @api.onchange('tax_id')
+    def onchange_invoice_line_tax_ids(self):
+        tax_id = self.env['account.tax'].search([('name','=','AVATAX'),('type_tax_use','=','sale')])
+        if self.product_id and self.order_id.partner_id and self.order_id.partner_id.tax_exempt == True:
+            if tax_id in self.tax_id:
+                self.tax_id = [(6, 0, tax_id.ids)]
+            else:
+                raise ValidationError("Before updating tax here please make sure to disable the customer's tax-exempt setting.!")
+
 
     tax_amt = fields.Float('Avalara Tax', help="tax calculate by avalara")
 

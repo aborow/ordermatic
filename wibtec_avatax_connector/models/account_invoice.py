@@ -530,4 +530,14 @@ class AccountInvoiceLine(models.Model):
 
     tax_amt = fields.Float('Avalara Tax', help="tax calculate by avalara")
 
+    @api.onchange('invoice_line_tax_ids')
+    def onchange_tinvoice_line_tax_ids(self):
+        tax_id = self.env['account.tax'].search([('name','=','AVATAX'),('type_tax_use','=','sale')])
+        if self.product_id and self.invoice_id.partner_id and self.invoice_id.partner_id.tax_exempt == True:
+            if tax_id in self.invoice_line_tax_ids:
+                self.invoice_line_tax_ids = [(6, 0, tax_id.ids)]
+            else:
+                raise ValidationError("Before updating tax here please make sure to disable the customer's tax-exempt setting.!")
+
+
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
