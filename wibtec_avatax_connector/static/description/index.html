@@ -20,7 +20,7 @@ calculations and reporting seamlessly to the AvaTax server. Account information 
 access the Avatax dashboard can be obtained through the Avalara website here:  
 <center>https://www.avalara.com/products/avatax/</center>
 <p>This guide includes instructions for the following elements:
-<ul><li>Activating your organization’s AvaTax account and downloading the product</li>
+<ul><li>Activating your organization AvaTax account and downloading the product</li>
 <li>Entering the AvaTax credentials into your Odoo database and configuring it to 
 use AvaTax services and features within Odoo</li></ul>
 <p><b>Note:</b> Test the module before deploying in live environment. All changes to the AvaTax 
@@ -43,7 +43,7 @@ settings must be performed by a user with administrative access rights.
 			<li>Click Install button</li></ul>
 		 </div>
 		 <div class="oe_span6">
-            <img class="oe_picture oe_screenshot" src="Apps_Odoo_image1.png">
+            <img class="oe_picture oe_screenshot" src="1_app_install.png">
         </div>
 	</div>
 </section>
@@ -52,7 +52,7 @@ settings must be performed by a user with administrative access rights.
     <div class="oe_row">
         <h2 class="oe_slogan">To Configure AvaTax API</h2>
         <div class="oe_span6">
-                <img class="oe_picture oe_screenshot" src="AvaTax_API_Odoo_image2.png">
+                <img class="oe_picture oe_screenshot" src="2_avatax_api.png">
         </div>
         <div class="oe_span6">
             <p><ul type="disc">
@@ -61,7 +61,7 @@ settings must be performed by a user with administrative access rights.
 <li>Fill out the form with your Company Code, Account Number, and License Key as 
 provided with your Avalara account</li>
 <li>Fill out proper service URL provided to you by Avalara (developer/testing server 
-or production URL)c</li>
+or production URL)</li>
 <li>Click the <b>Test Connection</b> button</li>
 <li>Click <b>Save</b> button</li></ul>
         </div>
@@ -91,24 +91,24 @@ case form)</li></ul>
                 <li><b>Order-level</b> -- All items on order are calculated as one transaction.</li>
                 <li><b>Line-level</b> -- Each line item in an order is calculated, displayed, and transacted
 separately.</li>
-           <li><b>Enable UPC Taxability</b> -- This will transmit Odoo’s product ean13 number instead
+           <li><b>Enable UPC Taxability</b> -- This will transmit Odoo&#39;s product ean13 number instead
 of its Internal Reference. If there is no ean13 then the Internal Reference will be 
 sent automatically.</li></ul>
 <h4><b>Countries</b></h4>
                 <ul type="disc">
                     <li>
                         <p>Add or remove applicable countries -- The calculator will not calculate for a
-                            country unless it’s on the list.
+                            country unless it&#39;s on the list.
                         </p>
                     </li>
                 </ul>
-<h4><b></b>Disable</h4>
-                <ul type="disc"><li>Disable Avalara Tax Calculation and reporting (reporting to Avalara’s dashboard
+<h4><b>Disable</b></h4>
+                <ul type="disc"><li>Disable Avalara Tax Calculation and reporting (reporting to Avalara&#39;s dashboard
 and tracking)</li>
                 <li> Disable Avalara Tax reporting only</li></ul>                
         </div>
         <div class="oe_span6">
-            <img class="oe_picture oe_screenshot" src="AvaTax_API_Odoo_image2.png">
+            <img class="oe_picture oe_screenshot" src="3_avatax_api_conf.png">
         </div>
         </div>
 </section>
@@ -116,7 +116,7 @@ and tracking)</li>
 <section class="oe_container oe_dark">
     <div class="oe_row">
        <div class="oe_span6">
-            <img class="oe_picture oe_screenshot" src="Exemption_Code_Odoo_image3.png">
+            <img class="oe_picture oe_screenshot" src="4_excemption_code.png">
         </div>
         <div class="oe_span6">
             <p class='oe_mt32'>
@@ -140,7 +140,7 @@ Navigate to: Accounting >> Configuration >> AvaTax >> Product Tax Codes
 From here you can add, remove, and modify the product tax codes.
         </div>
        <div class="oe_span6">
-            <img class="oe_picture oe_screenshot" src="Product_TaxCodes_Odoo_image4.png">
+            <img class="oe_picture oe_screenshot" src="5_product_Tax_code.png">
         </div>
     </div>
 </section>
@@ -162,7 +162,7 @@ integrates within the Odoo system.
 <section class="oe_container oe_dark">
     <div class="oe_row">
       <div class="oe_span6">
-            <img class="oe_picture oe_screenshot" src="Taxes_Odoo_image5.png">
+            <img class="oe_picture oe_screenshot" src="6_avatax.png">
         </div>
        <div class="oe_span6">
             <p class='oe_mt32'>
@@ -201,10 +201,10 @@ when a product category is created.
             <p class='oe_mt32'>
                 <h4><b>Create New Product Category</b></h4>
                 <ul type="disc"><li>Navigate to: Inventory >> Configuration >> Products >> Product Categories</li>
-                <li>Click <b>Create</b>button</li></ul>
+                <li>Click <b>Create</b> button</li></ul>
         </div>
              <div class="oe_span6">
-            <img class="oe_picture oe_screenshot" src="Product_Categories_Odoo_image7.png">
+            <img class="oe_picture oe_screenshot" src="7_product_categories.png">
         </div>
     </div>
 </section>
@@ -214,7 +214,7 @@ when a product category is created.
 <section class="oe_container oe_dark">
     <div class="oe_row">
         <div class="oe_span6">
-            <img class="oe_picture oe_screenshot" src="Product Categories   All   Saleable   Odoo_image8.png">
+            <img class="oe_picture oe_screenshot" src="8_product_category_avatax.png">
         </div>
        <div class="oe_span6">
             <p class='oe_mt32'>
@@ -251,7 +251,7 @@ to.
                 <li>Click <b>Create</b> button</li>
         </div>
                <div class="oe_span6">
-            <img class="oe_picture oe_screenshot" src="Products   Odoo_image9.png">
+            <img class="oe_picture oe_screenshot" src="9_product_record.png">
         </div>
     </div>
 </section>
@@ -260,7 +260,7 @@ to.
 <section class="oe_container oe_dark">
     <div class="oe_row">
           <div class="oe_span6">
-            <img class="oe_picture oe_screenshot" src="Products   30m RJ45 wire_Odoo_image10.png">
+            <img class="oe_picture oe_screenshot" src="10_product_avatax_configuration.png">
         </div>
        <div class="oe_span6">
             <p class='oe_mt32'>
@@ -301,7 +301,7 @@ all transactions.
                 <li>Click <b>Create</b>  button</li>
         </div>
                <div class="oe_span6"> 
-            <img class="oe_picture oe_screenshot" src="Customers   Odoo_imahe11.png">
+            <img class="oe_picture oe_screenshot" src="11_customers.png">
         </div>
     </div>
 </section>
@@ -309,7 +309,7 @@ all transactions.
 <section class="oe_container oe_dark">
     <div class="oe_row">
            <div class="oe_span6">
-            <img class="oe_picture oe_screenshot" src="Customers   Chamber Works   Odoo12.png">
+            <img class="oe_picture oe_screenshot" src="12_customer_avatax_configuration.png">
         </div>
        <div class="oe_span6">
             <p class='oe_mt32'>
@@ -334,7 +334,7 @@ address in its database.
 Click the <b>Accept</b> button if the address is valid.
         </div>
                <div class="oe_span6">
-            <img class="oe_picture oe_screenshot" src="Address_validation.png">
+            <img class="oe_picture oe_screenshot" src="13_customer_validation.png">
         </div>
     </div>
 </section>
@@ -342,14 +342,15 @@ Click the <b>Accept</b> button if the address is valid.
 <section class="oe_container oe_dark">
     <div class="oe_row">
            <div class="oe_span6">
-            <img class="oe_picture oe_screenshot" src="Customers   Chamber Works   Odoo12.png">
+            <img class="oe_picture oe_screenshot" src="14_customer_address_validated.png">
         </div>
        <div class="oe_span6">
             <p class='oe_mt32'>
                 <h4><b>Tax Exemption Status</b></h4>
                 <p>
 If the customer is tax exempt, check the box under Tax Exemption >> Is Tax Exempt and 
-select the desired Tax Exempt Code from the dropdown menu.
+select the desired Tax Exempt Code from the dropdown menu.<br/>
+If the "Is Tax Exempt" is enabled then it will not calculate any tax amount for that customer.
         </div>
 
     </div>
@@ -387,21 +388,7 @@ as a net deduction on the line item cost.
                 <li>Click <b>Create</b> button</li>
         </div>
                <div class="oe_span6">
-            <img class="oe_picture oe_screenshot" src="Customer Invoices   INV 2016 0600   Customer Invoices   Odoo20.png">
-        </div>
-    </div>
-</section>
-
-<section class="oe_container oe_dark">
-    <div class="oe_row">
-         <div class="oe_span6">
-            <img class="oe_picture oe_screenshot" src="Customer Invoices   INV 2016 0600   Customer Invoices   RINV 2016 0004 Damage   Odoo22.png">
-        </div>
-       <div class="oe_span6">
-            <p class='oe_mt32'>
-                <h4><b>Register Payment</b></h4>
-                
-                <ul type="disc"><li>To complete the invoice, click the <b>Register Payment</b> button.</li>
+            <img class="oe_picture oe_screenshot" src="15_customer_invoice.png">
         </div>
     </div>
 </section>
@@ -415,19 +402,35 @@ as a net deduction on the line item cost.
                 <ul type="disc"><li>Click the <b>Validate</b> button to finalize the Customer Invoice</li>
         </div>
                <div class="oe_span6">
-            <img class="oe_picture oe_screenshot" src="Customer Invoices   Invoice   Odoo14.png">
+            <img class="oe_picture oe_screenshot" src="16_invoice_avatax_calculated.png">
         </div>
     </div>
 </section>
 
 <section class="oe_container oe_dark">
     <div class="oe_row">
+         <div class="oe_span6">
+            <img class="oe_picture oe_screenshot" src="17_register_payment.png">
+        </div>
+       <div class="oe_span6">
+            <p class='oe_mt32'>
+                <h4><b>Register Payment</b></h4>
+                
+                <ul type="disc"><li>To complete the invoice, click the <b>Register Payment</b> button.</li>
+        </div>
+    </div>
+</section>
+
+
+
+<section class="oe_container oe_dark">
+    <div class="oe_row">
         <div class="oe_row oe_spaced">
-            <h2 class="oe_slogan">Customer Refunds</h2>
+            <h2 class="oe_slogan">Credit Notes</h2>
             <div class="oe_span12">
                 <p>
-Odoo applies refunds as opposed to voids in its accounting module. As with customer 
-invoices, the AvaTax module is integrated with customer refunds and is applied to each 
+Odoo applies credit notes as opposed to voids in its accounting module. As with customer 
+invoices, the AvaTax module is integrated with credit notes and is applied to each 
 transaction. Refunded invoice transactions will be indicated with a negative total in the 
 AvaTax interface.
             </div>
@@ -438,15 +441,15 @@ AvaTax interface.
 <section class="oe_container oe_dark">
     <div class="oe_row">
           <div class="oe_span6">
-            <img class="oe_picture oe_screenshot" src="Customer Invoices   INV 2016 0600   Odoo17.png">
+            <img class="oe_picture oe_screenshot" src="18_credit_note.png">
         </div>
        <div class="oe_span6">
             <p class='oe_mt32'>
-                <h4><b>Initiate Customer Refund</b></h4>
+                <h4><b>Initiate Credit Note</b></h4>
                 
                 <ul type="disc"><li>Navigate to: Accounting >> Customers >> Customer Invoices</li>
                 <li>Select the invoice you wish to refund</li>
-                <li>Click <b>Refund Invoice</b> button</li>
+                <li>Click <b>Add Credit Note</b> button</li>
         </div>
  
     </div>
@@ -456,14 +459,14 @@ AvaTax interface.
     <div class="oe_row">
        <div class="oe_span6">
             <p class='oe_mt32'>
-                <h4><b>Create Refund Invoice</b></h4>
+                <h4><b>Create Credit Note</b></h4>
                 
-                <ul type="disc"><li>Under refund, select <b>Create a Draft Refund</b> from the dropdown</li>
-                <li>Click <b>Create Refund</b> button </li> </ul>
-               <b> Note:</b> You will be taken to the Customer Refunds list view
+                <ul type="disc"><li>Under refund, select <b>Create a Draft Credit Note</b> from the dropdown</li>
+                <li>Click <b>Add Credit Note</b> button </li> </ul>
+                <b> Note:</b> You will be redirected to the Credit Note&#39;s list view.
         </div>
        <div class="oe_span6">
-            <img class="oe_picture oe_screenshot" src="Customer Invoices   INV 2016 0600   Odoo19.png">
+            <img class="oe_picture oe_screenshot" src="19_credit_note_initiate.png">
         </div>
     </div>
 </section>
@@ -471,12 +474,12 @@ AvaTax interface.
 <section class="oe_container oe_dark">
     <div class="oe_row">
        <div class="oe_span6">
-            <img class="oe_picture oe_screenshot" src="Customer Invoices   INV 2016 0600   Customer Invoices   Refund Damage   Odoo21.png">
+            <img class="oe_picture oe_screenshot" src="20_credit_note_for invoice.png">
         </div>
         <div class="oe_span6">
             <p class='oe_mt32'>
-                <h4><b>Validate Refund</b></h4>
-                <ul type="disc"><li>Select the Customer Refund you wish to validate, review and then click
+                <h4><b>Validate Credit Note</b></h4>
+                <ul type="disc"><li>Select the Credit Note you wish to validate, review and then click
 <b>Validate</b> button</li> </ul>
         </div>
     </div>
@@ -486,11 +489,11 @@ AvaTax interface.
     <div class="oe_row">
        <div class="oe_span6">
             <p class='oe_mt32'>
-                <h4><b>Register Refund Payment</b></h4>
+                <h4><b>Register Credit Note Payment</b></h4>
                 <ul type="disc"><li>Click <b>Register Payment</b> button to complete a refund</li></ul>
         </div>
        <div class="oe_span6">
-            <img class="oe_picture oe_screenshot" src="Customer Invoices   INV 2016 0600   Customer Invoices   RINV 2016 0004 Damage   Odoo22.png">
+            <img class="oe_picture oe_screenshot" src="21_register_payment.png">
         </div>
     </div>
 </section>
@@ -519,7 +522,7 @@ reported as a net deduction on the line item cost.
 <section class="oe_container oe_dark">
     <div class="oe_row">
        <div class="oe_span6">
-            <img class="oe_picture oe_screenshot" src="Sales Orders   Odoo24.png">
+            <img class="oe_picture oe_screenshot" src="22_sale_orders.png">
         </div>
         <div class="oe_span6">
             <p class='oe_mt32'>
