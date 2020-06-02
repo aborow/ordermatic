@@ -22,10 +22,11 @@ class product_tax_code(models.Model):
 
 
 class product_template(models.Model):
+
     _inherit = "product.template"
 
     tax_code_id = fields.Many2one('product.tax.code', 'Product Tax Code', help="AvaTax Product Tax Code")
-    tax_apply = fields.Boolean('Tax Calculation',help="Use Following Tax code for this Product")
+    tax_apply = fields.Boolean('Tax Calculation',help="Use Following Tax code for this Product",default=True)
     
     @api.onchange('categ_id')
     def onchange_categ(self):
