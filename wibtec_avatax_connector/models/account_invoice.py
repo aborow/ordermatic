@@ -222,7 +222,7 @@ class AccountInvoice(models.Model):
                                                  invoice.user_id,
                                                  invoice.exemption_code or
                                                  None, invoice.
-                                                 exemption_code_id.code or None, True
+                                                 exemption_code_id or None, True
                                                  ).TotalTax
                             line['id'].write({'tax_amt': ol_tax_amt})
 
@@ -324,7 +324,7 @@ class AccountInvoice(models.Model):
                                                                           invoice.number, 'SalesOrder',
                                                                           invoice.partner_id, shipping_add_origin_id,
                                                                           shipping_add_id, [
-                                                                              line], invoice.user_id, invoice.exemption_code or None, invoice.exemption_code_id.code or None,
+                                                                              line], invoice.user_id, invoice.exemption_code or None, invoice.exemption_code_id or None,
                                                                           True,
                                                                           ).TotalTax
                             line['id'].write({'tax_amt': ol_tax_amt})
@@ -344,7 +344,7 @@ class AccountInvoice(models.Model):
                     account_tax_obj._get_compute_tax(avatax_config, invoice.date_invoice,
                                                      invoice.number, not invoice.invoice_doc_no and 'SalesInvoice' or 'ReturnInvoice',
                                                      invoice.partner_id, shipping_add_origin_id,
-                                                     shipping_add_id, lines, invoice.user_id, invoice.exemption_code or None, invoice.exemption_code_id.code or None,
+                                                     shipping_add_id, lines, invoice.user_id, invoice.exemption_code or None, invoice.exemption_code_id or None,
                                                      True, tax_date,
                                                      invoice.invoice_doc_no, invoice.location_code or '')
             else:
