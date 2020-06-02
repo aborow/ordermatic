@@ -215,7 +215,7 @@ class SaleOrder(models.Model):
                         ol_tax_amt = account_tax_obj._get_compute_tax(avatax_config, order_date,
                                                                       self.name, 'SalesOrder', self.partner_id, ship_from_address_id,
                                                                       shipping_add_id, [
-                                                                          line], self.user_id, self.exemption_code or None, self.exemption_code_id.code or None,
+                                                                          line], self.user_id, self.exemption_code or None, self.exemption_code_id or None,
                                                                       ).TotalTax
                         o_tax_amt += ol_tax_amt  # tax amount based on total order line total
                         line['id'].write({'tax_amt': ol_tax_amt})
@@ -224,7 +224,7 @@ class SaleOrder(models.Model):
                 elif avatax_config.on_order:
                     tax_amount = account_tax_obj._get_compute_tax(avatax_config, order_date,
                                                                   self.name, 'SalesOrder', self.partner_id, ship_from_address_id,
-                                                                  shipping_add_id, lines, self.user_id, self.exemption_code or None, self.exemption_code_id.code or None,
+                                                                  shipping_add_id, lines, self.user_id, self.exemption_code or None, self.exemption_code_id or None,
                                                                   ).TotalTax
 
                     for o_line in self.order_line:
