@@ -385,7 +385,7 @@ class AccountInvoice(models.Model):
 
                     o_tax_amt = account_tax_obj._get_compute_tax(avatax_config, self.date_invoice or time.strftime('%Y-%m-%d'),
                                                                  self.number, 'SalesOrder', self.partner_id, ship_from_address_id,
-                                                                 shipping_add_id, lines, self.user_id, self.exemption_code or None, self.exemption_code_id.code or None, True
+                                                                 shipping_add_id, lines, self.user_id, self.exemption_code or None, self.exemption_code_id or None, True
                                                                  ).TotalTax
                     if o_tax_amt:
                         val = {
