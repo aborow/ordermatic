@@ -14,12 +14,13 @@
         OMC-198 = Material Availability Change
         OMC-237 = Create an Expand ALL button in BOM > Structure and Cost screen
         OMC-269 = Update Work Order with correct Time
-        OMC-205 = Insllation MRP II automatic(this issue was known while woking on OMC-245)
+        OMC-205 = Insllation MRP II automatic(this issue was known whilw woking on OMC-245)
+        OMC-297 = Production Scheduling Issue
     """,
     'author': "WIB Technologies, Inc",
     'website': "http://www.wibtec.com",
     'category': 'Manufacturing',
-    'version': '12.0.1.0.10',
+    'version': '12.0.1.0.11',
     # any module necessary for this one to work correctly
     'depends': [
                 'mrp',
