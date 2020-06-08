@@ -9,6 +9,33 @@
             <xpath expr="//field[@name='move_raw_ids']/tree/field[@name='product_uom_qty']" position="after">
                 <field name="onhand_qty"/>
             </xpath>
+            <xpath expr="//notebook" position="inside">
+                <page string="Lead Times">
+                    <group colspan="4">
+                        <group>
+                            <label for="delivery_lead_time_vendor"/>
+                            <div>
+                                <field name="delivery_lead_time_vendor" class="oe_inline"/> days
+                            </div>
+                            <label for="lead_time_from_stock_rule"/>
+                            <div class="o_row">
+                                <field name="lead_time_from_stock_rule"/>
+                                <field name="lead_type_from_stock_rule"/>
+                            </div>
+                        </group>
+                        <group>
+                            <label for="manufacturing_lead_time_product"/>
+                            <div>
+                                <field name="manufacturing_lead_time_product" class="oe_inline"/> days
+                            </div>
+                            <label for="manufacturing_lead_time_company"/>
+                            <div>
+                                <field name="manufacturing_lead_time_company" class="oe_inline"/> days
+                            </div>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
         </field>
     </record>
 
