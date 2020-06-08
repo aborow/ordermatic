@@ -194,7 +194,7 @@ class AvaTaxService:
         if invoice_date:
             taxoverride = self.taxSvc.factory.create('TaxOverride')
             taxoverride.TaxOverrideType = 'TaxDate'
-            taxoverride.TaxDate = '2017-05-01'
+            taxoverride.TaxDate = str(fields.Date.today())
             taxoverride.TaxAmount = 5.67
             taxoverride.Reason = 'Refund for purchase of chair'
             request.TaxOverride = taxoverride
