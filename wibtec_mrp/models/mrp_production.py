@@ -19,7 +19,7 @@ class MrpProduction(models.Model):
 	def create(self,vals):
 		res = super(MrpProduction,self).create(vals)
 		product_supplier_info_id = res.product_id._select_seller()
-		res.delivery_lead_time_vendor = product_supplier_info_id.delay or 0.0
+		res.delivery_lead_time_vendor = product_supplier_info_id.delay if product_supplier_info_id else 0.0
 		res.manufacturing_lead_time_product = res.product_id.produce_delay or 0.0
 		res.manufacturing_lead_time_company = res.company_id.manufacturing_lead or 0.0
 		return res
@@ -56,6 +56,6 @@ class StockRule(models.Model):
 			'picking_type_id': self.picking_type_id.id or values['warehouse_id'].manu_type_id.id,
 			'company_id': values['company_id'].id,
 			'move_dest_ids': values.get('move_dest_ids') and [(4, x.id) for x in values['move_dest_ids']] or False,
-			'lead_time_from_stock_rule':values.get('orderpoint_id').lead_days or 0.0,
-			'lead_type_from_stock_rule':values.get('orderpoint_id').lead_type or 'supplier'
+			'lead_time_from_stock_rule':values.get('orderpoint_id').lead_days if values.get('orderpoint_id') else 0.0,
+			'lead_type_from_stock_rule':values.get('orderpoint_id').lead_type if values.get('orderpoint_id') else 'supplier'
 		}
