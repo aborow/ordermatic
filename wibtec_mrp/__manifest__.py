@@ -23,10 +23,11 @@
     'version': '12.0.1.0.11',
     # any module necessary for this one to work correctly
     'depends': [
-                'mrp',
+                'mrp','sale'
                 ],
     # always loaded
     'data': [
+        'security/ir.model.access.csv',
         'views/mrp_workorder_view.xml',
         'views/mrp_routing_view.xml',
         'views/mrp_bom_view.xml',
