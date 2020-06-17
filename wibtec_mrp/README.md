@@ -71,3 +71,7 @@ Version - 12.0.1.0.10
 Version - 12.0.1.0.11
 =======================
 -Added a functionality of leadtimes.
+
+Version - 12.0.1.0.12
+======================
+-Added functionality of open sales orders.

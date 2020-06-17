@@ -20,7 +20,7 @@
     'author': "WIB Technologies, Inc",
     'website': "http://www.wibtec.com",
     'category': 'Manufacturing',
-    'version': '12.0.1.0.11',
+    'version': '12.0.1.0.12',
     # any module necessary for this one to work correctly
     'depends': [
                 'mrp','sale'

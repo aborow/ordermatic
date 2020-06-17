@@ -2,6 +2,7 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 from odoo import api, fields, models, _
+from datetime import timedelta
 
 class MrpProduction(models.Model):
 
@@ -33,12 +34,14 @@ class MrpProduction(models.Model):
 					ordered_qty += sale_order_line.product_uom_qty
 					order_history_id = self.env['order.history'].search([('sale_order_id','=',order.id),('mrp_production_id','=',mo.id)])
 					if not order_history_id:
+						total_lead_time = mo.delivery_lead_time_vendor + mo.lead_time_from_stock_rule + mo.manufacturing_lead_time_product + mo.manufacturing_lead_time_company
 						order_history_id = mo.order_history.create({
 								'mrp_production_id' : mo.id,
 								'sale_order_id' : order.id,
 								'commitment_date': order.commitment_date,
 								'quantity' : ordered_qty,
-								'total_lead_time' : 1
+								'total_lead_time' : total_lead_time,
+								'suggested_deadline': self.calculate_deadline_date(order.commitment_date,total_lead_time)
 							})
 					else:
 						pass
@@ -46,15 +49,20 @@ class MrpProduction(models.Model):
 			pass
 
 	@api.multi
+	def calculate_deadline_date(self,commitment_date,days):
+		if commitment_date and days:
+			deadline_date = commitment_date - timedelta(days=days)
+			return deadline_date
+
+	@api.multi
 	def _add_associated_sales_orders(self):
-		final_sale_orders = []
 		for mo in self:
 			sale_orders = self.env['sale.order'].sudo().search([
-				('order_line.product_id','=',self.product_id.id),
+				('order_line.product_id','=',mo.product_id.id),
 				('state','=','sale'),
-				('confirmation_date','<=',self.create_date),
-				('delivery_status','!=','full')])
-			final_sale_orders = [order.id for order in sale_orders]
+				('confirmation_date','<=',mo.create_date),
+				])
+			final_sale_orders = [order.id for order in sale_orders for line in order.order_line if line.qty_delivered <  line.product_uom_qty and order.delivery_status != 'full' and line.product_id == mo.product_id]
 			mo.update({'sale_orders':[(6, 0, final_sale_orders)]})
 			mo.refresh_sale_orders()
 
