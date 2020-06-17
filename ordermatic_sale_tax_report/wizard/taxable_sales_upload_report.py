@@ -165,7 +165,7 @@ class TaxableSalesUploadReport(models.TransientModel):
 										line.index_no if line.index_no > 0 else 0,
 										line.product_id.id or '',
 										line.account_id.code + ' ' + line.account_id.name if line.account_id.code and line.account_id.name else line.account_id.name,
-										# tic_category.code or 0,
+										'',
 										line.price_unit or '',
 										line.quantity or '',
 										tax_percentage or '',
