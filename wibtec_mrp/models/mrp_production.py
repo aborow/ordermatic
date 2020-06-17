@@ -14,6 +14,49 @@ class MrpProduction(models.Model):
 	lead_type_from_stock_rule = fields.Selection([
 		('net', 'Day(s) to get the products'), 
 		('supplier', 'Day(s) to purchase')], 'Lead Type')
+	sale_orders = fields.Many2many('sale.order','sale_manufacturing_orders_rel_data',
+		'mrp_production_id' , 'order_id',string="Sale Orders", compute='_add_associated_sales_orders')
+	order_history = fields.One2many('order.history','mrp_production_id',string="Order History")
+
+	@api.multi
+	def refresh_sale_orders(self):
+		self.order_history = [(5,)]
+		self._add_associated_order_history(self.sale_orders)
+
+	@api.multi
+	def _add_associated_order_history(self,sale_orders):
+		if sale_orders:
+			for mo in self:
+				for order in sale_orders:
+					ordered_qty = 0.0
+					sale_order_line = self.env['sale.order.line'].search([('order_id','=',order.id),('product_id','=',mo.product_id.id)])
+					ordered_qty += sale_order_line.product_uom_qty
+					order_history_id = self.env['order.history'].search([('sale_order_id','=',order.id),('mrp_production_id','=',mo.id)])
+					if not order_history_id:
+						order_history_id = mo.order_history.create({
+								'mrp_production_id' : mo.id,
+								'sale_order_id' : order.id,
+								'commitment_date': order.commitment_date,
+								'quantity' : ordered_qty,
+								'total_lead_time' : 1
+							})
+					else:
+						pass
+		else:
+			pass
+
+	@api.multi
+	def _add_associated_sales_orders(self):
+		final_sale_orders = []
+		for mo in self:
+			sale_orders = self.env['sale.order'].sudo().search([
+				('order_line.product_id','=',self.product_id.id),
+				('state','=','sale'),
+				('confirmation_date','<=',self.create_date),
+				('delivery_status','!=','full')])
+			final_sale_orders = [order.id for order in sale_orders]
+			mo.update({'sale_orders':[(6, 0, final_sale_orders)]})
+			mo.refresh_sale_orders()
 
 	@api.model
 	def create(self,vals):

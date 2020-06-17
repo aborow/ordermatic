@@ -15,25 +15,39 @@
                         <group>
                             <label for="delivery_lead_time_vendor"/>
                             <div>
-                                <field name="delivery_lead_time_vendor" class="oe_inline"/> days
+                                <field name="delivery_lead_time_vendor" class="oe_inline" readonly="1"/> days
                             </div>
                             <label for="lead_time_from_stock_rule"/>
                             <div class="o_row">
-                                <field name="lead_time_from_stock_rule"/>
-                                <field name="lead_type_from_stock_rule"/>
+                                <field name="lead_time_from_stock_rule" readonly="1"/>
+                                <field name="lead_type_from_stock_rule" readonly="1"/>
                             </div>
                         </group>
                         <group>
                             <label for="manufacturing_lead_time_product"/>
                             <div>
-                                <field name="manufacturing_lead_time_product" class="oe_inline"/> days
+                                <field name="manufacturing_lead_time_product" readonly="1" class="oe_inline"/> days
                             </div>
                             <label for="manufacturing_lead_time_company"/>
                             <div>
-                                <field name="manufacturing_lead_time_company" class="oe_inline"/> days
+                                <field name="manufacturing_lead_time_company" readonly="1" class="oe_inline"/> days
                             </div>
                         </group>
                     </group>
+                    <group string="Associated Sale Orders" invisible="True">
+                        <field name="sale_orders"/>
+                    </group>
+                    <group string="Open Sales Orders">
+                        <field name="order_history" nolabel="1">
+                            <tree edit="0" delete="0">
+                                <field name="sale_order_id"/>
+                                <field name="commitment_date"/>
+                                <field name="quantity"/>
+                                <field name="total_lead_time"/>
+                            </tree>
+                        </field>
+                    </group>
+                    <button string="Refresh" name="refresh_sale_orders" type="object" class="oe_highlight"/>
                 </page>
             </xpath>
         </field>
