@@ -135,8 +135,8 @@ class TaxableSalesUploadReport(models.TransientModel):
 			for invoice in invoices:
 				self.calculate_index(invoice)
 				state = self.get_state(invoice)
-				tic_category_id = self._get_tic_category_id()
-				tic_category = self.env['product.tic.category'].browse(tic_category_id)
+				# tic_category_id = self._get_tic_category_id()
+				# tic_category = self.env['product.tic.category'].browse(tic_category_id)
 				partner_ref = self.find_internal_reference(invoice.partner_id)
 				partner_name = self.find_partner_name(invoice.partner_id)
 				
@@ -165,7 +165,7 @@ class TaxableSalesUploadReport(models.TransientModel):
 										line.index_no if line.index_no > 0 else 0,
 										line.product_id.id or '',
 										line.account_id.code + ' ' + line.account_id.name if line.account_id.code and line.account_id.name else line.account_id.name,
-										tic_category.code or 0,
+										'',
 										line.price_unit or '',
 										line.quantity or '',
 										tax_percentage or '',
