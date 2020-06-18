@@ -43,6 +43,7 @@
                                 <field name="sale_order_id"/>
                                 <field name="commitment_date"/>
                                 <field name="quantity"/>
+                                <field name="delivery_lead_times"/>
                                 <field name="suggested_deadline"/>
                                 <field name="total_lead_time"/>
                             </tree>

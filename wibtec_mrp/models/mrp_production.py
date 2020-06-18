@@ -30,16 +30,21 @@ class MrpProduction(models.Model):
 			for mo in self:
 				for order in sale_orders:
 					ordered_qty = 0.0
+					delivery_lead_times = 0.0
 					sale_order_line = self.env['sale.order.line'].search([('order_id','=',order.id),('product_id','=',mo.product_id.id)])
-					ordered_qty += sale_order_line.product_uom_qty
+					if sale_order_line:
+						for line in sale_order_line:
+							ordered_qty += line.product_uom_qty
+							delivery_lead_times += line.customer_lead
 					order_history_id = self.env['order.history'].search([('sale_order_id','=',order.id),('mrp_production_id','=',mo.id)])
 					if not order_history_id:
-						total_lead_time = mo.delivery_lead_time_vendor + mo.lead_time_from_stock_rule + mo.manufacturing_lead_time_product + mo.manufacturing_lead_time_company
+						total_lead_time = mo.delivery_lead_time_vendor + mo.lead_time_from_stock_rule + mo.manufacturing_lead_time_product + mo.manufacturing_lead_time_company + delivery_lead_times
 						order_history_id = mo.order_history.create({
 								'mrp_production_id' : mo.id,
 								'sale_order_id' : order.id,
 								'commitment_date': order.commitment_date,
 								'quantity' : ordered_qty,
+								'delivery_lead_times': delivery_lead_times,
 								'total_lead_time' : total_lead_time,
 								'suggested_deadline': self.calculate_deadline_date(order.commitment_date,total_lead_time)
 							})
