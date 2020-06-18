@@ -75,3 +75,4 @@ Version - 12.0.1.0.11
 Version - 12.0.1.0.12
 ======================
 -Added functionality of open sales orders.
+-Added the delivery lead time in the open sale orders as well as the calculations.

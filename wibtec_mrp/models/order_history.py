@@ -14,3 +14,4 @@ class OrderHistory(models.Model):
 	total_lead_time = fields.Float('Total Lead Time(in Days)')
 	commitment_date = fields.Datetime('Commitment Date')
 	suggested_deadline = fields.Datetime('Suggested Deadline')
+	delivery_lead_times = fields.Float('Delivery Lead Times(in Days)')
