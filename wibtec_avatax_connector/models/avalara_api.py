@@ -191,13 +191,16 @@ class AvaTaxService:
         request.HashCode = 0
         request.LocationCode = location_code
         request.ReferenceCode = reference_code
-        if invoice_date:
-            taxoverride = self.taxSvc.factory.create('TaxOverride')
-            taxoverride.TaxOverrideType = 'TaxDate'
-            taxoverride.TaxDate = str(fields.Date.today())
-            taxoverride.TaxAmount = 5.67
-            taxoverride.Reason = 'Refund for purchase of chair'
-            request.TaxOverride = taxoverride
+        """This is the code that was overriting the tax date so because of that it was occuring the issue
+        like this:Tax for one or more lines in this document was calculated 
+        based on a tax date different than the document date."""
+        # if invoice_date:
+            # taxoverride = self.taxSvc.factory.create('TaxOverride')
+            # taxoverride.TaxOverrideType = 'TaxDate'
+            # taxoverride.TaxDate = str('')
+            # taxoverride.TaxAmount = 5.67
+            # taxoverride.Reason = 'Refund for purchase of chair'
+            # request.TaxOverride = taxoverride
        
         request.CompanyCode = company_code
         request.DocDate = doc_date
