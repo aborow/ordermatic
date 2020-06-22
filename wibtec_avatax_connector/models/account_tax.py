@@ -58,8 +58,9 @@ class AccountTax(models.Model):
                                   shipping_address.country_id and shipping_address.country_id.code or None, 1).data
         
         invoice_date = str(invoice_date).split(' ')[0] if invoice_date else False
+        partner_ref = partner.ref if partner.ref else partner.customer_code
         result = avalara_obj.get_tax(avatax_config.company_code, doc_date, doc_type,
-                                 partner.customer_code, doc_code, origin, destination,
+                                 partner_ref, doc_code, origin, destination,
                                  lines, exemption_number,
                                  exemption_code_name,
                                  user and user.name or None, commit, invoice_date, reference_code, location_code, currency_code, partner.vat_id or None)
