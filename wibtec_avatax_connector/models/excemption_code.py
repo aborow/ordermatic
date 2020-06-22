@@ -8,8 +8,8 @@ class exemption_code(models.Model):
     _name = 'exemption.code'
     _description = 'Exemption Code'
     
-    name = fields.Char('Name')
-    code = fields.Char('Code')
+    name = fields.Char('Name',required=True)
+    code = fields.Char('Code',required=True)
 
     @api.multi
     @api.depends('name', 'code')
