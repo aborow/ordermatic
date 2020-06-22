@@ -21,3 +21,8 @@ Version-12.0.1.0.2
 Version-12.0.1.0.3
 ====================
 -Solved one issue of creating warranty information.
+
+Version-12.0.1.0.4
+====================
+- OrderMatic Invoice Report, In the Odd lines displayed just Product Name so change it
+- In the Partners view, Tags is added multiple so while creating Warranty on the Delivery validation time displayed error so solve it

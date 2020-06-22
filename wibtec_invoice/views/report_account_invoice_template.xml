@@ -262,7 +262,7 @@
                                                                         <span t-esc="l_index+1"/>
                                                                     </td>
                                                                     <td class="text-left" style="padding:5px 10px; border:0.5px solid #ccc !important; border-right:0px solid #ccc !important; color: black;">
-                                                                        <span t-field="l.product_id.name"/>
+                                                                        <span t-field="l.name"/>
                                                                     </td>
                                                                     <td class="text-right" style="padding:5px 10px; border:0.5px solid #ccc !important; border-right:0px solid #ccc !important; color: black;">
                                                                         <span t-field="l.quantity"/>

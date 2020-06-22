@@ -20,7 +20,7 @@ class StockPicking(models.Model):
 							if move.product_id.tracking == 'serial':
 								warranty_information_id = self.env['warranty.information'].create({
 										'partner_id':sale_id.partner_id.id,
-										'customer_ID':sale_id.partner_id.category_id.name,
+										'customer_ID':sale_id.partner_id.category_id[0].name if sale_id.partner_id.category_id else '',
 										'product_id':move.product_id.id,
 										'description':move.product_id.long_desc,
 										'street':sale_id.partner_id.street,
