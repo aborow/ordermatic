@@ -93,3 +93,7 @@ Version - 12.0.1.0.19
 Version - 12.0.1.0.20
 ======================
 -Fixed issue of batch payment validation.
+
+Version - 12.0.1.0.21
+======================
+- OrderMatic Invoice Report, In the Odd lines displayed just Product Name so change it
