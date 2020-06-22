@@ -17,9 +17,9 @@
 				</xpath>
 				
 				<xpath expr="/form/sheet/group/group[2]/field[@name='user_id']" position="after">
-					<field name="exemption_code" readonly="1"/>
-					<field name="exemption_code_id" readonly="1"/>
-					<field name="location_code" />  
+					<field name="exemption_code" attrs="{'readonly': [('state', 'not in', ['draft'])]}"/>
+					<field name="exemption_code_id" attrs="{'readonly': [('state', 'not in', ['draft'])]}"/>
+					<field name="location_code" attrs="{'readonly': [('state', 'not in', ['draft'])]}"/>  
 					<field name="warehouse_id" options="{'no_create': True}" groups="stock.group_locations"/>
 					<field name="is_add_validate" readonly="1" invisible="1"/>
 				</xpath>
