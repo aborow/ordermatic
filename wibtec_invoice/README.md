@@ -93,3 +93,7 @@ Version - 12.0.1.0.19
 Version - 12.0.1.0.20
 ======================
 -Fixed issue of batch payment validation.
+
+Version - 12.0.1.0.21
+======================
+-Printed invoice, the even and odd lines are showing different information so solved it
