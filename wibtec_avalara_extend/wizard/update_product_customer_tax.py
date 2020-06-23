@@ -14,5 +14,5 @@ class UpdateProductCustomerTax(models.TransientModel):
     @api.multi
     def action_update_product_customer_tax(self):
         if self.replace_account_tax_id:
-            product_ids = self.env['product.template'].search([('active','=',True),('sale_ok','=',True)])
+            product_ids = self.env['product.template'].search(['|',('active','=',True),('active','=',False)])
             [product.write({'taxes_id': [(6, 0, [self.replace_account_tax_id.id])]}) for product in product_ids]
