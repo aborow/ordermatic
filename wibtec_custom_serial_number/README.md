@@ -21,3 +21,7 @@ Version-12.0.1.0.2
 Version-12.0.1.0.3
 ====================
 -Solved one issue of creating warranty information.
+
+Version-12.0.1.0.4
+====================
+-In the Partner Selected Multiple Tags then displayed error while creating warranty information on delivery validate

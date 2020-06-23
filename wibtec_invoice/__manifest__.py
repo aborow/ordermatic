@@ -24,11 +24,12 @@
         OMC-245 = Setup Terms and Conditions for both Sales Orders and Invoices
         OMC-267 = Header is overlapping Terms and Conditions section
         OMC-283 = Bug - Batch Payments
+        OMC-308 = Printed invoice, the even and odd lines are showing different information
     """,
     'author': "WIB Technologies, Inc",
     'website': "http://www.wibtec.com",
     'category': 'Invoice',
-    'version': '12.0.1.0.20',
+    'version': '12.0.1.0.21',
     # any module necessary for this one to work correctly
     'depends': ['account','l10n_us_check_printing', 'sale_management','sale'],
     # always loaded

@@ -9,11 +9,12 @@
 
     'description': """
         OMC-90 = Create custom Serial Number Module && imports the warranty information.
+        OMC-308 = In the Partner Selected Multiple Tags then displayed error while creating warranty information on delivery validate
     """,
     'author': "WIB Technologies, Inc",
     'website': "http://www.wibtec.com",
     'category': 'product',
-    'version': '12.0.1.0.3',
+    'version': '12.0.1.0.4',
     # any module necessary for this one to work correctly
     'depends': ['product','sale','stock','contacts'],
     # always loaded
