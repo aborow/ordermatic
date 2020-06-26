@@ -91,9 +91,9 @@ class AccountTax(models.Model):
             if partner_id.parent_id:
                 partner_name = str(partner_id.parent_id.name)+ ' ' + str(partner_id.name)
                 partner = partner_name.replace(',', '')
-                return partner
+                return partner[:50]
             else:
                 partner = str(partner_id.name).replace(',', '')
-                return partner
+                return partner[:50]
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
