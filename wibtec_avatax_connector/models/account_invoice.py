@@ -264,8 +264,7 @@ class AccountInvoice(models.Model):
             return super(AccountInvoice, self).action_invoice_paid()
 
         for invoice in self:
-            if avatax_config and not avatax_config.disable_tax_calculation \
-                    and invoice.type in ['out_invoice', 'out_refund']:
+            if avatax_config and not avatax_config.disable_tax_calculation and invoice.type in ['out_invoice', 'out_refund']:
                 shipping_add_id = invoice.shipping_add_id
                 if invoice.warehouse_id and invoice.warehouse_id.partner_id:
                     shipping_add_origin_id = invoice.warehouse_id.partner_id
@@ -317,7 +316,7 @@ class AccountInvoice(models.Model):
                         raise UserError(
                             _('This Invoice order is using a Non Avatax sales tax rate greater than 0%.  Please select AVATAX on the invoice order line.'))
                 lines = invoice.create_lines(invoice.invoice_line_ids, sign)
-                if lines and self.partner_id.tax_exempt == False:
+                if lines:
                     if avatax_config.on_line:
                         for line in lines:
                             ol_tax_amt = account_tax_obj._get_compute_tax(avatax_config, invoice.date_invoice,
@@ -342,7 +341,7 @@ class AccountInvoice(models.Model):
                     for o_line in invoice.invoice_line_ids:
                         o_line.write({'tax_amt': 0.0, })
 
-                if lines and self.partner_id.tax_exempt == False:
+                if lines:
                     account_tax_obj._get_compute_tax(avatax_config, invoice.date_invoice,
                                                      invoice.number, not invoice.invoice_doc_no and 'SalesInvoice' or 'ReturnInvoice',
                                                      invoice.partner_id, shipping_add_origin_id,

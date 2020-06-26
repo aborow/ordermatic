@@ -58,7 +58,8 @@ class AccountTax(models.Model):
                                   shipping_address.country_id and shipping_address.country_id.code or None, 1).data
         
         invoice_date = str(invoice_date).split(' ')[0] if invoice_date else False
-        partner_ref = partner.ref if partner.ref else partner.customer_code
+        partner_ref = self.partner_name(partner)
+        # partner_ref = partner.ref if partner.ref else partner.name
         result = avalara_obj.get_tax(avatax_config.company_code, doc_date, doc_type,
                                  partner_ref, doc_code, origin, destination,
                                  lines, exemption_number,
@@ -81,5 +82,18 @@ class AccountTax(models.Model):
         
          result = avalara_obj.cancel_tax(avatax_config.company_code, doc_code, doc_type, cancel_code)
          return result
+
+    @api.model
+    def partner_name(self,partner_id):
+        if partner_id.ref:
+            return partner_id.ref
+        else:
+            if partner_id.parent_id:
+                partner_name = str(partner_id.parent_id.name)+ ' ' + str(partner_id.name)
+                partner = partner_name.replace(',', '')
+                return partner
+            else:
+                partner = str(partner_id.name).replace(',', '')
+                return partner
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

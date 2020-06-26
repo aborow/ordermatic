@@ -68,8 +68,8 @@ class SaleOrder(models.Model):
     def _prepare_invoice(self):
         invoice_vals = super(SaleOrder, self)._prepare_invoice()
         invoice_vals.update({
-            'exemption_code': self.exemption_code or '',
-            'exemption_code_id': self.exemption_code_id.id or False,
+            'exemption_code': self.exemption_code or self.partner_id.exemption_number or '',
+            'exemption_code_id': self.exemption_code_id.id or self.partner_id.exemption_code_id or False,
             'tax_add_default': self.tax_add_default,
             'tax_add_invoice': self.tax_add_invoice,
             'tax_add_shipping': self.tax_add_shipping,
@@ -202,7 +202,9 @@ class SaleOrder(models.Model):
                         _('This sales order is using a Non Avatax sales tax rate greater than 0%.  Please select AVATAX on the sales order line.'))
             order_date = str(self.date_order).split(' ')[0]
             order_date = datetime.strptime(order_date, "%Y-%m-%d").date()
-            if lines and self.partner_id.tax_exempt == False:
+            if lines:
+                exemption_code = self.exemption_code or self.partner_id.exemption_number or None
+                exemption_code_id = self.exemption_code_id or self.partner_id.exemption_code_id or False
                 if avatax_config.on_line:
                     # Line level tax calculation
                     # tax based on individual order line
@@ -215,7 +217,7 @@ class SaleOrder(models.Model):
                         ol_tax_amt = account_tax_obj._get_compute_tax(avatax_config, order_date,
                                                                       self.name, 'SalesOrder', self.partner_id, ship_from_address_id,
                                                                       shipping_add_id, [
-                                                                          line], self.user_id, self.exemption_code or None, self.exemption_code_id.name or None,
+                                                                          line], self.user_id, exemption_code, exemption_code_id.name if exemption_code_id else None,
                                                                       ).TotalTax
                         o_tax_amt += ol_tax_amt  # tax amount based on total order line total
                         line['id'].write({'tax_amt': ol_tax_amt})
@@ -224,7 +226,7 @@ class SaleOrder(models.Model):
                 elif avatax_config.on_order:
                     tax_amount = account_tax_obj._get_compute_tax(avatax_config, order_date,
                                                                   self.name, 'SalesOrder', self.partner_id, ship_from_address_id,
-                                                                  shipping_add_id, lines, self.user_id, self.exemption_code or None, self.exemption_code_id.name or None,
+                                                                  shipping_add_id, lines, self.user_id, exemption_code, exemption_code_id.name if exemption_code_id else None,
                                                                   ).TotalTax
 
                     for o_line in self.order_line:
