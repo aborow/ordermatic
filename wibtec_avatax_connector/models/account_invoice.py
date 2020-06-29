@@ -25,7 +25,7 @@ def get_origin_tax_date(self):
                 if invoice.date_invoice:
                     return invoice.date_invoice
                 else:
-                    return inv_obj.date_invoice
+                    return time.strftime('%Y-%m-%d')
         else:
             return False
 
@@ -59,6 +59,7 @@ class AccountInvoice(models.Model):
             self.is_add_validate = True
         else:
             self.is_add_validate = False
+        self.compute_taxes()
         return res
 
     @api.onchange('warehouse_id')
@@ -106,8 +107,7 @@ class AccountInvoice(models.Model):
             elif 'tax_add_invoice' in vals and vals['tax_add_invoice']:
                 ship_add_id = self_obj.partner_id
             elif 'tax_add_shipping' in vals and vals['tax_add_shipping']:
-                ship_add_id = self_obj.partner_shipping_id or self_obj.\
-                    partner_id
+                ship_add_id = self_obj.partner_shipping_id or self_obj.partner_id
             if ship_add_id:
                 vals['shipping_add_id'] = ship_add_id.id
         return super(AccountInvoice, self).write(vals)
@@ -134,7 +134,7 @@ class AccountInvoice(models.Model):
                                 'draft': [('readonly', False)]})
     warehouse_id = fields.Many2one('stock.warehouse', 'Warehouse')
 
-    @api.onchange('tax_add_default', 'origin', 'partner_id')
+    @api.onchange('tax_add_default', 'origin', 'partner_id','partner_shipping_id')
     def default_tax_address(self):
         if self.tax_add_default:
             shipping_add_id = self.partner_id.id
@@ -161,7 +161,7 @@ class AccountInvoice(models.Model):
             self.tax_add_shipping = False
             self.shipping_add_id = self.partner_id.id
 
-    @api.onchange('tax_add_shipping', 'origin', 'partner_id')
+    @api.onchange('tax_add_shipping', 'origin', 'partner_id','partner_shipping_id')
     def delivery_tax_address(self):
         if self.tax_add_shipping:
             if self.partner_shipping_id:
@@ -174,7 +174,7 @@ class AccountInvoice(models.Model):
             self.shipping_add_id = shipping_add_id
 
     @api.multi
-    def compute(self):
+    def compute_taxes(self):
         avatax_config_obj = self.env['avalara.salestax']
         account_tax_obj = self.env['account.tax']
         avatax_config = avatax_config_obj._get_avatax_config_company()
@@ -188,8 +188,7 @@ class AccountInvoice(models.Model):
                     shipping_add_origin_id = self.company_id.partner_id
                 tax_date = get_origin_tax_date(self)
                 if not tax_date:
-                    tax_date = invoice.date_invoice or time.strftime(
-                        '%Y-%m-%d')
+                    tax_date = invoice.date_invoice if invoice.date_invoice else time.strftime('%Y-%m-%d')
 
                 sign = invoice.type == 'out_invoice' and 1 or -1
                 if any(tax for lines in invoice.invoice_line_ids for tax in lines.invoice_line_tax_ids if tax.is_avatax):
@@ -213,7 +212,7 @@ class AccountInvoice(models.Model):
                                 tax_id.append(ava_tax[0].id)
                             ol_tax_amt = account_tax_obj.\
                                 _get_compute_tax(avatax_config,
-                                                 invoice.date_invoice,
+                                                 invoice.date_invoice if invoice.date_invoice else time.strftime('%Y-%m-%d'),
                                                  invoice.number, 'SalesOrder',
                                                  invoice.partner_id,
                                                  shipping_add_origin_id,
@@ -272,7 +271,7 @@ class AccountInvoice(models.Model):
                     shipping_add_origin_id = invoice.company_id.partner_id
                 tax_date = get_origin_tax_date(invoice)
                 if not tax_date:
-                    tax_date = invoice.date_invoice
+                    tax_date = invoice.date_invoice if invoice.date_invoice else time.strftime('%Y-%m-%d')
 
                 sign = invoice.type == 'out_invoice' and 1 or -1
                 if any(tax for lines in invoice.invoice_line_ids for tax in
@@ -306,7 +305,7 @@ class AccountInvoice(models.Model):
                     shipping_add_origin_id = self.company_id.partner_id
                 tax_date = get_origin_tax_date(self)
                 if not tax_date:
-                    tax_date = invoice.date_invoice
+                    tax_date = invoice.date_invoice if invoice.date_invoice else time.strftime('%Y-%m-%d')
 
                 sign = invoice.type == 'out_invoice' and 1 or -1
                 if any(tax for lines in invoice.invoice_line_ids for tax in lines.invoice_line_tax_ids if tax.is_avatax):
@@ -319,7 +318,7 @@ class AccountInvoice(models.Model):
                 if lines:
                     if avatax_config.on_line:
                         for line in lines:
-                            ol_tax_amt = account_tax_obj._get_compute_tax(avatax_config, invoice.date_invoice,
+                            ol_tax_amt = account_tax_obj._get_compute_tax(avatax_config, invoice.date_invoice if invoice.date_invoice else time.strftime('%Y-%m-%d'),
                                                                           invoice.number, 'SalesOrder',
                                                                           invoice.partner_id, shipping_add_origin_id,
                                                                           shipping_add_id, [line], 
@@ -342,7 +341,7 @@ class AccountInvoice(models.Model):
                         o_line.write({'tax_amt': 0.0, })
 
                 if lines:
-                    account_tax_obj._get_compute_tax(avatax_config, invoice.date_invoice,
+                    account_tax_obj._get_compute_tax(avatax_config, invoice.date_invoice if invoice.date_invoice else time.strftime('%Y-%m-%d'),
                                                      invoice.number, not invoice.invoice_doc_no and 'SalesInvoice' or 'ReturnInvoice',
                                                      invoice.partner_id, shipping_add_origin_id,
                                                      shipping_add_id, lines, invoice.user_id, invoice.exemption_code or None, 
@@ -385,7 +384,7 @@ class AccountInvoice(models.Model):
                     if not tax:
                         raise UserError(_('Please configure tax information in "AVATAX" settings.  The documentation will assist you in proper configuration of all the tax code settings as well as how they relate to the product. \n\n Accounting->Configuration->Taxes->Taxes'))
 
-                    o_tax_amt = account_tax_obj._get_compute_tax(avatax_config, self.date_invoice or time.strftime('%Y-%m-%d'),
+                    o_tax_amt = account_tax_obj._get_compute_tax(avatax_config, self.date_invoice if self.date_invoice else time.strftime('%Y-%m-%d'),
                                                                  self.number, 
                                                                  'SalesOrder', 
                                                                  self.partner_id, ship_from_address_id,

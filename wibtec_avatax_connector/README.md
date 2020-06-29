@@ -19,3 +19,7 @@ OMC-306
 OMC-305
 ========
 -Bug - Avatax Adding Credit Note to existing invoice
+
+OMC-311
+========
+-Taxable amount is not refreshing when you change the customer / delivery address
