@@ -21,7 +21,7 @@ This module has Following Features:
     "category": "Generic Modules/Accounting",
     'author': "WIB Technologies, Inc",
     'website': "http://www.wibtec.com",
-    'version': '12.0.1.0.0',
+    'version': '12.0.1.0.1',
     "depends": ['base', 'account_accountant', 'sale', 'stock'],
     "data": [
         "security/avalara_salestax_security.xml",
