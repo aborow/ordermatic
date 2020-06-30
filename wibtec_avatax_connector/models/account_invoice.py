@@ -212,7 +212,7 @@ class AccountInvoice(models.Model):
                                 tax_id.append(ava_tax[0].id)
                             exemption_code = invoice.exemption_code_id.name if invoice.exemption_code_id else invoice.partner_id.exemption_number
                             ol_tax_amt = account_tax_obj.\
-                                _get_compute_tax(avatax_config.company_code,
+                                _get_compute_tax(avatax_config,
                                                  invoice.date_invoice if invoice.date_invoice else time.strftime('%Y-%m-%d'),
                                                  invoice.number, 'SalesOrder',
                                                  invoice.partner_id,
@@ -221,7 +221,7 @@ class AccountInvoice(models.Model):
                                                  [line],
                                                  invoice.user_id,
                                                  invoice.exemption_code or None, 
-                                                 exemption_code[:25],
+                                                 exemption_code[:25] if exemption_code else False,
                                                  True
                                                  ).TotalTax
                             line['id'].write({'tax_amt': ol_tax_amt})
@@ -283,7 +283,7 @@ class AccountInvoice(models.Model):
                             destination, 
                             lines,
                             invoice.exemption_code or None,
-                            exemption_code[:25],
+                            exemption_code[:25] if exemption_code else False,
                             invoice.user_id.name,
                             False, 
                             tax_date,
@@ -387,7 +387,7 @@ class AccountInvoice(models.Model):
                                                                           shipping_add_id, [line], 
                                                                           invoice.user_id, 
                                                                           invoice.exemption_code or None,
-                                                                          exemption_code[:25], 
+                                                                          exemption_code[:25] if exemption_code else False, 
                                                                           True,
                                                                           ).TotalTax
                             line['id'].write({'tax_amt': ol_tax_amt})
@@ -409,7 +409,7 @@ class AccountInvoice(models.Model):
                                                      invoice.number, not invoice.invoice_doc_no and 'SalesInvoice' or 'ReturnInvoice',
                                                      invoice.partner_id, shipping_add_origin_id,
                                                      shipping_add_id, lines, invoice.user_id, invoice.exemption_code or None, 
-                                                     exemption_code[:25],
+                                                     exemption_code[:25] if exemption_code else False,
                                                      True, tax_date,
                                                      invoice.invoice_doc_no, invoice.location_code or '')
             else:
@@ -447,7 +447,7 @@ class AccountInvoice(models.Model):
                          ('company_id', '=', self.company_id.id)])
                     if not tax:
                         raise UserError(_('Please configure tax information in "AVATAX" settings.  The documentation will assist you in proper configuration of all the tax code settings as well as how they relate to the product. \n\n Accounting->Configuration->Taxes->Taxes'))
-                    exemption_code = invoice.exemption_code_id.name if invoice.exemption_code_id else invoice.partner_id.exemption_number
+                    exemption_code = self.exemption_code_id.name if self.exemption_code_id else self.partner_id.exemption_number
                     o_tax_amt = account_tax_obj._get_compute_tax(avatax_config, self.date_invoice if self.date_invoice else time.strftime('%Y-%m-%d'),
                                                                  self.number, 
                                                                  'SalesOrder', 
@@ -455,7 +455,7 @@ class AccountInvoice(models.Model):
                                                                  shipping_add_id, 
                                                                  lines, self.user_id, 
                                                                  self.exemption_code or None, 
-                                                                 exemption_code[:25], 
+                                                                 exemption_code[:25] if exemption_code else False, 
                                                                  True
                                                                  ).TotalTax
                     if o_tax_amt:
