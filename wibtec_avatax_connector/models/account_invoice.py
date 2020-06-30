@@ -5,7 +5,7 @@ import time
 from odoo import _, api, fields, models
 from odoo.exceptions import UserError,ValidationError
 import logging
-
+from odoo.addons.wibtec_avatax_connector.models.avalara_api import AvaTaxService, BaseAddress
 
 _logger = logging.getLogger(__name__)
 
@@ -54,7 +54,7 @@ class AccountInvoice(models.Model):
     def _onchange_partner_id(self):
         res = super(AccountInvoice, self)._onchange_partner_id()
         self.exemption_code = self.partner_id.exemption_number
-        self.exemption_code_id = self.partner_id.exemption_code_id.id or None
+        self.exemption_code_id = self.partner_id.exemption_code_id
         if self.partner_id.validation_method:
             self.is_add_validate = True
         else:
@@ -210,17 +210,18 @@ class AccountInvoice(models.Model):
                                 tax.id for tax in line['tax_id']] or []
                             if ava_tax and ava_tax[0].id not in tax_id:
                                 tax_id.append(ava_tax[0].id)
+                            exemption_code = invoice.exemption_code_id.name if invoice.exemption_code_id else invoice.partner_id.exemption_number
                             ol_tax_amt = account_tax_obj.\
-                                _get_compute_tax(avatax_config,
+                                _get_compute_tax(avatax_config.company_code,
                                                  invoice.date_invoice if invoice.date_invoice else time.strftime('%Y-%m-%d'),
                                                  invoice.number, 'SalesOrder',
                                                  invoice.partner_id,
                                                  shipping_add_origin_id,
-                                                 shipping_add_id, [
-                                                     line],
+                                                 shipping_add_id, 
+                                                 [line],
                                                  invoice.user_id,
                                                  invoice.exemption_code or None, 
-                                                 invoice.exemption_code_id.name if invoice.exemption_code_id else False,
+                                                 exemption_code[:25],
                                                  True
                                                  ).TotalTax
                             line['id'].write({'tax_amt': ol_tax_amt})
@@ -234,6 +235,66 @@ class AccountInvoice(models.Model):
         return True
 
     @api.multi
+    def find_tax_history(self,invoice):
+        invoice = invoice if invoice else self
+        avatax_config_obj = self.env['avalara.salestax']
+        account_tax_obj = self.env['account.tax']
+        avatax_config = avatax_config_obj._get_avatax_config_company()
+        avalara_obj = AvaTaxService(avatax_config.account_number, avatax_config.license_key,
+                                  avatax_config.service_url, avatax_config.request_timeout,
+                                  avatax_config.logging)
+        avalara_obj.create_tax_service()
+        try:
+            result = avalara_obj.get_tax_history(avatax_config.company_code, invoice.number, not invoice.invoice_doc_no and 'SalesInvoice' or 'ReturnInvoice')
+        except:
+            return True
+
+        if result:
+            shipping_add_id = invoice.shipping_add_id
+            if invoice.warehouse_id and invoice.warehouse_id.partner_id:
+                shipping_add_origin_id = invoice.warehouse_id.partner_id
+            else:
+                shipping_add_origin_id = invoice.company_id.partner_id
+            tax_date = get_origin_tax_date(invoice)
+            if not tax_date:
+                tax_date = invoice.date_invoice if invoice.date_invoice else time.strftime('%Y-%m-%d')
+            partner_ref = account_tax_obj.partner_name(invoice.partner_id)
+            sign = invoice.type == 'out_invoice' and 1 or -1
+            lines = invoice.create_lines(invoice.invoice_line_ids, sign)
+            addSvc = avalara_obj.create_address_service().addressSvc
+            origin = BaseAddress(addSvc, shipping_add_origin_id.street or None,
+                             shipping_add_origin_id.street2 or None,
+                             shipping_add_origin_id.city, shipping_add_origin_id.zip,
+                             shipping_add_origin_id.state_id and shipping_add_origin_id.state_id.code or None,
+                             shipping_add_origin_id.country_id and shipping_add_origin_id.country_id.code or None, 0).data
+            destination = BaseAddress(addSvc, shipping_add_id.street or None,
+                                      shipping_add_id.street2 or None,
+                                      shipping_add_id.city, shipping_add_id.zip,
+                                      shipping_add_id.state_id and shipping_add_id.state_id.code or None,
+                                      shipping_add_id.country_id and shipping_add_id.country_id.code or None, 1).data
+            exemption_code = invoice.exemption_code_id.name if invoice.exemption_code_id else invoice.partner_id.exemption_number
+            result = avalara_obj.tax_adjustment(
+                            avatax_config.company_code, 
+                            invoice.date_invoice if invoice.date_invoice else time.strftime('%Y-%m-%d'),
+                            not invoice.invoice_doc_no and 'SalesInvoice' or 'ReturnInvoice',
+                            partner_ref,
+                            invoice.number, 
+                            origin,
+                            destination, 
+                            lines,
+                            invoice.exemption_code or None,
+                            exemption_code[:25],
+                            invoice.user_id.name,
+                            False, 
+                            tax_date,
+                            invoice.invoice_doc_no,
+                            invoice.location_code or '')
+        else:
+            pass
+        return result
+
+
+    @api.multi
     def action_invoice_open(self):
         # lots of duplicate calls to action_invoice_open, so we remove those already open
         to_open_invoices = self.filtered(lambda inv: inv.state != 'open')
@@ -242,12 +303,13 @@ class AccountInvoice(models.Model):
                 _("Invoice must be in draft or Pro-forma state in order to validate it."))
         to_open_invoices.action_date_assign()
         to_open_invoices.action_move_create()
+        to_open_invoices.find_tax_history(to_open_invoices)
         to_open_invoices.invoice_validate()
-        return to_open_invoices.action_commit_tax()
+        to_open_invoices.action_commit_tax()
 
     @api.multi
     def invoice_validate(self):
-        self.compute_taxes()
+        # self.compute_taxes()
         return super(AccountInvoice, self).invoice_validate()
 
     @api.multi
@@ -315,6 +377,7 @@ class AccountInvoice(models.Model):
                         raise UserError(
                             _('This Invoice order is using a Non Avatax sales tax rate greater than 0%.  Please select AVATAX on the invoice order line.'))
                 lines = invoice.create_lines(invoice.invoice_line_ids, sign)
+                exemption_code = invoice.exemption_code_id.name if invoice.exemption_code_id else invoice.partner_id.exemption_number
                 if lines:
                     if avatax_config.on_line:
                         for line in lines:
@@ -323,8 +386,8 @@ class AccountInvoice(models.Model):
                                                                           invoice.partner_id, shipping_add_origin_id,
                                                                           shipping_add_id, [line], 
                                                                           invoice.user_id, 
-                                                                          invoice.exemption_code or None, 
-                                                                          invoice.exemption_code_id.name if invoice.exemption_code_id else False,
+                                                                          invoice.exemption_code or None,
+                                                                          exemption_code[:25], 
                                                                           True,
                                                                           ).TotalTax
                             line['id'].write({'tax_amt': ol_tax_amt})
@@ -341,11 +404,12 @@ class AccountInvoice(models.Model):
                         o_line.write({'tax_amt': 0.0, })
 
                 if lines:
+                    exemption_code = invoice.exemption_code_id.name if invoice.exemption_code_id else invoice.partner_id.exemption_number
                     account_tax_obj._get_compute_tax(avatax_config, invoice.date_invoice if invoice.date_invoice else time.strftime('%Y-%m-%d'),
                                                      invoice.number, not invoice.invoice_doc_no and 'SalesInvoice' or 'ReturnInvoice',
                                                      invoice.partner_id, shipping_add_origin_id,
                                                      shipping_add_id, lines, invoice.user_id, invoice.exemption_code or None, 
-                                                     invoice.exemption_code_id.name if invoice.exemption_code_id else False,
+                                                     exemption_code[:25],
                                                      True, tax_date,
                                                      invoice.invoice_doc_no, invoice.location_code or '')
             else:
@@ -369,7 +433,7 @@ class AccountInvoice(models.Model):
                         raise UserError(
                             _('This Invoice order is using a Non Avatax sales tax rate greater than 0%.  Please select AVATAX on the invoice order line.'))
                 lines = self.create_lines(self.invoice_line_ids)
-                if lines and self.partner_id.tax_exempt == False:
+                if lines:
                     if self.warehouse_id and self.warehouse_id.partner_id:
                         ship_from_address_id = self.warehouse_id.partner_id
                     else:
@@ -383,7 +447,7 @@ class AccountInvoice(models.Model):
                          ('company_id', '=', self.company_id.id)])
                     if not tax:
                         raise UserError(_('Please configure tax information in "AVATAX" settings.  The documentation will assist you in proper configuration of all the tax code settings as well as how they relate to the product. \n\n Accounting->Configuration->Taxes->Taxes'))
-
+                    exemption_code = invoice.exemption_code_id.name if invoice.exemption_code_id else invoice.partner_id.exemption_number
                     o_tax_amt = account_tax_obj._get_compute_tax(avatax_config, self.date_invoice if self.date_invoice else time.strftime('%Y-%m-%d'),
                                                                  self.number, 
                                                                  'SalesOrder', 
@@ -391,7 +455,7 @@ class AccountInvoice(models.Model):
                                                                  shipping_add_id, 
                                                                  lines, self.user_id, 
                                                                  self.exemption_code or None, 
-                                                                 self.exemption_code_id.name if self.exemption_code_id else False, 
+                                                                 exemption_code[:25], 
                                                                  True
                                                                  ).TotalTax
                     if o_tax_amt:
