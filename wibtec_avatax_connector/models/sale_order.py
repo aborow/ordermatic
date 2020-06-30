@@ -10,6 +10,7 @@ _logger = logging.getLogger(__name__)
 
 
 class SaleOrder(models.Model):
+
     _inherit = "sale.order"
 
     def get_25_chara_exemption_number(self, exemption_number):
@@ -34,8 +35,8 @@ class SaleOrder(models.Model):
         also check address validation by avalara  
         """
         res = super(SaleOrder, self).onchange_partner_id()
-        self.exemption_code = self.partner_id.exemption_number or ''
-        self.exemption_code_id = self.partner_id.exemption_code_id.id or None
+        self.exemption_code = self.partner_id.exemption_number
+        self.exemption_code_id = self.partner_id.exemption_code_id
         self.tax_add_shipping = True
         self.tax_add_id = self.partner_shipping_id.id
         if self.partner_id.validation_method:
@@ -204,7 +205,7 @@ class SaleOrder(models.Model):
             order_date = datetime.strptime(order_date, "%Y-%m-%d").date()
             if lines:
                 exemption_code = self.exemption_code or self.partner_id.exemption_number or None
-                exemption_code_id = self.exemption_code_id or self.partner_id.exemption_code_id or False
+                exemption_code_id = self.get_25_chara_exemption_number(self.exemption_code_id.name if self.exemption_code_id else self.partner_id.exemption_number)
                 if avatax_config.on_line:
                     # Line level tax calculation
                     # tax based on individual order line
