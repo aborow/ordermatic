@@ -23,3 +23,7 @@ OMC-305
 OMC-311
 ========
 -Taxable amount is not refreshing when you change the customer / delivery address
+
+OMC-304
+========
+-Bug - Avatax Not able to revalidate an invoice

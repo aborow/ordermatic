@@ -70,18 +70,18 @@ class AccountTax(models.Model):
 
     @api.model
     def cancel_tax(self, avatax_config, doc_code, doc_type, cancel_code):
-         """Sometimes we have not need to tax calculation, then method is used to cancel taxation"""
-         avalara_obj = AvaTaxService(avatax_config.account_number, avatax_config.license_key,
+        """Sometimes we have not need to tax calculation, then method is used to cancel taxation"""
+        avalara_obj = AvaTaxService(avatax_config.account_number, avatax_config.license_key,
                                   avatax_config.service_url, avatax_config.request_timeout,
                                   avatax_config.logging)
-         avalara_obj.create_tax_service()
-         try:
-             result = avalara_obj.get_tax_history(avatax_config.company_code, doc_code, doc_type)
-         except:
-             return True
+        avalara_obj.create_tax_service()
+        try:
+            result = avalara_obj.get_tax_history(avatax_config.company_code, doc_code, doc_type)
+        except:
+            return True
         
-         result = avalara_obj.cancel_tax(avatax_config.company_code, doc_code, doc_type, cancel_code)
-         return result
+        result = avalara_obj.cancel_tax(avatax_config.company_code, doc_code, doc_type, cancel_code)
+        return result
 
     @api.model
     def partner_name(self,partner_id):

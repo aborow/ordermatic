@@ -238,7 +238,89 @@ class AvaTaxService:
         # And we're ready to make the call
         result = self.get_result(self.taxSvc, self.taxSvc.service.GetTax, request)
         return result
-    
+
+    def get_tax_adjustment(self, company_code, doc_date, doc_type, partner_code, doc_code, origin, destination,
+               received_lines, exemption_no=None, customer_usage_type=None, salesman_code=None, commit=False, invoice_date=None, reference_code=None, 
+               location_code=None, currency_code='USD', vat_id=None):
+        """ Create tax request and get tax amount by customer address
+            @currency_code : 'USD' is the default currency code for avalara, if user not specify in the own company
+            @request.DetailLevel = 'Document': Document (GetTaxResult) level details; TaxLines will not be returned.
+            @request.DetailLevel = 'Diagnostic': In addition to Tax level details, indicates that the server should 
+            return information about how the tax was calculated. Intended for use only while the SDK is in a development environment.
+        """
+        lineslist = []
+        request = self.taxSvc.factory.create('GetTaxRequest')
+        request.Commit = commit
+        request.DetailLevel = 'Diagnostic'
+        request.Discount = 0.0
+        request.ServiceMode = 'Automatic'   ##service mode = Automatic/Local/Remote
+        request.PaymentDate = doc_date
+        request.ExchangeRate = 45
+        request.ExchangeRateEffDate = fields.Date.today()
+        request.HashCode = 0
+        request.LocationCode = location_code
+        request.ReferenceCode = reference_code
+        request.CompanyCode = company_code
+        request.DocDate = doc_date
+        request.DocType = doc_type
+        request.DocCode = doc_code
+        request.CustomerCode = partner_code
+        request.ExemptionNo = exemption_no
+        request.CustomerUsageType = customer_usage_type
+        request.SalespersonCode = salesman_code
+        request.CurrencyCode = currency_code
+        request.BusinessIdentificationNo = vat_id
+        
+        addresses = self.taxSvc.factory.create('ArrayOfBaseAddress')
+        addresses.BaseAddress = [origin, destination]
+        if origin.Line1 == False:
+            raise UserError(_('Please set the Company Address in the partner information and validate.  We are checking against the first line of the address and it\'s empty.  \n\n Typically located in Sales->Customers, you have to clear "Customers" from search filter and type in your own company name.  Ensure the address is filled out and go to Avatax tab in the partner information and validate the address. Save partner update when done.'))
+        request.Addresses = addresses
+        request.OriginCode = '0' # Referencing an address above
+        request.DestinationCode = '1' # Referencing an address above
+        for line in range(0, len(received_lines)):
+            line1 = self.taxSvc.factory.create('Line')
+            line1.Qty = received_lines[line].get('qty', 1)
+            line1.Discounted = False
+            line1.No = '%d' %line
+            line1.ItemCode = received_lines[line].get('itemcode', None)
+            desc = received_lines[line].get('description', None)
+            line1.Description = tools.ustr(desc)[:255]
+            line1.Amount = received_lines[line].get('amount', 0.0)
+            line1.TaxCode = received_lines[line].get('tax_code', None)
+            lineslist.append(line1)
+        # So now we build request.Lines
+        lines = self.taxSvc.factory.create('ArrayOfLine')
+        lines.Line = lineslist
+        request.Lines = lines
+        # And we're ready to send the request to adjust
+        return request
+
+    # def post_tax(self,company_code,doc_code,doc_date,doc_type,total_amount,total_tax,commit=False):
+    #     request = self.taxSvc.factory.create('PostTaxRequest')
+    #     request.Commit = False
+    #     request.CompanyCode = company_code        
+    #     request.DocCode = doc_code
+    #     request.DocDate = doc_date
+    #     request.DocType = doc_type
+    #     request.TotalAmount = total_amount
+    #     request.TotalTax = total_tax
+    #     request.HashCode = 0
+    #     result = self.get_result(self.taxSvc, self.taxSvc.service.PostTax, request)
+    #     return result
+
+    def tax_adjustment(self,company_code, doc_date, doc_type, partner_code, doc_code, origin, destination,
+        received_lines, exemption_no=None,customer_usage_type=None, salesman_code=None, commit=False, 
+        invoice_date=None, reference_code=None,location_code=None, currency_code='USD', vat_id=None):
+        request = self.taxSvc.factory.create('AdjustTaxRequest')
+        request.AdjustmentReason = 8
+        request.AdjustmentDescription = 'Invoice Adjusted'
+        gettaxrequest = self.get_tax_adjustment(company_code,doc_date,doc_type,partner_code,doc_code,origin,
+           destination,received_lines,exemption_no,customer_usage_type,salesman_code,commit,invoice_date)
+        request.GetTaxRequest = gettaxrequest
+        result = self.get_result(self.taxSvc, self.taxSvc.service.AdjustTax, request)
+        return result
+
     def get_tax_history(self, company_code, doc_code, doc_type):
         request = self.taxSvc.factory.create('GetTaxHistoryRequest')
         request.DetailLevel = 'Document'
@@ -248,7 +330,6 @@ class AvaTaxService:
         result = self.get_result(self.taxSvc, self.taxSvc.service.GetTaxHistory, request)
         return result
         
-
     def cancel_tax(self, company_code, doc_code, doc_type, cancel_code):
         request = self.taxSvc.factory.create('CancelTaxRequest')
         request.CompanyCode = company_code
