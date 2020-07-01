@@ -198,7 +198,7 @@ class AccountInvoice(models.Model):
                         raise UserError(
                             _('This Invoice order is using a Non Avatax sales tax rate greater than 0%.  Please select AVATAX on the invoice order line.'))
                 lines = self.create_lines(invoice.invoice_line_ids, sign)
-                if lines:
+                if lines and self.partner_id.tax_exempt == False:
                     if avatax_config.on_line:
                         ava_tax = account_tax_obj.search(
                             [('is_avatax', '=', True),

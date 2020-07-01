@@ -215,16 +215,17 @@ class SaleOrder(models.Model):
                             tax.id for tax in line['tax_id']] or []
                         if ava_tax and ava_tax[0].id not in tax_id:
                             tax_id.append(ava_tax[0].id)
-                        ol_tax_amt = account_tax_obj._get_compute_tax(avatax_config, order_date,
-                                                                      self.name, 'SalesOrder', self.partner_id, ship_from_address_id,
-                                                                      shipping_add_id, [
-                                                                          line], self.user_id, exemption_code, exemption_code_id.name if exemption_code_id else None,
-                                                                      ).TotalTax
-                        o_tax_amt += ol_tax_amt  # tax amount based on total order line total
-                        line['id'].write({'tax_amt': ol_tax_amt})
+                        if and self.partner_id.tax_exempt == False:
+                            ol_tax_amt = account_tax_obj._get_compute_tax(avatax_config, order_date,
+                                                                          self.name, 'SalesOrder', self.partner_id, ship_from_address_id,
+                                                                          shipping_add_id, [
+                                                                              line], self.user_id, exemption_code, exemption_code_id.name if exemption_code_id else None,
+                                                                          ).TotalTax
+                            o_tax_amt += ol_tax_amt  # tax amount based on total order line total
+                            line['id'].write({'tax_amt': ol_tax_amt})
 
                     tax_amount = o_tax_amt
-                elif avatax_config.on_order:
+                elif avatax_config.on_order and self.partner_id.tax_exempt == False:
                     tax_amount = account_tax_obj._get_compute_tax(avatax_config, order_date,
                                                                   self.name, 'SalesOrder', self.partner_id, ship_from_address_id,
                                                                   shipping_add_id, lines, self.user_id, exemption_code, exemption_code_id.name if exemption_code_id else None,
