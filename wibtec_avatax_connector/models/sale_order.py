@@ -215,7 +215,7 @@ class SaleOrder(models.Model):
                             tax.id for tax in line['tax_id']] or []
                         if ava_tax and ava_tax[0].id not in tax_id:
                             tax_id.append(ava_tax[0].id)
-                        if and self.partner_id.tax_exempt == False:
+                        if self.partner_id.tax_exempt == False:
                             ol_tax_amt = account_tax_obj._get_compute_tax(avatax_config, order_date,
                                                                           self.name, 'SalesOrder', self.partner_id, ship_from_address_id,
                                                                           shipping_add_id, [
