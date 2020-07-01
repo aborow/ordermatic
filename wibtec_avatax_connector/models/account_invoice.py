@@ -59,7 +59,7 @@ class AccountInvoice(models.Model):
             self.is_add_validate = True
         else:
             self.is_add_validate = False
-        self.compute_taxes()
+        self.compute()
         return res
 
     @api.onchange('warehouse_id')
@@ -174,7 +174,7 @@ class AccountInvoice(models.Model):
             self.shipping_add_id = shipping_add_id
 
     @api.multi
-    def compute_taxes(self):
+    def compute(self):
         avatax_config_obj = self.env['avalara.salestax']
         account_tax_obj = self.env['account.tax']
         avatax_config = avatax_config_obj._get_avatax_config_company()
@@ -198,7 +198,7 @@ class AccountInvoice(models.Model):
                         raise UserError(
                             _('This Invoice order is using a Non Avatax sales tax rate greater than 0%.  Please select AVATAX on the invoice order line.'))
                 lines = self.create_lines(invoice.invoice_line_ids, sign)
-                if lines and self.partner_id.tax_exempt == False:
+                if lines:
                     if avatax_config.on_line:
                         ava_tax = account_tax_obj.search(
                             [('is_avatax', '=', True),
@@ -224,14 +224,14 @@ class AccountInvoice(models.Model):
                                                  exemption_code[:25] if exemption_code else False,
                                                  True
                                                  ).TotalTax
-                            line['id'].write({'tax_amt': ol_tax_amt})
+                            line['id'].update({'tax_amt': ol_tax_amt})
 
                     elif avatax_config.on_order:
                         for o_line in invoice.invoice_line_ids:
-                            o_line.write({'tax_amt': 0.0, })
+                            o_line.update({'tax_amt': 0.0, })
                 else:
                     for o_line in invoice.invoice_line_ids:
-                        o_line.write({'tax_amt': 0.0, })
+                        o_line.update({'tax_amt': 0.0, })
         return True
 
     @api.multi
