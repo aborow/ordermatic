@@ -6,6 +6,7 @@ from odoo import fields, models
 
 
 class ResPartner(models.Model):
+	
     _inherit = "res.partner"
 
-    is_address_validate = fields.Boolean('Is Address Validate?')
+    is_address_validate = fields.Boolean('Is Address Validate?',default=False)

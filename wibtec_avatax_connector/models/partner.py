@@ -86,31 +86,33 @@ class res_partner(models.Model):
         partner_obj = self.env['res.partner']
         for val_id in add_val_ids:
             partner_brw = partner_obj.browse(val_id)
-            vals = partner_brw.read(['street', 'street2', 'city', 'state_id', 'zip', 'country_id'])[0]
-            vals['state_id'] = vals.get('state_id') and vals['state_id'][0]
-            vals['country_id'] = vals.get('country_id') and vals['country_id'][0]
-            
-            avatax_config_obj = avatax_config_obj= self.env['avalara.salestax']
-            avatax_config = avatax_config_obj._get_avatax_config_company()
-            if avatax_config:
-                try:
-                    valid_address = self._validate_address(vals, avatax_config)
-                    vals.update({
-                        'street': valid_address.Line1,
-                        'street2': valid_address.Line2,
-                        'city': valid_address.City,
-                        'state_id': self.get_state_id(valid_address.Region, valid_address.Country),
-                        'zip': valid_address.PostalCode,
-                        'country_id': self.get_country_id(valid_address.Country),
-                        'latitude': valid_address.Latitude,
-                        'longitude': valid_address.Longitude,
-                        'date_validation': time.strftime(DEFAULT_SERVER_DATE_FORMAT),
-                        'validation_method': 'avatax',
-                        'validated_on_save': True
-                    })
-                    partner_brw.write(vals)
-                except:
-                    pass
+            if partner_brw.is_address_validate == False:
+                vals = partner_brw.read(['street', 'street2', 'city', 'state_id', 'zip', 'country_id'])[0]
+                vals['state_id'] = vals.get('state_id') and vals['state_id'][0]
+                vals['country_id'] = vals.get('country_id') and vals['country_id'][0]
+                
+                avatax_config_obj = avatax_config_obj= self.env['avalara.salestax']
+                avatax_config = avatax_config_obj._get_avatax_config_company()
+                if avatax_config:
+                    try:
+                        valid_address = self._validate_address(vals, avatax_config)
+                        vals.update({
+                            'street': valid_address.Line1,
+                            'street2': valid_address.Line2,
+                            'city': valid_address.City,
+                            'state_id': self.get_state_id(valid_address.Region, valid_address.Country),
+                            'zip': valid_address.PostalCode,
+                            'country_id': self.get_country_id(valid_address.Country),
+                            'latitude': valid_address.Latitude,
+                            'longitude': valid_address.Longitude,
+                            'date_validation': time.strftime(DEFAULT_SERVER_DATE_FORMAT),
+                            'validation_method': 'avatax',
+                            'validated_on_save': True,
+                            'is_address_validate':True
+                        })
+                        partner_brw.write(vals)
+                    except:
+                        pass
 #        mod_obj = self.pool.get('ir.model.data')
 #        res = mod_obj.get_object_reference(cr, uid, 'base', 'view_partner_tree')
 #        res_id = res and res[1] or False,
