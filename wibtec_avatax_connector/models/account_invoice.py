@@ -92,7 +92,8 @@ class AccountInvoice(models.Model):
             ship_add_id = vals['partner_id']
         elif 'tax_add_shipping' in vals and vals['tax_add_shipping'] and vals.get('partner_shipping_id'):
             ship_add_id = vals['partner_shipping_id']
-        elif 'tax_add_shipping' not in vals:
+        #Added condition in code to solve OMC-314
+        elif 'tax_add_shipping' not in vals and vals.get('partner_shipping_id'):
             ship_add_id = vals['partner_shipping_id']
         if ship_add_id:
             vals['shipping_add_id'] = ship_add_id
