@@ -69,8 +69,8 @@ class SaleOrder(models.Model):
     def _prepare_invoice(self):
         invoice_vals = super(SaleOrder, self)._prepare_invoice()
         invoice_vals.update({
-            'exemption_code': self.exemption_code or self.partner_id.exemption_number or '',
-            'exemption_code_id': self.exemption_code_id.id or self.partner_id.exemption_code_id or False,
+            'exemption_code': self.exemption_code or self.partner_id.exemption_number or None,
+            'exemption_code_id': self.exemption_code_id.id or self.partner_id.exemption_code_id or None,
             'tax_add_default': self.tax_add_default,
             'tax_add_invoice': self.tax_add_invoice,
             'tax_add_shipping': self.tax_add_shipping,
@@ -205,7 +205,7 @@ class SaleOrder(models.Model):
             order_date = datetime.strptime(order_date, "%Y-%m-%d").date()
             if lines:
                 exemption_code = self.exemption_code or self.partner_id.exemption_number or None
-                exemption_code_id = self.get_25_chara_exemption_number(self.exemption_code_id.name if self.exemption_code_id else self.partner_id.exemption_number)
+                exemption_code_id = self.exemption_code_id or self.partner_id.exemption_code_id or None
                 if avatax_config.on_line:
                     # Line level tax calculation
                     # tax based on individual order line

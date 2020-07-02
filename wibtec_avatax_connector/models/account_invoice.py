@@ -59,7 +59,7 @@ class AccountInvoice(models.Model):
             self.is_add_validate = True
         else:
             self.is_add_validate = False
-        self.compute_taxes()
+        self.compute()
         return res
 
     @api.onchange('warehouse_id')
@@ -92,7 +92,8 @@ class AccountInvoice(models.Model):
             ship_add_id = vals['partner_id']
         elif 'tax_add_shipping' in vals and vals['tax_add_shipping'] and vals.get('partner_shipping_id'):
             ship_add_id = vals['partner_shipping_id']
-        elif 'tax_add_shipping' not in vals:
+        #Added condition in code to solve OMC-314
+        elif 'tax_add_shipping' not in vals and vals.get('partner_shipping_id'):
             ship_add_id = vals['partner_shipping_id']
         if ship_add_id:
             vals['shipping_add_id'] = ship_add_id
@@ -174,7 +175,7 @@ class AccountInvoice(models.Model):
             self.shipping_add_id = shipping_add_id
 
     @api.multi
-    def compute_taxes(self):
+    def compute(self):
         avatax_config_obj = self.env['avalara.salestax']
         account_tax_obj = self.env['account.tax']
         avatax_config = avatax_config_obj._get_avatax_config_company()
@@ -224,14 +225,14 @@ class AccountInvoice(models.Model):
                                                  exemption_code[:25] if exemption_code else False,
                                                  True
                                                  ).TotalTax
-                            line['id'].write({'tax_amt': ol_tax_amt})
+                            line['id'].update({'tax_amt': ol_tax_amt})
 
                     elif avatax_config.on_order:
                         for o_line in invoice.invoice_line_ids:
-                            o_line.write({'tax_amt': 0.0, })
+                            o_line.update({'tax_amt': 0.0, })
                 else:
                     for o_line in invoice.invoice_line_ids:
-                        o_line.write({'tax_amt': 0.0, })
+                        o_line.update({'tax_amt': 0.0, })
         return True
 
     @api.multi
