@@ -27,3 +27,7 @@ OMC-311
 OMC-304
 ========
 -Bug - Avatax Not able to revalidate an invoice
+
+OMC-314
+=======
+-Error in Documents Module
