@@ -27,7 +27,7 @@
 			<field eval="1" name="on_order"/>
 			<field eval="0" name="disable_tax_calculation"/>
 			<field name="account_number">xx</field>
-			<field eval="1" name="auto_generate_customer_code"/>
+			<!-- <field eval="1" name="auto_generate_customer_code"/> -->
 		</record>
 	</data>
 </odoo>
