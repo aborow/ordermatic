@@ -19,8 +19,7 @@ class UpdateProductCustomerTax(models.TransientModel):
 
 	@api.multi
 	def action_add_parent_ref_to_child(self):
-		child_partners = self.env['res.partner'].search([('parent_id','!=',False)])
+		child_partners = self.env['res.partner'].search(['|',('name','=','Account Payable'),('name','=','Accounts Payable'),('parent_id','!=',False)])
 		if child_partners:
 			for child_partner in child_partners:
-				if 'Accounts Payable' or 'Account Payable' in child_partner.name and child_partner.parent_id:
-					child_partner.write({'ref': child_partner.parent_id.ref})
+				child_partner.write({'ref': child_partner.parent_id.ref})
