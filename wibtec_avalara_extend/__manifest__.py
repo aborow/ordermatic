@@ -4,7 +4,7 @@
     'category': 'Sale',
     'author': "WIB Technologies, Inc",
     'website': "http://www.wibtec.com",
-    'version': '12.0.1.0.0',
+    'version': '12.0.1.0.1',
     'summary': "Miscelaneous changes to products and customer related to avalara",
     'description': """OMC-276 : Integrate Avalara""",
     'depends': ['wibtec_avatax_connector','base'],
