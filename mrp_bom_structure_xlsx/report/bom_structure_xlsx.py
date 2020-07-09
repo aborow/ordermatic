@@ -14,18 +14,23 @@ class BomStructureXlsx(models.AbstractModel):
     _inherit = 'report.report_xlsx.abstract'
 
     def print_bom_children(self, ch, sheet, row, level):
+      print ("\n print_bom_children=================",ch)
       i, j = row, level
       j += 1
       # sheet.write(i, 1, '> '*j)
       sheet.write(i, j, ch.product_id.default_code or '')
       sheet.write(i, 11, ch.product_id.default_code or '')
       sheet.write(i, 12, ch.product_id.display_name or '')
-      sheet.write(i, 13, ch.product_uom_id._compute_quantity(
-          ch.product_qty, ch.product_id.uom_id) or '')
+      sheet.write(i, 13, ch.product_uom_id._compute_quantity(ch.product_qty, ch.product_id.uom_id) or '')
       sheet.write(i, 14, ch.product_id.uom_id.name or '')
       sheet.write(i, 15, ch.bom_id.code or '')
+      sheet.write(i, 16, ch.product_cost or '')
+      sheet.write(i, 17, ch.bom_cost or '')
       i += 1
       for child in ch.child_line_ids:
+        child._update_cost(child)
+        print ("\n child_line_ids==============================",ch.child_line_ids)
+        # child.bom_id.compute_parent_bom_costs(child.bom_id)
         if j >=10:
           j = 9
         i = self.print_bom_children(child, sheet, i, j)
@@ -56,6 +61,8 @@ class BomStructureXlsx(models.AbstractModel):
         sheet.set_column(14, 6, 20)
         sheet.set_column(15, 6, 20)
         sheet.set_column(16, 6, 20)
+        sheet.set_column(17, 6, 20)
+        sheet.set_column(18, 6, 20)
         bold = workbook.add_format({'bold': True})
         title_style = workbook.add_format({'bold': True,
                                            'bg_color': '#FFFFCC',
@@ -75,13 +82,17 @@ class BomStructureXlsx(models.AbstractModel):
                        _('Product Name'),
                        _('Quantity'),
                        _('Unit of Measure'),
-                       _('Reference')
+                       _('Reference'),
+                       _('Product Cost'),
+                       _('BOM Cost')
                        ]
         sheet.set_row(0, None, None, {'collapsed': 1})
         sheet.write_row(1, 0, sheet_title, title_style)
         sheet.freeze_panes(2, 0)
         i = 2
         for o in objects:
+            print ("\n objects=======",objects,o)
+            o._update_cost(o)
             sheet.write(i, 0, o.product_tmpl_id.name or o.default_code or '', bold)
             # sheet.write(i, 1, '', bold)
             sheet.write(i, 11, o.product_id.default_code or '', bold)
@@ -89,7 +100,10 @@ class BomStructureXlsx(models.AbstractModel):
             sheet.write(i, 13, o.product_qty, bold)
             sheet.write(i, 14, o.product_uom_id.name or '', bold)
             sheet.write(i, 15, o.code or '', bold)
+            sheet.write(i, 16, o.product_cost or '', bold)
+            sheet.write(i, 17, o.bom_cost or '', bold)
             i += 1
             j = 0
             for ch in o.bom_line_ids:
+                ch._update_cost(ch)
                 i = self.print_bom_children(ch, sheet, i, j)
