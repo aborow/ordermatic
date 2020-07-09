@@ -63,7 +63,7 @@ class AccountTax(models.Model):
         result = avalara_obj.get_tax(avatax_config.company_code, doc_date, doc_type,
                                  partner_ref, doc_code, origin, destination,
                                  lines, exemption_number,
-                                 exemption_code_name,
+                                 exemption_code_name if exemption_code_name else None,
                                  user and user.name or None, commit, invoice_date, reference_code, location_code, currency_code, partner.vat_id or None)
         
         return result

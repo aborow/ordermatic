@@ -22,21 +22,21 @@ class res_partner(models.Model):
     latitude = fields.Char('Latitude')
     longitude = fields.Char('Longitude')
     validated_on_save = fields.Boolean('Validated On Save', help="Indicates if the address is already validated on save before calling the wizard")
-    customer_code = fields.Char('Customer Code', required=False)
+    # customer_code = fields.Char('Customer Code', required=False)
     tax_apply = fields.Boolean('Tax Calculation',help="Indicates the avatax calculation is compulsory")
     tax_exempt = fields.Boolean('Is Tax Exempt',help="Indicates the exemption tax calculation is compulsory")
     tax_exempt_certificate = fields.Binary('Tax Exempt Certificate')
     vat_id = fields.Char("VAT ID", help="Customers VAT number (Buyer VAT). Identifies the customer as a “Registered Business” and the tax engine will utilize that information in the tax decision process.")
     
-    _sql_constraints = [
-        ('name_uniq', 'unique(customer_code)', 'Customer Code must be unique!'),
-    ]
+    # _sql_constraints = [
+    #     ('name_uniq', 'unique(customer_code)', 'Customer Code must be unique!'),
+    # ]
     
-    @api.multi
-    def generate_cust_code(self):
-        #Auto populate customer code
-        customer_code = str(int(time.time()))+'-'+str(int(random()*10))+'-'+'Cust-'+str(self.id)                
-        self.write({'customer_code': customer_code})
+    # @api.multi
+    # def generate_cust_code(self):
+    #     #Auto populate customer code
+    #     customer_code = str(int(time.time()))+'-'+str(int(random()*10))+'-'+'Cust-'+str(self.id)                
+    #     self.write({'customer_code': customer_code})
         
         
     def check_avatax_support(self, avatax_config, country_id):
@@ -369,10 +369,10 @@ class res_partner(models.Model):
         cust_id = super(res_partner, self).create(vals)
 
         # Generate a detailed customer code based on timestamp, a random number, and it's  ID                
-        customer_code = str(int(time.time()))+'-'+str(int(random()*10))+'-'+'Cust-'+str(cust_id.id)
+        # customer_code = str(int(time.time()))+'-'+str(int(random()*10))+'-'+'Cust-'+str(cust_id.id)
                
         #Auto populate customer code
-        cust_id.write({'customer_code': customer_code})
+        # cust_id.write({'customer_code': customer_code})
         return cust_id
 
     @api.multi
