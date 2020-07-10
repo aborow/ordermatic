@@ -262,34 +262,42 @@ class AccountInvoice(models.Model):
             partner_ref = account_tax_obj.partner_name(invoice.partner_id)
             sign = invoice.type == 'out_invoice' and 1 or -1
             lines = invoice.create_lines(invoice.invoice_line_ids, sign)
-            addSvc = avalara_obj.create_address_service().addressSvc
-            origin = BaseAddress(addSvc, shipping_add_origin_id.street or None,
-                             shipping_add_origin_id.street2 or None,
-                             shipping_add_origin_id.city, shipping_add_origin_id.zip,
-                             shipping_add_origin_id.state_id and shipping_add_origin_id.state_id.code or None,
-                             shipping_add_origin_id.country_id and shipping_add_origin_id.country_id.code or None, 0).data
-            destination = BaseAddress(addSvc, shipping_add_id.street or None,
-                                      shipping_add_id.street2 or None,
-                                      shipping_add_id.city, shipping_add_id.zip,
-                                      shipping_add_id.state_id and shipping_add_id.state_id.code or None,
-                                      shipping_add_id.country_id and shipping_add_id.country_id.code or None, 1).data
-            exemption_code = invoice.exemption_code_id.name if invoice.exemption_code_id else invoice.partner_id.exemption_number
-            result = avalara_obj.tax_adjustment(
-                            avatax_config.company_code, 
-                            invoice.date_invoice if invoice.date_invoice else time.strftime('%Y-%m-%d'),
-                            not invoice.invoice_doc_no and 'SalesInvoice' or 'ReturnInvoice',
-                            partner_ref,
-                            invoice.number, 
-                            origin,
-                            destination, 
-                            lines,
-                            invoice.exemption_code or None,
-                            exemption_code[:25] if exemption_code else None,
-                            invoice.user_id.name,
-                            False, 
-                            tax_date,
-                            invoice.invoice_doc_no,
-                            invoice.location_code or '')
+            if lines:
+                addSvc = avalara_obj.create_address_service().addressSvc
+                origin = BaseAddress(addSvc, shipping_add_origin_id.street or None,
+                                 shipping_add_origin_id.street2 or None,
+                                 shipping_add_origin_id.city, shipping_add_origin_id.zip,
+                                 shipping_add_origin_id.state_id and shipping_add_origin_id.state_id.code or None,
+                                 shipping_add_origin_id.country_id and shipping_add_origin_id.country_id.code or None, 0).data
+                destination = BaseAddress(addSvc, shipping_add_id.street or None,
+                                          shipping_add_id.street2 or None,
+                                          shipping_add_id.city, shipping_add_id.zip,
+                                          shipping_add_id.state_id and shipping_add_id.state_id.code or None,
+                                          shipping_add_id.country_id and shipping_add_id.country_id.code or None, 1).data
+                exemption_code = invoice.exemption_code_id.name if invoice.exemption_code_id else invoice.partner_id.exemption_number
+                result = avalara_obj.tax_adjustment(
+                                avatax_config.company_code, 
+                                invoice.date_invoice if invoice.date_invoice else time.strftime('%Y-%m-%d'),
+                                not invoice.invoice_doc_no and 'SalesInvoice' or 'ReturnInvoice',
+                                partner_ref,
+                                invoice.number, 
+                                origin,
+                                destination, 
+                                lines,
+                                invoice.exemption_code or None,
+                                exemption_code[:25] if exemption_code else None,
+                                invoice.user_id.name,
+                                False, 
+                                tax_date,
+                                invoice.invoice_doc_no,
+                                invoice.location_code or '')
+            else:
+                avalara_obj.cancel_tax(
+                    avatax_config.company_code, 
+                    invoice.number, 
+                    not invoice.invoice_doc_no and 'SalesInvoice' or 'ReturnInvoice', 
+                    'DocVoided'
+                )
         else:
             pass
         return result
