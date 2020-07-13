@@ -19,10 +19,6 @@
                         string="Update Product Customer Tax" 
                         type="object"
                         class="oe_highlight"/>
-                    <button name="action_add_parent_ref_to_child" 
-                        string="Update Reference Of Child Partner" 
-                        type="object"
-                        class="oe_highlight"/>
                 </footer>
             </form>
         </field>
