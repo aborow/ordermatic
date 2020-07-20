@@ -25,7 +25,7 @@
 					<field name="exemption_code" readonly="1"/>
 					<field name="exemption_code_id" readonly="1"/>
 					<field name="location_code"/>
-					<field name="avalara_tax_amount"/>
+					<field name="avalara_tax_amount" readonly="1"/>
 					<field name="is_add_validate" readonly="1" invisible="1"/>
 				</field>
 				<xpath expr="//notebook" position="inside">

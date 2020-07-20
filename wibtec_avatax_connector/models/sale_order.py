@@ -5,6 +5,8 @@ from odoo.tools.translate import _
 import odoo.addons.decimal_precision as dp
 from datetime import datetime
 from odoo.exceptions import UserError,ValidationError
+from odoo.addons import decimal_precision as dp
+
 
 _logger = logging.getLogger(__name__)
 
@@ -251,7 +253,7 @@ class SaleOrder(models.Model):
 		self.update({
 			'tax_amount': tax_amount,
 			'order_line': [],
-			'avalara_tax_amount':tax_amount
+			'avalara_tax_amount':round(tax_amount,2)
 		})
 		return tax_amount
 
