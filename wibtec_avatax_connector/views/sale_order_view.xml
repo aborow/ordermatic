@@ -25,6 +25,7 @@
 					<field name="exemption_code" readonly="1"/>
 					<field name="exemption_code_id" readonly="1"/>
 					<field name="location_code"/>
+					<field name="avalara_tax_amount"/>
 					<field name="is_add_validate" readonly="1" invisible="1"/>
 				</field>
 				<xpath expr="//notebook" position="inside">
@@ -59,6 +60,17 @@
 					<attribute name="readonly">0</attribute>
 				</field>
 			</field>
+		</record>
+
+		<record model="ir.actions.server" id="action_sale_order_update_taxes">
+			<field name="name">Update taxes with Avalara</field>
+			<field name="model_id" ref="sale.model_sale_order"/>
+			<field name="state">code</field>
+			<field name="code">
+for order in records:
+	order.calculate_tax_on_sales_order()
+			</field>
+			<field name="binding_model_id" ref="sale.model_sale_order"/>
 		</record>
 	</data>
 </odoo>
