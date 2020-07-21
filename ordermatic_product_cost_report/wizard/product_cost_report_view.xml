@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <!-- Form view of Payment Applied Report -->
-    <record id="view_payment_applied_report" model="ir.ui.view">
-        <field name="name">payment.applied.report.form</field>
-        <field name="model">payment.applied.report</field>
+    <!-- Form view of Product Cost Report -->
+    <record id="view_product_cost_report" model="ir.ui.view">
+        <field name="name">product.cost.report.form</field>
+        <field name="model">product.cost.report</field>
         <field name="arch" type="xml">
              <form string="Payment Applied Report">
                 <div class="card bg-light">
@@ -11,32 +11,31 @@
                 </div>
                 <group>
                     <group>
-                        <field name="from_date"/>
+                        <field name="product_ids" domain="['|',('bom_ids','!=',False),('sale_ok','=',True)]" widget="many2many_tags"/>
                     </group>
                     <group>
-                        <field name="to_date"/>
+                        <!-- <field name="to_date"/> -->
                     </group>
                 </group>
                 <footer>
                     <button name="print_xls" string='Print XLS' type="object" class="btn-primary"/>
-                    <button name="calculate_amounts" string='Calculate Amounts' type="object" class="btn-primary"/>
                     <button string="CANCEL" class="btn-default" special="cancel"/>
                 </footer>
             </form>
         </field>
     </record>
 
-    <!-- Action of Payment Applied Report Report-->
-    <record id="action_payment_applied_report" model="ir.actions.act_window">
-        <field name="name">Payment Applied Report</field>
+    <!-- Action of Product Cost Report-->
+    <record id="action_product_cost_report" model="ir.actions.act_window">
+        <field name="name">Product Cost Report</field>
         <field name="type">ir.actions.act_window</field>
-        <field name="res_model">payment.applied.report</field>
+        <field name="res_model">product.cost.report</field>
         <field name="view_type">form</field>
         <field name="view_mode">form</field>
         <field name="target">new</field>
     </record>
 
     <!-- Menuitem for print report -->
-    <menuitem id="menu_payment_applied_report" name="Payment Applied Report" action="action_payment_applied_report" parent="account.menu_finance_reports" sequence="16"/>
+    <menuitem id="menu_product_cost_report" name="Product Cost Report" action="action_product_cost_report" parent="sale.menu_sale_report" sequence="11"/>
 
 </odoo>
