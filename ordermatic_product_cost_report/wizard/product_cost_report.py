@@ -19,7 +19,7 @@ class ProductCostReport(models.TransientModel):
 	@api.multi
 	def get_domain(self):
 		"""Method will filter record based on domain."""
-		domain = [('product_tmpl_id.sale_ok', '=', True)]
+		domain = [('product_tmpl_id.sale_ok', '=', True),('product_tmpl_id.bom_ids','!=',False)]
 		if self.product_ids:
 			domain.append(('product_tmpl_id','in',self.product_ids.ids))
 		return domain
