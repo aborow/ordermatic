@@ -64,53 +64,54 @@ class ProductCostReport(models.TransientModel):
 			_logger.info("BOM IDS------------------------------------- %s" % bom_ids)
 			for bom in bom_ids:
 				bom_costs = bom._update_bom_cost(bom)
-				_logger.info("bom_costs-----------------@@@@@@@@@@-------------------- %s" % bom_costs)
-				row += 0
-				worksheet.write(row, 0, 'Product Name', header_format)
-				worksheet.write(row, 1, 'Internal Reference', header_format)
-				worksheet.write(row, 2, 'Product Cost', header_format)
-				worksheet.write(row, 3, 'BOM Cost', header_format)
-				worksheet.write(row, 4, 'Cost For Qty 1', header_format)
-				worksheet.write(row, 5, 'Cost For Qty 2', header_format)
-				worksheet.write(row, 6, 'Cost For Qty 4', header_format)
-				worksheet.write(row, 7, 'Cost For Qty 6', header_format)
-				worksheet.write(row, 8, 'Cost For Qty 10', header_format)
-				# colm = 0	
-				row += 1
-				worksheet.write(row, 0, bom.product_tmpl_id.name, parent_product_format)
-				worksheet.write(row, 1, bom.product_tmpl_id.default_code, parent_product_format)
-				worksheet.write(row, 2, formatLang(self.env, bom.product_cost, currency_obj=currency_id), parent_product_format)
-				worksheet.write(row, 3, formatLang(self.env, bom.bom_cost, currency_obj=currency_id), parent_product_format)
-				worksheet.write(row, 4, formatLang(self.env, bom_costs[0], currency_obj=currency_id), parent_product_format)
-				worksheet.write(row, 5, formatLang(self.env, bom_costs[1], currency_obj=currency_id), parent_product_format)
-				worksheet.write(row, 6, formatLang(self.env, bom_costs[2], currency_obj=currency_id), parent_product_format)
-				worksheet.write(row, 7, formatLang(self.env, bom_costs[3], currency_obj=currency_id), parent_product_format)
-				worksheet.write(row, 8, formatLang(self.env, bom_costs[4], currency_obj=currency_id), parent_product_format)
-				# colm = 0
-				row += 1
-				for bom_line in bom.bom_line_ids:
-					bom_line_costs = bom._get_bom_line_cost(bom,bom_line)
-					worksheet.write(row, 0, bom_line.product_id.name)
-					worksheet.write(row, 1, bom_line.product_id.default_code)
-					worksheet.write(row, 2, formatLang(self.env,bom_line.product_cost, currency_obj=currency_id))
-					worksheet.write(row, 3, formatLang(self.env,bom_line.bom_cost, currency_obj=currency_id))
-					worksheet.write(row, 4, bom_line_costs[0])
-					worksheet.write(row, 5, bom_line_costs[1])
-					worksheet.write(row, 6, bom_line_costs[2])
-					worksheet.write(row, 7, bom_line_costs[3])
-					worksheet.write(row, 8, bom_line_costs[4])
-					colm = 0
+				if bom_costs:
+					_logger.info("bom_costs-----------------@@@@@@@@@@-------------------- %s" % bom_costs)
+					row += 0
+					worksheet.write(row, 0, 'Product Name', header_format)
+					worksheet.write(row, 1, 'Internal Reference', header_format)
+					worksheet.write(row, 2, 'Product Cost', header_format)
+					worksheet.write(row, 3, 'BOM Cost', header_format)
+					worksheet.write(row, 4, 'Cost For Qty 1', header_format)
+					worksheet.write(row, 5, 'Cost For Qty 2', header_format)
+					worksheet.write(row, 6, 'Cost For Qty 4', header_format)
+					worksheet.write(row, 7, 'Cost For Qty 6', header_format)
+					worksheet.write(row, 8, 'Cost For Qty 10', header_format)
+					# colm = 0	
 					row += 1
-				row += 1
-				worksheet.write(row, 0, 'Total',header_format)
-				worksheet.write(row, 2, formatLang(self.env,bom.product_cost, currency_obj=currency_id), header_format)
-				worksheet.write(row, 3, formatLang(self.env,bom.bom_cost, currency_obj=currency_id), header_format)
-				worksheet.write(row, 4, formatLang(self.env,bom_costs[0], currency_obj=currency_id), header_format)
-				worksheet.write(row, 5, formatLang(self.env,bom_costs[1], currency_obj=currency_id), header_format)
-				worksheet.write(row, 6, formatLang(self.env,bom_costs[2], currency_obj=currency_id), header_format)
-				worksheet.write(row, 7, formatLang(self.env,bom_costs[3], currency_obj=currency_id), header_format)
-				worksheet.write(row, 8, formatLang(self.env,bom_costs[4], currency_obj=currency_id), header_format)
-				row += 2
+					worksheet.write(row, 0, bom.product_tmpl_id.name, parent_product_format)
+					worksheet.write(row, 1, bom.product_tmpl_id.default_code, parent_product_format)
+					worksheet.write(row, 2, formatLang(self.env, bom.product_cost, currency_obj=currency_id), parent_product_format)
+					worksheet.write(row, 3, formatLang(self.env, bom.bom_cost, currency_obj=currency_id), parent_product_format)
+					worksheet.write(row, 4, formatLang(self.env, bom_costs[0], currency_obj=currency_id), parent_product_format)
+					worksheet.write(row, 5, formatLang(self.env, bom_costs[1], currency_obj=currency_id), parent_product_format)
+					worksheet.write(row, 6, formatLang(self.env, bom_costs[2], currency_obj=currency_id), parent_product_format)
+					worksheet.write(row, 7, formatLang(self.env, bom_costs[3], currency_obj=currency_id), parent_product_format)
+					worksheet.write(row, 8, formatLang(self.env, bom_costs[4], currency_obj=currency_id), parent_product_format)
+					# colm = 0
+					row += 1
+					for bom_line in bom.bom_line_ids:
+						bom_line_costs = bom._get_bom_line_cost(bom,bom_line)
+						worksheet.write(row, 0, bom_line.product_id.name)
+						worksheet.write(row, 1, bom_line.product_id.default_code)
+						worksheet.write(row, 2, formatLang(self.env,bom_line.product_cost, currency_obj=currency_id))
+						worksheet.write(row, 3, formatLang(self.env,bom_line.bom_cost, currency_obj=currency_id))
+						worksheet.write(row, 4, bom_line_costs[0])
+						worksheet.write(row, 5, bom_line_costs[1])
+						worksheet.write(row, 6, bom_line_costs[2])
+						worksheet.write(row, 7, bom_line_costs[3])
+						worksheet.write(row, 8, bom_line_costs[4])
+						colm = 0
+						row += 1
+					row += 1
+					worksheet.write(row, 0, 'Total',header_format)
+					worksheet.write(row, 2, formatLang(self.env,bom.product_cost, currency_obj=currency_id), header_format)
+					worksheet.write(row, 3, formatLang(self.env,bom.bom_cost, currency_obj=currency_id), header_format)
+					worksheet.write(row, 4, formatLang(self.env,bom_costs[0], currency_obj=currency_id), header_format)
+					worksheet.write(row, 5, formatLang(self.env,bom_costs[1], currency_obj=currency_id), header_format)
+					worksheet.write(row, 6, formatLang(self.env,bom_costs[2], currency_obj=currency_id), header_format)
+					worksheet.write(row, 7, formatLang(self.env,bom_costs[3], currency_obj=currency_id), header_format)
+					worksheet.write(row, 8, formatLang(self.env,bom_costs[4], currency_obj=currency_id), header_format)
+					row += 2
 		workbook.close()
 		fp.seek(0)
 		result = base64.b64encode(fp.read())
