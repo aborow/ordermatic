@@ -18,15 +18,15 @@ class MrpBom(models.Model):
 		if bom:
 			bom_structure_obj = self.env['report.mrp.report_bom_structure']
 			lines = bom_structure_obj._get_bom(bom.id, product_id=product_id, line_qty=bom.product_qty, level=1)
-			bom.bom_cost =  lines.get('total')
-			bom.product_cost = lines.get('price')
+			bom.bom_cost =  round(lines.get('total'),2)
+			bom.product_cost = round(lines.get('price'),2)
 			if lines.get('operations'):
 				for operations_details in lines.get('operations'):
 					operation_detail = self.find_operation_details(bom,operations_details.get('operation'))
 					if operation_detail:
 						operation_detail.update({
 							'quantity' : operations_details.get('duration_expected'),
-							'bom_cost' : operations_details.get('total'),
+							'bom_cost' : round(operations_details.get('total'),2),
 							'operation_id': operations_details.get('operation').id,
 						})
 					else:
@@ -41,8 +41,8 @@ class MrpBom(models.Model):
 					bom = self.env['mrp.bom']._bom_find(product=line.product_id)
 					for component in lines.get('components'):
 						if component.get('prod_id') == line.product_id.id:
-							line.write({'bom_cost':component.get('total')})
-							line.write({'product_cost':component.get('prod_cost')})
+							line.write({'bom_cost':round(component.get('total'),2)})
+							line.write({'product_cost':round(component.get('prod_cost'),2)})
 
 
 	def find_operation_details(self,bom_id,operation):
@@ -75,7 +75,7 @@ class MrpBomLine(models.Model):
 					if operation_line_detail:
 						operation_line_detail.update({
 							'quantity' : operations_details.get('duration_expected'),
-							'bom_cost' : operations_details.get('total'),
+							'bom_cost' : round(operations_details.get('total'),2),
 							'operation_id': operations_details.get('operation').id,
 							'bom_id':bom.id if bom else False
 						})
@@ -84,7 +84,7 @@ class MrpBomLine(models.Model):
 							'bom_id':bom.id if bom else False,
 							'bom_line_id' : self.id,
 							'quantity' : operations_details.get('duration_expected'),
-							'bom_cost' : operations_details.get('total'),
+							'bom_cost' : round(operations_details.get('total'),2),
 							'operation_id': operations_details.get('operation').id,
 						})
 			if lines.get('components') and bom.bom_line_ids:
@@ -92,8 +92,8 @@ class MrpBomLine(models.Model):
 					bom = self.env['mrp.bom']._bom_find(product=line.product_id)
 					for component in lines.get('components'):
 						if component.get('prod_id') == line.product_id.id:
-							line.write({'bom_cost':component.get('total')})
-							line.write({'product_cost':component.get('prod_cost')})
+							line.write({'bom_cost':round(component.get('total'),2)})
+							line.write({'product_cost':round(component.get('prod_cost'),2)})
 
 	def find_operation_details(self,bom_id,operation):
 		if bom_id and operation:

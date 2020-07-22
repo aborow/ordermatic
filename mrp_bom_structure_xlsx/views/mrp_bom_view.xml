@@ -7,7 +7,7 @@
         <field name="inherit_id" ref="mrp.mrp_bom_form_view"/>
         <field name="arch" type="xml">
             <xpath expr='//notebook/page[2]' position="after">
-                <page string="Operation Details">
+                <page string="Operation Details" invisible="1">
                     <field name="operation_details">
                         <tree>
                             <field name="bom_id"/>
