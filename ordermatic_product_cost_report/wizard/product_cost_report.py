@@ -8,6 +8,8 @@ from odoo.tools.misc import formatLang
 import base64
 import io
 import xlsxwriter
+import logging
+_logger = logging.getLogger(__name__)
 
 class ProductCostReport(models.TransientModel):
 
@@ -59,8 +61,10 @@ class ProductCostReport(models.TransientModel):
 		colm = 0
 		currency_id= self.env.user.company_id.currency_id
 		if bom_ids:
+			_logger.info("BOM IDS------------------------------------- %s" % bom_ids)
 			for bom in bom_ids:
 				bom_costs = bom._update_bom_cost(bom)
+				_logger.info("bom_costs-----------------@@@@@@@@@@-------------------- %s" % bom_costs)
 				row += 0
 				worksheet.write(row, 0, 'Product Name', header_format)
 				worksheet.write(row, 1, 'Internal Reference', header_format)
@@ -71,7 +75,7 @@ class ProductCostReport(models.TransientModel):
 				worksheet.write(row, 6, 'Cost For Qty 4', header_format)
 				worksheet.write(row, 7, 'Cost For Qty 6', header_format)
 				worksheet.write(row, 8, 'Cost For Qty 10', header_format)
-				colm = 0	
+				# colm = 0	
 				row += 1
 				worksheet.write(row, 0, bom.product_tmpl_id.name, parent_product_format)
 				worksheet.write(row, 1, bom.product_tmpl_id.default_code, parent_product_format)
@@ -82,7 +86,7 @@ class ProductCostReport(models.TransientModel):
 				worksheet.write(row, 6, formatLang(self.env, bom_costs[2], currency_obj=currency_id), parent_product_format)
 				worksheet.write(row, 7, formatLang(self.env, bom_costs[3], currency_obj=currency_id), parent_product_format)
 				worksheet.write(row, 8, formatLang(self.env, bom_costs[4], currency_obj=currency_id), parent_product_format)
-				colm = 0
+				# colm = 0
 				row += 1
 				for bom_line in bom.bom_line_ids:
 					bom_line_costs = bom._get_bom_line_cost(bom,bom_line)
