@@ -67,3 +67,16 @@ Version - 12.0.1.0.9
 Version - 12.0.1.0.10
 ======================
 -Forcefully added "False" in settings so, MRP II do not get installed automatically.
+
+Version - 12.0.1.0.11
+=======================
+-Added a functionality of leadtimes.
+
+Version - 12.0.1.0.12
+======================
+-Added functionality of open sales orders.
+-Added the delivery lead time in the open sale orders as well as the calculations.
+
+Version - 12.0.1.0.13
+======================
+-MO Calendar not showing correct time for order
