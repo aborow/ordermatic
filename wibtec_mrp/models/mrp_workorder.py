@@ -29,13 +29,17 @@ class MrpWorkorder(models.Model):
 	@api.multi
 	@api.depends('duration_expected', 'qty_produced')
 	def _compute_duration_remaining(self):
+		# if self:
 		for wo in self:
-			wo.duration_expected_for_single_qty = wo.duration_expected / wo.qty_production
-			if wo.qty_produced > 0.0 and wo.qty_producing > 0.0:
-				test = wo.qty_production - wo.qty_produced
-				wo.duration_remaining = wo.duration_expected_for_single_qty * (wo.qty_production - wo.qty_produced)
-			elif wo.qty_produced == 0.0:
-				wo.duration_remaining = wo.duration_expected
+			if wo.duration_expected > 0.0 and wo.qty_production:
+				wo.duration_expected_for_single_qty = wo.duration_expected / wo.qty_production
+				if wo.qty_produced > 0.0 and wo.qty_producing > 0.0:
+					test = wo.qty_production - wo.qty_produced
+					wo.duration_remaining = wo.duration_expected_for_single_qty * (wo.qty_production - wo.qty_produced)
+				elif wo.qty_produced == 0.0:
+					wo.duration_remaining = wo.duration_expected
+		# else:
+		# 	pass
 
 	@api.multi 
 	def update_duration(self):

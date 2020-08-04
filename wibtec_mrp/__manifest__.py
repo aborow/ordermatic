@@ -16,11 +16,12 @@
         OMC-269 = Update Work Order with correct Time
         OMC-205 = Insllation MRP II automatic(this issue was known whilw woking on OMC-245)
         OMC-297 = Production Scheduling Issue
+        OMC-315 = MO Calendar not showing correct time for order
     """,
     'author': "WIB Technologies, Inc",
     'website': "http://www.wibtec.com",
     'category': 'Manufacturing',
-    'version': '12.0.1.0.12',
+    'version': '12.0.1.0.13',
     # any module necessary for this one to work correctly
     'depends': [
                 'mrp','sale'

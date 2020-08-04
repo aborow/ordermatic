@@ -18,6 +18,14 @@ class MrpProduction(models.Model):
 	sale_orders = fields.Many2many('sale.order','sale_manufacturing_orders_rel_data',
 		'mrp_production_id' , 'order_id',string="Sale Orders", compute='_add_associated_sales_orders')
 	order_history = fields.One2many('order.history','mrp_production_id',string="Order History")
+	expected_duration = fields.Float(string='Expected Duration',compute='compute_expected_duration')
+
+	@api.multi
+	def compute_expected_duration(self):
+		for mo in self:
+			if mo.workorder_ids:
+				for wo in mo.workorder_ids:
+					mo.expected_duration += wo.duration_expected
 
 	@api.multi
 	def refresh_sale_orders(self):

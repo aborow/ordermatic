@@ -9,6 +9,10 @@
             <xpath expr="//field[@name='move_raw_ids']/tree/field[@name='product_uom_qty']" position="after">
                 <field name="onhand_qty"/>
             </xpath>
+            <xpath expr="//field[@name='origin']" position="after">
+                <field name="date_planned_finished"/>
+                <field name="expected_duration"/>
+            </xpath>
             <xpath expr="//notebook" position="inside">
                 <page string="Lead Times">
                     <group colspan="4">
