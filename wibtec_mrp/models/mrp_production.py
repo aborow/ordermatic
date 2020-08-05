@@ -18,7 +18,8 @@ class MrpProduction(models.Model):
 	sale_orders = fields.Many2many('sale.order','sale_manufacturing_orders_rel_data',
 		'mrp_production_id' , 'order_id',string="Sale Orders", compute='_add_associated_sales_orders')
 	order_history = fields.One2many('order.history','mrp_production_id',string="Order History")
-	expected_duration = fields.Float(string='Expected Duration',compute='compute_expected_duration')
+	expected_duration = fields.Float(string='Expected Duration')
+	expected_duration_details = fields.Char(string='Expected Duration',compute='compute_expected_duration')
 
 	@api.multi
 	def compute_expected_duration(self):
@@ -26,6 +27,23 @@ class MrpProduction(models.Model):
 			if mo.workorder_ids:
 				for wo in mo.workorder_ids:
 					mo.expected_duration += wo.duration_expected
+			duration_min = timedelta(minutes=mo.expected_duration)
+			duration = self.convert_timedelta(duration_min)
+			mo.expected_duration_details = duration
+			
+	def convert_timedelta(self,timedelta_object):
+		days = timedelta_object.days 
+		hours = timedelta_object.seconds//3600
+		minutes = (timedelta_object.seconds % 3600) // 60
+		if days > 0:
+			duration = str(days) + ' ' + 'days' + ' ' + str(hours)+ ' ' + 'hours' + ' ' + str(minutes) + ' ' + 'minutes'
+		elif hours > 0:
+			duration = str(hours)+ ' ' + 'hours' + ' ' + str(minutes) + ' ' + 'minutes'
+		elif minutes > 0:
+			duration = str(minutes) + ' ' + 'minutes'
+		else:
+			duration = 0
+		return duration
 
 	@api.multi
 	def refresh_sale_orders(self):

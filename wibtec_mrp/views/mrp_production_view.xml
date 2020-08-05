@@ -11,7 +11,11 @@
             </xpath>
             <xpath expr="//field[@name='origin']" position="after">
                 <field name="date_planned_finished"/>
-                <field name="expected_duration"/>
+                <field name="expected_duration" invisible="1"/>
+                <label for="expected_duration_details"/>
+                <div>
+                    <field name="expected_duration_details" class="oe_inline"/>
+                </div>
             </xpath>
             <xpath expr="//notebook" position="inside">
                 <page string="Lead Times">
