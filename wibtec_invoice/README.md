@@ -96,4 +96,9 @@ Version - 12.0.1.0.20
 
 Version - 12.0.1.0.21
 ======================
+-Printed invoice, the even and odd lines are showing different information so solved it
 - OrderMatic Invoice Report, In the Odd lines displayed just Product Name so change it
+
+Version - 12.0.1.0.22
+======================
+- Checked the issue of loading invoice pdf.
