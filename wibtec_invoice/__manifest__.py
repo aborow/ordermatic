@@ -29,11 +29,12 @@
     'author': "WIB Technologies, Inc",
     'website': "http://www.wibtec.com",
     'category': 'Invoice',
-    'version': '12.0.1.0.21',
+    'version': '12.0.1.0.22',
     # any module necessary for this one to work correctly
     'depends': ['account','l10n_us_check_printing', 'sale_management','sale'],
     # always loaded
-    'data': [   
+    'data': [
+        # 'data/mail_template_data.xml',
         'views/res_partner_view.xml',
         'views/account_invoice_view.xml',
         'views/report_check_bottom_view.xml',
