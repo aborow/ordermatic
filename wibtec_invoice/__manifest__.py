@@ -25,6 +25,7 @@
         OMC-267 = Header is overlapping Terms and Conditions section
         OMC-283 = Bug - Batch Payments
         OMC-308 = Printed invoice, the even and odd lines are showing different information
+        OMC-323 = Print and Send Invoices is using wrong format
     """,
     'author': "WIB Technologies, Inc",
     'website': "http://www.wibtec.com",
