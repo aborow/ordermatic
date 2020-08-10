@@ -41,7 +41,7 @@
 </div>
             </field>
             <field name="report_template" ref="wibtec_invoice.report_invoice_template_wibtec"/>
-            <field name="report_name">Ordermatic_Invoice_${object.state == 'draft' and '_draft' or ''}</field>
+            <field name="report_name">OrderMatic_Invoice_${(object.number or '').replace('/','_')}${object.state == 'draft' and '_draft' or ''}</field>
             <field name="lang">${object.partner_id.lang}</field>
             <field name="user_signature" eval="False"/>
             <field name="auto_delete" eval="True"/>
