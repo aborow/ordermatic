@@ -9,15 +9,17 @@
         </template>
         <template id="professional_external_layout">
             <!-- Multicompany -->
-            <t t-if="o and 'company_id' in o">
-                <t t-set="company" t-value="o.company_id"/>
-            </t>
-            <t t-if="not o or not 'company_id' in o">
-                <t t-set="company" t-value="res_company"/>
-            </t>
-            <t t-call="wibtec_invoice.professional_header"/>
-            <t t-raw="0"/>
-            <t t-call="wibtec_invoice.professional_footer"/>
+            <div class="article o_report_layout_standard" t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id">>
+                <t t-if="o and 'company_id' in o">
+                    <t t-set="company" t-value="o.company_id"/>
+                </t>
+                <t t-if="not o or not 'company_id' in o">
+                    <t t-set="company" t-value="res_company"/>
+                </t>
+                <t t-call="wibtec_invoice.professional_header"/>
+                <t t-raw="0"/>
+                <t t-call="wibtec_invoice.professional_footer"/>
+            </div>
         </template>
         <template id="professional_header">
             <div class="header">

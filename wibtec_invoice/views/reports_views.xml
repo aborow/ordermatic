@@ -9,6 +9,7 @@
             report_type="qweb-pdf"
             file="wibtec_invoice.report_invoice" 
             name="wibtec_invoice.report_invoice"
+            attachment="(object.state in ('open','in_payment','paid')) and ('Ordermatic Invoice'+' '+(object.number or '').replace('/','')+'.pdf')"
             />
         <!-- Removed menu of report invoice without payment -->
         <report
