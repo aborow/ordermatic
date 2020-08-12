@@ -102,3 +102,7 @@ Version - 12.0.1.0.21
 Version - 12.0.1.0.22
 =========================
 -Changed the format of name of the attachment file from report and template.
+
+Version - 12.0.1.0.23
+=========================
+-Solved some issue for design and added tax amount field.
