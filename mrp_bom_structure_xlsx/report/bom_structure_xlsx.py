@@ -68,7 +68,7 @@ class BomStructureXlsx(models.AbstractModel):
 							sheet.write(i, 14, duration_minutes)
 							sheet.write(i, 15, 'Minutes')
 							sheet.write(i, 16, '')
-							sheet.write(i, 17, formatLang(self.env, od.bom_cost, currency_obj=currency_id) or '')
+							sheet.write(i, 18, formatLang(self.env, od.bom_cost, currency_obj=currency_id) or '')
 							i += 1
 				j -= 1
 		return i
@@ -151,7 +151,7 @@ class BomStructureXlsx(models.AbstractModel):
 					sheet.write(i, 14, duration_minutes, bold)
 					sheet.write(i, 15, 'Minutes', bold)
 					sheet.write(i, 16,'')
-					sheet.write(i, 17,formatLang(self.env, od.bom_cost, currency_obj=currency_id) or '', bold)
+					sheet.write(i, 18,formatLang(self.env, od.bom_cost, currency_obj=currency_id) or '', bold)
 					i += 1
 			j = 0
 			for ch in o.bom_line_ids:
