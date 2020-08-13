@@ -100,7 +100,7 @@ class MrpBomLine(models.Model):
 			operation_details = self.env['operations.line.details'].search([('bom_id','=',bom_id.id),('operation_id','=',operation.id)])
 			return operation_details
 		else:
-			return False		
+			return False
 
 
 class OperationsDetails(models.Model):

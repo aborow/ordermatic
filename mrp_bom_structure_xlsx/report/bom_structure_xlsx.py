@@ -31,7 +31,7 @@ class BomStructureXlsx(models.AbstractModel):
 		sheet.write(i, 16, formatLang(self.env, round(ch.product_id.standard_price,2), currency_obj=currency_id) or '')
 		sheet.write(i, 17, formatLang(self.env, ch.product_cost, currency_obj=currency_id) or '')
 		sheet.write(i, 18, formatLang(self.env, ch.bom_cost, currency_obj=currency_id) or '')
-		workcenters = self.find_workcenters(bom.routing_id)
+		# workcenters = self.find_workcenters(bom.routing_id)
 		# if workcenters:
 		# 	if bom:
 		# 		operation_details = self.find_operation_line_details(bom)
@@ -46,26 +46,31 @@ class BomStructureXlsx(models.AbstractModel):
 		# 			sheet.write(i, 17, formatLang(self.env, od.bom_cost, currency_obj=currency_id) or '')
 		# 			i += 1
 		i += 1
+		len_child = ch.child_line_ids
+		list_child_ids = ch.child_line_ids.ids
+		if list_child_ids:
+			last_bom = list_child_ids[::-1][0]
 		for child in ch.child_line_ids:
 			child._update_cost(child)
 			# child.bom_id.compute_parent_bom_costs(child.bom_id)
 			if j >=10:
 			  j = 9
 			i = self.print_bom_children(child, sheet, i, j)
-			if workcenters:
-				if bom:
-					operation_details = self.find_operation_line_details(bom)
-					# i += 1
-					for od in operation_details:
-						duration_minutes = '%02d:%02d' % (int(float(od.quantity)), float(od.quantity) % 1 * 60)
-						wc_name = od.operation_id.name + " " + '-' + " " + od.operation_id.workcenter_id.name if od.operation_id.workcenter_id else od.operation_id.name
-						sheet.write(i, j+1, wc_name   or '')
-						sheet.write(i, 14, duration_minutes)
-						sheet.write(i, 15, 'Minutes')
-						sheet.write(i, 16, '')
-						sheet.write(i, 17, formatLang(self.env, od.bom_cost, currency_obj=currency_id) or '')
-						i += 1
-			j -= 1
+			if child.id == last_bom: 
+				if workcenters:
+					if bom:
+						operation_details = self.find_operation_line_details(bom)
+						# i += 1
+						for od in operation_details:
+							duration_minutes = '%02d:%02d' % (int(float(od.quantity)), float(od.quantity) % 1 * 60)
+							wc_name = od.operation_id.name + " " + '-' + " " + od.operation_id.workcenter_id.name if od.operation_id.workcenter_id else od.operation_id.name
+							sheet.write(i, j+1, wc_name   or '')
+							sheet.write(i, 14, duration_minutes)
+							sheet.write(i, 15, 'Minutes')
+							sheet.write(i, 16, '')
+							sheet.write(i, 17, formatLang(self.env, od.bom_cost, currency_obj=currency_id) or '')
+							i += 1
+				j -= 1
 		return i
 
 	def generate_xlsx_report(self, workbook, data, objects):
@@ -117,7 +122,7 @@ class BomStructureXlsx(models.AbstractModel):
 					   _('Quantity'),
 					   _('Unit of Measure'),
 					   _('Unit Cost'),
-					   _('Product Cost'),
+					   _('Material Cost'),
 					   _('BOM Cost')
 					   ]
 		sheet.set_row(0, None, None, {'collapsed': 1})
@@ -142,13 +147,12 @@ class BomStructureXlsx(models.AbstractModel):
 				for od in operation_details:
 					duration_minutes = '%02d:%02d' % (int(float(od.quantity)), float(od.quantity) % 1 * 60)
 					wc_name = od.operation_id.name + " " + '-' + " " + od.operation_id.workcenter_id.name if od.operation_id.workcenter_id else od.operation_id.name
-					sheet.write(i, 0, wc_name   or '', bold)
+					sheet.write(i, 1, wc_name   or '', bold)
 					sheet.write(i, 14, duration_minutes, bold)
 					sheet.write(i, 15, 'Minutes', bold)
 					sheet.write(i, 16,'')
 					sheet.write(i, 17,formatLang(self.env, od.bom_cost, currency_obj=currency_id) or '', bold)
 					i += 1
-			# i += 1
 			j = 0
 			for ch in o.bom_line_ids:
 				ch._update_cost(ch)
@@ -160,7 +164,7 @@ class BomStructureXlsx(models.AbstractModel):
 			return workcenters
 		else:
 			return False	
-
+ 
 	def find_operation_details(self,bom_id):
 		if bom_id:
 			operation_details = self.env['operations.details'].search([('bom_id','=',bom_id.id)])
