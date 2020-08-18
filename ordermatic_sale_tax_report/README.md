@@ -48,3 +48,7 @@ Version - 12.0.1.2.2
 Version - 12.0.1.2.3
 =====================
 -Added the partner name column before the customerID.
+
+Version - 12.0.1.2.4
+======================
+-Changed the tax amount based on the avalara calculations.

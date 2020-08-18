@@ -52,12 +52,7 @@ class TaxableSalesUploadReport(models.TransientModel):
 		"""Method will filter invoices based on domain and returns it."""
 		domain = self.get_date_domain()
 		invoices = self.env['account.invoice'].search(domain)
-		return invoices
-
-	@api.multi
-	def _get_tic_category_id(self):
-		tic_category_id = self.env['ir.default'].get('res.config.settings', 'tic_category_id')
-		return tic_category_id
+		return invoices 
 
 	@api.multi
 	def calculate_index(self,invoice):
@@ -90,7 +85,10 @@ class TaxableSalesUploadReport(models.TransientModel):
 	def get_taxes_percentage(self,line):
 		tax_percentage = 0.0
 		for tax in line.invoice_line_tax_ids:
-			tax_percentage = tax_percentage + tax.amount
+			if tax.is_avatax == True:
+				tax_percentage = line.tax_amt / line.price_subtotal
+			else:
+				tax_percentage = tax_percentage + tax.amount
 		return tax_percentage
 
 	@api.multi
@@ -123,7 +121,7 @@ class TaxableSalesUploadReport(models.TransientModel):
 								['ShipFromState'] + ['ShipFromZip5'] + ['ShipFromZip4'] +
 								['ShipToAddr1'] + ['ShipToAddr2'] + ['ShipToAddr2'] + ['ShipToState'] + ['ShipToZip5'] +
 								['ShipToZip4'] + ['Invoice Payment Status'] + ['CartItemIndex'] + ['CartItem'] +
-								['Account'] + ['CartItemTIC'] + ['CartItemPrice'] +
+								['Account'] + ['CartItemPrice'] +
 								['CartItemQty'] + ['CartItemTaxRate'] + ['CartItemTaxAmount'] + ['Discount(%)'] + ['Subtotal'])
 
 			# Removed old attachment if any
@@ -135,8 +133,6 @@ class TaxableSalesUploadReport(models.TransientModel):
 			for invoice in invoices:
 				self.calculate_index(invoice)
 				state = self.get_state(invoice)
-				tic_category_id = self._get_tic_category_id()
-				tic_category = self.env['product.tic.category'].browse(tic_category_id)
 				partner_ref = self.find_internal_reference(invoice.partner_id)
 				partner_name = self.find_partner_name(invoice.partner_id)
 				
@@ -165,11 +161,10 @@ class TaxableSalesUploadReport(models.TransientModel):
 										line.index_no if line.index_no > 0 else 0,
 										line.product_id.id or '',
 										line.account_id.code + ' ' + line.account_id.name if line.account_id.code and line.account_id.name else line.account_id.name,
-										tic_category.code or 0,
 										line.price_unit or '',
 										line.quantity or '',
 										tax_percentage or '',
-										line.price_tax or '',
+										line.tax_amt or '',
 										line.discount or '',
 										line.price_subtotal or ''
 										])
@@ -200,234 +195,4 @@ class TaxableSalesUploadReport(models.TransientModel):
 				"type": "ir.actions.act_url",
 				"url": str(base_url) + str(download_url),
 				"target": "new",
-			}
-
-	@api.multi
-	def print_xls(self):
-		"""Method will print the XLS report."""
-		invoices = self.get_account_invoices()
-		if not invoices:
-			raise ValidationError(
-				_('No records found.'))
-		fp = io.BytesIO()
-		workbook = xlsxwriter.Workbook(fp)
-		worksheet = workbook.add_worksheet('Taxable Sales Upload Report')
-		data_format = workbook.add_format({'align': 'center'})
-		report_header_format = workbook.add_format({'bold': True, 'align': 'center', 'font_size': 18})
-		header_format = workbook.add_format({'bold': True, 'align': 'center','color':'white','bg_color':'navy'})
-		bold = workbook.add_format({'bold': True})
-		worksheet.set_column('A:A', 20)
-		worksheet.set_column('B:B', 20)
-		worksheet.set_column('C:C', 20)
-		worksheet.set_column('D:D', 20)
-		worksheet.set_column('E:E', 20)
-		worksheet.set_column('F:F', 20)
-		worksheet.set_column('G:G', 20)
-		worksheet.set_column('H:H', 20)
-		worksheet.set_column('I:I', 20)
-		worksheet.set_column('J:J', 20)
-		worksheet.set_column('K:K', 20)
-		worksheet.set_column('L:L', 20)
-		worksheet.set_column('M:M', 20)
-		worksheet.set_column('N:N', 20)
-		worksheet.set_column('O:O', 20)
-		worksheet.set_column('P:P', 20)
-		worksheet.set_column('Q:Q', 20)
-		worksheet.set_column('R:R', 20)
-		worksheet.set_column('S:S', 20)
-		worksheet.set_column('T:T', 20)
-		worksheet.set_column('U:U', 20)
-		worksheet.set_column('V:V', 20)
-		worksheet.set_column('W:W', 20)
-		worksheet.set_column('X:X', 20)
-		worksheet.set_column('Y:Y', 20)
-		not_exist = workbook.add_format({'bold': True, 'font_color': 'red'})
-		row = 0
-		colm = 0
-		if invoices:
-			row += 0
-			worksheet.write(row, colm, 'OrderID', header_format)
-			colm += 1
-			worksheet.write(row, colm, 'CustomerID', header_format)
-			colm += 1
-			worksheet.write(row, colm, 'TransactionDate', header_format)
-			colm += 1
-			worksheet.write(row, colm, 'AuthorizedDate', header_format)
-			colm += 1
-			worksheet.write(row, colm, 'CapturedDate', header_format)
-			colm += 1
-			worksheet.write(row, colm, 'DeliveredBySeller', header_format)
-			colm += 1
-			worksheet.write(row, colm, 'ShipFromAddr1', header_format)
-			colm += 1
-			worksheet.write(row, colm, 'ShipFromAddr2', header_format)
-			colm += 1
-			worksheet.write(row, colm, 'ShipFromCity', header_format)
-			colm += 1
-			worksheet.write(row, colm, 'ShipFromState', header_format)
-			colm += 1
-			worksheet.write(row, colm, 'ShipFromZip5', header_format)
-			colm += 1
-			worksheet.write(row, colm, 'ShipFromZip4', header_format)
-			colm += 1
-			worksheet.write(row, colm, 'ShipToAddr1', header_format)
-			colm += 1
-			worksheet.write(row, colm, 'ShipToAddr2', header_format)
-			colm += 1
-			worksheet.write(row, colm, 'ShipToCity', header_format)
-			colm += 1
-			worksheet.write(row, colm, 'ShipToState', header_format)
-			colm += 1
-			worksheet.write(row, colm, 'ShipToZip5', header_format)
-			colm += 1
-			worksheet.write(row, colm, 'ShipToZip4', header_format)
-			colm += 1
-			worksheet.write(row, colm, 'CartItemIndex', header_format)
-			colm += 1
-			worksheet.write(row, colm, 'CartItem', header_format)
-			colm += 1
-			worksheet.write(row, colm, 'CartItemTIC', header_format)
-			colm += 1
-			worksheet.write(row, colm, 'CartItemPrice', header_format)
-			colm += 1
-			worksheet.write(row, colm, 'CartItemQty', header_format)
-			colm += 1
-			worksheet.write(row, colm, 'CartItemTaxRate', header_format)
-			colm += 1
-			worksheet.write(row, colm, 'CartItemTaxAmount', header_format)
-			for invoice in invoices:
-				for line in invoice.invoice_line_ids:
-					colm = 0
-					row += 1
-					if invoice.id:
-						worksheet.write(row, colm,invoice.id, data_format)
-					else:
-						worksheet.write(row, colm,' ', data_format)
-					colm += 1
-					if invoice.partner_id:
-						worksheet.write(row, colm,invoice.partner_id.id, data_format)
-					else:
-						worksheet.write(row, colm,' ', data_format)
-					colm += 1
-					if invoice.create_date:
-						worksheet.write(row, colm,datetime.datetime.strptime(str(invoice.create_date),'%Y-%m-%d %H:%M:%S.%f').strftime('%Y%m%d'), data_format)
-					else:
-						worksheet.write(row, colm,' ', data_format)
-					colm += 1
-					current_date = fields.Date.today()
-					worksheet.write(row, colm,datetime.datetime.strptime(str(current_date),'%Y-%m-%d').strftime('%Y%m%d'), data_format)
-					colm += 1
-					worksheet.write(row, colm,datetime.datetime.strptime(str(current_date),'%Y-%m-%d').strftime('%Y%m%d'), data_format)
-					colm += 1
-					if invoice.id:
-						worksheet.write(row, colm,0, data_format)
-					else:
-						worksheet.write(row, colm,' ', data_format)
-					colm += 1
-					if invoice.company_id.partner_id:
-						worksheet.write(row, colm,str(invoice.company_id.partner_id.street), data_format)
-					else:
-						worksheet.write(row, colm,' ', data_format)
-					colm += 1
-					if invoice.company_id.partner_id:
-						worksheet.write(row, colm,str(invoice.company_id.partner_id.street2), data_format)
-					else:
-						worksheet.write(row, colm,' ', data_format)
-					colm += 1
-					if invoice.company_id.partner_id:
-						worksheet.write(row, colm,str(invoice.company_id.partner_id.city), data_format)
-					else:
-						worksheet.write(row, colm,' ', data_format)
-					colm += 1
-					if invoice.company_id.partner_id:
-						worksheet.write(row, colm,str(invoice.company_id.partner_id.state_id.code), data_format)
-					else:
-						worksheet.write(row, colm,' ', data_format)
-					colm += 1
-					if invoice.company_id.partner_id:
-						worksheet.write(row, colm,str(invoice.company_id.partner_id.zip), data_format)
-					else:
-						worksheet.write(row, colm,' ', data_format)
-					colm += 1
-					worksheet.write(row, colm,' ', data_format)
-					colm += 1
-					if invoice.partner_shipping_id:
-						worksheet.write(row, colm,str(invoice.partner_shipping_id.street), data_format)
-					else:
-						worksheet.write(row, colm,' ', data_format)
-					colm += 1
-					if invoice.partner_shipping_id:
-						worksheet.write(row, colm,str(invoice.partner_shipping_id.street2), data_format)
-					else:
-						worksheet.write(row, colm,' ', data_format)
-					colm += 1
-					if invoice.partner_shipping_id:
-						worksheet.write(row, colm,str(invoice.partner_shipping_id.city), data_format)
-					else:
-						worksheet.write(row, colm,' ', data_format)
-					colm += 1
-					if invoice.partner_shipping_id:
-						worksheet.write(row, colm,str(invoice.partner_shipping_id.state_id.code), data_format)
-					else:
-						worksheet.write(row, colm,' ', data_format)
-					colm += 1
-					if invoice.partner_shipping_id:
-						worksheet.write(row, colm,str(invoice.partner_shipping_id.zip), data_format)
-					else:
-						worksheet.write(row, colm,' ', data_format)
-					colm += 1
-					worksheet.write(row, colm,' ', data_format)
-					colm += 1
-					line_index = 0
-					if line:
-						self.calculate_index(invoice)
-						worksheet.write(row, colm,str(line.index_no), data_format)
-					else:
-						worksheet.write(row, colm,' ', data_format)
-					colm += 1
-					if line.product_id:
-						worksheet.write(row, colm,str(line.product_id.id), data_format)
-					else:
-						worksheet.write(row, colm,' ', data_format)
-					colm += 1
-					tic_category_id = self._get_tic_category_id()
-					if tic_category_id:
-						tic_category = self.env['product.tic.category'].browse(tic_category_id)
-						worksheet.write(row, colm,tic_category.code, data_format)
-					else:
-						worksheet.write(row, colm,1, data_format)
-					colm += 1
-					if line.price_unit:
-						worksheet.write(row, colm,line.price_unit, data_format)
-					else:
-						worksheet.write(row, colm, ' ', data_format)
-					colm += 1
-					if line.quantity:
-						worksheet.write(row, colm,line.quantity, data_format)
-					else:
-						worksheet.write(row, colm, ' ', data_format)
-					colm += 1
-					if line.invoice_line_tax_ids:
-						worksheet.write(row, colm,line.invoice_line_tax_ids.amount, data_format)
-					else:
-						worksheet.write(row, colm, ' ', data_format)
-					colm += 1
-					if line.price_tax:
-						worksheet.write(row, colm,line.price_tax, data_format)
-					else:
-						worksheet.write(row, colm, ' ', data_format)
-					colm += 1
-		workbook.close()
-		fp.seek(0)
-		result = base64.b64encode(fp.read())
-		attachment_obj = self.env['ir.attachment']
-		attachment_id = attachment_obj.create(
-			{'name': 'taxable_sales_upload_report.xlsx', 'datas_fname': 'Taxable Sales Upload Report.xlsx', 'datas': result})
-		download_url = '/web/content/' + \
-			str(attachment_id.id) + '?download=True'
-		base_url = self.env['ir.config_parameter'].sudo().get_param('web.base.url')
-		return {
-			"type": "ir.actions.act_url",
-			"url": str(base_url) + str(download_url),
-			"target": "new"
-		}
+			}		

@@ -9,14 +9,15 @@
 
     'description': """
         OMC-268 : Tax Cloud issue with API
-        OMC-272 = Create Sales Tax Report
+        OMC-272 : Create Sales Tax Report
+        OMC-333 : Need to change the tax amount value in sales tax report
     """,
     'author': "WIB Technologies, Inc",
     'website': "http://www.wibtec.com",
     'category': 'Sales',
-    'version': '12.0.1.2.3',
+    'version': '12.0.1.2.4',
     # any module necessary for this one to work correctly
-    'depends': ['base','account'],
+    'depends': ['base','account','wibtec_avatax_connector'],
     # always loaded
     'data': [
         'wizard/taxable_sales_upload_report_view.xml',
