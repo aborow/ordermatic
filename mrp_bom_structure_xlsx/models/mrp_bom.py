@@ -14,7 +14,8 @@ class MrpBom(models.Model):
 	@api.multi
 	def _update_cost(self,parent_bom):
 		product_id = parent_bom.product_id or parent_bom.product_tmpl_id.product_variant_ids
-		bom = self.env['mrp.bom']._bom_find(product=product_id)
+		bom = parent_bom
+		component_qty = 0.0
 		if bom:
 			bom_structure_obj = self.env['report.mrp.report_bom_structure']
 			lines = bom_structure_obj._get_bom(bom.id, product_id=product_id, line_qty=bom.product_qty, level=1)
@@ -38,11 +39,16 @@ class MrpBom(models.Model):
 						})
 			if lines.get('components') and bom.bom_line_ids:
 				for line in bom.bom_line_ids:
-					bom = self.env['mrp.bom']._bom_find(product=line.product_id)
 					for component in lines.get('components'):
-						if component.get('prod_id') == line.product_id.id:
-							line.write({'bom_cost':round(component.get('total'),2)})
-							line.write({'product_cost':round(component.get('prod_cost'),2)})
+						if component.get('prod_id') == line.product_id.id and component.get('prod_qty') == line.product_qty:
+							line.update({
+								'bom_cost':round(component.get('total'),2),
+								'product_cost':round(component.get('prod_cost'),2),
+								'prod_qty_bom_line':component.get('prod_qty')
+							})							
+						if component.get('child_bom'):
+							component_qty = component.get('prod_qty')
+		return component_qty
 
 
 	def find_operation_details(self,bom_id,operation):
@@ -59,14 +65,17 @@ class MrpBomLine(models.Model):
 	bom_cost = fields.Float(string='Bom Cost')
 	product_cost = fields.Float(string='Product Cost')
 	operation_line_details = fields.One2many('operations.line.details','bom_line_id',string='Operation Line Details')
+	prod_qty_bom_line = fields.Float('BOM Quantity')
 
 	@api.multi
-	def _update_cost(self,child_bom):
+	def _update_cost(self,child_bom,parent_bom_qty):
 		product_id = child_bom.product_id or child_bom.product_tmpl_id.product_variant_ids
 		bom = self.env['mrp.bom']._bom_find(product=product_id)
+		component_qty = 0.0
 		if bom:
 			bom_structure_obj = self.env['report.mrp.report_bom_structure']
-			lines = bom_structure_obj._get_bom(bom.id, product_id=product_id, line_qty = self.product_qty, line_id=self.id, level=1)
+			quantity = self.product_qty * parent_bom_qty if parent_bom_qty else self.product_qty
+			lines = bom_structure_obj._get_bom(bom.id, product_id=product_id, line_qty = quantity, line_id=self.id, level=1)
 			bom.bom_cost =  lines.get('total')
 			bom.product_cost = lines.get('price')
 			if lines.get('operations'):
@@ -89,11 +98,17 @@ class MrpBomLine(models.Model):
 						})
 			if lines.get('components') and bom.bom_line_ids:
 				for line in bom.bom_line_ids:
-					bom = self.env['mrp.bom']._bom_find(product=line.product_id)
 					for component in lines.get('components'):
-						if component.get('prod_id') == line.product_id.id:
-							line.write({'bom_cost':round(component.get('total'),2)})
-							line.write({'product_cost':round(component.get('prod_cost'),2)})
+						if component.get('prod_id') == line.product_id.id and component.get('prod_qty') == line.product_qty:
+							line.update({
+								'bom_cost':round(component.get('total'),2),
+								'product_cost':round(component.get('prod_cost'),2),
+								'prod_qty_bom_line':component.get('prod_qty')
+							})
+						if component.get('child_bom'):
+							component_qty = component.get('prod_qty')
+		return component_qty
+
 
 	def find_operation_details(self,bom_id,operation):
 		if bom_id and operation:

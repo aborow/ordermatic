@@ -14,7 +14,7 @@ class BomStructureXlsx(models.AbstractModel):
 	_name = 'report.mrp_bom_structure_xlsx.bom_structure_xlsx'
 	_inherit = 'report.report_xlsx.abstract'
 
-	def print_bom_children(self, ch, sheet, row, level):
+	def print_bom_children(self, ch, sheet, row, level,qty):
 		currency_id= self.env.user.company_id.currency_id
 		workcenters = self.find_workcenters(ch.bom_id.routing_id)
 		product_id = ch.product_id or ch.product_tmpl_id.product_variant_ids
@@ -22,15 +22,28 @@ class BomStructureXlsx(models.AbstractModel):
 		i, j = row, level
 		j += 1
 		# sheet.write(i, 1, '> '*j)
+		quantity = 0.0
+		# if qty:
+		# 	if qty == ch.product_qty:
+		# 		quantity = ch.product_qty
+		# 	else:
+		# 		quantity = ch.product_qty * qty
 		sheet.write(i, j, ch.product_id.default_code or '')
 		sheet.write(i, 11, ch.product_id.default_code or '')
 		sheet.write(i, 12, ch.bom_id.code or '')
 		sheet.write(i, 13, ch.product_id.display_name or '')
-		sheet.write(i, 14, ch.product_uom_id._compute_quantity(ch.product_qty, ch.product_id.uom_id) or '')
+		# sheet.write(i, 14, ch.product_uom_id._compute_quantity(ch.product_qty, ch.product_id.uom_id) or '')
+		if level == 0:
+			quantity = ch.product_uom_id._compute_quantity(ch.product_qty, ch.product_id.uom_id)
+			# sheet.write(i, 14, quantity or '')
+		else:
+			quantity = ch.prod_qty_bom_line
+		sheet.write(i, 14, quantity or '')
+		# sheet.write(i, 14, ch.prod_qty_bom_line or '')
 		sheet.write(i, 15, ch.product_id.uom_id.name or '')
-		sheet.write(i, 16, formatLang(self.env, round(ch.product_id.standard_price,2), currency_obj=currency_id) or '')
-		sheet.write(i, 17, formatLang(self.env, ch.product_cost, currency_obj=currency_id) or '')
-		sheet.write(i, 18, formatLang(self.env, ch.bom_cost, currency_obj=currency_id) or '')
+		sheet.write(i, 16, round(ch.product_id.standard_price,2) or '')
+		sheet.write(i, 17, ch.product_cost or 0.0)
+		sheet.write(i, 18, ch.bom_cost or 0.0)
 		# workcenters = self.find_workcenters(bom.routing_id)
 		# if workcenters:
 		# 	if bom:
@@ -51,11 +64,11 @@ class BomStructureXlsx(models.AbstractModel):
 		if list_child_ids:
 			last_bom = list_child_ids[::-1][0]
 		for child in ch.child_line_ids:
-			child._update_cost(child)
+			child._update_cost(child,quantity)
 			# child.bom_id.compute_parent_bom_costs(child.bom_id)
 			if j >=10:
 			  j = 9
-			i = self.print_bom_children(child, sheet, i, j)
+			i = self.print_bom_children(child, sheet, i, j,quantity)
 			if child.id == last_bom: 
 				if workcenters:
 					if bom:
@@ -68,7 +81,7 @@ class BomStructureXlsx(models.AbstractModel):
 							sheet.write(i, 14, duration_minutes)
 							sheet.write(i, 15, 'Minutes')
 							sheet.write(i, 16, '')
-							sheet.write(i, 18, formatLang(self.env, od.bom_cost, currency_obj=currency_id) or '')
+							sheet.write(i, 18, od.bom_cost or 0.0)
 							i += 1
 				j -= 1
 		return i
@@ -131,16 +144,16 @@ class BomStructureXlsx(models.AbstractModel):
 		i = 2
 		for o in objects:
 			workcenters = self.find_workcenters(o.routing_id)
-			o._update_cost(o)
+			test = o._update_cost(o)
 			sheet.write(i, 0, o.product_tmpl_id.name or o.default_code or '', bold)
 			sheet.write(i, 11, o.product_tmpl_id.default_code or '', bold)
 			sheet.write(i, 12, o.code or '', bold)
 			sheet.write(i, 13, o.product_tmpl_id.name or '', bold)
 			sheet.write(i, 14, o.product_qty, bold)
 			sheet.write(i, 15, o.product_uom_id.name or '', bold)
-			sheet.write(i, 16, formatLang(self.env, round(o.product_id.standard_price,2), currency_obj=currency_id) or '', bold)
-			sheet.write(i, 17, formatLang(self.env, o.product_cost, currency_obj=currency_id) or '', bold)
-			sheet.write(i, 18, formatLang(self.env, o.bom_cost, currency_obj=currency_id) or '', bold)
+			sheet.write(i, 16, round(o.product_id.standard_price,2) or '', bold)
+			sheet.write(i, 17, o.product_cost or 0.0, bold)
+			sheet.write(i, 18, o.bom_cost or 0.0, bold)
 			if workcenters:
 				operation_details = self.find_operation_details(o)
 				i += 1
@@ -151,12 +164,12 @@ class BomStructureXlsx(models.AbstractModel):
 					sheet.write(i, 14, duration_minutes, bold)
 					sheet.write(i, 15, 'Minutes', bold)
 					sheet.write(i, 16,'')
-					sheet.write(i, 18,formatLang(self.env, od.bom_cost, currency_obj=currency_id) or '', bold)
+					sheet.write(i, 18, od.bom_cost or 0.0, bold)
 					i += 1
 			j = 0
 			for ch in o.bom_line_ids:
-				ch._update_cost(ch)
-				i = self.print_bom_children(ch, sheet, i, j)
+				ch._update_cost(ch,o.product_qty)
+				i = self.print_bom_children(ch, sheet, i, j,o.product_qty)
 
 	def find_workcenters(self,routing_id):
 		if routing_id:
