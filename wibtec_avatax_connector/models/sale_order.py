@@ -76,7 +76,7 @@ class SaleOrder(models.Model):
 		invoice_vals = super(SaleOrder, self)._prepare_invoice()
 		invoice_vals.update({
 			'exemption_code': self.exemption_code or self.partner_id.exemption_number or None,
-			'exemption_code_id': self.exemption_code_id.id or self.partner_id.exemption_code_id or None,
+			'exemption_code_id': self.exemption_code_id.id or self.partner_id.exemption_code_id.id or None,
 			'tax_add_default': self.tax_add_default,
 			'tax_add_invoice': self.tax_add_invoice,
 			'tax_add_shipping': self.tax_add_shipping,
