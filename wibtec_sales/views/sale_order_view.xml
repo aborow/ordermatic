@@ -25,6 +25,9 @@
             <field name="model">sale.order</field>
             <field name="inherit_id" ref="sale.view_order_form"/>
             <field name="arch" type="xml">
+                <field name="carrier_id" position="attributes">
+                    <attribute name="required">1</attribute>
+                </field>
                 <field name="partner_id" position="attributes">
                     <attribute name="options">{'no_create_edit': True,'no_create': True}</attribute>
                 </field>
