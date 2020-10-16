@@ -100,6 +100,7 @@
 				</div>
 				<div class="ckus_memo"  style="font-size:smaller;" t-esc="page['print_check_as']"/>
 				<div class="ckus_payee_addr"  style="font-size:smaller;" t-esc="page['partner_id']" t-options='{"widget": "contact", "fields": ["address"], "no_marker": True}'/>
+				<span class="ckus_payee_addr" t-esc="page['memo']" style="margin-top: 69px;font-size:smaller;"/>
 			</div>
 		</template>
 	</data>

@@ -106,3 +106,7 @@ Version - 12.0.1.0.22
 Version - 12.0.1.0.23
 =========================
 -Solved some issue for design and added tax amount field.
+
+Version -  12.0.1.0.24
+========================
+-Added Memo field on cheque printing.

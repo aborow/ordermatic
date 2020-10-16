@@ -27,11 +27,12 @@
         OMC-308 = Printed invoice, the even and odd lines are showing different information
         OMC-323 = Print and Send Invoices is using wrong format
         OMC-327 = Tax Amount issue in Invoice
+	OMC-348 = added memo field on cheque printing
     """,
     'author': "WIB Technologies, Inc",
     'website': "http://www.wibtec.com",
     'category': 'Invoice',
-    'version': '12.0.1.0.23',
+    'version': '12.0.1.0.24',
     # any module necessary for this one to work correctly
     'depends': ['account','l10n_us_check_printing', 'sale_management','sale'],
     # always loaded
