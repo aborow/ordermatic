@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<odoo>
+
+	<record id="group_login_as" model="res.groups">
+		<field name="name">Login As</field>
+		<field name="category_id" eval="False" />
+		<field name="implied_ids" eval="[(4, ref('base.group_user'))]" />
+	</record>
+		
+</odoo>
