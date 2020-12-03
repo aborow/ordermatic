@@ -67,7 +67,7 @@ class StockMove(models.Model):
                             product_tot_qty_available + qty_done)
 
             if new_std_price < 0:
-                raise UserError(_('{} product have negative stock. Please manage Stock Because cost price will be negative due to negative stock').format(move.product_id.name))
+                raise UserError(_('{} currently has a negative stock or this action might result in a negative stock.  Please adjust the inventory prior to completing this Manufacturing Order or a negative cost might occur with this product').format(move.product_id.name))
             tmpl_dict[move.product_id.id] += qty_done
             # Write the standard price, as SUPERUSER_ID because a warehouse manager may not have the right to write on products
             move.product_id.with_context(force_company=move.company_id.id).sudo().write(
