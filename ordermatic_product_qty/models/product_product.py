@@ -17,11 +17,11 @@ class ProductProduct(models.Model):
             ('product_id', '=', self.id), ('state', '=', 'sale')
         ])
         sale_order = False
+        action = self.env.ref(
+            'sale.action_orders').read()[0]
         if sale_order_lines:
             sale_order = sale_order_lines.mapped('order_id')
         if sale_order:
-            action = self.env.ref(
-                'sale.action_orders').read()[0]
             action["context"] = {"create": False}
             if len(sale_order) > 1:
                 action['domain'] = [('id', 'in', sale_order.ids)]
