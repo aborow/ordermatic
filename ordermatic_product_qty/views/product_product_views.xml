@@ -9,17 +9,17 @@
 
             <xpath expr="//button[@name='action_open_quants']" position="after">
                 <button class="oe_stat_button"
-                               name="omc_action_open_quants"
-                               icon="fa-building-o"
-                               type="object" attrs="{'invisible':[('type', '!=', 'product')]}">
-                               <div class="o_field_widget o_stat_info">
-                                    <span class="o_stat_value">
-                                        <field name="omc_qty_available" widget="statinfo" nolabel="1" class="mr4"/>
-                                        <field name="uom_name"/>
-                                    </span>
-                                    <span class="o_stat_text">OMC On Hand</span>
-                               </div>
-                        </button>
+                        name="omc_action_open_quants"
+                        icon="fa-building-o"
+                        type="object" attrs="{'invisible':[('type', '!=', 'product')]}">
+                    <div class="o_field_widget o_stat_info">
+                        <span class="o_stat_value">
+                            <field name="omc_qty_available" widget="statinfo" nolabel="1" class="mr4"/>
+                            <field name="uom_name"/>
+                        </span>
+                        <span class="o_stat_text">OMC On Hand</span>
+                    </div>
+                </button>
             </xpath>
 
         </field>
