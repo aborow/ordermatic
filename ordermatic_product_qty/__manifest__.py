@@ -20,7 +20,7 @@ Add the MOs and Sales Orders to a list when clicking on the smart button so it i
     'depends': ['stock'],
     # always loaded
     'data': [
-            # 'views/product_product_views.xml'
+            'views/product_product_views.xml'
     ],
     'auto_install': False,
     'installable': True,
