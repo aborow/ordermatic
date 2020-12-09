@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- Inherit Form View to Modify it -->
+    <record id="product_form_view_procurement_button_inherit_ordermatic_product_qty" model="ir.ui.view">
+        <field name="name">product.product.procurement</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="stock.product_form_view_procurement_button"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//button[@name='action_open_quants']" position="after">
+                <button class="oe_stat_button"
+                               name="omc_action_open_quants"
+                               icon="fa-building-o"
+                               type="object" attrs="{'invisible':[('type', '!=', 'product')]}">
+                               <div class="o_field_widget o_stat_info">
+                                    <span class="o_stat_value">
+                                        <field name="omc_qty_available" widget="statinfo" nolabel="1" class="mr4"/>
+                                        <field name="uom_name"/>
+                                    </span>
+                                    <span class="o_stat_text">OMC On Hand</span>
+                               </div>
+                        </button>
+            </xpath>
+
+        </field>
+    </record>
+</odoo>
