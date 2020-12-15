@@ -38,4 +38,10 @@ Maintainer
 
 This module is maintained by the Terrabit.
 
+Vesrion
+----------
+- 12.0.1.0.1 OMC-347 ==> raised warning when product cost price will be negative.
 
+Vesrion
+----------
+- 12.0.1.0.2 OMC-347 ==> changed warning message for negative cost.
